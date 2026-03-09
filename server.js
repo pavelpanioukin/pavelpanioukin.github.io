@@ -8,11 +8,9 @@ const PORT = process.env.PORT || 3000;
 const DATA_FILE = path.join(__dirname, 'data.json');
 const ADMIN_PASSWORD = 'pavel2024';
 
-// In-memory session tokens (cleared on server restart — fine for local use)
 const sessions = new Set();
 
 app.use(express.json({ limit: '10mb' }));
-app.use(express.static(path.join(__dirname, 'public')));
 
 // ── Auth helpers ──────────────────────────────────────────────────────────────
 
@@ -52,7 +50,6 @@ app.post('/api/logout', requireAuth, (req, res) => {
 
 // ── Data routes ───────────────────────────────────────────────────────────────
 
-// Public — read site data
 app.get('/api/data', (req, res) => {
   try {
     const raw = fs.readFileSync(DATA_FILE, 'utf8');
@@ -64,7 +61,6 @@ app.get('/api/data', (req, res) => {
   }
 });
 
-// Protected — write site data
 app.put('/api/data', requireAuth, (req, res) => {
   try {
     const data = req.body;
@@ -79,7 +75,28 @@ app.put('/api/data', requireAuth, (req, res) => {
   }
 });
 
-// ── Admin panel ───────────────────────────────────────────────────────────────
+// ── Root site files (mirrors what GitHub Pages serves statically) ─────────────
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+app.get('/style.css', (req, res) => {
+  res.sendFile(path.join(__dirname, 'style.css'));
+});
+
+// Serve data.json directly so the same relative fetch('data.json') works locally
+app.get('/data.json', (req, res) => {
+  res.setHeader('Cache-Control', 'no-cache');
+  res.sendFile(path.join(__dirname, 'data.json'));
+});
+
+// Serve local images/assets
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
+
+// ── Admin panel (local only — served from public/) ────────────────────────────
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/admin', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'admin.html'));

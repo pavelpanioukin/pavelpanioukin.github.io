@@ -191,10 +191,12 @@
       <div class="container">
         <div class="artifacts-intro">
           <div class="section-label"><span class="dot"></span> Artifacts</div>
-          <h1 class="artifacts-headline">Bits &amp; pieces<br>worth sharing.</h1>
-          <p class="artifacts-subtext">Resources, templates, and curated lists I've built or assembled over the years. Take what's useful.</p>
+          <h1 class="artifacts-headline">A visual dump of<br>things I've made.</h1>
+          <p class="artifacts-subtext">Designs, experiments, sketches, and work-in-progress — no categories, no context.</p>
         </div>
-        <div class="artifacts-list" id="artifacts-list">
+      </div>
+      <div class="container bento-section">
+        <div class="bento-grid" id="bento-grid">
           <!-- Rendered by JS -->
         </div>
       </div>
@@ -370,20 +372,23 @@
       }
     }
 
-    // ── Render: Artifacts ────────────────────────────────────────────────────
+    // ── Render: Artifacts (bento grid) ──────────────────────────────────────
 
-    function renderArtifacts(artifacts) {
-      const container = document.getElementById('artifacts-list');
+    function renderArtifacts(artifacts, _unused) {
+      const container = document.getElementById('bento-grid');
       if (!container) return;
+      if (!artifacts || !artifacts.length) {
+        container.innerHTML = '<p class="bento-empty">No artifacts yet.</p>';
+        return;
+      }
+      const dlIcon = `<svg viewBox="0 0 24 24"><polyline points="8 17 12 21 16 17"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.88 18.09A5 5 0 0018 9h-1.26A8 8 0 103 16.29"/></svg>`;
       container.innerHTML = artifacts.map(a => `
-        <a class="artifact-item" href="${escHtml(a.url || '#')}" target="${a.url && a.url !== '#' ? '_blank' : '_self'}" rel="noopener">
-          <span class="artifact-type-badge">${escHtml(a.type)}</span>
-          <div class="artifact-info">
-            <h3 class="artifact-title">${escHtml(a.title)}</h3>
-            <p class="artifact-desc">${escHtml(a.description)}</p>
+        <div class="bento-item ${a.size === 'large' ? 'large' : ''}">
+          <img src="${escHtml(a.url)}" alt="${escHtml(a.alt || 'Design artifact')}" loading="lazy">
+          <div class="bento-overlay">
+            <a class="bento-download" href="${escHtml(a.url)}" download title="Download image">${dlIcon}</a>
           </div>
-          <span class="artifact-arrow">→</span>
-        </a>`).join('');
+        </div>`).join('');
     }
 
     // ── Render: Footer Social ────────────────────────────────────────────────
@@ -423,7 +428,7 @@
       renderPhilosophy(data.philosophy || []);
       renderAbout(data.about || {});
       renderContact(data.contact || {});
-      renderArtifacts(data.artifacts || []);
+      renderArtifacts(data.artifacts || [], 'bento-grid');
       renderFooterSocial(data.social || {});
       if (data.meta) {
         document.title = data.meta.siteTitle || document.title;

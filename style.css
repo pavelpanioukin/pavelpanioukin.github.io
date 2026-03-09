@@ -730,8 +730,8 @@ button {
 
 .artifacts-intro {
   padding-top: calc(var(--nav-h) + 80px);
-  padding-bottom: 60px;
-  max-width: 600px;
+  padding-bottom: 48px;
+  max-width: 640px;
 }
 
 .artifacts-headline {
@@ -741,79 +741,127 @@ button {
   letter-spacing: -0.02em;
   line-height: 1.15;
   color: var(--text);
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .artifacts-subtext {
-  font-size: 1.0625rem;
+  font-size: 1rem;
   color: var(--text-dim);
   line-height: 1.7;
 }
 
-.artifacts-list {
+/* ── Bento Grid ──────────────────────────────────────────────────────────────── */
+
+.bento-section {
   padding-bottom: 120px;
 }
 
-.artifact-item {
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.bento-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  aspect-ratio: 4 / 3;
+  cursor: pointer;
+}
+
+.bento-item.large {
+  grid-column: span 2;
+}
+
+.bento-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s var(--ease);
+}
+
+.bento-item:hover img {
+  transform: scale(1.04);
+}
+
+.bento-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
   display: flex;
-  align-items: flex-start;
-  gap: 32px;
-  padding: 36px 0;
-  border-top: 1px solid var(--border);
-  transition: opacity 0.2s;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s;
+}
+
+.bento-item:hover .bento-overlay {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.bento-download {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: #fff;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  transform: scale(0.75);
+  transition: opacity 0.25s, transform 0.25s var(--ease);
   text-decoration: none;
 }
 
-.artifact-item:hover {
-  opacity: 0.75;
+.bento-item:hover .bento-download {
+  opacity: 1;
+  transform: scale(1);
 }
 
-.artifact-type-badge {
-  flex-shrink: 0;
-  margin-top: 4px;
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  border: 1px solid var(--border-hover);
-  border-radius: 6px;
-  padding: 5px 12px;
-  min-width: 100px;
+.bento-download:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.bento-download svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.bento-empty {
+  grid-column: 1 / -1;
+  padding: 80px 0;
   text-align: center;
-}
-
-.artifact-info {
-  flex: 1;
-}
-
-.artifact-title {
-  font-family: var(--serif);
-  font-size: 1.2rem;
-  font-weight: 400;
-  color: var(--text);
-  letter-spacing: -0.01em;
-  margin-bottom: 8px;
-  line-height: 1.25;
-}
-
-.artifact-desc {
-  font-size: 0.9375rem;
-  color: var(--text-dim);
-  line-height: 1.65;
-}
-
-.artifact-arrow {
-  flex-shrink: 0;
   color: var(--text-muted);
-  font-size: 1.1rem;
-  margin-top: 4px;
-  transition: transform 0.2s, color 0.2s;
+  font-size: 0.9375rem;
 }
 
-.artifact-item:hover .artifact-arrow {
-  transform: translateX(4px);
-  color: var(--text-dim);
+@media (max-width: 900px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .bento-item.large {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 540px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+  .bento-item.large {
+    grid-column: span 1;
+  }
 }
 
 /* ── Portfolio Page Hero ─────────────────────────────────────────────────────── */

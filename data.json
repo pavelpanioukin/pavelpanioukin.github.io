@@ -154,25 +154,40 @@
   },
   "artifacts": [
     {
-      "id": 1,
-      "title": "Design System Checklist",
-      "description": "A comprehensive checklist for building and auditing design systems — covering tokens, components, documentation, and governance. Used across multiple real product teams.",
-      "type": "Resource",
-      "url": "#"
+      "id": "1",
+      "url": "/assets/images/artifacts/artifact-1.svg",
+      "alt": "Design artifact",
+      "size": "large"
     },
     {
-      "id": 2,
-      "title": "UX Research Templates",
-      "description": "A collection of templates for user interviews, usability testing sessions, and synthesis workshops. Ready to fork and adapt for your team.",
-      "type": "Templates",
-      "url": "#"
+      "id": "2",
+      "url": "/assets/images/artifacts/artifact-2.svg",
+      "alt": "Design artifact",
+      "size": "small"
     },
     {
-      "id": 3,
-      "title": "Product Design Reading List",
-      "description": "Curated books, articles, and podcasts that have meaningfully shaped my approach to product design, leadership, and creative problem-solving.",
-      "type": "Curated List",
-      "url": "#"
+      "id": "3",
+      "url": "/assets/images/artifacts/artifact-3.svg",
+      "alt": "Design artifact",
+      "size": "small"
+    },
+    {
+      "id": "4",
+      "url": "/assets/images/artifacts/artifact-4.svg",
+      "alt": "Design artifact",
+      "size": "small"
+    },
+    {
+      "id": "5",
+      "url": "/assets/images/artifacts/artifact-5.svg",
+      "alt": "Design artifact",
+      "size": "large"
+    },
+    {
+      "id": "6",
+      "url": "/assets/images/artifacts/artifact-6.svg",
+      "alt": "Design artifact",
+      "size": "small"
     }
   ],
   "meta": {

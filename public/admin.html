@@ -367,40 +367,29 @@
       <div class="admin-tab" id="tab-artifacts">
         <div class="admin-header">
           <h1 class="admin-title">Artifacts</h1>
-          <p class="admin-subtitle">Resources, templates, and curated lists on the Artifacts page.</p>
+          <p class="admin-subtitle">Upload images to the bento grid gallery. Drag &amp; drop or click to browse.</p>
         </div>
 
-        <button class="btn-add" onclick="showArtifactForm()">+ Add New Artifact</button>
-
-        <div id="artifact-form-wrapper" style="display:none; margin-bottom:24px;">
-          <div class="form-panel">
-            <p class="form-panel-title" id="art-form-title">New Artifact</p>
-            <div class="form-row">
-              <div class="form-group">
-                <label class="form-label">Title</label>
-                <input class="form-input" type="text" id="af-title" placeholder="Design System Checklist">
-              </div>
-              <div class="form-group">
-                <label class="form-label">Type / Badge</label>
-                <input class="form-input" type="text" id="af-type" placeholder="Resource / Templates / List">
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="form-label">Description</label>
-              <textarea class="form-textarea" id="af-description" rows="3"></textarea>
-            </div>
-            <div class="form-group">
-              <label class="form-label">URL</label>
-              <input class="form-input" type="text" id="af-url" placeholder="https://... or #">
-            </div>
-            <div class="form-actions">
-              <button class="btn-save" onclick="saveArtifact()">Save Artifact</button>
-              <button class="btn-cancel" onclick="cancelArtifactForm()">Cancel</button>
-            </div>
+        <!-- Upload zone -->
+        <div class="upload-zone" id="upload-zone" onclick="document.getElementById('artifact-file-input').click()">
+          <input type="file" id="artifact-file-input" accept=".jpg,.jpeg,.png,.gif,.webp,.svg" multiple hidden>
+          <div class="upload-zone-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
           </div>
+          <p class="upload-zone-text">Drop images here or <span class="upload-browse-btn">browse files</span></p>
+          <p class="upload-hint">JPG, PNG, GIF, WebP, SVG — max 20 MB per file</p>
         </div>
 
-        <div id="artifacts-list">
+        <!-- Upload progress -->
+        <div id="upload-progress-area" style="display:none; margin-bottom:20px;">
+          <p class="section-heading" id="upload-progress-label">Uploading...</p>
+          <div class="upload-progress-bar-wrap"><div class="upload-progress-bar" id="upload-progress-bar"></div></div>
+        </div>
+
+        <hr class="divider">
+
+        <p class="section-heading" id="artifacts-count">0 artifacts</p>
+        <div class="artifact-admin-grid" id="artifact-admin-grid">
           <!-- Rendered by JS -->
         </div>
       </div>
@@ -538,7 +527,7 @@
       renderExperienceList();
       renderPhilosophyList();
       populateContact();
-      renderArtifactsList();
+      renderArtifactAdminGrid();
     }
 
     function populateHeroBio() {
@@ -842,76 +831,118 @@
       renderPhilosophyList();
     }
 
-    // ── Artifacts ─────────────────────────────────────────────────────────────
+    // ── Artifacts (image upload) ──────────────────────────────────────────────
 
-    function renderArtifactsList() {
-      const container = document.getElementById('artifacts-list');
+    function renderArtifactAdminGrid() {
+      const container = document.getElementById('artifact-admin-grid');
       const items = siteData.artifacts || [];
+      const countEl = document.getElementById('artifacts-count');
+      if (countEl) countEl.textContent = `${items.length} artifact${items.length !== 1 ? 's' : ''}`;
       if (!items.length) {
-        container.innerHTML = '<div class="empty-state">No artifacts yet.</div>';
+        container.innerHTML = '<div class="empty-state">No artifacts yet. Upload some images above.</div>';
         return;
       }
-      container.innerHTML = items.map(item => `
-        <div class="admin-card">
-          <div class="admin-card-header">
-            <div>
-              <p class="admin-card-title">${escHtml(item.title)} <span style="color:var(--text-muted);font-size:0.75rem;">[${escHtml(item.type)}]</span></p>
-              <p class="admin-card-sub">${escHtml((item.description || '').slice(0, 80))}...</p>
-            </div>
-            <div class="admin-card-actions">
-              <button class="btn-sm btn-edit" onclick="editArtifact(${item.id})">Edit</button>
-              <button class="btn-sm btn-danger" onclick="deleteArtifact(${item.id})">Delete</button>
-            </div>
+      container.innerHTML = items.map(a => `
+        <div class="artifact-admin-item" id="art-item-${escHtml(a.id)}">
+          <div class="artifact-admin-thumb">
+            <img src="${escHtml(a.url)}" alt="${escHtml(a.alt || '')}" loading="lazy">
+          </div>
+          <div class="artifact-admin-controls">
+            <button class="size-toggle ${a.size === 'large' ? 'active' : ''}"
+              onclick="toggleArtifactSize('${escHtml(a.id)}')"
+              title="Click to toggle size">
+              ${a.size === 'large' ? 'Large (2col)' : 'Small (1col)'}
+            </button>
+            <button class="btn-sm btn-danger" onclick="deleteArtifact('${escHtml(a.id)}')">✕</button>
           </div>
         </div>`).join('');
     }
 
-    function showArtifactForm(item) {
-      editingArtId = item ? item.id : null;
-      document.getElementById('art-form-title').textContent = item ? 'Edit Artifact' : 'New Artifact';
-      val('af-title', item?.title || '');
-      val('af-type', item?.type || '');
-      val('af-description', item?.description || '');
-      val('af-url', item?.url || '#');
-      document.getElementById('artifact-form-wrapper').style.display = 'block';
-      document.getElementById('artifact-form-wrapper').scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    // Drag & drop
+    const uploadZone = document.getElementById('upload-zone');
+    uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.classList.add('drag-over'); });
+    uploadZone.addEventListener('dragleave', e => { if (!uploadZone.contains(e.relatedTarget)) uploadZone.classList.remove('drag-over'); });
+    uploadZone.addEventListener('drop', e => {
+      e.preventDefault();
+      uploadZone.classList.remove('drag-over');
+      handleArtifactFiles(e.dataTransfer.files);
+    });
 
-    function editArtifact(id) {
-      const item = siteData.artifacts.find(a => a.id === id);
-      if (item) showArtifactForm(item);
-    }
+    document.getElementById('artifact-file-input').addEventListener('change', e => {
+      handleArtifactFiles(e.target.files);
+      e.target.value = ''; // reset so same file can be re-selected
+    });
 
-    function cancelArtifactForm() {
-      editingArtId = null;
-      document.getElementById('artifact-form-wrapper').style.display = 'none';
-    }
+    async function handleArtifactFiles(files) {
+      if (!files.length) return;
+      const progressArea = document.getElementById('upload-progress-area');
+      const progressBar = document.getElementById('upload-progress-bar');
+      const progressLabel = document.getElementById('upload-progress-label');
+      progressArea.style.display = 'block';
 
-    async function saveArtifact() {
-      const itemData = {
-        title: get('af-title'),
-        type: get('af-type'),
-        description: get('af-description'),
-        url: get('af-url') || '#'
-      };
-      if (!itemData.title) { toast('Title is required', 'error'); return; }
-      if (editingArtId) {
-        const idx = siteData.artifacts.findIndex(a => a.id === editingArtId);
-        if (idx !== -1) siteData.artifacts[idx] = { ...siteData.artifacts[idx], ...itemData };
-      } else {
-        itemData.id = Date.now();
-        siteData.artifacts = [...(siteData.artifacts || []), itemData];
+      for (let i = 0; i < files.length; i++) {
+        const pct = Math.round((i / files.length) * 100);
+        progressBar.style.width = pct + '%';
+        progressLabel.textContent = `Uploading ${i + 1} of ${files.length}…`;
+        await uploadArtifactFile(files[i]);
       }
-      await saveData();
-      cancelArtifactForm();
-      renderArtifactsList();
+
+      progressBar.style.width = '100%';
+      progressLabel.textContent = `Done — ${files.length} image${files.length !== 1 ? 's' : ''} uploaded`;
+      setTimeout(() => { progressArea.style.display = 'none'; progressBar.style.width = '0%'; }, 2000);
+      renderArtifactAdminGrid();
+    }
+
+    async function uploadArtifactFile(file) {
+      const formData = new FormData();
+      formData.append('image', file);
+      formData.append('alt', 'Design artifact');
+      formData.append('size', 'small');
+      try {
+        const res = await fetch('/api/artifacts/upload', {
+          method: 'POST',
+          headers: { 'Authorization': 'Bearer ' + token },
+          body: formData
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error);
+        siteData.artifacts = [...(siteData.artifacts || []), data.artifact];
+      } catch (err) {
+        toast('Upload failed: ' + err.message, 'error');
+      }
+    }
+
+    async function toggleArtifactSize(id) {
+      try {
+        const res = await fetch(`/api/artifacts/${encodeURIComponent(id)}/size`, {
+          method: 'PATCH',
+          headers: { 'Authorization': 'Bearer ' + token }
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error);
+        const artifact = (siteData.artifacts || []).find(a => a.id === id);
+        if (artifact) artifact.size = data.size;
+        renderArtifactAdminGrid();
+      } catch (err) {
+        toast('Failed: ' + err.message, 'error');
+      }
     }
 
     async function deleteArtifact(id) {
-      if (!confirm('Delete this artifact?')) return;
-      siteData.artifacts = siteData.artifacts.filter(a => a.id !== id);
-      await saveData();
-      renderArtifactsList();
+      if (!confirm('Delete this image? The file will be permanently removed.')) return;
+      try {
+        const res = await fetch(`/api/artifacts/${encodeURIComponent(id)}`, {
+          method: 'DELETE',
+          headers: { 'Authorization': 'Bearer ' + token }
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error);
+        siteData.artifacts = (siteData.artifacts || []).filter(a => a.id !== id);
+        renderArtifactAdminGrid();
+        toast('Deleted', 'success');
+      } catch (err) {
+        toast('Failed: ' + err.message, 'error');
+      }
     }
 
     // ── Utils ─────────────────────────────────────────────────────────────────

@@ -1,0 +1,182 @@
+{
+  "hero": {
+    "headline": "Hey there, I'm Pavel",
+    "headlineEmoji": "🙂",
+    "headlineRole": "digital product designer & leader",
+    "headlineSymbol": "✦",
+    "headlineLocation": "based in Krakow.",
+    "subtitle": "I guide the development of digital experiences that align with business aims, positioning design as a key component of strategy and growth."
+  },
+  "projects": [
+    {
+      "id": 1,
+      "title": "DailyFX",
+      "subtitle": "Trading Analysis Platform Redesign",
+      "description": "A complete redesign of the DailyFX trading analysis platform, improving UX for both novice and expert traders through better data visualization, streamlined information architecture, and a cohesive design system built for scale.",
+      "thumbnail": "",
+      "thumbnailGradient": "linear-gradient(135deg, #0f0c29 0%, #1a1a4e 50%, #24243e 100%)",
+      "thumbnailLabel": "DailyFX",
+      "caseStudyUrl": "#",
+      "tags": ["UX Design", "Design Systems", "Fintech"],
+      "year": "2023",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "title": "Brainly Tutoring",
+      "subtitle": "Live On-Demand Tutoring Sessions",
+      "description": "Designed the end-to-end experience for Brainly's live tutoring feature, enabling millions of students to connect with expert tutors in real-time. Led research, prototyping, and cross-functional delivery from 0 to 1.",
+      "thumbnail": "",
+      "thumbnailGradient": "linear-gradient(135deg, #2d1b69 0%, #1a6b5c 100%)",
+      "thumbnailLabel": "Brainly",
+      "caseStudyUrl": "#",
+      "tags": ["Product Design", "EdTech", "Mobile"],
+      "year": "2022",
+      "featured": true
+    },
+    {
+      "id": 3,
+      "title": "Storebox",
+      "subtitle": "First Fully Digital Self-Storage in Europe",
+      "description": "Led product design at Storebox — Europe's first fully digital self-storage solution. Designed the complete customer journey from discovery to booking to smart-lock access management, replacing all physical touchpoints.",
+      "thumbnail": "",
+      "thumbnailGradient": "linear-gradient(135deg, #b45309 0%, #d97706 60%, #fbbf24 100%)",
+      "thumbnailLabel": "Storebox",
+      "caseStudyUrl": "#",
+      "tags": ["Product Design", "Web App", "B2C"],
+      "year": "2021",
+      "featured": true
+    },
+    {
+      "id": 4,
+      "title": "Tabata Timer",
+      "subtitle": "HIIT Training App",
+      "description": "A focused, distraction-free Tabata interval timer designed for high-intensity interval training. Built with a minimal UI that keeps athletes in flow-state, with customisable intervals and a clear visual rhythm.",
+      "thumbnail": "",
+      "thumbnailGradient": "linear-gradient(135deg, #7f1d1d 0%, #dc2626 60%, #ef4444 100%)",
+      "thumbnailLabel": "Tabata",
+      "caseStudyUrl": "#",
+      "tags": ["Mobile Design", "Health & Fitness", "iOS"],
+      "year": "2020",
+      "featured": true
+    }
+  ],
+  "experience": [
+    {
+      "id": 1,
+      "company": "IG Group / DailyFX",
+      "role": "Lead Product Designer",
+      "period": "2022 — Present",
+      "description": "Leading product design for DailyFX, the world's most visited forex trading news and analysis portal. Responsible for the redesign of the core platform, establishing a shared design system, and mentoring a team of designers.",
+      "current": true
+    },
+    {
+      "id": 2,
+      "company": "Brainly",
+      "role": "Senior Product Designer",
+      "period": "2020 — 2022",
+      "description": "Designed core product features for the world's largest peer-to-peer learning community — 350M+ users globally. Led the design of live tutoring from concept through launch.",
+      "current": false
+    },
+    {
+      "id": 3,
+      "company": "PandaDoc",
+      "role": "Product Designer",
+      "period": "2019 — 2020",
+      "description": "Contributed to the growth of PandaDoc's document automation platform. Focused on the document editor experience and workflow automation, improving conversion and retention.",
+      "current": false
+    },
+    {
+      "id": 4,
+      "company": "Storebox",
+      "role": "Head of Design",
+      "period": "2017 — 2019",
+      "description": "Founded and scaled the design function at Storebox. Established the design system, brand identity, and created Europe's first fully digital self-storage customer experience.",
+      "current": false
+    },
+    {
+      "id": 5,
+      "company": "INDEXIUM Games",
+      "role": "UI/UX Designer",
+      "period": "2015 — 2017",
+      "description": "Designed UI/UX for mobile games and interactive experiences. Built a strong foundation in user-centred design, visual communication, and real-time interface design under tight constraints.",
+      "current": false
+    }
+  ],
+  "philosophy": [
+    {
+      "id": 1,
+      "title": "User-Centered Design",
+      "description": "Every design decision starts and ends with the user. I advocate for deep user research, empathy mapping, and continuous testing to ensure products genuinely serve people's needs — not just business assumptions."
+    },
+    {
+      "id": 2,
+      "title": "Iterative Approach",
+      "description": "Great design is never finished on the first pass. I embrace rapid prototyping and continuous iteration — shipping, learning, and refining based on real-world feedback rather than internal consensus."
+    },
+    {
+      "id": 3,
+      "title": "Interdisciplinary Collaboration",
+      "description": "Design thrives at intersections. I work closely with engineers, product managers, and business stakeholders to build solutions that are technically feasible, commercially viable, and delightful to use."
+    },
+    {
+      "id": 4,
+      "title": "Data-Driven Decisions",
+      "description": "Intuition is a starting point, not an endpoint. I combine qualitative insights with quantitative data to validate assumptions and measure the real impact of design on people and business outcomes."
+    }
+  ],
+  "about": {
+    "bio": "I'm a digital product designer and leader based in Krakow, Poland. With over a decade of experience designing digital products, I specialise in creating experiences that balance user needs with business goals — and in building the teams and systems that make great design repeatable.",
+    "bio2": "I've had the privilege of working with fast-growing startups and established companies across fintech, edtech, and SaaS. I believe great design is invisible — it just works.",
+    "bio3": "Outside of work I'm drawn to typography, film photography, and long trail runs in the mountains.",
+    "skills": [
+      "Product Strategy",
+      "UX Research",
+      "Interaction Design",
+      "Design Systems",
+      "Team Leadership",
+      "Prototyping & Testing",
+      "Visual Design",
+      "Stakeholder Alignment"
+    ],
+    "location": "Krakow, Poland",
+    "availability": "Open to select freelance projects"
+  },
+  "contact": {
+    "email": "hello@panioukin.design",
+    "headline": "Let's build something great together.",
+    "subtext": "I'm always interested in new projects, opportunities to collaborate, and conversations about design. Drop me a line — I read every message."
+  },
+  "social": {
+    "linkedin": "https://linkedin.com/in/pavelpanioukin",
+    "dribbble": "https://dribbble.com/pavelpanioukin",
+    "twitter": "https://twitter.com/pavelpanioukin"
+  },
+  "artifacts": [
+    {
+      "id": 1,
+      "title": "Design System Checklist",
+      "description": "A comprehensive checklist for building and auditing design systems — covering tokens, components, documentation, and governance. Used across multiple real product teams.",
+      "type": "Resource",
+      "url": "#"
+    },
+    {
+      "id": 2,
+      "title": "UX Research Templates",
+      "description": "A collection of templates for user interviews, usability testing sessions, and synthesis workshops. Ready to fork and adapt for your team.",
+      "type": "Templates",
+      "url": "#"
+    },
+    {
+      "id": 3,
+      "title": "Product Design Reading List",
+      "description": "Curated books, articles, and podcasts that have meaningfully shaped my approach to product design, leadership, and creative problem-solving.",
+      "type": "Curated List",
+      "url": "#"
+    }
+  ],
+  "meta": {
+    "siteTitle": "Pavel Panioukin — Design Leader",
+    "copyright": "© 2024 Pavel Panioukin. All rights reserved."
+  }
+}

@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin CMS — Pavel Panioukin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <!-- ── Login Screen ─────────────────────────────────────────────────────── -->
+  <div id="login-screen">
+    <div class="login-card">
+      <p class="login-logo">Pavel Panioukin</p>
+      <p class="login-subtitle">Admin panel — enter password to continue</p>
+      <form id="login-form" onsubmit="handleLogin(event)">
+        <label class="login-label" for="password">Password</label>
+        <input class="login-input" type="password" id="password" placeholder="Enter admin password" autocomplete="current-password" required>
+        <button type="submit" class="login-btn">Sign In</button>
+        <p class="login-error" id="login-error">Incorrect password. Try again.</p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ── Admin Screen ─────────────────────────────────────────────────────── -->
+  <div id="admin-screen" style="display:none;">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <span class="sidebar-logo-name">Pavel Panioukin</span>
+        <span class="sidebar-logo-badge">CMS</span>
+      </div>
+      <ul class="sidebar-nav">
+        <li>
+          <div class="sidebar-nav-item active" data-tab="hero">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2.25 12l8.954-8.955a1.126 1.126 0 011.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
+            Hero &amp; Bio
+          </div>
+        </li>
+        <li>
+          <div class="sidebar-nav-item" data-tab="projects">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z"/></svg>
+            Projects
+          </div>
+        </li>
+        <li>
+          <div class="sidebar-nav-item" data-tab="experience">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z"/></svg>
+            Experience
+          </div>
+        </li>
+        <li>
+          <div class="sidebar-nav-item" data-tab="philosophy">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/></svg>
+            Philosophy
+          </div>
+        </li>
+        <li>
+          <div class="sidebar-nav-item" data-tab="contact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg>
+            Contact
+          </div>
+        </li>
+        <li>
+          <div class="sidebar-nav-item" data-tab="artifacts">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/></svg>
+            Artifacts
+          </div>
+        </li>
+      </ul>
+      <div class="sidebar-footer">
+        <button class="logout-btn" onclick="handleLogout()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"/></svg>
+          Sign Out
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="admin-main">
+
+      <!-- ── Tab: Hero & Bio ──────────────────────────────────────────────── -->
+      <div class="admin-tab active" id="tab-hero">
+        <div class="admin-header">
+          <h1 class="admin-title">Hero &amp; Bio</h1>
+          <p class="admin-subtitle">Edit the homepage headline, subtitle, and about page bio.</p>
+        </div>
+
+        <p class="section-heading">Homepage Hero</p>
+        <div class="admin-card">
+          <div class="form-group">
+            <label class="form-label">Headline (before emoji)</label>
+            <input class="form-input" type="text" id="hero-headline" placeholder="Hey there, I'm Pavel">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Emoji</label>
+              <input class="form-input" type="text" id="hero-emoji" placeholder="🙂">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Symbol</label>
+              <input class="form-input" type="text" id="hero-symbol" placeholder="✦">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Role</label>
+              <input class="form-input" type="text" id="hero-role" placeholder="digital product designer & leader">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Location</label>
+              <input class="form-input" type="text" id="hero-location" placeholder="based in Krakow.">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subtitle</label>
+            <textarea class="form-textarea" id="hero-subtitle" rows="3" placeholder="I guide the development of..."></textarea>
+          </div>
+        </div>
+
+        <hr class="divider">
+        <p class="section-heading">About Page Bio</p>
+        <div class="admin-card">
+          <div class="form-group">
+            <label class="form-label">Bio paragraph 1</label>
+            <textarea class="form-textarea" id="about-bio" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Bio paragraph 2</label>
+            <textarea class="form-textarea" id="about-bio2" rows="2"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Bio paragraph 3</label>
+            <textarea class="form-textarea" id="about-bio3" rows="2"></textarea>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Location</label>
+              <input class="form-input" type="text" id="about-location" placeholder="Krakow, Poland">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Availability</label>
+              <input class="form-input" type="text" id="about-availability" placeholder="Open to freelance">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Skills (comma-separated)</label>
+            <input class="form-input" type="text" id="about-skills" placeholder="UX Design, Product Strategy, ...">
+            <p class="form-hint">Separate skills with commas</p>
+          </div>
+        </div>
+
+        <div class="form-actions" style="border:none; padding-top:8px;">
+          <button class="btn-save" onclick="saveHeroBio()">Save Changes</button>
+        </div>
+      </div>
+
+      <!-- ── Tab: Projects ────────────────────────────────────────────────── -->
+      <div class="admin-tab" id="tab-projects">
+        <div class="admin-header">
+          <h1 class="admin-title">Projects</h1>
+          <p class="admin-subtitle">Add, edit, or remove portfolio projects.</p>
+        </div>
+
+        <button class="btn-add" onclick="showProjectForm()">+ Add New Project</button>
+
+        <div id="project-form-wrapper" style="display:none; margin-bottom:24px;">
+          <div class="form-panel">
+            <p class="form-panel-title" id="project-form-title">New Project</p>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Title</label>
+                <input class="form-input" type="text" id="pf-title" placeholder="DailyFX">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Year</label>
+                <input class="form-input" type="text" id="pf-year" placeholder="2024">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Subtitle</label>
+              <input class="form-input" type="text" id="pf-subtitle" placeholder="Trading Analysis Platform Redesign">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Description</label>
+              <textarea class="form-textarea" id="pf-description" rows="3" placeholder="Brief description of the project..."></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tags (comma-separated)</label>
+              <input class="form-input" type="text" id="pf-tags" placeholder="UX Design, Fintech, Design Systems">
+              <p class="form-hint">e.g. UX Design, Mobile, Fintech</p>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Thumbnail URL (optional)</label>
+              <input class="form-input" type="url" id="pf-thumbnail" placeholder="https://... (leave blank to use gradient)">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Thumbnail Label (shown on gradient)</label>
+                <input class="form-input" type="text" id="pf-thumbnail-label" placeholder="DailyFX">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Gradient (CSS value)</label>
+                <input class="form-input" type="text" id="pf-gradient" placeholder="linear-gradient(135deg, #1a1a2e, #24243e)">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Case Study URL</label>
+              <input class="form-input" type="text" id="pf-case-url" placeholder="https://... or # if not ready">
+            </div>
+            <div class="form-actions">
+              <button class="btn-save" onclick="saveProject()">Save Project</button>
+              <button class="btn-cancel" onclick="cancelProjectForm()">Cancel</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="projects-list">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- ── Tab: Experience ──────────────────────────────────────────────── -->
+      <div class="admin-tab" id="tab-experience">
+        <div class="admin-header">
+          <h1 class="admin-title">Experience</h1>
+          <p class="admin-subtitle">Manage work history entries shown on the homepage timeline.</p>
+        </div>
+
+        <button class="btn-add" onclick="showExperienceForm()">+ Add New Entry</button>
+
+        <div id="experience-form-wrapper" style="display:none; margin-bottom:24px;">
+          <div class="form-panel">
+            <p class="form-panel-title" id="exp-form-title">New Experience Entry</p>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Company</label>
+                <input class="form-input" type="text" id="ef-company" placeholder="IG Group / DailyFX">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Role</label>
+                <input class="form-input" type="text" id="ef-role" placeholder="Lead Product Designer">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Period</label>
+              <input class="form-input" type="text" id="ef-period" placeholder="2022 — Present">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Description</label>
+              <textarea class="form-textarea" id="ef-description" rows="3" placeholder="What you did there..."></textarea>
+            </div>
+            <div class="toggle-row">
+              <label class="toggle">
+                <input type="checkbox" id="ef-current">
+                <span class="toggle-slider"></span>
+              </label>
+              <span class="toggle-label">Mark as current role</span>
+            </div>
+            <div class="form-actions">
+              <button class="btn-save" onclick="saveExperience()">Save Entry</button>
+              <button class="btn-cancel" onclick="cancelExperienceForm()">Cancel</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="experience-list">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- ── Tab: Philosophy ──────────────────────────────────────────────── -->
+      <div class="admin-tab" id="tab-philosophy">
+        <div class="admin-header">
+          <h1 class="admin-title">Design Philosophy</h1>
+          <p class="admin-subtitle">Edit the four philosophy cards shown on the homepage.</p>
+        </div>
+
+        <button class="btn-add" onclick="showPhilosophyForm()">+ Add New Card</button>
+
+        <div id="philosophy-form-wrapper" style="display:none; margin-bottom:24px;">
+          <div class="form-panel">
+            <p class="form-panel-title" id="phil-form-title">New Philosophy Card</p>
+            <div class="form-group">
+              <label class="form-label">Title</label>
+              <input class="form-input" type="text" id="phf-title" placeholder="User-Centered Design">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Description</label>
+              <textarea class="form-textarea" id="phf-description" rows="4" placeholder="Describe this design principle..."></textarea>
+            </div>
+            <div class="form-actions">
+              <button class="btn-save" onclick="savePhilosophy()">Save Card</button>
+              <button class="btn-cancel" onclick="cancelPhilosophyForm()">Cancel</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="philosophy-list">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- ── Tab: Contact ─────────────────────────────────────────────────── -->
+      <div class="admin-tab" id="tab-contact">
+        <div class="admin-header">
+          <h1 class="admin-title">Contact</h1>
+          <p class="admin-subtitle">Update contact details and social links.</p>
+        </div>
+
+        <p class="section-heading">Contact Page</p>
+        <div class="admin-card">
+          <div class="form-group">
+            <label class="form-label">Headline</label>
+            <input class="form-input" type="text" id="contact-headline" placeholder="Let's build something great together.">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subtext</label>
+            <textarea class="form-textarea" id="contact-subtext" rows="2"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input class="form-input" type="email" id="contact-email" placeholder="hello@panioukin.design">
+          </div>
+        </div>
+
+        <hr class="divider">
+        <p class="section-heading">Social Links</p>
+        <div class="admin-card">
+          <div class="form-group">
+            <label class="form-label">LinkedIn URL</label>
+            <input class="form-input" type="url" id="social-linkedin" placeholder="https://linkedin.com/in/...">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Dribbble URL</label>
+            <input class="form-input" type="url" id="social-dribbble" placeholder="https://dribbble.com/...">
+          </div>
+          <div class="form-group">
+            <label class="form-label">X (Twitter) URL</label>
+            <input class="form-input" type="url" id="social-twitter" placeholder="https://twitter.com/...">
+          </div>
+        </div>
+
+        <hr class="divider">
+        <p class="section-heading">Site Meta</p>
+        <div class="admin-card">
+          <div class="form-group">
+            <label class="form-label">Browser Tab Title</label>
+            <input class="form-input" type="text" id="meta-title" placeholder="Pavel Panioukin — Design Leader">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Footer Copyright</label>
+            <input class="form-input" type="text" id="meta-copyright" placeholder="© 2024 Pavel Panioukin. All rights reserved.">
+          </div>
+        </div>
+
+        <div class="form-actions" style="border:none; padding-top:8px;">
+          <button class="btn-save" onclick="saveContact()">Save Changes</button>
+        </div>
+      </div>
+
+      <!-- ── Tab: Artifacts ───────────────────────────────────────────────── -->
+      <div class="admin-tab" id="tab-artifacts">
+        <div class="admin-header">
+          <h1 class="admin-title">Artifacts</h1>
+          <p class="admin-subtitle">Resources, templates, and curated lists on the Artifacts page.</p>
+        </div>
+
+        <button class="btn-add" onclick="showArtifactForm()">+ Add New Artifact</button>
+
+        <div id="artifact-form-wrapper" style="display:none; margin-bottom:24px;">
+          <div class="form-panel">
+            <p class="form-panel-title" id="art-form-title">New Artifact</p>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Title</label>
+                <input class="form-input" type="text" id="af-title" placeholder="Design System Checklist">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Type / Badge</label>
+                <input class="form-input" type="text" id="af-type" placeholder="Resource / Templates / List">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Description</label>
+              <textarea class="form-textarea" id="af-description" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">URL</label>
+              <input class="form-input" type="text" id="af-url" placeholder="https://... or #">
+            </div>
+            <div class="form-actions">
+              <button class="btn-save" onclick="saveArtifact()">Save Artifact</button>
+              <button class="btn-cancel" onclick="cancelArtifactForm()">Cancel</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="artifacts-list">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Toast -->
+  <div class="admin-toast" id="admin-toast"></div>
+
+  <!-- ── Admin Script ──────────────────────────────────────────────────────── -->
+  <script>
+    // ── State ─────────────────────────────────────────────────────────────────
+
+    let token = localStorage.getItem('admin_token') || '';
+    let siteData = {};
+    let editingProjectId = null;
+    let editingExpId = null;
+    let editingPhilId = null;
+    let editingArtId = null;
+
+    // ── Boot ──────────────────────────────────────────────────────────────────
+
+    async function boot() {
+      if (token) {
+        // Verify token is still valid by loading data
+        const ok = await loadData();
+        if (ok) {
+          showAdmin();
+          return;
+        }
+        token = '';
+        localStorage.removeItem('admin_token');
+      }
+      showLogin();
+    }
+
+    function showLogin() {
+      document.getElementById('login-screen').style.display = 'flex';
+      document.getElementById('admin-screen').style.display = 'none';
+    }
+
+    function showAdmin() {
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('admin-screen').style.display = 'flex';
+      populateAllForms();
+    }
+
+    // ── Login / Logout ────────────────────────────────────────────────────────
+
+    async function handleLogin(e) {
+      e.preventDefault();
+      const password = document.getElementById('password').value;
+      const errEl = document.getElementById('login-error');
+      errEl.style.display = 'none';
+
+      try {
+        const res = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ password })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error);
+        token = data.token;
+        localStorage.setItem('admin_token', token);
+        await loadData();
+        showAdmin();
+      } catch {
+        errEl.style.display = 'block';
+        document.getElementById('password').value = '';
+      }
+    }
+
+    async function handleLogout() {
+      try {
+        await fetch('/api/logout', {
+          method: 'POST',
+          headers: { 'Authorization': 'Bearer ' + token }
+        });
+      } catch {}
+      token = '';
+      localStorage.removeItem('admin_token');
+      showLogin();
+    }
+
+    // ── Data ──────────────────────────────────────────────────────────────────
+
+    async function loadData() {
+      try {
+        const res = await fetch('/api/data');
+        if (!res.ok) return false;
+        siteData = await res.json();
+        return true;
+      } catch {
+        return false;
+      }
+    }
+
+    async function saveData() {
+      try {
+        const res = await fetch('/api/data', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+          },
+          body: JSON.stringify(siteData)
+        });
+        const result = await res.json();
+        if (!res.ok) throw new Error(result.error);
+        toast('Saved successfully', 'success');
+      } catch (err) {
+        toast(err.message || 'Failed to save', 'error');
+      }
+    }
+
+    // ── Tab Navigation ────────────────────────────────────────────────────────
+
+    document.querySelectorAll('.sidebar-nav-item[data-tab]').forEach(item => {
+      item.addEventListener('click', () => {
+        const tab = item.dataset.tab;
+        document.querySelectorAll('.sidebar-nav-item').forEach(i => i.classList.remove('active'));
+        item.classList.add('active');
+        document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+        document.getElementById('tab-' + tab).classList.add('active');
+      });
+    });
+
+    // ── Populate Forms ────────────────────────────────────────────────────────
+
+    function populateAllForms() {
+      populateHeroBio();
+      renderProjectsList();
+      renderExperienceList();
+      renderPhilosophyList();
+      populateContact();
+      renderArtifactsList();
+    }
+
+    function populateHeroBio() {
+      const h = siteData.hero || {};
+      val('hero-headline', h.headline);
+      val('hero-emoji', h.headlineEmoji);
+      val('hero-symbol', h.headlineSymbol);
+      val('hero-role', h.headlineRole);
+      val('hero-location', h.headlineLocation);
+      val('hero-subtitle', h.subtitle);
+      const a = siteData.about || {};
+      val('about-bio', a.bio);
+      val('about-bio2', a.bio2);
+      val('about-bio3', a.bio3);
+      val('about-location', a.location);
+      val('about-availability', a.availability);
+      val('about-skills', (a.skills || []).join(', '));
+    }
+
+    function populateContact() {
+      const c = siteData.contact || {};
+      val('contact-headline', c.headline);
+      val('contact-subtext', c.subtext);
+      val('contact-email', c.email);
+      const s = siteData.social || {};
+      val('social-linkedin', s.linkedin);
+      val('social-dribbble', s.dribbble);
+      val('social-twitter', s.twitter);
+      const m = siteData.meta || {};
+      val('meta-title', m.siteTitle);
+      val('meta-copyright', m.copyright);
+    }
+
+    // ── Save: Hero & Bio ──────────────────────────────────────────────────────
+
+    async function saveHeroBio() {
+      siteData.hero = {
+        headline: get('hero-headline'),
+        headlineEmoji: get('hero-emoji'),
+        headlineSymbol: get('hero-symbol'),
+        headlineRole: get('hero-role'),
+        headlineLocation: get('hero-location'),
+        subtitle: get('hero-subtitle')
+      };
+      const skills = get('about-skills').split(',').map(s => s.trim()).filter(Boolean);
+      siteData.about = {
+        ...siteData.about,
+        bio: get('about-bio'),
+        bio2: get('about-bio2'),
+        bio3: get('about-bio3'),
+        location: get('about-location'),
+        availability: get('about-availability'),
+        skills
+      };
+      await saveData();
+    }
+
+    // ── Save: Contact ─────────────────────────────────────────────────────────
+
+    async function saveContact() {
+      siteData.contact = {
+        headline: get('contact-headline'),
+        subtext: get('contact-subtext'),
+        email: get('contact-email')
+      };
+      siteData.social = {
+        linkedin: get('social-linkedin'),
+        dribbble: get('social-dribbble'),
+        twitter: get('social-twitter')
+      };
+      siteData.meta = {
+        siteTitle: get('meta-title'),
+        copyright: get('meta-copyright')
+      };
+      await saveData();
+    }
+
+    // ── Projects ──────────────────────────────────────────────────────────────
+
+    function renderProjectsList() {
+      const container = document.getElementById('projects-list');
+      const projects = siteData.projects || [];
+      if (!projects.length) {
+        container.innerHTML = '<div class="empty-state">No projects yet. Add one above.</div>';
+        return;
+      }
+      container.innerHTML = projects.map(p => `
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div>
+              <p class="admin-card-title">${escHtml(p.title)} <span style="color:var(--text-muted);font-size:0.75rem;">${escHtml(p.year || '')}</span></p>
+              <p class="admin-card-sub">${escHtml(p.subtitle)}</p>
+            </div>
+            <div class="admin-card-actions">
+              <button class="btn-sm btn-edit" onclick="editProject(${p.id})">Edit</button>
+              <button class="btn-sm btn-danger" onclick="deleteProject(${p.id})">Delete</button>
+            </div>
+          </div>
+        </div>`).join('');
+    }
+
+    function showProjectForm(project) {
+      editingProjectId = project ? project.id : null;
+      document.getElementById('project-form-title').textContent = project ? 'Edit Project' : 'New Project';
+      val('pf-title', project?.title || '');
+      val('pf-year', project?.year || '');
+      val('pf-subtitle', project?.subtitle || '');
+      val('pf-description', project?.description || '');
+      val('pf-tags', (project?.tags || []).join(', '));
+      val('pf-thumbnail', project?.thumbnail || '');
+      val('pf-thumbnail-label', project?.thumbnailLabel || '');
+      val('pf-gradient', project?.thumbnailGradient || '');
+      val('pf-case-url', project?.caseStudyUrl || '#');
+      document.getElementById('project-form-wrapper').style.display = 'block';
+      document.getElementById('project-form-wrapper').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function editProject(id) {
+      const p = siteData.projects.find(p => p.id === id);
+      if (p) showProjectForm(p);
+    }
+
+    function cancelProjectForm() {
+      editingProjectId = null;
+      document.getElementById('project-form-wrapper').style.display = 'none';
+    }
+
+    async function saveProject() {
+      const tags = get('pf-tags').split(',').map(s => s.trim()).filter(Boolean);
+      const projectData = {
+        title: get('pf-title'),
+        year: get('pf-year'),
+        subtitle: get('pf-subtitle'),
+        description: get('pf-description'),
+        tags,
+        thumbnail: get('pf-thumbnail'),
+        thumbnailLabel: get('pf-thumbnail-label') || get('pf-title'),
+        thumbnailGradient: get('pf-gradient') || 'linear-gradient(135deg, #1a1a1a, #2a2a2a)',
+        caseStudyUrl: get('pf-case-url') || '#',
+        featured: true
+      };
+      if (!projectData.title) { toast('Title is required', 'error'); return; }
+      if (editingProjectId) {
+        const idx = siteData.projects.findIndex(p => p.id === editingProjectId);
+        if (idx !== -1) siteData.projects[idx] = { ...siteData.projects[idx], ...projectData };
+      } else {
+        projectData.id = Date.now();
+        siteData.projects = [...(siteData.projects || []), projectData];
+      }
+      await saveData();
+      cancelProjectForm();
+      renderProjectsList();
+    }
+
+    async function deleteProject(id) {
+      if (!confirm('Delete this project? This cannot be undone.')) return;
+      siteData.projects = siteData.projects.filter(p => p.id !== id);
+      await saveData();
+      renderProjectsList();
+    }
+
+    // ── Experience ────────────────────────────────────────────────────────────
+
+    function renderExperienceList() {
+      const container = document.getElementById('experience-list');
+      const items = siteData.experience || [];
+      if (!items.length) {
+        container.innerHTML = '<div class="empty-state">No experience entries yet.</div>';
+        return;
+      }
+      container.innerHTML = items.map(item => `
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div>
+              <p class="admin-card-title">${escHtml(item.company)} ${item.current ? '<span style="color:var(--accent);font-size:0.7rem;border:1px solid rgba(34,197,94,0.3);border-radius:4px;padding:2px 7px;margin-left:6px;">Current</span>' : ''}</p>
+              <p class="admin-card-sub">${escHtml(item.role)} · ${escHtml(item.period)}</p>
+            </div>
+            <div class="admin-card-actions">
+              <button class="btn-sm btn-edit" onclick="editExperience(${item.id})">Edit</button>
+              <button class="btn-sm btn-danger" onclick="deleteExperience(${item.id})">Delete</button>
+            </div>
+          </div>
+        </div>`).join('');
+    }
+
+    function showExperienceForm(item) {
+      editingExpId = item ? item.id : null;
+      document.getElementById('exp-form-title').textContent = item ? 'Edit Entry' : 'New Experience Entry';
+      val('ef-company', item?.company || '');
+      val('ef-role', item?.role || '');
+      val('ef-period', item?.period || '');
+      val('ef-description', item?.description || '');
+      document.getElementById('ef-current').checked = item?.current || false;
+      document.getElementById('experience-form-wrapper').style.display = 'block';
+      document.getElementById('experience-form-wrapper').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function editExperience(id) {
+      const item = siteData.experience.find(e => e.id === id);
+      if (item) showExperienceForm(item);
+    }
+
+    function cancelExperienceForm() {
+      editingExpId = null;
+      document.getElementById('experience-form-wrapper').style.display = 'none';
+    }
+
+    async function saveExperience() {
+      const itemData = {
+        company: get('ef-company'),
+        role: get('ef-role'),
+        period: get('ef-period'),
+        description: get('ef-description'),
+        current: document.getElementById('ef-current').checked
+      };
+      if (!itemData.company) { toast('Company name is required', 'error'); return; }
+      if (editingExpId) {
+        const idx = siteData.experience.findIndex(e => e.id === editingExpId);
+        if (idx !== -1) siteData.experience[idx] = { ...siteData.experience[idx], ...itemData };
+      } else {
+        itemData.id = Date.now();
+        siteData.experience = [...(siteData.experience || []), itemData];
+      }
+      await saveData();
+      cancelExperienceForm();
+      renderExperienceList();
+    }
+
+    async function deleteExperience(id) {
+      if (!confirm('Delete this experience entry?')) return;
+      siteData.experience = siteData.experience.filter(e => e.id !== id);
+      await saveData();
+      renderExperienceList();
+    }
+
+    // ── Philosophy ────────────────────────────────────────────────────────────
+
+    function renderPhilosophyList() {
+      const container = document.getElementById('philosophy-list');
+      const items = siteData.philosophy || [];
+      if (!items.length) {
+        container.innerHTML = '<div class="empty-state">No philosophy cards yet.</div>';
+        return;
+      }
+      container.innerHTML = items.map((item, i) => `
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div>
+              <p class="admin-card-title"><span style="color:var(--text-muted);margin-right:8px;">${String(i+1).padStart(2,'0')}</span>${escHtml(item.title)}</p>
+              <p class="admin-card-sub">${escHtml(item.description.slice(0, 80))}...</p>
+            </div>
+            <div class="admin-card-actions">
+              <button class="btn-sm btn-edit" onclick="editPhilosophy(${item.id})">Edit</button>
+              <button class="btn-sm btn-danger" onclick="deletePhilosophy(${item.id})">Delete</button>
+            </div>
+          </div>
+        </div>`).join('');
+    }
+
+    function showPhilosophyForm(item) {
+      editingPhilId = item ? item.id : null;
+      document.getElementById('phil-form-title').textContent = item ? 'Edit Card' : 'New Philosophy Card';
+      val('phf-title', item?.title || '');
+      val('phf-description', item?.description || '');
+      document.getElementById('philosophy-form-wrapper').style.display = 'block';
+      document.getElementById('philosophy-form-wrapper').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function editPhilosophy(id) {
+      const item = siteData.philosophy.find(p => p.id === id);
+      if (item) showPhilosophyForm(item);
+    }
+
+    function cancelPhilosophyForm() {
+      editingPhilId = null;
+      document.getElementById('philosophy-form-wrapper').style.display = 'none';
+    }
+
+    async function savePhilosophy() {
+      const itemData = {
+        title: get('phf-title'),
+        description: get('phf-description')
+      };
+      if (!itemData.title) { toast('Title is required', 'error'); return; }
+      if (editingPhilId) {
+        const idx = siteData.philosophy.findIndex(p => p.id === editingPhilId);
+        if (idx !== -1) siteData.philosophy[idx] = { ...siteData.philosophy[idx], ...itemData };
+      } else {
+        itemData.id = Date.now();
+        siteData.philosophy = [...(siteData.philosophy || []), itemData];
+      }
+      await saveData();
+      cancelPhilosophyForm();
+      renderPhilosophyList();
+    }
+
+    async function deletePhilosophy(id) {
+      if (!confirm('Delete this philosophy card?')) return;
+      siteData.philosophy = siteData.philosophy.filter(p => p.id !== id);
+      await saveData();
+      renderPhilosophyList();
+    }
+
+    // ── Artifacts ─────────────────────────────────────────────────────────────
+
+    function renderArtifactsList() {
+      const container = document.getElementById('artifacts-list');
+      const items = siteData.artifacts || [];
+      if (!items.length) {
+        container.innerHTML = '<div class="empty-state">No artifacts yet.</div>';
+        return;
+      }
+      container.innerHTML = items.map(item => `
+        <div class="admin-card">
+          <div class="admin-card-header">
+            <div>
+              <p class="admin-card-title">${escHtml(item.title)} <span style="color:var(--text-muted);font-size:0.75rem;">[${escHtml(item.type)}]</span></p>
+              <p class="admin-card-sub">${escHtml((item.description || '').slice(0, 80))}...</p>
+            </div>
+            <div class="admin-card-actions">
+              <button class="btn-sm btn-edit" onclick="editArtifact(${item.id})">Edit</button>
+              <button class="btn-sm btn-danger" onclick="deleteArtifact(${item.id})">Delete</button>
+            </div>
+          </div>
+        </div>`).join('');
+    }
+
+    function showArtifactForm(item) {
+      editingArtId = item ? item.id : null;
+      document.getElementById('art-form-title').textContent = item ? 'Edit Artifact' : 'New Artifact';
+      val('af-title', item?.title || '');
+      val('af-type', item?.type || '');
+      val('af-description', item?.description || '');
+      val('af-url', item?.url || '#');
+      document.getElementById('artifact-form-wrapper').style.display = 'block';
+      document.getElementById('artifact-form-wrapper').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function editArtifact(id) {
+      const item = siteData.artifacts.find(a => a.id === id);
+      if (item) showArtifactForm(item);
+    }
+
+    function cancelArtifactForm() {
+      editingArtId = null;
+      document.getElementById('artifact-form-wrapper').style.display = 'none';
+    }
+
+    async function saveArtifact() {
+      const itemData = {
+        title: get('af-title'),
+        type: get('af-type'),
+        description: get('af-description'),
+        url: get('af-url') || '#'
+      };
+      if (!itemData.title) { toast('Title is required', 'error'); return; }
+      if (editingArtId) {
+        const idx = siteData.artifacts.findIndex(a => a.id === editingArtId);
+        if (idx !== -1) siteData.artifacts[idx] = { ...siteData.artifacts[idx], ...itemData };
+      } else {
+        itemData.id = Date.now();
+        siteData.artifacts = [...(siteData.artifacts || []), itemData];
+      }
+      await saveData();
+      cancelArtifactForm();
+      renderArtifactsList();
+    }
+
+    async function deleteArtifact(id) {
+      if (!confirm('Delete this artifact?')) return;
+      siteData.artifacts = siteData.artifacts.filter(a => a.id !== id);
+      await saveData();
+      renderArtifactsList();
+    }
+
+    // ── Utils ─────────────────────────────────────────────────────────────────
+
+    function get(id) {
+      const el = document.getElementById(id);
+      return el ? el.value.trim() : '';
+    }
+
+    function val(id, value) {
+      const el = document.getElementById(id);
+      if (el) el.value = value || '';
+    }
+
+    function escHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function toast(msg, type = 'success') {
+      const t = document.getElementById('admin-toast');
+      t.textContent = msg;
+      t.className = 'admin-toast ' + type;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    // ── Start ─────────────────────────────────────────────────────────────────
+
+    boot();
+  </script>
+
+</body>
+</html>

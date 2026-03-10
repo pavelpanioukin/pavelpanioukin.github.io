@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Pavel Panioukin</title>
+  <meta name="description" content="Pavel Panioukin — digital product designer and leader based in Krakow, Poland.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header id="site-header"></header>
+
+  <main>
+    <!-- Split hero: photo left / headline right -->
+    <div class="about-split">
+      <div class="about-photo-col" id="about-photo">
+        <div class="about-photo-placeholder">Pavel photo</div>
+      </div>
+      <div class="about-headline-col">
+        <h1 class="about-headline" id="about-headline">Pavel is a designer and leader, based in 🏰 Krakow, Poland.</h1>
+      </div>
+    </div>
+
+    <!-- Experience timeline -->
+    <section class="timeline-section container">
+      <h2 class="section-label">Experience</h2>
+      <div class="timeline" id="timeline"></div>
+    </section>
+
+    <!-- Philosophy -->
+    <section class="philosophy-section container">
+      <h2 class="section-label">Philosophy</h2>
+      <div class="philosophy-grid" id="philosophy-grid"></div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="site.js"></script>
+  <script>
+    async function init() {
+      const data = await fetch('data.json').then(r => r.json());
+      renderFooterData(data);
+
+      const about = data.about || {};
+
+      // Photo
+      if (about.photo) {
+        document.getElementById('about-photo').innerHTML =
+          `<img src="${escHtml(about.photo)}" alt="Pavel Panioukin">`;
+      }
+
+      // Headline
+      if (about.headline) {
+        setText('about-headline', about.headline);
+      }
+
+      // Experience timeline
+      const timeline = document.getElementById('timeline');
+      const exp = data.experience || [];
+      timeline.innerHTML = exp.map(e => `
+        <div class="timeline-item${e.current ? ' current' : ''}">
+          <div class="timeline-left">
+            <span class="timeline-period">${escHtml(e.period)}</span>
+            ${e.current ? '<span class="timeline-badge">Now</span>' : ''}
+          </div>
+          <div class="timeline-right">
+            <div class="timeline-company">${escHtml(e.company)}</div>
+            <div class="timeline-role">${escHtml(e.role)}</div>
+            <p class="timeline-desc">${escHtml(e.description)}</p>
+          </div>
+        </div>`).join('');
+
+      // Philosophy grid
+      const philosophyGrid = document.getElementById('philosophy-grid');
+      const philosophy = data.philosophy || [];
+      philosophyGrid.innerHTML = philosophy.map((p, i) => `
+        <div class="philosophy-card">
+          <div class="philosophy-num">0${i + 1}</div>
+          <div class="philosophy-title">${escHtml(p.title)}</div>
+          <p class="philosophy-desc">${escHtml(p.description)}</p>
+        </div>`).join('');
+    }
+
+    init();
+  </script>
+</body>
+</html>

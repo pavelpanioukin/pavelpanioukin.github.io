@@ -126,6 +126,8 @@
     }
   ],
   "about": {
+    "photo": "/assets/images/pavel-photo.jpg",
+    "headline": "Pavel is a designer and leader, based in 🏰 Krakow, Poland.",
     "bio": "I'm a digital product designer and leader based in Krakow, Poland. With over a decade of experience designing digital products, I specialise in creating experiences that balance user needs with business goals — and in building the teams and systems that make great design repeatable.",
     "bio2": "I've had the privilege of working with fast-growing startups and established companies across fintech, edtech, and SaaS. I believe great design is invisible — it just works.",
     "bio3": "Outside of work I'm drawn to typography, film photography, and long trail runs in the mountains.",

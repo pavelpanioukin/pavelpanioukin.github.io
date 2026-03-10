@@ -160,6 +160,26 @@ app.get('/style.css', (req, res) => {
   res.sendFile(path.join(__dirname, 'style.css'));
 });
 
+app.get('/site.js', (req, res) => {
+  res.sendFile(path.join(__dirname, 'site.js'));
+});
+
+app.get('/work.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'work.html'));
+});
+
+app.get('/feed.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'feed.html'));
+});
+
+app.get('/about.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'about.html'));
+});
+
+app.get('/contact.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'contact.html'));
+});
+
 // Serve data.json directly so the same relative fetch('data.json') works locally
 app.get('/data.json', (req, res) => {
   res.setHeader('Cache-Control', 'no-cache');

@@ -17,10 +17,29 @@
       "thumbnailGradient": "linear-gradient(135deg, #0f0c29 0%, #1a1a4e 50%, #24243e 100%)",
       "thumbnailLabel": "DailyFX",
       "caseStudyUrl": "/project.html?id=1",
-      "tags": ["UX Design", "Design Systems", "Fintech"],
+      "tags": [
+        "UX Design",
+        "Design Systems",
+        "Fintech"
+      ],
       "year": "2023",
       "featured": true,
-      "sections": []
+      "sections": [
+        {
+          "type": "text",
+          "heading": "Test",
+          "body": "test"
+        },
+        {
+          "type": "metrics",
+          "items": [
+            {
+              "value": "+100$",
+              "label": "tets"
+            }
+          ]
+        }
+      ]
     },
     {
       "id": 2,
@@ -31,7 +50,11 @@
       "thumbnailGradient": "linear-gradient(135deg, #2d1b69 0%, #1a6b5c 100%)",
       "thumbnailLabel": "Brainly",
       "caseStudyUrl": "/project.html?id=2",
-      "tags": ["Product Design", "EdTech", "Mobile"],
+      "tags": [
+        "Product Design",
+        "EdTech",
+        "Mobile"
+      ],
       "year": "2022",
       "featured": true,
       "sections": []
@@ -45,7 +68,11 @@
       "thumbnailGradient": "linear-gradient(135deg, #b45309 0%, #d97706 60%, #fbbf24 100%)",
       "thumbnailLabel": "Storebox",
       "caseStudyUrl": "/project.html?id=3",
-      "tags": ["Product Design", "Web App", "B2C"],
+      "tags": [
+        "Product Design",
+        "Web App",
+        "B2C"
+      ],
       "year": "2021",
       "featured": true,
       "sections": []
@@ -59,7 +86,11 @@
       "thumbnailGradient": "linear-gradient(135deg, #7f1d1d 0%, #dc2626 60%, #ef4444 100%)",
       "thumbnailLabel": "Tabata",
       "caseStudyUrl": "/project.html?id=4",
-      "tags": ["Mobile Design", "Health & Fitness", "iOS"],
+      "tags": [
+        "Mobile Design",
+        "Health & Fitness",
+        "iOS"
+      ],
       "year": "2020",
       "featured": true,
       "sections": []

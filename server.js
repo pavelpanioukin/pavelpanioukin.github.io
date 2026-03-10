@@ -155,14 +155,27 @@ app.patch('/api/artifacts/:id/size', requireAuth, (req, res) => {
 app.post('/api/deploy', requireAuth, (req, res) => {
   const { execSync } = require('child_process');
   const message = (req.body && req.body.message) || 'Update content via admin';
+  // Inherit the full shell environment so SSH agent + git credentials work
+  const opts = { cwd: __dirname, env: process.env, stdio: 'pipe' };
+
+  function run(cmd) {
+    try {
+      return execSync(cmd, opts).toString().trim();
+    } catch (err) {
+      const stderr = err.stderr ? err.stderr.toString().trim() : '';
+      const stdout = err.stdout ? err.stdout.toString().trim() : '';
+      throw new Error(stderr || stdout || err.message);
+    }
+  }
+
   try {
-    execSync('git add data.json', { cwd: __dirname, stdio: 'pipe' });
-    const status = execSync('git status --porcelain data.json', { cwd: __dirname }).toString().trim();
+    run('git add data.json');
+    const status = run('git status --porcelain data.json');
     if (!status) {
       return res.json({ success: true, message: 'Nothing to deploy — already up to date.' });
     }
-    execSync(`git commit -m "${message.replace(/"/g, "'")}"`, { cwd: __dirname, stdio: 'pipe' });
-    execSync('git push origin main', { cwd: __dirname, stdio: 'pipe' });
+    run(`git commit -m "${message.replace(/"/g, "'")}"`);
+    run('git push origin main');
     res.json({ success: true, message: 'Deployed successfully.' });
   } catch (err) {
     console.error('Deploy error:', err.message);

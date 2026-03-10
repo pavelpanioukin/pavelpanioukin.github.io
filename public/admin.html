@@ -520,16 +520,17 @@
         });
         const data = await res.json();
         if (res.ok) {
-          label.textContent = 'Deployed!';
+          label.textContent = data.message || 'Deployed!';
           setTimeout(() => { label.textContent = 'Deploy to GitHub'; btn.disabled = false; }, 3000);
         } else {
           label.textContent = 'Deploy failed';
-          console.error(data.error);
-          setTimeout(() => { label.textContent = 'Deploy to GitHub'; btn.disabled = false; }, 3000);
+          alert('Deploy failed:\n\n' + (data.error || 'Unknown error'));
+          btn.disabled = false;
         }
       } catch (err) {
         label.textContent = 'Deploy failed';
-        setTimeout(() => { label.textContent = 'Deploy to GitHub'; btn.disabled = false; }, 3000);
+        alert('Deploy failed:\n\n' + err.message);
+        btn.disabled = false;
       }
     }
 

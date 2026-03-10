@@ -38,10 +38,13 @@
           <span class="header-time" id="local-time"></span>
         </div>
         <div class="header-bio">Digital product designer &amp; leader with 12 years across fintech, edtech, and SaaS.</div>
-      </div>
-      <div class="nav-row">
-        <nav class="header-nav">${navHTML}</nav>
       </div>`;
+
+    // Nav row is a sibling of the header so it can be independently sticky
+    const navEl = document.createElement('div');
+    navEl.className = 'nav-row';
+    navEl.innerHTML = `<nav class="header-nav">${navHTML}</nav>`;
+    headerEl.insertAdjacentElement('afterend', navEl);
   }
 
   // ── Local time (Krakow) ────────────────────────────────────────────────────

@@ -44,9 +44,6 @@ button { font-family: inherit; cursor: pointer; }
 /* ── Header ──────────────────────────────────────────────────────────────────── */
 
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
   background: var(--bg);
 }
 
@@ -93,6 +90,9 @@ button { font-family: inherit; cursor: pointer; }
   align-items: center;
   padding: 0 20px;
   height: 44px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
   background: #fff;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);

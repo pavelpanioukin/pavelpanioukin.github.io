@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project — Pavel Panioukin</title>
+  <meta name="description" content="Case study by Pavel Panioukin.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header id="site-header"></header>
+
+  <main>
+    <div class="project-page-hero" id="project-hero"></div>
+
+    <div class="project-page-header container" id="project-header"></div>
+
+    <div class="project-page-sections container" id="project-sections"></div>
+
+    <div class="project-page-nav container" id="project-nav"></div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="site.js"></script>
+  <script>
+    async function init() {
+      const data = await fetch('data.json').then(r => r.json());
+      renderFooterData(data);
+
+      const params = new URLSearchParams(window.location.search);
+      const id = parseInt(params.get('id'), 10);
+      const projects = data.projects || [];
+      const project = projects.find(p => p.id === id);
+
+      if (!project) {
+        document.getElementById('project-sections').innerHTML =
+          '<p style="padding:80px 0; color:var(--text-muted)">Project not found.</p>';
+        return;
+      }
+
+      document.title = `${project.title} — Pavel Panioukin`;
+
+      // Hero
+      const heroEl = document.getElementById('project-hero');
+      if (project.thumbnail) {
+        heroEl.innerHTML = `<img src="${escHtml(project.thumbnail)}" alt="${escHtml(project.title)}">`;
+      } else {
+        heroEl.style.background = project.thumbnailGradient || '#ebebeb';
+      }
+
+      // Header: tags, title, subtitle
+      const tags = (project.tags || []).map(t => `<span class="modal-tag">${escHtml(t)}</span>`).join('');
+      document.getElementById('project-header').innerHTML = `
+        <div class="project-page-tags">${tags}<span class="project-page-year">${escHtml(project.year || '')}</span></div>
+        <h1 class="project-page-title">${escHtml(project.title)}</h1>
+        <p class="project-page-subtitle">${escHtml(project.subtitle)}</p>`;
+
+      // Sections
+      const sections = project.sections || [];
+      const sectionsEl = document.getElementById('project-sections');
+      if (sections.length) {
+        sectionsEl.innerHTML = sections.map(renderSection).join('');
+      } else {
+        sectionsEl.innerHTML = `<p class="ps-body" style="padding-top:8px;">${escHtml(project.description)}</p>`;
+      }
+
+      // Prev / Next nav
+      const idx = projects.findIndex(p => p.id === id);
+      const prev = projects[idx - 1];
+      const next = projects[idx + 1];
+      document.getElementById('project-nav').innerHTML = `
+        <div class="project-page-nav-inner">
+          ${prev
+            ? `<a href="project.html?id=${prev.id}" class="project-nav-link">← ${escHtml(prev.title)}</a>`
+            : '<span></span>'}
+          ${next
+            ? `<a href="project.html?id=${next.id}" class="project-nav-link">${escHtml(next.title)} →</a>`
+            : '<span></span>'}
+        </div>`;
+    }
+
+    function renderSection(s) {
+      if (s.type === 'text') {
+        return `<div class="ps-text">
+          ${s.heading ? `<h2 class="ps-heading">${escHtml(s.heading)}</h2>` : ''}
+          <p class="ps-body">${escHtml(s.body || '').replace(/\n/g, '<br>')}</p>
+        </div>`;
+      }
+      if (s.type === 'image') {
+        return `<div class="ps-image">
+          <img src="${escHtml(s.url)}" alt="${escHtml(s.caption || '')}">
+          ${s.caption ? `<p class="ps-caption">${escHtml(s.caption)}</p>` : ''}
+        </div>`;
+      }
+      if (s.type === 'metrics') {
+        const items = (s.items || []).map(m => `
+          <div class="ps-metric">
+            <div class="ps-metric-value">${escHtml(m.value)}</div>
+            <div class="ps-metric-label">${escHtml(m.label)}</div>
+          </div>`).join('');
+        return `<div class="ps-metrics">${items}</div>`;
+      }
+      if (s.type === 'quote') {
+        return `<blockquote class="ps-quote">
+          <p class="ps-quote-text">${escHtml(s.text)}</p>
+          ${s.attribution ? `<cite class="ps-quote-cite">— ${escHtml(s.attribution)}</cite>` : ''}
+        </blockquote>`;
+      }
+      return '';
+    }
+
+    init();
+  </script>
+</body>
+</html>

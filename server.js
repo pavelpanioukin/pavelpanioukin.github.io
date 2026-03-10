@@ -180,6 +180,10 @@ app.get('/contact.html', (req, res) => {
   res.sendFile(path.join(__dirname, 'contact.html'));
 });
 
+app.get('/project.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'project.html'));
+});
+
 // Serve data.json directly so the same relative fetch('data.json') works locally
 app.get('/data.json', (req, res) => {
   res.setHeader('Cache-Control', 'no-cache');

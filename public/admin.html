@@ -37,8 +37,8 @@
       <ul class="sidebar-nav">
         <li>
           <div class="sidebar-nav-item active" data-tab="hero">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2.25 12l8.954-8.955a1.126 1.126 0 011.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>
-            Hero &amp; Bio
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
+            About
           </div>
         </li>
         <li>
@@ -83,48 +83,25 @@
     <!-- Main content -->
     <main class="admin-main">
 
-      <!-- ── Tab: Hero & Bio ──────────────────────────────────────────────── -->
+      <!-- ── Tab: About ───────────────────────────────────────────────────── -->
       <div class="admin-tab active" id="tab-hero">
         <div class="admin-header">
-          <h1 class="admin-title">Hero &amp; Bio</h1>
-          <p class="admin-subtitle">Edit the homepage headline, subtitle, and about page bio.</p>
+          <h1 class="admin-title">About</h1>
+          <p class="admin-subtitle">Edit the about page photo, headline, and bio.</p>
         </div>
 
-        <p class="section-heading">Homepage Hero</p>
+        <p class="section-heading">About Page</p>
         <div class="admin-card">
           <div class="form-group">
-            <label class="form-label">Headline (before emoji)</label>
-            <input class="form-input" type="text" id="hero-headline" placeholder="Hey there, I'm Pavel">
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Emoji</label>
-              <input class="form-input" type="text" id="hero-emoji" placeholder="🙂">
-            </div>
-            <div class="form-group">
-              <label class="form-label">Symbol</label>
-              <input class="form-input" type="text" id="hero-symbol" placeholder="✦">
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label">Role</label>
-              <input class="form-input" type="text" id="hero-role" placeholder="digital product designer & leader">
-            </div>
-            <div class="form-group">
-              <label class="form-label">Location</label>
-              <input class="form-input" type="text" id="hero-location" placeholder="based in Krakow.">
-            </div>
+            <label class="form-label">Headline</label>
+            <input class="form-input" type="text" id="about-headline" placeholder="Pavel is a designer and leader, based in 🏰 Krakow, Poland.">
+            <p class="form-hint">Shown large on the right side of the about page hero</p>
           </div>
           <div class="form-group">
-            <label class="form-label">Subtitle</label>
-            <textarea class="form-textarea" id="hero-subtitle" rows="3" placeholder="I guide the development of..."></textarea>
+            <label class="form-label">Photo URL</label>
+            <input class="form-input" type="text" id="about-photo" placeholder="/assets/images/pavel-photo.jpg">
+            <p class="form-hint">Path to photo shown on left side of the about page hero</p>
           </div>
-        </div>
-
-        <hr class="divider">
-        <p class="section-heading">About Page Bio</p>
-        <div class="admin-card">
           <div class="form-group">
             <label class="form-label">Bio paragraph 1</label>
             <textarea class="form-textarea" id="about-bio" rows="3"></textarea>
@@ -394,6 +371,47 @@
         </div>
       </div>
 
+      <!-- ── Page Editor Panel ───────────────────────────────────────────── -->
+      <div id="page-editor-panel">
+
+        <div class="pe-header">
+          <button class="btn-back" onclick="hidePageEditor()">← Projects</button>
+          <div class="pe-header-right">
+            <span class="pe-project-name" id="pe-project-name"></span>
+            <a class="btn-preview" id="pe-preview-link" href="#" target="_blank">Preview ↗</a>
+          </div>
+        </div>
+
+        <div class="admin-header">
+          <h1 class="admin-title">Page Sections</h1>
+          <p class="admin-subtitle">Build the case study by adding and arranging content sections.</p>
+        </div>
+
+        <div id="pe-sections-list"></div>
+
+        <div class="pe-add-section">
+          <p class="section-heading">Add Section</p>
+          <div class="pe-add-buttons">
+            <button class="pe-add-btn" onclick="beginAddSection('text')"><span class="pe-add-btn-icon">T</span> Text Block</button>
+            <button class="pe-add-btn" onclick="beginAddSection('image')"><span class="pe-add-btn-icon">◻</span> Image</button>
+            <button class="pe-add-btn" onclick="beginAddSection('metrics')"><span class="pe-add-btn-icon">%</span> Metrics</button>
+            <button class="pe-add-btn" onclick="beginAddSection('quote')"><span class="pe-add-btn-icon">"</span> Quote</button>
+          </div>
+        </div>
+
+        <div id="pe-section-form">
+          <div class="form-panel">
+            <p class="form-panel-title" id="pe-form-title">Section</p>
+            <div id="pe-form-fields"></div>
+            <div class="form-actions">
+              <button class="btn-save" onclick="saveSectionForm()">Save Section</button>
+              <button class="btn-cancel" onclick="cancelSectionForm()">Cancel</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
     </main>
   </div>
 
@@ -410,6 +428,10 @@
     let editingExpId = null;
     let editingPhilId = null;
     let editingArtId = null;
+    let editingProjectPageId = null;
+    let editingSectionIdx = null;
+    let currentSectionType = null;
+    let currentMetrics = [];
 
     // ── Boot ──────────────────────────────────────────────────────────────────
 
@@ -531,14 +553,9 @@
     }
 
     function populateHeroBio() {
-      const h = siteData.hero || {};
-      val('hero-headline', h.headline);
-      val('hero-emoji', h.headlineEmoji);
-      val('hero-symbol', h.headlineSymbol);
-      val('hero-role', h.headlineRole);
-      val('hero-location', h.headlineLocation);
-      val('hero-subtitle', h.subtitle);
       const a = siteData.about || {};
+      val('about-headline', a.headline);
+      val('about-photo', a.photo);
       val('about-bio', a.bio);
       val('about-bio2', a.bio2);
       val('about-bio3', a.bio3);
@@ -564,17 +581,11 @@
     // ── Save: Hero & Bio ──────────────────────────────────────────────────────
 
     async function saveHeroBio() {
-      siteData.hero = {
-        headline: get('hero-headline'),
-        headlineEmoji: get('hero-emoji'),
-        headlineSymbol: get('hero-symbol'),
-        headlineRole: get('hero-role'),
-        headlineLocation: get('hero-location'),
-        subtitle: get('hero-subtitle')
-      };
       const skills = get('about-skills').split(',').map(s => s.trim()).filter(Boolean);
       siteData.about = {
         ...siteData.about,
+        headline: get('about-headline'),
+        photo: get('about-photo'),
         bio: get('about-bio'),
         bio2: get('about-bio2'),
         bio3: get('about-bio3'),
@@ -622,6 +633,7 @@
               <p class="admin-card-sub">${escHtml(p.subtitle)}</p>
             </div>
             <div class="admin-card-actions">
+              <button class="btn-sm btn-page" onclick="showPageEditor(${p.id})">Edit Page →</button>
               <button class="btn-sm btn-edit" onclick="editProject(${p.id})">Edit</button>
               <button class="btn-sm btn-danger" onclick="deleteProject(${p.id})">Delete</button>
             </div>
@@ -972,6 +984,225 @@
       t.className = 'admin-toast ' + type;
       t.classList.add('show');
       setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    // ── Page Editor ───────────────────────────────────────────────────────────
+
+    function showPageEditor(projectId) {
+      editingProjectPageId = projectId;
+      const project = siteData.projects.find(p => p.id === projectId);
+      if (!project) return;
+      document.getElementById('pe-project-name').textContent = project.title;
+      document.getElementById('pe-preview-link').href = `/project.html?id=${projectId}`;
+      document.getElementById('pe-section-form').style.display = 'none';
+      document.querySelector('.admin-main').classList.add('page-editing');
+      renderSectionsList();
+    }
+
+    function hidePageEditor() {
+      editingProjectPageId = null;
+      editingSectionIdx = null;
+      cancelSectionForm();
+      document.querySelector('.admin-main').classList.remove('page-editing');
+    }
+
+    function renderSectionsList() {
+      const project = siteData.projects.find(p => p.id === editingProjectPageId);
+      if (!project) return;
+      const sections = project.sections || [];
+      const container = document.getElementById('pe-sections-list');
+      if (!sections.length) {
+        container.innerHTML = '<div class="empty-state" style="padding:32px 0 24px;">No sections yet — add one below.</div>';
+        return;
+      }
+      container.innerHTML = sections.map((s, i) => {
+        let preview = '';
+        if (s.type === 'text') preview = (s.heading ? s.heading + ' — ' : '') + (s.body || '').slice(0, 70);
+        if (s.type === 'image') preview = s.url || 'No URL';
+        if (s.type === 'metrics') preview = (s.items || []).map(m => m.value + ' ' + m.label).join(' · ');
+        if (s.type === 'quote') preview = '\u201c' + (s.text || '').slice(0, 70);
+        if (preview.length >= 70) preview += '…';
+        return `
+          <div class="pe-section-item">
+            <span class="pe-section-type pe-type-${s.type}">${s.type}</span>
+            <span class="pe-section-preview">${escHtml(preview)}</span>
+            <div class="pe-section-actions">
+              <button class="btn-sm" onclick="moveSectionUp(${i})" ${i === 0 ? 'disabled' : ''} title="Move up">↑</button>
+              <button class="btn-sm" onclick="moveSectionDown(${i})" ${i === sections.length - 1 ? 'disabled' : ''} title="Move down">↓</button>
+              <button class="btn-sm btn-edit" onclick="beginEditSection(${i})">Edit</button>
+              <button class="btn-sm btn-danger" onclick="deleteSection(${i})">Delete</button>
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+    function beginAddSection(type) {
+      editingSectionIdx = -1;
+      currentSectionType = type;
+      showSectionForm(type, {});
+    }
+
+    function beginEditSection(idx) {
+      const project = siteData.projects.find(p => p.id === editingProjectPageId);
+      const section = (project.sections || [])[idx];
+      if (!section) return;
+      editingSectionIdx = idx;
+      currentSectionType = section.type;
+      showSectionForm(section.type, section);
+    }
+
+    function showSectionForm(type, section) {
+      const label = type.charAt(0).toUpperCase() + type.slice(1);
+      document.getElementById('pe-form-title').textContent =
+        (editingSectionIdx === -1 ? 'New' : 'Edit') + ' — ' + label + ' Section';
+      document.getElementById('pe-form-fields').innerHTML = buildSectionFormFields(type, section);
+      document.getElementById('pe-section-form').style.display = 'block';
+      document.getElementById('pe-section-form').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      if (type === 'metrics') renderMetricsRows();
+    }
+
+    function buildSectionFormFields(type, section) {
+      if (type === 'text') {
+        return `
+          <div class="form-group">
+            <label class="form-label">Heading (optional)</label>
+            <input class="form-input" id="sf-heading" type="text" value="${escHtml(section.heading || '')}" placeholder="The Challenge">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Body Text</label>
+            <textarea class="form-textarea" id="sf-body" rows="9" placeholder="Write your content here...">${escHtml(section.body || '')}</textarea>
+            <p class="form-hint">Line breaks are preserved on the page</p>
+          </div>`;
+      }
+      if (type === 'image') {
+        return `
+          <div class="form-group">
+            <label class="form-label">Image URL or Path</label>
+            <input class="form-input" id="sf-url" type="text" value="${escHtml(section.url || '')}" placeholder="/assets/images/project-shot.jpg">
+            <p class="form-hint">Absolute path from site root, or full external URL</p>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Caption (optional)</label>
+            <input class="form-input" id="sf-caption" type="text" value="${escHtml(section.caption || '')}" placeholder="Describe what's shown…">
+          </div>`;
+      }
+      if (type === 'metrics') {
+        currentMetrics = JSON.parse(JSON.stringify(section.items && section.items.length ? section.items : [{ value: '', label: '' }]));
+        return `
+          <p class="form-hint" style="margin-bottom:20px;">Each metric shows a large value with a label below it — great for impact numbers.</p>
+          <div id="sf-metrics-list"></div>
+          <button type="button" class="btn-add" style="margin-top:4px;margin-bottom:0;" onclick="addMetricRow()">+ Add Metric</button>`;
+      }
+      if (type === 'quote') {
+        return `
+          <div class="form-group">
+            <label class="form-label">Quote Text</label>
+            <textarea class="form-textarea" id="sf-quote-text" rows="4" placeholder="A key insight or standout finding…">${escHtml(section.text || '')}</textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Attribution (optional)</label>
+            <input class="form-input" id="sf-attribution" type="text" value="${escHtml(section.attribution || '')}" placeholder="Person, Role, or Source">
+          </div>`;
+      }
+      return '';
+    }
+
+    function renderMetricsRows() {
+      const container = document.getElementById('sf-metrics-list');
+      if (!container) return;
+      container.innerHTML = currentMetrics.map((m, i) => `
+        <div class="pe-metric-row">
+          <div class="form-group" style="margin-bottom:0;flex:1;">
+            <label class="form-label">Value</label>
+            <input class="form-input" type="text" value="${escHtml(m.value)}" placeholder="+32%"
+              oninput="currentMetrics[${i}].value = this.value">
+          </div>
+          <div class="form-group" style="margin-bottom:0;flex:2;">
+            <label class="form-label">Label</label>
+            <input class="form-input" type="text" value="${escHtml(m.label)}" placeholder="Conversion increase"
+              oninput="currentMetrics[${i}].label = this.value">
+          </div>
+          <button class="btn-sm btn-danger" style="margin-top:22px;flex-shrink:0;" onclick="removeMetricRow(${i})">✕</button>
+        </div>`).join('');
+    }
+
+    function addMetricRow() {
+      currentMetrics.push({ value: '', label: '' });
+      renderMetricsRows();
+    }
+
+    function removeMetricRow(i) {
+      currentMetrics.splice(i, 1);
+      if (!currentMetrics.length) currentMetrics = [{ value: '', label: '' }];
+      renderMetricsRows();
+    }
+
+    async function saveSectionForm() {
+      const project = siteData.projects.find(p => p.id === editingProjectPageId);
+      if (!project) return;
+      project.sections = project.sections || [];
+
+      let section = { type: currentSectionType };
+
+      if (currentSectionType === 'text') {
+        section.heading = document.getElementById('sf-heading')?.value.trim() || '';
+        section.body = document.getElementById('sf-body')?.value || '';
+        if (!section.body.trim()) { toast('Body text is required', 'error'); return; }
+      } else if (currentSectionType === 'image') {
+        section.url = document.getElementById('sf-url')?.value.trim() || '';
+        section.caption = document.getElementById('sf-caption')?.value.trim() || '';
+        if (!section.url) { toast('Image URL is required', 'error'); return; }
+      } else if (currentSectionType === 'metrics') {
+        section.items = currentMetrics.filter(m => m.value || m.label);
+        if (!section.items.length) { toast('Add at least one metric', 'error'); return; }
+      } else if (currentSectionType === 'quote') {
+        section.text = document.getElementById('sf-quote-text')?.value.trim() || '';
+        section.attribution = document.getElementById('sf-attribution')?.value.trim() || '';
+        if (!section.text) { toast('Quote text is required', 'error'); return; }
+      }
+
+      if (editingSectionIdx === -1) {
+        project.sections.push(section);
+      } else {
+        project.sections[editingSectionIdx] = section;
+      }
+
+      await saveData();
+      cancelSectionForm();
+      renderSectionsList();
+    }
+
+    function cancelSectionForm() {
+      editingSectionIdx = null;
+      currentSectionType = null;
+      document.getElementById('pe-section-form').style.display = 'none';
+    }
+
+    async function deleteSection(idx) {
+      if (!confirm('Delete this section?')) return;
+      const project = siteData.projects.find(p => p.id === editingProjectPageId);
+      if (!project) return;
+      project.sections.splice(idx, 1);
+      await saveData();
+      renderSectionsList();
+    }
+
+    async function moveSectionUp(idx) {
+      if (idx === 0) return;
+      const project = siteData.projects.find(p => p.id === editingProjectPageId);
+      const s = project.sections;
+      [s[idx - 1], s[idx]] = [s[idx], s[idx - 1]];
+      await saveData();
+      renderSectionsList();
+    }
+
+    async function moveSectionDown(idx) {
+      const project = siteData.projects.find(p => p.id === editingProjectPageId);
+      const s = project.sections;
+      if (idx >= s.length - 1) return;
+      [s[idx], s[idx + 1]] = [s[idx + 1], s[idx]];
+      await saveData();
+      renderSectionsList();
     }
 
     // ── Start ─────────────────────────────────────────────────────────────────

@@ -38,6 +38,11 @@
               "label": "tets"
             }
           ]
+        },
+        {
+          "type": "quote",
+          "text": "Texting text",
+          "attribution": "wow wow"
         }
       ]
     },

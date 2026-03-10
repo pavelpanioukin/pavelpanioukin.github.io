@@ -1,81 +1,130 @@
 /**
- * animations.js — page transitions, scroll reveal, hero word entrance.
+ * animations.js — sticky nav, page transitions, scroll reveal, hero words.
  * Vanilla JS only. No external libraries.
  */
 (function () {
-
-  // ── Utility ────────────────────────────────────────────────────────────────
 
   function ready(fn) {
     if (document.readyState !== 'loading') fn();
     else document.addEventListener('DOMContentLoaded', fn);
   }
 
-  // ── 1. Page Transition ─────────────────────────────────────────────────────
+  // ── 1. Sticky nav — frosted glass on scroll ────────────────────────────────
+
+  function initStickyNav() {
+    var navRow = document.querySelector('.header-row2');
+    if (!navRow) return;
+
+    // Zero-height sentinel placed just before the nav row.
+    // When it leaves the viewport the nav is "stuck" — apply frosted glass.
+    var sentinel = document.createElement('div');
+    sentinel.setAttribute('aria-hidden', 'true');
+    sentinel.style.cssText = 'height:1px;pointer-events:none;margin-bottom:-1px;';
+    navRow.parentNode.insertBefore(sentinel, navRow);
+
+    new IntersectionObserver(function (entries) {
+      navRow.classList.toggle('is-stuck', !entries[0].isIntersecting);
+    }, { threshold: 0 }).observe(sentinel);
+  }
+
+  // ── 2. Page transition — exit + enter ─────────────────────────────────────
 
   function initPageTransition() {
-    const content = document.querySelector('.page-content');
+    var content = document.querySelector('.page-content');
     if (!content) return;
 
-    // Fade in on load
-    setTimeout(() => content.classList.add('is-visible'), 50);
+    // ENTER: fade + rise on page load
+    setTimeout(function () {
+      content.classList.add('page-enter');
+    }, 30);
 
-    // Intercept internal link clicks — fade out before navigating
+    // EXIT: fade + rise upward before navigating away
     document.addEventListener('click', function (e) {
-      const link = e.target.closest('a[href]');
+      var link = e.target.closest('a[href]');
       if (!link) return;
 
-      const href = link.getAttribute('href');
-      if (
-        !href ||
-        href.startsWith('http') ||
-        href.startsWith('//') ||
-        href.startsWith('#') ||
-        href.startsWith('mailto:') ||
-        href.startsWith('tel:') ||
-        link.target === '_blank' ||
-        e.metaKey || e.ctrlKey || e.shiftKey || e.altKey
-      ) return;
+      var href = link.getAttribute('href');
+      if (!href) return;
+
+      // Never intercept modifier-key clicks, new-tab links, or special urls
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      if (link.target === '_blank') return;
+      if (href.startsWith('#')) return;
+      if (href.startsWith('mailto:') || href.startsWith('tel:')) return;
+
+      // Only intercept same-origin links
+      try {
+        var url = new URL(href, window.location.href);
+        if (url.origin !== window.location.origin) return;
+      } catch (_) {
+        return;
+      }
 
       e.preventDefault();
-      content.classList.remove('is-visible');
-      setTimeout(() => { window.location.href = href; }, 300);
+      content.classList.add('page-exit');
+      setTimeout(function () { window.location.href = href; }, 280);
     });
   }
 
-  // ── 2. Scroll Reveal ───────────────────────────────────────────────────────
+  // ── 3. Scroll reveal ───────────────────────────────────────────────────────
 
-  const REVEAL_SELECTORS = [
+  var REVEAL_SELECTORS = [
     'main h1',
     'main h2',
+    'main h3',
     '.project-card',
+    '.work-card',
     '.timeline-item',
     '.philosophy-card',
     '.bento-item',
+    '.feed-image',
+    '.artifact-item',
+    '.contact-section > *',
   ];
 
-  const revealObserver = new IntersectionObserver(function (entries) {
+  var GRID_SELECTORS = [
+    '.project-grid',
+    '.bento-grid',
+    '.philosophy-grid',
+    '.work-grid',
+  ];
+
+  var revealObserver = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
         entry.target.classList.add('revealed');
         revealObserver.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
+  }, { threshold: 0.12 });
+
+  // Set JS-driven stagger delays on grid children (resets every 4 = new row)
+  function applyGridStagger(scope) {
+    var root = scope || document;
+    GRID_SELECTORS.forEach(function (containerSel) {
+      root.querySelectorAll(containerSel).forEach(function (grid) {
+        Array.from(grid.children).forEach(function (child, i) {
+          child.style.transitionDelay = ((i % 4) * 80) + 'ms';
+        });
+      });
+    });
+  }
 
   function attachReveal(scope) {
     var root = scope || document;
+    applyGridStagger(root);
+
     REVEAL_SELECTORS.forEach(function (sel) {
       root.querySelectorAll(sel).forEach(function (el) {
-        if (el.closest('.site-header')) return;   // never animate header
-        if (el.classList.contains('reveal')) return; // already processed
+        if (el.closest('.site-header')) return;   // header is always visible
+        if (el.classList.contains('reveal')) return; // already wired up
         el.classList.add('reveal');
         revealObserver.observe(el);
       });
     });
   }
 
-  // Re-run when dynamic content (project cards, bento items) is injected
+  // Re-run whenever dynamic content is injected (project cards, bento items…)
   function watchForDynamicContent() {
     var main = document.querySelector('main');
     if (!main) return;
@@ -85,15 +134,15 @@
     }).observe(main, { childList: true, subtree: true });
   }
 
-  // ── 5. Hero Headline Word Animation ────────────────────────────────────────
+  // ── 4. Hero headline — word-by-word entrance ───────────────────────────────
 
   var heroWordsDone = false;
 
   function tryInitHeroWords() {
     if (heroWordsDone) return;
 
-    // Static h1 pages (work, feed, about, contact, project)
-    // Dynamic index.html uses .featured-hero-title (a div, rendered after fetch)
+    // Static pages: first main h1
+    // index.html: .featured-hero-title rendered dynamically after data fetch
     var hero =
       document.querySelector('main h1') ||
       document.querySelector('.featured-hero-title');
@@ -106,7 +155,7 @@
       return '<span class="word">' + w + '</span>';
     }).join(' ');
 
-    // Don't double-animate via scroll reveal
+    // Remove from scroll-reveal so it doesn't double-animate
     hero.classList.remove('reveal');
     revealObserver.unobserve(hero);
 
@@ -120,6 +169,7 @@
   // ── Boot ───────────────────────────────────────────────────────────────────
 
   ready(function () {
+    initStickyNav();
     initPageTransition();
     attachReveal();
     tryInitHeroWords();

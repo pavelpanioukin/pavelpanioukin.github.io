@@ -43,12 +43,9 @@ button { font-family: inherit; cursor: pointer; }
 
 /* ── Header ──────────────────────────────────────────────────────────────────── */
 
+/* Row 1 scrolls away naturally; Row 2 is the sticky nav strip */
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
   background: var(--bg);
-  border-bottom: 1px solid var(--border);
 }
 
 .header-row1 {
@@ -88,6 +85,19 @@ button { font-family: inherit; cursor: pointer; }
 
 .header-row2 {
   padding: 0 var(--gutter) 14px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.header-row2.is-stuck {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .header-nav {
@@ -1007,25 +1017,34 @@ button { font-family: inherit; cursor: pointer; }
 
 /* ── Animations ──────────────────────────────────────────────────────────────── */
 
-/* 1. Page transition */
+/* 1. Page transition — enter (fade + rise from below) */
 .page-content {
   opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+  transform: translateY(28px);
+  transition: opacity 0.38s cubic-bezier(0.25, 0.1, 0.25, 1),
+              transform 0.38s cubic-bezier(0.25, 0.1, 0.25, 1);
   will-change: opacity, transform;
 }
 
-.page-content.is-visible {
+.page-content.page-enter {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* 2. Scroll reveal */
+/* Exit — fade + rise upward (shorter, snappier) */
+.page-content.page-exit {
+  opacity: 0;
+  transform: translateY(-16px);
+  transition: opacity 0.28s ease-in, transform 0.28s ease-in;
+}
+
+/* 2. Scroll reveal — stagger driven by JS inline transitionDelay */
 .reveal {
   opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  transform: translateY(36px);
   will-change: opacity, transform;
+  transition: opacity 0.55s cubic-bezier(0.25, 0.1, 0.25, 1),
+              transform 0.55s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .reveal.revealed {
@@ -1033,13 +1052,7 @@ button { font-family: inherit; cursor: pointer; }
   transform: translateY(0);
 }
 
-/* Staggered delay for grid/list siblings */
-.reveal:nth-child(1) { transition-delay: 0ms; }
-.reveal:nth-child(2) { transition-delay: 80ms; }
-.reveal:nth-child(3) { transition-delay: 160ms; }
-.reveal:nth-child(4) { transition-delay: 240ms; }
-
-/* 3. Nav hover (reinforce — transition already set on .nav-link) */
+/* 3. Nav hover */
 .nav-link {
   color: var(--text-muted);
   transition: color 0.15s ease;
@@ -1059,7 +1072,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .project-card:hover .project-card-thumb img { transform: scale(1.05); }
 
-/* 5. Hero headline word animation */
+/* 5. Hero headline word-by-word animation */
 .featured-hero-title .word,
 main h1 .word {
   display: inline-block;
@@ -1075,7 +1088,7 @@ main h1 .word.visible {
   transform: translateY(0);
 }
 
-/* 6. Feed / bento image hover lift */
+/* 6. Bento / feed image hover lift */
 .bento-item {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   will-change: transform;
@@ -1085,7 +1098,6 @@ main h1 .word.visible {
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.10);
 }
 
-/* Keep existing bento img scale working alongside the lift */
 .bento-item img {
   transition: transform 0.4s ease;
 }

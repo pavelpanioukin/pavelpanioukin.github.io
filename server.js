@@ -164,6 +164,10 @@ app.get('/site.js', (req, res) => {
   res.sendFile(path.join(__dirname, 'site.js'));
 });
 
+app.get('/animations.js', (req, res) => {
+  res.sendFile(path.join(__dirname, 'animations.js'));
+});
+
 app.get('/work.html', (req, res) => {
   res.sendFile(path.join(__dirname, 'work.html'));
 });

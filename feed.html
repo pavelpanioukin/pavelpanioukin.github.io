@@ -14,7 +14,7 @@
 
   <header id="site-header"></header>
 
-  <main>
+  <main class="page-content">
     <div class="page-header container">
       <h1 class="page-title">An archive of everything — early sketches to finished products. All shared here.</h1>
     </div>
@@ -27,6 +27,7 @@
   <footer id="site-footer"></footer>
 
   <script src="site.js"></script>
+  <script src="animations.js"></script>
   <script>
     async function init() {
       const data = await fetch('data.json').then(r => r.json());

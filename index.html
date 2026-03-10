@@ -10,34 +10,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="page-new">
 
   <header id="site-header"></header>
 
   <main class="page-content">
 
-    <!-- Featured project hero -->
-    <div id="featured-hero-wrap"></div>
-
-    <!-- Remaining projects grid -->
-    <div class="container" style="padding-top:0; padding-bottom:0;">
-      <div class="project-grid" id="project-grid"></div>
+    <!-- Featured project — first from data.json -->
+    <div class="container">
+      <section class="featured-project" id="featured-project"></section>
     </div>
 
-    <!-- CTA -->
-    <section class="cta-section">
-      <div class="container">
-        <p class="cta-label">Get in Touch</p>
-        <h2 class="cta-headline" id="cta-headline">Have a project in mind? Let's talk.</h2>
-        <a class="cta-link" href="/contact.html">Say Hi →</a>
-      </div>
-    </section>
+    <!-- 3-col full-bleed grid — projects 2, 3, 4 from data.json -->
+    <section class="projects-grid" id="projects-grid"></section>
 
   </main>
 
   <footer id="site-footer"></footer>
 
-  <!-- Project modal -->
+  <!-- Project modal (kept for modal open from other entry points) -->
   <div id="project-modal" class="modal-overlay" onclick="if(event.target===this)closeProject()">
     <div class="modal-panel">
       <button class="modal-close" onclick="closeProject()">
@@ -47,46 +38,55 @@
     </div>
   </div>
 
-  <div class="toast" id="toast"></div>
-
   <script src="site.js"></script>
   <script src="animations.js"></script>
   <script>
-    let projects = [];
-
     async function init() {
       const data = await fetch('data.json').then(r => r.json());
-      projects = data.projects || [];
       renderFooterData(data);
-      setText('cta-headline', (data.contact || {}).headline || 'Have a project in mind?');
-      renderPage(projects);
+
+      const projects = data.projects || [];
+      const featured = projects[0];
+      const rest     = projects.slice(1, 4);
+
+      if (featured) renderFeatured(featured);
+      if (rest.length) renderGrid(rest);
     }
 
-    function renderPage(items) {
-      if (!items.length) return;
-
-      // Featured = first project, full-width hero
-      const featured = items[0];
-      const thumbStyle = featured.thumbnail
-        ? '' : `background:${featured.thumbnailGradient || '#ebebeb'}`;
-      const thumbImg = featured.thumbnail
-        ? `<img src="${escHtml(featured.thumbnail)}" alt="${escHtml(featured.title)}">`
+    function renderFeatured(p) {
+      const el = document.getElementById('featured-project');
+      const bgStyle = p.thumbnail ? '' : `background:${p.thumbnailGradient || '#111'}`;
+      const imgHTML = p.thumbnail
+        ? `<img src="${escHtml(p.thumbnail)}" alt="${escHtml(p.title)}">`
         : '';
-      document.getElementById('featured-hero-wrap').innerHTML = `
-        <div class="featured-hero" onclick="openProject(projects, ${featured.id})" style="${thumbStyle}">
-          ${thumbImg}
-          <div class="featured-hero-overlay"></div>
-          <div class="featured-hero-info">
-            <div class="featured-hero-tag">Featured</div>
-            <div class="featured-hero-title">${escHtml(featured.title)}</div>
-            <div class="featured-hero-sub">${escHtml(featured.subtitle)}</div>
-          </div>
-        </div>`;
 
-      // Remaining projects in 3-col grid
-      const rest = items.slice(1);
-      document.getElementById('project-grid').innerHTML =
-        rest.map(p => buildProjectCard(p, `openProject(projects, ${p.id})`)).join('');
+      el.innerHTML = `
+        <a href="${escHtml(p.caseStudyUrl || '/project.html?id=' + p.id)}">
+          <div class="featured-image" style="${bgStyle}">${imgHTML}</div>
+          <div class="featured-meta">
+            <h2 class="featured-title">${escHtml(p.title)}</h2>
+            <p class="featured-subtitle">${escHtml(p.subtitle)}</p>
+          </div>
+        </a>`;
+    }
+
+    function renderGrid(projects) {
+      const el = document.getElementById('projects-grid');
+      el.innerHTML = projects.map(p => {
+        const bgStyle = p.thumbnail ? '' : `background:${p.thumbnailGradient || '#111'}`;
+        const imgHTML = p.thumbnail
+          ? `<img src="${escHtml(p.thumbnail)}" alt="${escHtml(p.title)}">`
+          : '';
+
+        return `
+          <a class="project-card" href="${escHtml(p.caseStudyUrl || '/project.html?id=' + p.id)}">
+            <div class="card-image" style="${bgStyle}">${imgHTML}</div>
+            <div class="card-meta">
+              <h3>${escHtml(p.title)}</h3>
+              <p>${escHtml(p.subtitle)}</p>
+            </div>
+          </a>`;
+      }).join('');
     }
 
     init();

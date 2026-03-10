@@ -12,12 +12,13 @@
   // ── 1. Sticky nav — frosted glass on scroll ────────────────────────────────
 
   function initStickyNav() {
-    var navRow = document.querySelector('.header-row2');
+    var navRow = document.querySelector('.nav-row');
     if (!navRow) return;
 
     // Zero-height sentinel placed just before the nav row.
     // When it leaves the viewport the nav is "stuck" — apply frosted glass.
     var sentinel = document.createElement('div');
+    sentinel.id = 'nav-sentinel';
     sentinel.setAttribute('aria-hidden', 'true');
     sentinel.style.cssText = 'height:1px;pointer-events:none;margin-bottom:-1px;';
     navRow.parentNode.insertBefore(sentinel, navRow);

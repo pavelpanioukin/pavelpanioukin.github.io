@@ -32,14 +32,14 @@
   if (headerEl) {
     headerEl.className = 'site-header';
     headerEl.innerHTML = `
-      <div class="header-row1">
-        <div class="header-left">
+      <div class="info-row">
+        <div class="info-left">
           <a href="/" class="header-name">Pavel Panioukin</a>
           <span class="header-time" id="local-time"></span>
         </div>
         <div class="header-bio">Digital product designer &amp; leader with 12 years across fintech, edtech, and SaaS.</div>
       </div>
-      <div class="header-row2">
+      <div class="nav-row">
         <nav class="header-nav">${navHTML}</nav>
       </div>`;
   }

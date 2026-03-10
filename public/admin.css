@@ -220,6 +220,27 @@ body {
   margin-top: 16px;
 }
 
+.deploy-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #fff;
+  background: #111;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  font-family: var(--sans);
+  margin-bottom: 6px;
+}
+
+.deploy-btn:hover { opacity: 0.8; }
+.deploy-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
 .logout-btn {
   display: flex;
   align-items: center;

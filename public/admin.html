@@ -73,6 +73,10 @@
         </li>
       </ul>
       <div class="sidebar-footer">
+        <button class="deploy-btn" id="deploy-btn" onclick="handleDeploy()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.338-2.32 5.75 5.75 0 011.041 11.09"/></svg>
+          <span id="deploy-label">Deploy to GitHub</span>
+        </button>
         <button class="logout-btn" onclick="handleLogout()">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"/></svg>
           Sign Out
@@ -496,6 +500,37 @@
       token = '';
       localStorage.removeItem('admin_token');
       showLogin();
+    }
+
+    // ── Deploy ────────────────────────────────────────────────────────────────
+
+    async function handleDeploy() {
+      const btn = document.getElementById('deploy-btn');
+      const label = document.getElementById('deploy-label');
+      btn.disabled = true;
+      label.textContent = 'Deploying…';
+      try {
+        const res = await fetch('/api/deploy', {
+          method: 'POST',
+          headers: {
+            'Authorization': 'Bearer ' + token,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ message: 'Update content via admin' })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          label.textContent = 'Deployed!';
+          setTimeout(() => { label.textContent = 'Deploy to GitHub'; btn.disabled = false; }, 3000);
+        } else {
+          label.textContent = 'Deploy failed';
+          console.error(data.error);
+          setTimeout(() => { label.textContent = 'Deploy to GitHub'; btn.disabled = false; }, 3000);
+        }
+      } catch (err) {
+        label.textContent = 'Deploy failed';
+        setTimeout(() => { label.textContent = 'Deploy to GitHub'; btn.disabled = false; }, 3000);
+      }
     }
 
     // ── Data ──────────────────────────────────────────────────────────────────

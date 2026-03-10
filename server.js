@@ -150,6 +150,26 @@ app.patch('/api/artifacts/:id/size', requireAuth, (req, res) => {
   }
 });
 
+// ── Deploy — commit data.json and push to GitHub ─────────────────────────────
+
+app.post('/api/deploy', requireAuth, (req, res) => {
+  const { execSync } = require('child_process');
+  const message = (req.body && req.body.message) || 'Update content via admin';
+  try {
+    execSync('git add data.json', { cwd: __dirname, stdio: 'pipe' });
+    const status = execSync('git status --porcelain data.json', { cwd: __dirname }).toString().trim();
+    if (!status) {
+      return res.json({ success: true, message: 'Nothing to deploy — already up to date.' });
+    }
+    execSync(`git commit -m "${message.replace(/"/g, "'")}"`, { cwd: __dirname, stdio: 'pipe' });
+    execSync('git push origin main', { cwd: __dirname, stdio: 'pipe' });
+    res.json({ success: true, message: 'Deployed successfully.' });
+  } catch (err) {
+    console.error('Deploy error:', err.message);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // ── Root site files (mirrors what GitHub Pages serves statically) ─────────────
 
 app.get('/', (req, res) => {

@@ -30,7 +30,7 @@
   <script src="animations.js"></script>
   <script>
     async function init() {
-      const data = await fetch('data.json').then(r => r.json());
+      const data = await fetch('data.json?v=' + Date.now()).then(r => r.json());
       renderFooterData(data);
 
       const params = new URLSearchParams(window.location.search);

@@ -931,8 +931,9 @@
 
       progressBar.style.width = '100%';
       progressLabel.textContent = `Done — ${files.length} image${files.length !== 1 ? 's' : ''} uploaded`;
-      setTimeout(() => { progressArea.style.display = 'none'; progressBar.style.width = '0%'; }, 2000);
+      await loadData();
       renderFeedAdminGrid();
+      setTimeout(() => { progressArea.style.display = 'none'; progressBar.style.width = '0%'; }, 2000);
     }
 
     async function uploadFeedFile(file) {
@@ -948,7 +949,7 @@
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error);
-        siteData.feed = [...(siteData.feed || []), data.feedItem];
+        siteData.feed = [...(siteData.feed || []), data.artifact];
       } catch (err) {
         toast('Upload failed: ' + err.message, 'error');
       }

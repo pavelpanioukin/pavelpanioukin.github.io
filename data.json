@@ -210,40 +210,40 @@
     "dribbble": "https://dribbble.com/pavelpanioukin",
     "twitter": "https://twitter.com/pavelpanioukin"
   },
-  "artifacts": [
+  "meta": {
+    "siteTitle": "Pavel Panioukin \u2014 Design Leader",
+    "copyright": "\u00a9 2026 Pavel Panioukin. All rights reserved."
+  },
+  "feed": [
     {
       "id": "1773422990896",
-      "url": "/assets/images/artifacts/artifact-1773422990879.png",
+      "url": "/assets/images/feed/artifact-1773422990879.png",
       "alt": "Design artifact",
       "size": "small"
     },
     {
       "id": "1773422993652",
-      "url": "/assets/images/artifacts/artifact-1773422993643.png",
+      "url": "/assets/images/feed/artifact-1773422993643.png",
       "alt": "Design artifact",
       "size": "small"
     },
     {
       "id": "1773422995946",
-      "url": "/assets/images/artifacts/artifact-1773422995938.png",
+      "url": "/assets/images/feed/artifact-1773422995938.png",
       "alt": "Design artifact",
       "size": "small"
     },
     {
       "id": "1773423000443",
-      "url": "/assets/images/artifacts/artifact-1773423000441.jpg",
+      "url": "/assets/images/feed/artifact-1773423000441.jpg",
       "alt": "Design artifact",
       "size": "small"
     },
     {
       "id": "1773423006446",
-      "url": "/assets/images/artifacts/artifact-1773423006442.jpg",
+      "url": "/assets/images/feed/artifact-1773423006442.jpg",
       "alt": "Design artifact",
       "size": "small"
     }
-  ],
-  "meta": {
-    "siteTitle": "Pavel Panioukin \u2014 Design Leader",
-    "copyright": "\u00a9 2026 Pavel Panioukin. All rights reserved."
-  }
+  ]
 }

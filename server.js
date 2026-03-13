@@ -6,16 +6,16 @@ const multer = require('multer');
 
 // ── Multer (image uploads) ────────────────────────────────────────────────────
 
-const ARTIFACTS_DIR = path.join(__dirname, 'assets', 'images', 'artifacts');
+const FEED_DIR = path.join(__dirname, 'assets', 'images', 'feed');
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    fs.mkdirSync(ARTIFACTS_DIR, { recursive: true });
-    cb(null, ARTIFACTS_DIR);
+    fs.mkdirSync(FEED_DIR, { recursive: true });
+    cb(null, FEED_DIR);
   },
   filename: (req, file, cb) => {
     const ext = path.extname(file.originalname).toLowerCase();
-    cb(null, `artifact-${Date.now()}${ext}`);
+    cb(null, `feed-${Date.now()}${ext}`);
   }
 });
 
@@ -101,35 +101,34 @@ app.put('/api/data', requireAuth, (req, res) => {
   }
 });
 
-// ── Artifact routes ───────────────────────────────────────────────────────────
+// ── Feed routes ───────────────────────────────────────────────────────────────
 
-app.post('/api/artifacts/upload', requireAuth, upload.single('image'), (req, res) => {
+app.post('/api/feed/upload', requireAuth, upload.single('image'), (req, res) => {
   try {
     const data = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
-    const artifact = {
+    const item = {
       id: Date.now().toString(),
-      url: `/assets/images/artifacts/${req.file.filename}`,
-      alt: req.body.alt || 'Design artifact',
+      url: `/assets/images/feed/${req.file.filename}`,
+      alt: req.body.alt || 'Design work',
       size: req.body.size || 'small'
     };
-    data.artifacts = data.artifacts || [];
-    data.artifacts.push(artifact);
+    data.feed = data.feed || [];
+    data.feed.push(item);
     fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf8');
-    res.json({ success: true, artifact });
+    res.json({ success: true, artifact: item });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
-app.delete('/api/artifacts/:id', requireAuth, (req, res) => {
+app.delete('/api/feed/:id', requireAuth, (req, res) => {
   try {
     const data = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
-    const artifact = (data.artifacts || []).find(a => a.id === req.params.id);
-    if (!artifact) return res.status(404).json({ error: 'Not found' });
-    // Delete the file (ignore errors for placeholders/missing files)
-    const filePath = path.join(__dirname, artifact.url.replace(/^\//, ''));
+    const item = (data.feed || []).find(a => a.id === req.params.id);
+    if (!item) return res.status(404).json({ error: 'Not found' });
+    const filePath = path.join(__dirname, item.url.replace(/^\//, ''));
     try { fs.unlinkSync(filePath); } catch {}
-    data.artifacts = data.artifacts.filter(a => a.id !== req.params.id);
+    data.feed = data.feed.filter(a => a.id !== req.params.id);
     fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf8');
     res.json({ success: true });
   } catch (err) {
@@ -137,25 +136,24 @@ app.delete('/api/artifacts/:id', requireAuth, (req, res) => {
   }
 });
 
-app.patch('/api/artifacts/:id/size', requireAuth, (req, res) => {
+app.patch('/api/feed/:id/size', requireAuth, (req, res) => {
   try {
     const data = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
-    const artifact = (data.artifacts || []).find(a => a.id === req.params.id);
-    if (!artifact) return res.status(404).json({ error: 'Not found' });
-    artifact.size = artifact.size === 'large' ? 'small' : 'large';
+    const item = (data.feed || []).find(a => a.id === req.params.id);
+    if (!item) return res.status(404).json({ error: 'Not found' });
+    item.size = item.size === 'large' ? 'small' : 'large';
     fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf8');
-    res.json({ success: true, size: artifact.size });
+    res.json({ success: true, size: item.size });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
-// ── Deploy — commit data.json and push to GitHub ─────────────────────────────
+// ── Deploy — commit everything and push to GitHub ─────────────────────────────
 
 app.post('/api/deploy', requireAuth, (req, res) => {
   const { execSync } = require('child_process');
   const message = (req.body && req.body.message) || 'Update content via admin';
-  // Inherit the full shell environment so SSH agent + git credentials work
   const opts = { cwd: __dirname, env: process.env, stdio: 'pipe' };
 
   function run(cmd) {
@@ -185,58 +183,27 @@ app.post('/api/deploy', requireAuth, (req, res) => {
 
 // ── Root site files (mirrors what GitHub Pages serves statically) ─────────────
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
+app.get('/style.css', (req, res) => res.sendFile(path.join(__dirname, 'style.css')));
+app.get('/site.js', (req, res) => res.sendFile(path.join(__dirname, 'site.js')));
+app.get('/animations.js', (req, res) => res.sendFile(path.join(__dirname, 'animations.js')));
+app.get('/work.html', (req, res) => res.sendFile(path.join(__dirname, 'work.html')));
+app.get('/feed.html', (req, res) => res.sendFile(path.join(__dirname, 'feed.html')));
+app.get('/about.html', (req, res) => res.sendFile(path.join(__dirname, 'about.html')));
+app.get('/contact.html', (req, res) => res.sendFile(path.join(__dirname, 'contact.html')));
+app.get('/project.html', (req, res) => res.sendFile(path.join(__dirname, 'project.html')));
 
-app.get('/style.css', (req, res) => {
-  res.sendFile(path.join(__dirname, 'style.css'));
-});
-
-app.get('/site.js', (req, res) => {
-  res.sendFile(path.join(__dirname, 'site.js'));
-});
-
-app.get('/animations.js', (req, res) => {
-  res.sendFile(path.join(__dirname, 'animations.js'));
-});
-
-app.get('/work.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'work.html'));
-});
-
-app.get('/feed.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'feed.html'));
-});
-
-app.get('/about.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'about.html'));
-});
-
-app.get('/contact.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'contact.html'));
-});
-
-app.get('/project.html', (req, res) => {
-  res.sendFile(path.join(__dirname, 'project.html'));
-});
-
-// Serve data.json directly so the same relative fetch('data.json') works locally
 app.get('/data.json', (req, res) => {
   res.setHeader('Cache-Control', 'no-cache');
   res.sendFile(path.join(__dirname, 'data.json'));
 });
 
-// Serve local images/assets
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 // ── Admin panel (local only — served from public/) ────────────────────────────
 
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.get('/admin', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'admin.html'));
-});
+app.get('/admin', (req, res) => res.sendFile(path.join(__dirname, 'public', 'admin.html')));
 
 // ── Start ─────────────────────────────────────────────────────────────────────
 

@@ -712,34 +712,34 @@ body {
 
 /* ── Artifact Admin Grid ─────────────────────────────────────────────────────── */
 
-.artifact-admin-grid {
+.feed-admin-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
   margin-top: 8px;
 }
 
-.artifact-admin-item {
+.feed-admin-item {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   overflow: hidden;
 }
 
-.artifact-admin-thumb {
+.feed-admin-thumb {
   aspect-ratio: 4 / 3;
   overflow: hidden;
   background: var(--bg);
 }
 
-.artifact-admin-thumb img {
+.feed-admin-thumb img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.artifact-admin-controls {
+.feed-admin-controls {
   padding: 8px;
   display: flex;
   gap: 6px;

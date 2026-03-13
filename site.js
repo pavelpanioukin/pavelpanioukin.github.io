@@ -107,7 +107,7 @@ function renderFooterData(data) {
 
 // ── Shared project card renderer ─────────────────────────────────────────────
 
-function buildProjectCard(p, onclick) {
+function buildProjectCard(p) {
   const thumbStyle = p.thumbnail
     ? ''
     : `background:${p.thumbnailGradient || '#ebebeb'}`;
@@ -115,47 +115,11 @@ function buildProjectCard(p, onclick) {
     ? `<img src="${escHtml(p.thumbnail)}" alt="${escHtml(p.title)}" loading="lazy">`
     : `<span class="project-card-label">${escHtml(p.thumbnailLabel || p.title)}</span>`;
   return `
-    <div class="project-card" onclick="${onclick}" tabindex="0" role="button">
+    <a class="project-card" href="/project.html?id=${p.id}">
       <div class="project-card-thumb" style="${thumbStyle}">${thumbContent}</div>
       <div class="project-card-info">
         <div class="project-card-title">${escHtml(p.title)}</div>
         <div class="project-card-sub">${escHtml(p.subtitle)}</div>
       </div>
-    </div>`;
+    </a>`;
 }
-
-// ── Shared project modal ──────────────────────────────────────────────────────
-
-function openProject(projects, id) {
-  const p = projects.find(x => x.id === id);
-  if (!p) return;
-
-  const thumbStyle = p.thumbnail ? '' : `background:${p.thumbnailGradient || '#ebebeb'}`;
-  const thumbContent = p.thumbnail
-    ? `<img src="${escHtml(p.thumbnail)}" alt="${escHtml(p.title)}">`
-    : `<span class="project-card-label" style="font-size:3rem">${escHtml(p.thumbnailLabel || p.title)}</span>`;
-  const tags = (p.tags || []).map(t => `<span class="modal-tag">${escHtml(t)}</span>`).join('');
-  const actionBtn = `<a class="modal-btn" href="/project.html?id=${p.id}">View Case Study →</a>`;
-
-  document.getElementById('modal-body').innerHTML = `
-    <div class="modal-thumb" style="${thumbStyle}">${thumbContent}</div>
-    <div class="modal-content-inner">
-      <div class="modal-tags">${tags}<span style="margin-left:4px;font-size:.75rem;color:var(--text-muted)">${escHtml(p.year || '')}</span></div>
-      <h2 class="modal-title">${escHtml(p.title)}</h2>
-      <p class="modal-subtitle">${escHtml(p.subtitle)}</p>
-      <p class="modal-desc">${escHtml(p.description)}</p>
-      <div class="modal-actions">${actionBtn}</div>
-    </div>`;
-
-  const overlay = document.getElementById('project-modal');
-  overlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeProject() {
-  const overlay = document.getElementById('project-modal');
-  if (overlay) overlay.classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeProject(); });

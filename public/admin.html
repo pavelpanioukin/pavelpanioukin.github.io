@@ -66,7 +66,7 @@
           </div>
         </li>
         <li>
-          <div class="sidebar-nav-item" data-tab="artifacts">
+          <div class="sidebar-nav-item" data-tab="feed">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/></svg>
             Artifacts
           </div>
@@ -341,15 +341,15 @@
       </div>
 
       <!-- ── Tab: Artifacts ───────────────────────────────────────────────── -->
-      <div class="admin-tab" id="tab-artifacts">
+      <div class="admin-tab" id="tab-feed">
         <div class="admin-header">
-          <h1 class="admin-title">Artifacts</h1>
-          <p class="admin-subtitle">Upload images to the bento grid gallery. Drag &amp; drop or click to browse.</p>
+          <h1 class="admin-title">Feed</h1>
+          <p class="admin-subtitle">Upload images to the feed gallery. Drag &amp; drop or click to browse.</p>
         </div>
 
         <!-- Upload zone -->
-        <div class="upload-zone" id="upload-zone" onclick="document.getElementById('artifact-file-input').click()">
-          <input type="file" id="artifact-file-input" accept=".jpg,.jpeg,.png,.gif,.webp,.svg" multiple hidden>
+        <div class="upload-zone" id="upload-zone" onclick="document.getElementById('feed-file-input').click()">
+          <input type="file" id="feed-file-input" accept=".jpg,.jpeg,.png,.gif,.webp,.svg" multiple hidden>
           <div class="upload-zone-icon">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
           </div>
@@ -365,8 +365,8 @@
 
         <hr class="divider">
 
-        <p class="section-heading" id="artifacts-count">0 artifacts</p>
-        <div class="artifact-admin-grid" id="artifact-admin-grid">
+        <p class="section-heading" id="feed-count">0 artifacts</p>
+        <div class="feed-admin-grid" id="feed-admin-grid">
           <!-- Rendered by JS -->
         </div>
       </div>
@@ -581,7 +581,7 @@
       renderExperienceList();
       renderPhilosophyList();
       populateContact();
-      renderArtifactAdminGrid();
+      renderFeedAdminGrid();
     }
 
     function populateHeroBio() {
@@ -875,27 +875,27 @@
 
     // ── Artifacts (image upload) ──────────────────────────────────────────────
 
-    function renderArtifactAdminGrid() {
+    function renderFeedAdminGrid() {
       const container = document.getElementById('artifact-admin-grid');
-      const items = siteData.artifacts || [];
+      const items = siteData.feed || [];
       const countEl = document.getElementById('artifacts-count');
-      if (countEl) countEl.textContent = `${items.length} artifact${items.length !== 1 ? 's' : ''}`;
+      if (countEl) countEl.textContent = `${items.length} image${items.length !== 1 ? 's' : ''}`;
       if (!items.length) {
-        container.innerHTML = '<div class="empty-state">No artifacts yet. Upload some images above.</div>';
+        container.innerHTML = '<div class="empty-state">No images yet. Upload some above.</div>';
         return;
       }
       container.innerHTML = items.map(a => `
-        <div class="artifact-admin-item" id="art-item-${escHtml(a.id)}">
-          <div class="artifact-admin-thumb">
+        <div class="feed-admin-item" id="feed-item-${escHtml(a.id)}">
+          <div class="feed-admin-thumb">
             <img src="${escHtml(a.url)}" alt="${escHtml(a.alt || '')}" loading="lazy">
           </div>
-          <div class="artifact-admin-controls">
+          <div class="feed-admin-controls">
             <button class="size-toggle ${a.size === 'large' ? 'active' : ''}"
-              onclick="toggleArtifactSize('${escHtml(a.id)}')"
+              onclick="toggleFeedSize('${escHtml(a.id)}')"
               title="Click to toggle size">
               ${a.size === 'large' ? 'Large (2col)' : 'Small (1col)'}
             </button>
-            <button class="btn-sm btn-danger" onclick="deleteArtifact('${escHtml(a.id)}')">✕</button>
+            <button class="btn-sm btn-danger" onclick="deleteFeedItem('${escHtml(a.id)}')">✕</button>
           </div>
         </div>`).join('');
     }
@@ -907,15 +907,15 @@
     uploadZone.addEventListener('drop', e => {
       e.preventDefault();
       uploadZone.classList.remove('drag-over');
-      handleArtifactFiles(e.dataTransfer.files);
+      handleFeedFiles(e.dataTransfer.files);
     });
 
-    document.getElementById('artifact-file-input').addEventListener('change', e => {
-      handleArtifactFiles(e.target.files);
+    document.getElementById('feed-file-input').addEventListener('change', e => {
+      handleFeedFiles(e.target.files);
       e.target.value = ''; // reset so same file can be re-selected
     });
 
-    async function handleArtifactFiles(files) {
+    async function handleFeedFiles(files) {
       if (!files.length) return;
       const progressArea = document.getElementById('upload-progress-area');
       const progressBar = document.getElementById('upload-progress-bar');
@@ -926,61 +926,61 @@
         const pct = Math.round((i / files.length) * 100);
         progressBar.style.width = pct + '%';
         progressLabel.textContent = `Uploading ${i + 1} of ${files.length}…`;
-        await uploadArtifactFile(files[i]);
+        await uploadFeedFile(files[i]);
       }
 
       progressBar.style.width = '100%';
       progressLabel.textContent = `Done — ${files.length} image${files.length !== 1 ? 's' : ''} uploaded`;
       setTimeout(() => { progressArea.style.display = 'none'; progressBar.style.width = '0%'; }, 2000);
-      renderArtifactAdminGrid();
+      renderFeedAdminGrid();
     }
 
-    async function uploadArtifactFile(file) {
+    async function uploadFeedFile(file) {
       const formData = new FormData();
       formData.append('image', file);
-      formData.append('alt', 'Design artifact');
+      formData.append('alt', 'Design work');
       formData.append('size', 'small');
       try {
-        const res = await fetch('/api/artifacts/upload', {
+        const res = await fetch('/api/feed/upload', {
           method: 'POST',
           headers: { 'Authorization': 'Bearer ' + token },
           body: formData
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error);
-        siteData.artifacts = [...(siteData.artifacts || []), data.artifact];
+        siteData.feed = [...(siteData.feed || []), data.feedItem];
       } catch (err) {
         toast('Upload failed: ' + err.message, 'error');
       }
     }
 
-    async function toggleArtifactSize(id) {
+    async function toggleFeedSize(id) {
       try {
-        const res = await fetch(`/api/artifacts/${encodeURIComponent(id)}/size`, {
+        const res = await fetch(`/api/feed/${encodeURIComponent(id)}/size`, {
           method: 'PATCH',
           headers: { 'Authorization': 'Bearer ' + token }
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error);
-        const artifact = (siteData.artifacts || []).find(a => a.id === id);
+        const artifact = (siteData.feed || []).find(a => a.id === id);
         if (artifact) artifact.size = data.size;
-        renderArtifactAdminGrid();
+        renderFeedAdminGrid();
       } catch (err) {
         toast('Failed: ' + err.message, 'error');
       }
     }
 
-    async function deleteArtifact(id) {
+    async function deleteFeedItem(id) {
       if (!confirm('Delete this image? The file will be permanently removed.')) return;
       try {
-        const res = await fetch(`/api/artifacts/${encodeURIComponent(id)}`, {
+        const res = await fetch(`/api/feed/${encodeURIComponent(id)}`, {
           method: 'DELETE',
           headers: { 'Authorization': 'Bearer ' + token }
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error);
-        siteData.artifacts = (siteData.artifacts || []).filter(a => a.id !== id);
-        renderArtifactAdminGrid();
+        siteData.feed = (siteData.feed || []).filter(a => a.id !== id);
+        renderFeedAdminGrid();
         toast('Deleted', 'success');
       } catch (err) {
         toast('Failed: ' + err.message, 'error');

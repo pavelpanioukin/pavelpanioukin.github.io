@@ -876,9 +876,9 @@
     // ── Artifacts (image upload) ──────────────────────────────────────────────
 
     function renderFeedAdminGrid() {
-      const container = document.getElementById('artifact-admin-grid');
+      const container = document.getElementById('feed-admin-grid');
       const items = siteData.feed || [];
-      const countEl = document.getElementById('artifacts-count');
+      const countEl = document.getElementById('feed-count');
       if (countEl) countEl.textContent = `${items.length} image${items.length !== 1 ? 's' : ''}`;
       if (!items.length) {
         container.innerHTML = '<div class="empty-state">No images yet. Upload some above.</div>';

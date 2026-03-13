@@ -68,7 +68,7 @@
         <li>
           <div class="sidebar-nav-item" data-tab="feed">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/></svg>
-            Artifacts
+            Feed
           </div>
         </li>
       </ul>
@@ -340,7 +340,7 @@
         </div>
       </div>
 
-      <!-- ── Tab: Artifacts ───────────────────────────────────────────────── -->
+      <!-- ── Tab: Feed ────────────────────────────────────────────────────── -->
       <div class="admin-tab" id="tab-feed">
         <div class="admin-header">
           <h1 class="admin-title">Feed</h1>
@@ -365,7 +365,7 @@
 
         <hr class="divider">
 
-        <p class="section-heading" id="feed-count">0 artifacts</p>
+        <p class="section-heading" id="feed-count">0 images</p>
         <div class="feed-admin-grid" id="feed-admin-grid">
           <!-- Rendered by JS -->
         </div>
@@ -963,8 +963,8 @@
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error);
-        const artifact = (siteData.feed || []).find(a => a.id === id);
-        if (artifact) artifact.size = data.size;
+        const item = (siteData.feed || []).find(a => a.id === id);
+        if (item) item.size = data.size;
         renderFeedAdminGrid();
       } catch (err) {
         toast('Failed: ' + err.message, 'error');

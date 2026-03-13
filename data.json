@@ -43,6 +43,11 @@
           "type": "quote",
           "text": "Texting text",
           "attribution": "wow wow"
+        },
+        {
+          "type": "text",
+          "heading": "WOWOWOWO",
+          "body": "\n⏺ Yes — you can run Claude Code with the --dangerously-skip-permissions flag, which auto-approves all tool calls:\n\n  claude --dangerously-skip-permissions\n\n  Or you can set the permission mode to auto-approve in settings. In Claude Code, run:\n\n  /permissions\n\n  and set it to allow all tools automatically.\n"
         }
       ]
     },

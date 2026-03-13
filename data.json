@@ -1,9 +1,9 @@
 {
   "hero": {
     "headline": "Hey there, I'm Pavel",
-    "headlineEmoji": "\ud83d\ude42",
+    "headlineEmoji": "🙂",
     "headlineRole": "digital product designer & leader",
-    "headlineSymbol": "\u2726",
+    "headlineSymbol": "✦",
     "headlineLocation": "based in Krakow.",
     "subtitle": "I guide the development of digital experiences that align with business aims, positioning design as a key component of strategy and growth."
   },
@@ -46,7 +46,7 @@
         {
           "type": "text",
           "heading": "WOWOWOWO",
-          "body": "\n\u23fa Yes \u2014 you can run Claude Code with the --dangerously-skip-permissions flag, which auto-approves all tool calls:\n\n  claude --dangerously-skip-permissions\n\n  Or you can set the permission mode to auto-approve in settings. In Claude Code, run:\n\n  /permissions\n\n  and set it to allow all tools automatically.\n"
+          "body": "\n⏺ Yes — you can run Claude Code with the --dangerously-skip-permissions flag, which auto-approves all tool calls:\n\n  claude --dangerously-skip-permissions\n\n  Or you can set the permission mode to auto-approve in settings. In Claude Code, run:\n\n  /permissions\n\n  and set it to allow all tools automatically.\n"
         }
       ]
     },
@@ -69,14 +69,14 @@
         {
           "type": "text",
           "heading": "wowowowow",
-          "body": "\n\u23fa Yes \u2014 you can run Claude Code with the --dangerously-skip-permissions flag, which auto-approves all tool calls:\n\n  claude --dangerously-skip-permissions\n\n  Or you can set the permission mode to auto-approve in settings. In Claude Code, run:\n\n  /permissions\n\n  and set it to allow all tools automatically.\n"
+          "body": "\n⏺ Yes — you can run Claude Code with the --dangerously-skip-permissions flag, which auto-approves all tool calls:\n\n  claude --dangerously-skip-permissions\n\n  Or you can set the permission mode to auto-approve in settings. In Claude Code, run:\n\n  /permissions\n\n  and set it to allow all tools automatically.\n"
         },
         {
           "type": "metrics",
           "items": [
             {
               "value": "+99",
-              "label": " \u23fa Yes \u2014 you can run Claude Code with the --dangerously-skip-permissions flag, which auto-approves all tool calls:    claude --dangerously-skip-permissions    Or you can set the permission mode to auto-approve in settings. In Claude Code, run:    /permissions    and set it to allow all tools automatically."
+              "label": " ⏺ Yes — you can run Claude Code with the --dangerously-skip-permissions flag, which auto-approves all tool calls:    claude --dangerously-skip-permissions    Or you can set the permission mode to auto-approve in settings. In Claude Code, run:    /permissions    and set it to allow all tools automatically."
             }
           ]
         }
@@ -86,7 +86,7 @@
       "id": 3,
       "title": "Storebox",
       "subtitle": "First Fully Digital Self-Storage in Europe",
-      "description": "Led product design at Storebox \u2014 Europe's first fully digital self-storage solution. Designed the complete customer journey from discovery to booking to smart-lock access management, replacing all physical touchpoints.",
+      "description": "Led product design at Storebox — Europe's first fully digital self-storage solution. Designed the complete customer journey from discovery to booking to smart-lock access management, replacing all physical touchpoints.",
       "thumbnail": "",
       "thumbnailGradient": "linear-gradient(135deg, #b45309 0%, #d97706 60%, #fbbf24 100%)",
       "thumbnailLabel": "Storebox",
@@ -122,7 +122,7 @@
       "id": 1,
       "company": "IG Group / DailyFX",
       "role": "Lead Product Designer",
-      "period": "2022 \u2014 Present",
+      "period": "2022 — Present",
       "description": "Leading product design for DailyFX, the world's most visited forex trading news and analysis portal. Responsible for the redesign of the core platform, establishing a shared design system, and mentoring a team of designers.",
       "current": true
     },
@@ -130,15 +130,15 @@
       "id": 2,
       "company": "Brainly",
       "role": "Senior Product Designer",
-      "period": "2020 \u2014 2022",
-      "description": "Designed core product features for the world's largest peer-to-peer learning community \u2014 350M+ users globally. Led the design of live tutoring from concept through launch.",
+      "period": "2020 — 2022",
+      "description": "Designed core product features for the world's largest peer-to-peer learning community — 350M+ users globally. Led the design of live tutoring from concept through launch.",
       "current": false
     },
     {
       "id": 3,
       "company": "PandaDoc",
       "role": "Product Designer",
-      "period": "2019 \u2014 2020",
+      "period": "2019 — 2020",
       "description": "Contributed to the growth of PandaDoc's document automation platform. Focused on the document editor experience and workflow automation, improving conversion and retention.",
       "current": false
     },
@@ -146,7 +146,7 @@
       "id": 4,
       "company": "Storebox",
       "role": "Head of Design",
-      "period": "2017 \u2014 2019",
+      "period": "2017 — 2019",
       "description": "Founded and scaled the design function at Storebox. Established the design system, brand identity, and created Europe's first fully digital self-storage customer experience.",
       "current": false
     },
@@ -154,7 +154,7 @@
       "id": 5,
       "company": "INDEXIUM Games",
       "role": "UI/UX Designer",
-      "period": "2015 \u2014 2017",
+      "period": "2015 — 2017",
       "description": "Designed UI/UX for mobile games and interactive experiences. Built a strong foundation in user-centred design, visual communication, and real-time interface design under tight constraints.",
       "current": false
     }
@@ -163,12 +163,12 @@
     {
       "id": 1,
       "title": "User-Centered Design",
-      "description": "Every design decision starts and ends with the user. I advocate for deep user research, empathy mapping, and continuous testing to ensure products genuinely serve people's needs \u2014 not just business assumptions."
+      "description": "Every design decision starts and ends with the user. I advocate for deep user research, empathy mapping, and continuous testing to ensure products genuinely serve people's needs — not just business assumptions."
     },
     {
       "id": 2,
       "title": "Iterative Approach",
-      "description": "Great design is never finished on the first pass. I embrace rapid prototyping and continuous iteration \u2014 shipping, learning, and refining based on real-world feedback rather than internal consensus."
+      "description": "Great design is never finished on the first pass. I embrace rapid prototyping and continuous iteration — shipping, learning, and refining based on real-world feedback rather than internal consensus."
     },
     {
       "id": 3,
@@ -183,9 +183,9 @@
   ],
   "about": {
     "photo": "/assets/images/pavel-photo.jpg",
-    "headline": "Pavel is a designer and leader, based in \ud83c\udff0 Krakow, Poland.",
-    "bio": "I'm a digital product designer and leader based in Krakow, Poland. With over a decade of experience designing digital products, I specialise in creating experiences that balance user needs with business goals \u2014 and in building the teams and systems that make great design repeatable.",
-    "bio2": "I've had the privilege of working with fast-growing startups and established companies across fintech, edtech, and SaaS. I believe great design is invisible \u2014 it just works.",
+    "headline": "Pavel is a designer and leader, based in 🏰 Krakow, Poland.",
+    "bio": "I'm a digital product designer and leader based in Krakow, Poland. With over a decade of experience designing digital products, I specialise in creating experiences that balance user needs with business goals — and in building the teams and systems that make great design repeatable.",
+    "bio2": "I've had the privilege of working with fast-growing startups and established companies across fintech, edtech, and SaaS. I believe great design is invisible — it just works.",
     "bio3": "Outside of work I'm drawn to typography, film photography, and long trail runs in the mountains.",
     "skills": [
       "Product Strategy",
@@ -203,7 +203,7 @@
   "contact": {
     "email": "hello@panioukin.design",
     "headline": "Let's build something great together.",
-    "subtext": "I'm always interested in new projects, opportunities to collaborate, and conversations about design. Drop me a line \u2014 I read every message."
+    "subtext": "I'm always interested in new projects, opportunities to collaborate, and conversations about design. Drop me a line — I read every message."
   },
   "social": {
     "linkedin": "https://linkedin.com/in/pavelpanioukin",
@@ -211,8 +211,8 @@
     "twitter": "https://twitter.com/pavelpanioukin"
   },
   "meta": {
-    "siteTitle": "Pavel Panioukin \u2014 Design Leader",
-    "copyright": "\u00a9 2026 Pavel Panioukin. All rights reserved."
+    "siteTitle": "Pavel Panioukin — Design Leader",
+    "copyright": "© 2026 Pavel Panioukin. All rights reserved."
   },
   "feed": [
     {
@@ -243,6 +243,18 @@
       "id": "1773423006446",
       "url": "/assets/images/feed/artifact-1773423006442.jpg",
       "alt": "Design artifact",
+      "size": "small"
+    },
+    {
+      "id": "1773424706247",
+      "url": "/assets/images/feed/feed-1773424706226.png",
+      "alt": "Design work",
+      "size": "small"
+    },
+    {
+      "id": "1773424715214",
+      "url": "/assets/images/feed/feed-1773424715212.png",
+      "alt": "Design work",
       "size": "small"
     }
   ]

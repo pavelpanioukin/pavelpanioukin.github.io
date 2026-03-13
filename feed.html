@@ -46,8 +46,9 @@
         grid.innerHTML = '<p class="bento-empty">Nothing here yet.</p>';
         return;
       }
-      grid.innerHTML = feed.map(a => `
-        <div class="bento-item${a.size === 'large' ? ' large' : ''}" onclick="openLightbox('${escHtml(a.url)}', '${escHtml(a.alt || '')}')">
+      const sizeClass = s => ({ large: ' large', tall: ' tall', feature: ' feature' }[s] || '');
+      grid.innerHTML = feed.map((a, i) => `
+        <div class="bento-item${sizeClass(a.size)}" style="animation-delay:${i * 45}ms" onclick="openLightbox('${escHtml(a.url)}', '${escHtml(a.alt || '')}')">
           <img src="${escHtml(a.url)}" alt="${escHtml(a.alt || '')}" loading="lazy">
         </div>`).join('');
     }

@@ -285,7 +285,9 @@ button { font-family: inherit; cursor: pointer; }
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
+  grid-auto-rows: 260px;
+  grid-auto-flow: dense;
+  gap: 16px;
   margin-top: 2px;
 }
 
@@ -293,11 +295,13 @@ button { font-family: inherit; cursor: pointer; }
   position: relative;
   overflow: hidden;
   background: var(--bg-off);
-  aspect-ratio: 4 / 3;
+  border-radius: 12px;
   cursor: pointer;
 }
 
-.bento-item.large { grid-column: span 2; }
+.bento-item.large   { grid-column: span 2; }
+.bento-item.tall    { grid-row: span 2; }
+.bento-item.feature { grid-column: span 2; grid-row: span 2; }
 
 .bento-item img {
   width: 100%;
@@ -307,8 +311,17 @@ button { font-family: inherit; cursor: pointer; }
   transition: transform 0.5s var(--ease);
 }
 
-.bento-item { cursor: pointer; }
-.bento-item:hover img { transform: scale(1.03); }
+.bento-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.35s var(--ease);
+  border-radius: inherit;
+}
+
+.bento-item:hover img   { transform: scale(1.06); }
+.bento-item:hover::after { background: rgba(0, 0, 0, 0.12); }
 
 /* ── Feed lightbox ───────────────────────────────────────────────────────────── */
 
@@ -333,6 +346,15 @@ button { font-family: inherit; cursor: pointer; }
   max-height: 90vh;
   object-fit: contain;
   border-radius: 4px;
+}
+
+@keyframes bento-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.bento-item {
+  animation: bento-in 0.4s var(--ease) both;
 }
 
 .bento-empty {
@@ -1001,8 +1023,9 @@ button { font-family: inherit; cursor: pointer; }
 @media (max-width: 1024px) {
   :root { --gutter: 28px; }
   .project-grid { grid-template-columns: repeat(2, 1fr); }
-  .bento-grid { grid-template-columns: repeat(2, 1fr); }
+  .bento-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 220px; }
   .bento-item.large { grid-column: span 2; }
+  .bento-item.feature { grid-column: span 2; }
   .about-split { grid-template-columns: 1fr; }
   .about-photo-col { min-height: 300px; border-right: none; border-bottom: 1px solid var(--border); }
   .contact-section { grid-template-columns: 1fr; gap: 40px; }
@@ -1012,8 +1035,10 @@ button { font-family: inherit; cursor: pointer; }
 @media (max-width: 680px) {
   :root { --gutter: 20px; }
   .project-grid { grid-template-columns: 1fr; }
-  .bento-grid { grid-template-columns: 1fr; }
-  .bento-item.large { grid-column: span 1; }
+  .bento-grid { grid-template-columns: 1fr; grid-auto-rows: 240px; }
+  .bento-item.large,
+  .bento-item.tall,
+  .bento-item.feature { grid-column: span 1; grid-row: span 1; }
   .philosophy-grid { grid-template-columns: 1fr; }
   .info-row { flex-direction: column; gap: 6px; }
   .header-bio { text-align: left; }

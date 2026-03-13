@@ -169,7 +169,7 @@ app.post('/api/deploy', requireAuth, (req, res) => {
   }
 
   try {
-    run('git add data.json assets/images/artifacts');
+    run('git add -A');
     const status = run('git status --porcelain');
     if (!status) {
       return res.json({ success: true, message: 'Nothing to deploy — already up to date.' });

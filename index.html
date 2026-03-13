@@ -61,7 +61,7 @@
         : '';
 
       el.innerHTML = `
-        <a href="${escHtml(p.caseStudyUrl || '/project.html?id=' + p.id)}">
+        <a href="/project.html?id=${p.id}">
           <div class="featured-image" style="${bgStyle}">${imgHTML}</div>
           <div class="featured-meta">
             <h2 class="featured-title">${escHtml(p.title)}</h2>
@@ -79,7 +79,7 @@
           : '';
 
         return `
-          <a class="project-card" href="${escHtml(p.caseStudyUrl || '/project.html?id=' + p.id)}">
+          <a class="project-card" href="/project.html?id=${p.id}">
             <div class="card-image" style="${bgStyle}">${imgHTML}</div>
             <div class="card-meta">
               <h3>${escHtml(p.title)}</h3>

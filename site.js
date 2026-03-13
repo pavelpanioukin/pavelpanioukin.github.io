@@ -135,9 +135,7 @@ function openProject(projects, id) {
     ? `<img src="${escHtml(p.thumbnail)}" alt="${escHtml(p.title)}">`
     : `<span class="project-card-label" style="font-size:3rem">${escHtml(p.thumbnailLabel || p.title)}</span>`;
   const tags = (p.tags || []).map(t => `<span class="modal-tag">${escHtml(t)}</span>`).join('');
-  const actionBtn = p.caseStudyUrl && p.caseStudyUrl !== '#'
-    ? `<a class="modal-btn" href="${escHtml(p.caseStudyUrl)}" target="_blank" rel="noopener">View Case Study →</a>`
-    : `<span class="modal-btn" style="opacity:.4;cursor:default">Case Study Coming Soon</span>`;
+  const actionBtn = `<a class="modal-btn" href="/project.html?id=${p.id}">View Case Study →</a>`;
 
   document.getElementById('modal-body').innerHTML = `
     <div class="modal-thumb" style="${thumbStyle}">${thumbContent}</div>

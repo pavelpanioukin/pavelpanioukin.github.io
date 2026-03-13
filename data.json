@@ -67,7 +67,22 @@
       ],
       "year": "2022",
       "featured": true,
-      "sections": []
+      "sections": [
+        {
+          "type": "text",
+          "heading": "wowowowow",
+          "body": "\n⏺ Yes — you can run Claude Code with the --dangerously-skip-permissions flag, which auto-approves all tool calls:\n\n  claude --dangerously-skip-permissions\n\n  Or you can set the permission mode to auto-approve in settings. In Claude Code, run:\n\n  /permissions\n\n  and set it to allow all tools automatically.\n"
+        },
+        {
+          "type": "metrics",
+          "items": [
+            {
+              "value": "+99",
+              "label": " ⏺ Yes — you can run Claude Code with the --dangerously-skip-permissions flag, which auto-approves all tool calls:    claude --dangerously-skip-permissions    Or you can set the permission mode to auto-approve in settings. In Claude Code, run:    /permissions    and set it to allow all tools automatically."
+            }
+          ]
+        }
+      ]
     },
     {
       "id": 3,

@@ -949,7 +949,7 @@
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.error);
-        siteData.feed = [...(siteData.feed || []), data.artifact];
+        siteData.feed = [...(siteData.feed || []), data.item];
       } catch (err) {
         toast('Upload failed: ' + err.message, 'error');
       }

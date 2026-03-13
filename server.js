@@ -115,7 +115,7 @@ app.post('/api/feed/upload', requireAuth, upload.single('image'), (req, res) => 
     data.feed = data.feed || [];
     data.feed.push(item);
     fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2), 'utf8');
-    res.json({ success: true, artifact: item });
+    res.json({ success: true, item });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

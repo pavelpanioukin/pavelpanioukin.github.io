@@ -299,6 +299,7 @@ button { font-family: inherit; cursor: pointer; }
 .bento-item {
   display: block;
   overflow: hidden;
+  border-radius: 8px;
   background: var(--bg-off);
   cursor: pointer;
   animation: bento-in 0.3s ease var(--delay, 0ms) both;

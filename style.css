@@ -279,7 +279,8 @@ button { font-family: inherit; cursor: pointer; }
 /* ── Bento / Feed Grid ───────────────────────────────────────────────────────── */
 
 .bento-section {
-  padding: 0 0 24px;
+  padding: 0 4px 24px;
+  max-width: none;
 }
 
 .bento-grid {

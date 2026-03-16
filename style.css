@@ -295,16 +295,24 @@ button { font-family: inherit; cursor: pointer; }
   overflow: hidden;
   background: var(--bg-off);
   cursor: pointer;
+  animation: bento-in 0.3s ease var(--delay, 0ms) both;
 }
 
 .bento-item.span-2 { grid-column: span 2; }
 .bento-item.span-3 { grid-column: span 3; }
 
 .bento-item img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+@keyframes bento-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 /* ── Feed lightbox ───────────────────────────────────────────────────────────── */
@@ -329,15 +337,6 @@ button { font-family: inherit; cursor: pointer; }
   max-width: 90vw;
   max-height: 90vh;
   object-fit: contain;
-}
-
-@keyframes bento-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-.bento-item {
-  animation: bento-in 0.3s ease both;
 }
 
 .bento-empty {

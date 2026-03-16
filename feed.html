@@ -46,11 +46,14 @@
         grid.innerHTML = '<p class="bento-empty">Nothing here yet.</p>';
         return;
       }
-      const sizeClass = s => ({ large: ' large', tall: ' tall', feature: ' feature' }[s] || '');
-      grid.innerHTML = feed.map((a, i) => `
-        <div class="bento-item${sizeClass(a.size)}" style="animation-delay:${i * 45}ms" onclick="openLightbox('${escHtml(a.url)}', '${escHtml(a.alt || '')}')">
+      grid.innerHTML = feed.map((a, i) => {
+        const spanClass = a.span > 1 ? ` span-${a.span}` : '';
+        const ratio = a.aspectRatio || '4/3';
+        return `
+        <div class="bento-item${spanClass}" style="aspect-ratio:${ratio};animation-delay:${i * 30}ms" onclick="openLightbox('${escHtml(a.url)}', '${escHtml(a.alt || '')}')">
           <img src="${escHtml(a.url)}" alt="${escHtml(a.alt || '')}" loading="lazy">
-        </div>`).join('');
+        </div>`;
+      }).join('');
     }
 
     function openLightbox(src, alt) {

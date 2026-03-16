@@ -219,67 +219,78 @@
       "id": "1773422990896",
       "url": "/assets/images/feed/artifact-1773422990879.png",
       "alt": "Design work",
-      "size": "small"
+      "span": 1,
+      "aspectRatio": "4/3"
     },
     {
       "id": "1773422993652",
       "url": "/assets/images/feed/artifact-1773422993643.png",
       "alt": "Design work",
-      "size": "small"
+      "span": 2,
+      "aspectRatio": "16/9"
     },
     {
       "id": "1773422995946",
       "url": "/assets/images/feed/artifact-1773422995938.png",
       "alt": "Design work",
-      "size": "large"
+      "span": 1,
+      "aspectRatio": "4/3"
     },
     {
       "id": "1773423000443",
       "url": "/assets/images/feed/artifact-1773423000441.jpg",
       "alt": "Design work",
-      "size": "small"
+      "span": 1,
+      "aspectRatio": "4/3"
     },
     {
       "id": "1773423006446",
       "url": "/assets/images/feed/artifact-1773423006442.jpg",
       "alt": "Design work",
-      "size": "small"
+      "span": 1,
+      "aspectRatio": "4/3"
     },
     {
       "id": "1773424706247",
       "url": "/assets/images/feed/feed-1773424706226.png",
       "alt": "Design work",
-      "size": "small"
+      "span": 3,
+      "aspectRatio": "16/5"
     },
     {
       "id": "1773424715214",
       "url": "/assets/images/feed/feed-1773424715212.png",
       "alt": "Design work",
-      "size": "small"
+      "span": 2,
+      "aspectRatio": "4/3"
     },
     {
       "id": "1773424739164",
       "url": "/assets/images/feed/feed-1773424739162.jpeg",
       "alt": "Design work",
-      "size": "small"
+      "span": 1,
+      "aspectRatio": "4/3"
     },
     {
       "id": "1773424820473",
       "url": "/assets/images/feed/feed-1773424820471.png",
       "alt": "Design work",
-      "size": "small"
+      "span": 1,
+      "aspectRatio": "4/3"
     },
     {
       "id": "1773425129269",
       "url": "/assets/images/feed/feed-1773425129266.jpeg",
       "alt": "Design work",
-      "size": "large"
+      "span": 2,
+      "aspectRatio": "16/9"
     },
     {
       "id": "1773425132769",
       "url": "/assets/images/feed/feed-1773425132767.jpeg",
       "alt": "Design work",
-      "size": "small"
+      "span": 1,
+      "aspectRatio": "4/3"
     }
   ]
 }

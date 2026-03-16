@@ -95,7 +95,6 @@ button { font-family: inherit; cursor: pointer; }
   z-index: 100;
   background: #fff;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .header-nav {

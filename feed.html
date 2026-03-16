@@ -48,7 +48,7 @@
       }
       grid.innerHTML = feed.map((a, i) => `
         <div class="bento-item" style="--delay:${i * 30}ms" onclick="openLightbox('${escHtml(a.url)}', '${escHtml(a.alt || '')}')">
-          <img src="${escHtml(a.url)}" alt="${escHtml(a.alt || '')}" loading="lazy">
+          <img src="${escHtml(a.url)}" alt="${escHtml(a.alt || '')}">
         </div>`).join('');
     }
 

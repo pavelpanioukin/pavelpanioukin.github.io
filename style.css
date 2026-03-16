@@ -283,15 +283,21 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .bento-grid {
-  columns: 3;
-  column-gap: 4px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
   margin-top: 4px;
+  align-items: start;
+}
+
+.bento-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .bento-item {
-  break-inside: avoid;
   display: block;
-  margin-bottom: 4px;
   overflow: hidden;
   background: var(--bg-off);
   cursor: pointer;
@@ -999,7 +1005,7 @@ button { font-family: inherit; cursor: pointer; }
 @media (max-width: 1024px) {
   :root { --gutter: 28px; }
   .project-grid { grid-template-columns: repeat(2, 1fr); }
-  .bento-grid { columns: 2; }
+  .bento-grid { grid-template-columns: repeat(3, 1fr); }
   .about-split { grid-template-columns: 1fr; }
   .about-photo-col { min-height: 300px; border-right: none; border-bottom: 1px solid var(--border); }
   .contact-section { grid-template-columns: 1fr; gap: 40px; }
@@ -1009,7 +1015,7 @@ button { font-family: inherit; cursor: pointer; }
 @media (max-width: 680px) {
   :root { --gutter: 20px; }
   .project-grid { grid-template-columns: 1fr; }
-  .bento-grid { columns: 1; }
+  .bento-grid { grid-template-columns: 1fr; }
   .philosophy-grid { grid-template-columns: 1fr; }
   .info-row { flex-direction: column; gap: 6px; }
   .header-bio { text-align: left; }

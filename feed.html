@@ -20,7 +20,11 @@
     </div>
 
     <div class="bento-section container">
-      <div class="bento-grid" id="bento-grid"></div>
+      <div class="bento-grid" id="bento-grid">
+        <div class="bento-col" id="bento-col-0"></div>
+        <div class="bento-col" id="bento-col-1"></div>
+        <div class="bento-col" id="bento-col-2"></div>
+      </div>
     </div>
   </main>
 
@@ -46,10 +50,22 @@
         grid.innerHTML = '<p class="bento-empty">Nothing here yet.</p>';
         return;
       }
-      grid.innerHTML = feed.map((a, i) => `
-        <div class="bento-item" style="--delay:${i * 30}ms" onclick="openLightbox('${escHtml(a.url)}', '${escHtml(a.alt || '')}')">
-          <img src="${escHtml(a.url)}" alt="${escHtml(a.alt || '')}">
-        </div>`).join('');
+      const cols = [
+        document.getElementById('bento-col-0'),
+        document.getElementById('bento-col-1'),
+        document.getElementById('bento-col-2')
+      ];
+      feed.forEach((a, i) => {
+        const div = document.createElement('div');
+        div.className = 'bento-item';
+        div.style.setProperty('--delay', i * 30 + 'ms');
+        div.onclick = () => openLightbox(a.url, a.alt || '');
+        const img = document.createElement('img');
+        img.src = a.url;
+        img.alt = a.alt || '';
+        div.appendChild(img);
+        cols[i % 3].appendChild(div);
+      });
     }
 
     function openLightbox(src, alt) {

@@ -16,18 +16,23 @@
 
   <main class="page-content">
 
-    <!-- Hero split: photo left / headline + lede right -->
-    <div class="about-split">
-      <div class="about-photo-col">
-        <img src="https://cdn.prod.website-files.com/65be39205f54112ef39acb44/65c7f32f74651f26dc6f1e10_photo_2024-02-10%2023.04.22.jpeg" alt="Pavel Panioukin">
-      </div>
-      <div class="about-headline-col">
-        <h1 class="about-headline">I've spent 12 years designing products people actually use — and the last two learning how to do it twice as fast.</h1>
-        <p class="about-bio-text">I'm a digital product designer and design leader based in Krakow. I've led design across fintech, edtech, and SaaS — building teams, shipping systems, and staying close enough to the craft to still notice when something's 2ms off. Right now I'm exploring what it means to design in the AI era: using Claude Code, Cursor, and generative tools not to replace judgment, but to move faster without losing taste.</p>
-      </div>
+    <!-- 1. Hero headline — typographic, word-per-line, photo inline -->
+    <div class="container" style="padding-top:64px;padding-bottom:64px;border-bottom:1px solid var(--border)">
+      <h1 class="about-headline">Pavel</h1>
+      <h1 class="about-headline">is a design</h1>
+      <h1 class="about-headline">leader</h1>
+      <img class="about-hero-img" src="https://cdn.prod.website-files.com/65be39205f54112ef39acb44/65c7f32f74651f26dc6f1e10_photo_2024-02-10%2023.04.22.jpeg" alt="Pavel Panioukin">
+      <h1 class="about-headline">and craftsman,</h1>
+      <h1 class="about-headline">AI-first,</h1>
+      <h1 class="about-headline" style="margin-bottom:0">based in Krakow.</h1>
     </div>
 
-    <!-- Experience -->
+    <!-- 2. Info paragraph -->
+    <section class="timeline-section container">
+      <p class="about-bio-text">I lead digital product design across fintech, edtech, and SaaS. For 12 years I've worked at the intersection of craft, strategy, and team-building — at IG Group/DailyFX, Brainly, and now PandaDoc. I care about taste, precision, and shipping things that actually work. Right now I'm building with AI tools — Claude Code, Cursor, generative prototyping — to close the gap between what I imagine and what ships.</p>
+    </section>
+
+    <!-- 3. Experience -->
     <section class="timeline-section container">
       <h2 class="section-label">Experience</h2>
       <div class="timeline">
@@ -40,6 +45,7 @@
           <div class="timeline-right">
             <div class="timeline-company"><a href="https://pandadoc.com" target="_blank" rel="noopener">PandaDoc</a></div>
             <div class="timeline-role">Senior Product Designer, Integrations</div>
+            <p class="timeline-desc">At PandaDoc I design the integrations ecosystem — the connective tissue between PandaDoc and the tools sales teams already live in. I focus on reducing friction in complex, API-heavy workflows without exposing technical complexity to end users. It's a craft challenge I find genuinely interesting: making powerful things feel obvious.</p>
           </div>
         </div>
 
@@ -50,6 +56,7 @@
           <div class="timeline-right">
             <div class="timeline-company"><a href="https://brainly.com" target="_blank" rel="noopener">Brainly</a></div>
             <div class="timeline-role">Senior Product Designer</div>
+            <p class="timeline-desc">At Brainly I worked on features serving 350M+ students globally, with a focus on live tutoring — a 0-to-1 experience connecting students with on-demand tutors. I ran end-to-end design from research through launch, working closely with product and engineering across three time zones. Shipping a realtime product at that scale taught me as much about constraints as about craft.</p>
           </div>
         </div>
 
@@ -60,6 +67,7 @@
           <div class="timeline-right">
             <div class="timeline-company"><a href="https://ig.com" target="_blank" rel="noopener">IG Group / DailyFX</a></div>
             <div class="timeline-role">Lead Product Designer</div>
+            <p class="timeline-desc">Six years at IG Group meant designing for serious traders — people who make consequential decisions at speed. I led the redesign of DailyFX, the world's most-visited forex analysis platform, and built a shared design system across multiple product surfaces. It's where I moved from designer to design leader, managing a team while staying close enough to the work to notice when something's off by 2px.</p>
           </div>
         </div>
 
@@ -70,6 +78,7 @@
           <div class="timeline-right">
             <div class="timeline-company">Viaden Media</div>
             <div class="timeline-role">Product Designer</div>
+            <p class="timeline-desc">An early role in mobile products at a time when the App Store was still a new frontier. I shipped multiple products across iOS and Android, learning fast with small teams and thin feedback loops. It's where I developed the habit of prototyping first and arguing second.</p>
           </div>
         </div>
 
@@ -80,13 +89,14 @@
           <div class="timeline-right">
             <div class="timeline-company">INDEXIUM Games</div>
             <div class="timeline-role">UI/UX Designer</div>
+            <p class="timeline-desc">My first real design job — UI/UX for mobile games. High constraints, immediate feedback from players, and a deep appreciation for how quickly small visual decisions affect feel. A foundation I still draw on.</p>
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- How I work -->
+    <!-- 4. Philosophy -->
     <section class="philosophy-section container">
       <h2 class="section-label">How I work</h2>
       <div class="timeline">
@@ -124,14 +134,21 @@
       </div>
     </section>
 
-    <!-- Contact -->
+    <!-- 5. Contact -->
     <section class="cta-section container">
-      <p class="cta-label">Say hi →</p>
+      <p class="cta-label">Say hi</p>
+      <p class="cta-headline"><a href="mailto:hello@pavelpanioukin.com">hello@pavelpanioukin.com</a></p>
       <div class="footer-social">
-        <a href="mailto:hello@pavelpanioukin.com" class="cta-link">hello@pavelpanioukin.com</a>
         <a href="https://www.linkedin.com/in/pavelpanioukin/" target="_blank" rel="noopener" class="cta-link">LinkedIn</a>
         <a href="https://dribbble.com/Entelluz" target="_blank" rel="noopener" class="cta-link">Dribbble</a>
         <a href="https://twitter.com/Entelluz" target="_blank" rel="noopener" class="cta-link">X / Twitter</a>
+      </div>
+    </section>
+
+    <!-- 6. Next → Work -->
+    <section class="project-page-nav container">
+      <div class="project-page-nav-inner">
+        <a href="/work.html" class="project-nav-link">Next → Work</a>
       </div>
     </section>
 

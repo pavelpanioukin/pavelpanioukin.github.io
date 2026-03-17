@@ -350,6 +350,13 @@ button { font-family: inherit; cursor: pointer; }
 
 /* ── About Page ──────────────────────────────────────────────────────────────── */
 
+.about-hero-img {
+  width: 100%;
+  max-width: 480px;
+  display: block;
+  margin: 0.5em 0;
+}
+
 .about-split {
   display: grid;
   grid-template-columns: 1fr 1fr;

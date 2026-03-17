@@ -1277,3 +1277,74 @@ main a:not(.project-card):not(.work-card):not(.feed-image):not(.nav-link):not(.c
 }
 
 .cta-primary:hover { opacity: 0.5; }
+
+/* ── About Grid Layout ───────────────────────────────────────────────────────── */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem 6rem;
+}
+
+.about-full {
+  grid-column: 1 / -1;
+}
+
+/* Hero inside grid — remove standalone border/padding */
+.about-grid .about-hero {
+  border-bottom: none;
+  padding: 0 0 3rem;
+}
+
+/* Bio — left column */
+.about-info {
+  grid-column: 1;
+  padding-right: 2rem;
+  padding-top: 0.25rem;
+  align-self: start;
+}
+
+.about-info .about-bio-text {
+  max-width: 52ch;
+}
+
+/* Experience section inside grid */
+.about-grid .timeline-section {
+  padding: 0;
+  border-bottom: none;
+  border-top: 1px solid var(--border);
+  padding-top: 3rem;
+}
+
+/* Experience entries — wider content column */
+.about-grid .timeline-section .timeline-item {
+  grid-template-columns: 1fr 2fr;
+}
+
+/* Sub-role separator */
+.exp-subrole {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    padding: 2rem 1.25rem 4rem;
+  }
+  .about-full,
+  .about-info {
+    grid-column: 1 !important;
+  }
+  .about-info {
+    padding-right: 0;
+  }
+  .about-grid .timeline-section .timeline-item {
+    grid-template-columns: 1fr;
+  }
+}

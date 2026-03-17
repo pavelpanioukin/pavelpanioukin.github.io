@@ -15,27 +15,126 @@
   <header id="site-header"></header>
 
   <main class="page-content">
-    <!-- Split hero: photo left / headline right -->
+
+    <!-- Hero split: photo left / headline + lede right -->
     <div class="about-split">
-      <div class="about-photo-col" id="about-photo">
-        <div class="about-photo-placeholder">Pavel photo</div>
+      <div class="about-photo-col">
+        <img src="https://cdn.prod.website-files.com/65be39205f54112ef39acb44/65c7f32f74651f26dc6f1e10_photo_2024-02-10%2023.04.22.jpeg" alt="Pavel Panioukin">
       </div>
       <div class="about-headline-col">
-        <h1 class="about-headline" id="about-headline">Pavel is a designer and leader, based in 🏰 Krakow, Poland.</h1>
+        <h1 class="about-headline">I've spent 12 years designing products people actually use — and the last two learning how to do it twice as fast.</h1>
+        <p class="about-bio-text">I'm a digital product designer and design leader based in Krakow. I've led design across fintech, edtech, and SaaS — building teams, shipping systems, and staying close enough to the craft to still notice when something's 2ms off. Right now I'm exploring what it means to design in the AI era: using Claude Code, Cursor, and generative tools not to replace judgment, but to move faster without losing taste.</p>
       </div>
     </div>
 
-    <!-- Experience timeline -->
+    <!-- Experience -->
     <section class="timeline-section container">
       <h2 class="section-label">Experience</h2>
-      <div class="timeline" id="timeline"></div>
+      <div class="timeline">
+
+        <div class="timeline-item current">
+          <div class="timeline-left">
+            <span class="timeline-period">2022 — Present</span>
+            <span class="timeline-badge">Now</span>
+          </div>
+          <div class="timeline-right">
+            <div class="timeline-company"><a href="https://pandadoc.com" target="_blank" rel="noopener">PandaDoc</a></div>
+            <div class="timeline-role">Senior Product Designer, Integrations</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-left">
+            <span class="timeline-period">Feb 2021 — Jul 2022</span>
+          </div>
+          <div class="timeline-right">
+            <div class="timeline-company"><a href="https://brainly.com" target="_blank" rel="noopener">Brainly</a></div>
+            <div class="timeline-role">Senior Product Designer</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-left">
+            <span class="timeline-period">Jul 2014 — Dec 2020</span>
+          </div>
+          <div class="timeline-right">
+            <div class="timeline-company"><a href="https://ig.com" target="_blank" rel="noopener">IG Group / DailyFX</a></div>
+            <div class="timeline-role">Lead Product Designer</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-left">
+            <span class="timeline-period">Mar 2012 — Jun 2014</span>
+          </div>
+          <div class="timeline-right">
+            <div class="timeline-company">Viaden Media</div>
+            <div class="timeline-role">Product Designer</div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-left">
+            <span class="timeline-period">Aug 2011 — Oct 2012</span>
+          </div>
+          <div class="timeline-right">
+            <div class="timeline-company">INDEXIUM Games</div>
+            <div class="timeline-role">UI/UX Designer</div>
+          </div>
+        </div>
+
+      </div>
     </section>
 
-    <!-- Philosophy -->
+    <!-- How I work -->
     <section class="philosophy-section container">
-      <h2 class="section-label">Philosophy</h2>
-      <div class="philosophy-grid" id="philosophy-grid"></div>
+      <h2 class="section-label">How I work</h2>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-left">
+            <span class="timeline-period">01</span>
+          </div>
+          <div class="timeline-right">
+            <div class="timeline-company">Craft first, process second.</div>
+            <p class="timeline-desc">Good design comes from taste, curiosity, and iteration — not frameworks. I use process to protect space for craft, not to replace it.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-left">
+            <span class="timeline-period">02</span>
+          </div>
+          <div class="timeline-right">
+            <div class="timeline-company">Design and code are the same conversation.</div>
+            <p class="timeline-desc">I prototype in the browser, write my own CSS, and use AI tools to close the gap between what I imagine and what ships. The closer I stay to the material, the better the decisions.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-left">
+            <span class="timeline-period">03</span>
+          </div>
+          <div class="timeline-right">
+            <div class="timeline-company">Leadership means raising the floor.</div>
+            <p class="timeline-desc">I care more about making a team 30% better than being the best individual contributor. Strong feedback culture, clear principles, shared ownership.</p>
+          </div>
+        </div>
+
+      </div>
     </section>
+
+    <!-- Contact -->
+    <section class="cta-section container">
+      <p class="cta-label">Say hi →</p>
+      <div class="footer-social">
+        <a href="mailto:hello@pavelpanioukin.com" class="cta-link">hello@pavelpanioukin.com</a>
+        <a href="https://www.linkedin.com/in/pavelpanioukin/" target="_blank" rel="noopener" class="cta-link">LinkedIn</a>
+        <a href="https://dribbble.com/Entelluz" target="_blank" rel="noopener" class="cta-link">Dribbble</a>
+        <a href="https://twitter.com/Entelluz" target="_blank" rel="noopener" class="cta-link">X / Twitter</a>
+      </div>
+    </section>
+
   </main>
 
   <footer id="site-footer"></footer>
@@ -46,47 +145,7 @@
     async function init() {
       const data = await fetch('data.json?v=' + Date.now()).then(r => r.json());
       renderFooterData(data);
-
-      const about = data.about || {};
-
-      // Photo
-      if (about.photo) {
-        document.getElementById('about-photo').innerHTML =
-          `<img src="${escHtml(about.photo)}" alt="Pavel Panioukin">`;
-      }
-
-      // Headline
-      if (about.headline) {
-        setText('about-headline', about.headline);
-      }
-
-      // Experience timeline
-      const timeline = document.getElementById('timeline');
-      const exp = data.experience || [];
-      timeline.innerHTML = exp.map(e => `
-        <div class="timeline-item${e.current ? ' current' : ''}">
-          <div class="timeline-left">
-            <span class="timeline-period">${escHtml(e.period)}</span>
-            ${e.current ? '<span class="timeline-badge">Now</span>' : ''}
-          </div>
-          <div class="timeline-right">
-            <div class="timeline-company">${escHtml(e.company)}</div>
-            <div class="timeline-role">${escHtml(e.role)}</div>
-            <p class="timeline-desc">${escHtml(e.description)}</p>
-          </div>
-        </div>`).join('');
-
-      // Philosophy grid
-      const philosophyGrid = document.getElementById('philosophy-grid');
-      const philosophy = data.philosophy || [];
-      philosophyGrid.innerHTML = philosophy.map((p, i) => `
-        <div class="philosophy-card">
-          <div class="philosophy-num">0${i + 1}</div>
-          <div class="philosophy-title">${escHtml(p.title)}</div>
-          <p class="philosophy-desc">${escHtml(p.description)}</p>
-        </div>`).join('');
     }
-
     init();
   </script>
 </body>

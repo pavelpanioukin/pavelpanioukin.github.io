@@ -350,55 +350,20 @@ button { font-family: inherit; cursor: pointer; }
 
 /* ── About Page ──────────────────────────────────────────────────────────────── */
 
+.about-hero {
+  padding: 64px 0;
+  border-bottom: 1px solid var(--border);
+}
+
 .about-hero-img {
   width: 100%;
   max-width: 480px;
   display: block;
-  margin: 0.5em 0;
+  margin: 32px 0;
 }
 
-.about-split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 60vh;
-  border-bottom: 1px solid var(--border);
-}
-
-.about-photo-col {
-  border-right: 1px solid var(--border);
-  background: #ebebeb;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 480px;
-  overflow: hidden;
-}
-
-.about-photo-col img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.about-photo-placeholder {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  color: #aaa;
-  font-size: 0.8125rem;
-}
-
-.about-photo-placeholder svg {
-  opacity: 0.4;
-}
-
-.about-headline-col {
-  padding: 60px var(--gutter);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.about-hero .about-headline:last-of-type {
+  margin-bottom: 0;
 }
 
 .about-headline {
@@ -419,7 +384,7 @@ button { font-family: inherit; cursor: pointer; }
   font-size: 1.0625rem;
   color: var(--text-dim);
   line-height: 1.75;
-  max-width: 480px;
+  max-width: 640px;
 }
 
 /* ── Experience Timeline (about page) ────────────────────────────────────────── */
@@ -1014,8 +979,6 @@ button { font-family: inherit; cursor: pointer; }
   :root { --gutter: 28px; }
   .project-grid { grid-template-columns: repeat(2, 1fr); }
   .bento-grid { grid-template-columns: repeat(3, 1fr); }
-  .about-split { grid-template-columns: 1fr; }
-  .about-photo-col { min-height: 300px; border-right: none; border-bottom: 1px solid var(--border); }
   .contact-section { grid-template-columns: 1fr; gap: 40px; }
   .timeline-item { grid-template-columns: 1fr; gap: 8px; }
 }
@@ -1258,11 +1221,18 @@ body.page-new main { overflow-x: hidden; }
 }
 
 /* 4. Body text link hover — opacity fade */
-main a:not(.project-card):not(.work-card):not(.feed-image):not(.nav-link) {
+main a:not(.project-card):not(.work-card):not(.feed-image):not(.nav-link):not(.cta-primary) {
   opacity: 0.7;
   transition: opacity 0.15s ease;
 }
 
-main a:not(.project-card):not(.work-card):not(.feed-image):not(.nav-link):hover {
+main a:not(.project-card):not(.work-card):not(.feed-image):not(.nav-link):not(.cta-primary):hover {
   opacity: 1;
 }
+
+.cta-primary {
+  opacity: 1;
+  transition: opacity 0.15s ease;
+}
+
+.cta-primary:hover { opacity: 0.5; }

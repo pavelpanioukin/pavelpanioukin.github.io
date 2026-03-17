@@ -1238,4 +1238,42 @@ main a:not(.project-card):not(.work-card):not(.feed-image):not(.nav-link):not(.c
   transition: opacity 0.15s ease;
 }
 
+/* ── Exp Projects (about page) ────────────────────────────────────────────── */
+
+.exp-projects {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.exp-projects-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.45;
+  margin-bottom: 1.25rem;
+}
+.exp-project {
+  margin-bottom: 1.75rem;
+}
+.exp-project-title {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  margin-bottom: 0.25rem;
+}
+.exp-project-title:hover { text-decoration: underline; }
+.exp-project-tag {
+  display: block;
+  font-size: 0.75rem;
+  opacity: 0.5;
+  margin-bottom: 0.6rem;
+}
+.exp-project-desc {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  opacity: 0.8;
+  max-width: 60ch;
+}
+
 .cta-primary:hover { opacity: 0.5; }

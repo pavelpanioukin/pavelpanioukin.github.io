@@ -6,12 +6,12 @@
 
 :root {
   --bg:         #ffffff;
-  --bg-off:     #f5f5f5;
-  --text:       #111111;
-  --text-dim:   #666666;
+  --bg-off:     #f6f5f3;
+  --text:       #0f0f0f;
+  --text-dim:   #5c5c5c;
   --text-muted: #999999;
   --border:     #e8e8e8;
-  --sans:       'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --sans:       'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
   --max-w:      1440px;
   --gutter:     40px;
   --ease:       cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -19,7 +19,11 @@
 
 /* ── Base ────────────────────────────────────────────────────────────────────── */
 
-html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
 
 body {
   background: var(--bg);
@@ -187,6 +191,7 @@ button { font-family: inherit; cursor: pointer; }
   color: #ffffff;
   letter-spacing: -0.03em;
   line-height: 0.95;
+  text-wrap: balance;
 }
 
 .featured-hero-sub {
@@ -267,6 +272,7 @@ button { font-family: inherit; cursor: pointer; }
   line-height: 1.05;
   color: var(--text);
   max-width: 800px;
+  text-wrap: balance;
 }
 
 /* ── Work page grid ──────────────────────────────────────────────────────────── */
@@ -373,6 +379,7 @@ button { font-family: inherit; cursor: pointer; }
   line-height: 1.1;
   color: var(--text);
   margin-bottom: 32px;
+  text-wrap: balance;
 }
 
 .about-headline em {
@@ -627,10 +634,11 @@ button { font-family: inherit; cursor: pointer; }
   font-weight: 600;
   cursor: pointer;
   letter-spacing: -0.01em;
-  transition: opacity 0.15s;
+  transition: opacity 0.15s, transform 0.1s;
 }
 
 .btn-submit:hover { opacity: 0.75; }
+.btn-submit:active { transform: scale(0.98); opacity: 0.9; }
 
 /* ── Footer ──────────────────────────────────────────────────────────────────── */
 
@@ -1001,11 +1009,11 @@ button { font-family: inherit; cursor: pointer; }
 /* ── Dark theme — index.html only (body.page-new) ───────────────────────────── */
 
 body.page-new {
-  background: #000;
+  background: #0a0a0a;
   color: #fff;
 }
 
-body.page-new .site-header { background: #000; color: #fff; }
+body.page-new .site-header { background: #0a0a0a; color: #fff; }
 
 body.page-new .info-row {
   color: #e5e5e5;
@@ -1017,7 +1025,7 @@ body.page-new .header-time { color: rgba(255, 255, 255, 0.35); }
 body.page-new .header-bio  { color: #e5e5e5; }
 
 body.page-new .nav-row {
-  background: #000;
+  background: #0a0a0a;
   border-top-color: rgba(255, 255, 255, 0.08);
   border-bottom-color: rgba(255, 255, 255, 0.08);
 }
@@ -1238,6 +1246,8 @@ main a:not(.project-card):not(.work-card):not(.feed-image):not(.nav-link):not(.c
   transition: opacity 0.15s ease;
 }
 
+.cta-primary:hover { opacity: 0.55; }
+
 /* ── Exp Projects (about page) ────────────────────────────────────────────── */
 
 .exp-projects {
@@ -1347,4 +1357,49 @@ main a:not(.project-card):not(.work-card):not(.feed-image):not(.nav-link):not(.c
   .about-grid .timeline-section .timeline-item {
     grid-template-columns: 1fr;
   }
+}
+
+/* ── Redesign Upgrades ───────────────────────────────────────────────────────── */
+
+/* Focus states — accessible keyboard navigation */
+:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+}
+
+/* Remove default outline when using mouse */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Active press feedback on modal buttons */
+.modal-btn:active { transform: scale(0.98); }
+.modal-btn-ghost:active { transform: scale(0.98); }
+.project-nav-link:active { opacity: 0.35; }
+
+/* Subtle noise overlay — breaks flat digital sterility */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px;
+}
+
+/* Improved modal button active state */
+.modal-btn,
+.modal-btn-ghost {
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+/* text-wrap: pretty on body text to prevent orphans */
+.timeline-desc,
+.about-bio-text,
+.ps-body,
+.modal-desc,
+.exp-project-desc {
+  text-wrap: pretty;
 }

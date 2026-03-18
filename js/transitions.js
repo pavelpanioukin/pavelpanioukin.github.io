@@ -9,8 +9,11 @@
   var DURATION = '0.35s';
 
   function runEntranceAnimation() {
-    var els = document.querySelectorAll('.appear');
+    // Only animate elements that haven't started yet — prevents double-call
+    // flash on dynamic pages that call animatePageIn() after async data renders
+    var els = document.querySelectorAll('.appear:not([data-appeared])');
     els.forEach(function (el, i) {
+      el.dataset.appeared = '1';
       var delay = DELAYS[Math.min(i, DELAYS.length - 1)];
       el.style.opacity = '0';
       el.style.transition = 'opacity ' + DURATION + ' ' + SPRING + ' ' + delay + 's';

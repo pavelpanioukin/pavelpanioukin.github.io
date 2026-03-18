@@ -1,3 +1,14 @@
+/* ── Fonts ───────────────────────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: 'Raveo';
+  src: url('/assets/fonts/RaveoVF.woff2') format('woff2 supports variations'),
+       url('/assets/fonts/RaveoVF.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ── Reset ───────────────────────────────────────────────────────────────────── */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -11,7 +22,7 @@
   --text-dim:   #5c5c5c;
   --text-muted: #999999;
   --border:     #e8e8e8;
-  --sans:       'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --sans:       'Raveo', -apple-system, BlinkMacSystemFont, sans-serif;
   --max-w:      1440px;
   --gutter:     40px;
   --ease:       cubic-bezier(0.25, 0.46, 0.45, 0.94);

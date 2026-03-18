@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Feed — Pavel Panioukin</title>
   <meta name="description" content="An archive of visual work by Pavel Panioukin.">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 
@@ -34,7 +34,7 @@
 
   <script src="site.js"></script>
   <script src="animations.js"></script>
-  <script src="transitions.js"></script>
+  <script src="js/transitions.js"></script>
   <script>
     async function init() {
       const data = await fetch('data.json?v=' + Date.now()).then(r => r.json());

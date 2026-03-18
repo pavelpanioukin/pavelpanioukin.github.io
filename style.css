@@ -11,7 +11,7 @@
   --text-dim:   #666666;
   --text-muted: #999999;
   --border:     #e8e8e8;
-  --sans:       'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --sans:       'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
   --max-w:      1440px;
   --gutter:     40px;
   --ease:       cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -19,7 +19,13 @@
 
 /* ── Base ────────────────────────────────────────────────────────────────────── */
 
-html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
+
+:focus-visible {
+  outline: 2px solid var(--text);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
 
 body {
   background: var(--bg);
@@ -93,7 +99,7 @@ button { font-family: inherit; cursor: pointer; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: #fff;
+  background: var(--bg);
   border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
 
@@ -631,6 +637,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .btn-submit:hover { opacity: 0.75; }
+.btn-submit:active { transform: scale(0.98); opacity: 1; }
 
 /* ── Footer ──────────────────────────────────────────────────────────────────── */
 
@@ -784,6 +791,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .modal-btn:hover { opacity: 0.75; }
+.modal-btn:active { transform: scale(0.98); opacity: 1; }
 
 .modal-btn-ghost {
   background: transparent;
@@ -981,6 +989,7 @@ button { font-family: inherit; cursor: pointer; }
 @media (max-width: 1024px) {
   :root { --gutter: 28px; }
   .project-grid { grid-template-columns: repeat(2, 1fr); }
+  .projects-grid { grid-template-columns: 1fr 1fr; }
   .bento-grid { grid-template-columns: repeat(3, 1fr); }
   .contact-section { grid-template-columns: 1fr; gap: 40px; }
   .timeline-item { grid-template-columns: 1fr; gap: 8px; }
@@ -1001,11 +1010,11 @@ button { font-family: inherit; cursor: pointer; }
 /* ── Dark theme — index.html only (body.page-new) ───────────────────────────── */
 
 body.page-new {
-  background: #000;
+  background: #0a0a0a;
   color: #fff;
 }
 
-body.page-new .site-header { background: #000; color: #fff; }
+body.page-new .site-header { background: #0a0a0a; color: #fff; }
 
 body.page-new .info-row {
   color: #e5e5e5;
@@ -1017,7 +1026,7 @@ body.page-new .header-time { color: rgba(255, 255, 255, 0.35); }
 body.page-new .header-bio  { color: #e5e5e5; }
 
 body.page-new .nav-row {
-  background: #000;
+  background: #0a0a0a;
   border-top-color: rgba(255, 255, 255, 0.08);
   border-bottom-color: rgba(255, 255, 255, 0.08);
 }
@@ -1067,7 +1076,7 @@ body.page-new main { overflow-x: hidden; }
 
 .featured-image {
   width: 100%;
-  height: 60vh;
+  height: 60dvh;
   min-height: 400px;
   overflow: hidden;
   border-radius: 12px;
@@ -1104,7 +1113,7 @@ body.page-new main { overflow-x: hidden; }
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 2fr 1fr 1fr;
   gap: 2px;
   width: 100vw;
   position: relative;

@@ -1191,18 +1191,31 @@ body.page-new main { overflow-x: hidden; }
 
 /* ── Animations ──────────────────────────────────────────────────────────────── */
 
-/* 1. Page enter — opacity 0 + translateY(24px), animated to visible via .is-visible */
+/* Page wrapper — hidden until JS runs, then revealed instantly (elements animate) */
 .page-content {
   opacity: 0;
-  transform: translateY(24px);
-  will-change: opacity, transform;
 }
 
 .page-content.is-visible {
   opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.32s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Element-level stagger — each .appear fades in with a spring-like curve */
+.appear {
+  opacity: 0;
+}
+
+.appear.is-visible {
+  opacity: 1;
+  transition: opacity 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-content,
+  .appear {
+    opacity: 1 !important;
+    transition: none !important;
+  }
 }
 
 /* 2. Project card + work card hover — restrained scale */

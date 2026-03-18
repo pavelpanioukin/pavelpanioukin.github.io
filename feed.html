@@ -12,11 +12,11 @@
   <header id="site-header"></header>
 
   <main class="page-content">
-    <div class="page-header container" style="border-bottom:none">
+    <div class="page-header container appear" style="border-bottom:none">
       <h1 class="page-title">An archive of everything — early sketches to finished products. All shared here.</h1>
     </div>
 
-    <div class="bento-section container">
+    <div class="bento-section container appear">
       <div class="bento-grid" id="bento-grid">
         <div class="bento-col" id="bento-col-0"></div>
         <div class="bento-col" id="bento-col-1"></div>
@@ -34,11 +34,13 @@
 
   <script src="site.js"></script>
   <script src="animations.js"></script>
+  <script src="transitions.js"></script>
   <script>
     async function init() {
       const data = await fetch('data.json?v=' + Date.now()).then(r => r.json());
       renderFooterData(data);
       renderBento(data.feed || []);
+      if (window.animatePageIn) window.animatePageIn();
     }
 
     function renderBento(feed) {

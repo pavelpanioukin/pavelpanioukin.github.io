@@ -17,22 +17,22 @@
 
     <!-- 1. Hero headline — typographic, word-per-line, photo inline -->
     <div class="about-hero about-full">
-      <h1 class="about-headline">Pavel</h1>
-      <h1 class="about-headline">is a design</h1>
-      <h1 class="about-headline">leader</h1>
-      <img class="about-hero-img" src="https://cdn.prod.website-files.com/65be39205f54112ef39acb44/65c7f32f74651f26dc6f1e10_photo_2024-02-10%2023.04.22.jpeg" alt="Pavel Panioukin">
-      <h1 class="about-headline">and craftsman,</h1>
-      <h1 class="about-headline">AI-first,</h1>
-      <h1 class="about-headline">based in Krakow.</h1>
+      <h1 class="about-headline appear">Pavel</h1>
+      <h1 class="about-headline appear">is a design</h1>
+      <h1 class="about-headline appear">leader</h1>
+      <img class="about-hero-img appear" src="https://cdn.prod.website-files.com/65be39205f54112ef39acb44/65c7f32f74651f26dc6f1e10_photo_2024-02-10%2023.04.22.jpeg" alt="Pavel Panioukin">
+      <h1 class="about-headline appear">and craftsman,</h1>
+      <h1 class="about-headline appear">AI-first,</h1>
+      <h1 class="about-headline appear">based in Krakow.</h1>
     </div>
 
     <!-- 2. Info paragraph -->
-    <section class="about-info">
+    <section class="about-info appear">
       <p class="about-bio-text">I lead digital product design across fintech, edtech, and SaaS. For 12 years I've worked at the intersection of craft, strategy, and team-building — at IG Group/DailyFX, Brainly, and now PandaDoc. I care about taste, precision, and shipping things that actually work. Right now I'm building with AI tools — Claude Code, Cursor, generative prototyping — to close the gap between what I imagine and what ships.</p>
     </section>
 
     <!-- 3. Experience -->
-    <section class="timeline-section about-full">
+    <section class="timeline-section about-full appear">
       <h2 class="section-label">Experience</h2>
       <div class="timeline">
 
@@ -193,7 +193,7 @@
       <h2 class="section-label">How I work</h2>
       <div class="timeline">
 
-        <div class="timeline-item">
+        <div class="timeline-item appear">
           <div class="timeline-left">
             <span class="timeline-period">01</span>
           </div>
@@ -203,7 +203,7 @@
           </div>
         </div>
 
-        <div class="timeline-item">
+        <div class="timeline-item appear">
           <div class="timeline-left">
             <span class="timeline-period">02</span>
           </div>
@@ -213,7 +213,7 @@
           </div>
         </div>
 
-        <div class="timeline-item">
+        <div class="timeline-item appear">
           <div class="timeline-left">
             <span class="timeline-period">03</span>
           </div>
@@ -227,7 +227,7 @@
     </section>
 
     <!-- 5. Contact -->
-    <section class="cta-section container">
+    <section class="cta-section container appear">
       <p class="cta-label">Say hi</p>
       <p class="cta-headline"><a href="mailto:hello@pavelpanioukin.com" class="cta-primary">hello@pavelpanioukin.com</a></p>
       <div class="footer-social">
@@ -238,7 +238,7 @@
     </section>
 
     <!-- 6. Next → Work -->
-    <section class="project-page-nav container">
+    <section class="project-page-nav container appear">
       <div class="project-page-nav-inner">
         <a href="/work.html" class="project-nav-link">Next → Work</a>
       </div>
@@ -250,6 +250,7 @@
 
   <script src="site.js"></script>
   <script src="animations.js"></script>
+  <script src="transitions.js"></script>
   <script>
     async function init() {
       const data = await fetch('data.json?v=' + Date.now()).then(r => r.json());

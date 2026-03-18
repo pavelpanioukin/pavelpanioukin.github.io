@@ -12,11 +12,11 @@
   <header id="site-header"></header>
 
   <main class="page-content">
-    <div class="page-header container">
+    <div class="page-header container appear">
       <h1 class="page-title">I design and lead teams building digital products from brief to final product.</h1>
     </div>
 
-    <div class="work-grid-section container">
+    <div class="work-grid-section container appear">
       <div class="project-grid" id="work-grid"></div>
     </div>
   </main>
@@ -25,6 +25,7 @@
 
   <script src="site.js"></script>
   <script src="animations.js"></script>
+  <script src="transitions.js"></script>
   <script>
     async function init() {
       const data = await fetch('data.json?v=' + Date.now()).then(r => r.json());
@@ -33,6 +34,7 @@
       grid.innerHTML = (data.projects || [])
         .map(p => buildProjectCard(p))
         .join('');
+      if (window.animatePageIn) window.animatePageIn();
     }
 
     init();

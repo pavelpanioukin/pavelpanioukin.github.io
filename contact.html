@@ -13,13 +13,13 @@
 
   <main class="page-content">
     <div class="contact-section container">
-      <div class="contact-left">
+      <div class="contact-left appear">
         <h1 class="contact-headline" id="contact-headline">Let's build something great together.</h1>
         <p class="contact-subtext" id="contact-subtext">I'm always interested in new projects, opportunities to collaborate, and conversations about design. Drop me a line — I read every message.</p>
         <a class="contact-email" id="contact-email" href="mailto:hello@panioukin.design">hello@panioukin.design</a>
       </div>
 
-      <div class="contact-right">
+      <div class="contact-right appear">
         <form class="contact-form" id="contact-form" onsubmit="handleSubmit(event)">
           <div class="form-group">
             <label class="form-label" for="name">Name</label>
@@ -44,6 +44,7 @@
 
   <script src="site.js"></script>
   <script src="animations.js"></script>
+  <script src="transitions.js"></script>
   <script>
     async function init() {
       const data = await fetch('data.json?v=' + Date.now()).then(r => r.json());

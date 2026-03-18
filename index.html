@@ -14,12 +14,12 @@
   <main class="page-content">
 
     <!-- Featured project — first from data.json -->
-    <div class="container">
+    <div class="container appear">
       <section class="featured-project" id="featured-project"></section>
     </div>
 
     <!-- 3-col full-bleed grid — projects 2, 3, 4 from data.json -->
-    <section class="projects-grid" id="projects-grid"></section>
+    <section class="projects-grid appear" id="projects-grid"></section>
 
   </main>
 
@@ -27,6 +27,7 @@
 
 <script src="site.js"></script>
   <script src="animations.js"></script>
+  <script src="transitions.js"></script>
   <script>
     async function init() {
       const data = await fetch('data.json?v=' + Date.now()).then(r => r.json());
@@ -38,6 +39,7 @@
 
       if (featured) renderFeatured(featured);
       if (rest.length) renderGrid(rest);
+      if (window.animatePageIn) window.animatePageIn();
     }
 
     function renderFeatured(p) {

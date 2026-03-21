@@ -1027,31 +1027,59 @@ body.page-new main { overflow-x: hidden; }
 }
 
 /*
- * Override Chrome's default mix-blend-mode: plus-lighter on view-transition
- * pseudo-elements. With plus-lighter, two opaque snapshots stacked at 50%
- * opacity add their pixel values together → saturates to white mid-crossfade.
- * normal blend mode lets the new snapshot (z-index higher) simply draw over old.
+ * Header and nav are given view-transition-names so the browser captures them
+ * as separate groups — excluding them from the root snapshot. This means the
+ * root snapshot (body bg + main content + footer) sweeps while the header and
+ * nav appear completely still.
+ *
+ * Critical: we hide the OLD snapshot of each persistent element and show only
+ * the NEW one (no animation on the named groups). With mix-blend-mode: normal
+ * the new bitmap simply draws over — no plus-lighter white flash.
+ */
+header.site-header {
+  view-transition-name: site-header;
+}
+
+.nav-row {
+  view-transition-name: site-nav;
+}
+
+/* Named groups morph in 0s — their position and size snap instantly */
+::view-transition-group(site-header),
+::view-transition-group(site-nav) {
+  animation-duration: 0s;
+}
+
+/* Hide old snapshot — prevents the double-paint artefact from plus-lighter */
+::view-transition-old(site-header),
+::view-transition-old(site-nav) {
+  display: none;
+}
+
+/* New snapshot: no animation, shown immediately at full opacity */
+::view-transition-new(site-header),
+::view-transition-new(site-nav) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/*
+ * Root (everything except header + nav): sweep left/right.
+ * mix-blend-mode: normal — prevents Chrome's default plus-lighter from
+ * saturating to white at midpoint when two opaque snapshots overlap.
+ *
+ * Old: ease-in so the exit accelerates away without hesitating (0.24s).
+ * New: expo ease-out so the page decelerates into its final position (0.44s).
  */
 ::view-transition-old(root),
 ::view-transition-new(root) {
   mix-blend-mode: normal;
 }
 
-/*
- * Old page: ease-in — accelerates away so the exit never hesitates.
- * Short (0.24s) so it clears the screen before the new page settles.
- */
 ::view-transition-old(root) {
   animation: page-slide-out 0.24s cubic-bezier(0.4, 0, 1, 1) both;
 }
 
-/*
- * New page: expo ease-out — arrives fast, decelerates precisely into place.
- * Longer (0.44s) than exit so it feels deliberate, not rushed.
- * No delay — it starts immediately alongside the exit so the screen
- * is never empty. The new page is on top (z-index higher) so once it
- * reaches full opacity it cleanly covers any remaining exit artefact.
- */
 ::view-transition-new(root) {
   animation: page-slide-in 0.44s cubic-bezier(0.22, 1, 0.36, 1) both;
 }

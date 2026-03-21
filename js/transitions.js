@@ -32,14 +32,53 @@
   // Expose for dynamic pages to call after async content renders
   window.animatePageIn = runEntranceAnimation;
 
-  // Run entrance on every page load
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', runEntranceAnimation);
-  } else {
-    requestAnimationFrame(function () { requestAnimationFrame(runEntranceAnimation); });
+  // ── View-transition coordination ────────────────────────────────────────────
+  //
+  // Problem: CSS `.appear { opacity: 0 }` hides all content. When the browser
+  // plays the page-sweep animation the new page slides in completely blank,
+  // then content stagger starts separately — two disconnected motions.
+  //
+  // Fix: `pagereveal` fires on the new document BEFORE the first paint but
+  // AFTER DOMContentLoaded. It carries the active ViewTransition object.
+  // When present, we make all .appear elements immediately visible so the
+  // page sweeps in fully rendered. We then skip the JS stagger (the sweep
+  // itself is the entrance). On first load (no view transition) stagger runs
+  // normally via the setTimeout(0) path below.
+  //
+  // pagereveal fires before requestAnimationFrame within the same rendering
+  // update, but AFTER DOMContentLoaded. Using setTimeout(0) in the
+  // DOMContentLoaded handler defers the stagger check to the next task,
+  // by which time pagereveal has definitely fired and hasVT is set.
+
+  var hasVT = false;
+
+  if ('onpagereveal' in self) {
+    self.addEventListener('pagereveal', function (e) {
+      if (!e.viewTransition) return;
+      hasVT = true;
+      // Override CSS opacity:0 so the new page sweeps in fully rendered.
+      // Also mark data-appeared so animatePageIn() calls are no-ops.
+      document.querySelectorAll('.appear').forEach(function (el) {
+        el.style.opacity = '1';
+        el.dataset.appeared = '1';
+      });
+    });
   }
 
-  // JS fallback for browsers without native @view-transition support
+  // Defer stagger check to after pagereveal can fire (setTimeout = next task)
+  function scheduleStagger() {
+    setTimeout(function () {
+      if (!hasVT) runEntranceAnimation();
+    }, 0);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', scheduleStagger);
+  } else {
+    scheduleStagger();
+  }
+
+  // ── JS fallback for browsers without @view-transition support ────────────
   // (Safari < 18, Firefox without flag)
   if (!CSS.supports('view-transition-name', 'none') &&
       !document.startViewTransition) {

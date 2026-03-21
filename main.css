@@ -1230,6 +1230,14 @@ header.site-header {
   animation-duration: 0s;
 }
 
+/* Suppress old/new cross-fade on the persistent elements too */
+::view-transition-old(site-header),
+::view-transition-new(site-header),
+::view-transition-old(site-nav),
+::view-transition-new(site-nav) {
+  animation: none;
+}
+
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-old(root),

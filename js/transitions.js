@@ -9,6 +9,9 @@
   var DURATION = '0.35s';
 
   function runEntranceAnimation() {
+    // Respect the user's motion preference — CSS !important cannot beat inline styles
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     // Only animate elements that haven't started yet — prevents double-call
     // flash on dynamic pages that call animatePageIn() after async data renders
     var els = document.querySelectorAll('.appear:not([data-appeared])');

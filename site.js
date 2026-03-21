@@ -18,7 +18,8 @@
     p.includes('feed')    ? 'feed'    :
     p.includes('about')   ? 'about'   :
     p.includes('work')    ? 'work'    :
-    p.includes('contact') ? 'contact' : 'new';
+    p.includes('contact') ? 'contact' :
+    p.includes('project') ? 'work'    : 'new';
 
   // Build nav HTML
   const navHTML = NAV.map((item, i) => {

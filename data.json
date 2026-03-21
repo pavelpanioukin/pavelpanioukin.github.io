@@ -26,27 +26,26 @@
       "sections": [
         {
           "type": "text",
-          "heading": "Test",
-          "body": "test"
+          "heading": "Overview",
+          "body": "A complete redesign of the DailyFX trading analysis platform — the world's most-visited forex news and analysis portal. The goal was to make dense, data-heavy content accessible to both first-time retail traders and seasoned professionals, without stripping the depth that experts rely on."
+        },
+        {
+          "type": "text",
+          "heading": "Challenge",
+          "body": "DailyFX had accumulated years of feature additions without a coherent information architecture. Key problems: content was buried under layers of navigation, charts and editorial competed for the same visual space, and the design system was fragmented across markets and locales. The redesign had to work across 10+ languages and serve a global audience with radically different trading contexts."
         },
         {
           "type": "metrics",
           "items": [
-            {
-              "value": "+100$",
-              "label": "tets"
-            }
+            { "value": "10+", "label": "Languages supported" },
+            { "value": "5yrs", "label": "Platform ownership" },
+            { "value": "4", "label": "Designers led" }
           ]
         },
         {
-          "type": "quote",
-          "text": "Texting text",
-          "attribution": "wow wow"
-        },
-        {
           "type": "text",
-          "heading": "WOWOWOWO",
-          "body": "\n⏺ Yes — you can run Claude Code with the --dangerously-skip-permissions flag, which auto-approves all tool calls:\n\n  claude --dangerously-skip-permissions\n\n  Or you can set the permission mode to auto-approve in settings. In Claude Code, run:\n\n  /permissions\n\n  and set it to allow all tools automatically.\n"
+          "heading": "Approach",
+          "body": "I led end-to-end redesign: from IA restructure and component audit through to building a shared design system used across IG's global product suite. I ran design sprints with editorial, engineering, and data teams to align on priorities, then shipped in iterative phases to avoid disruption to the existing audience."
         }
       ]
     },
@@ -68,17 +67,26 @@
       "sections": [
         {
           "type": "text",
-          "heading": "wowowowow",
-          "body": "\n⏺ Yes — you can run Claude Code with the --dangerously-skip-permissions flag, which auto-approves all tool calls:\n\n  claude --dangerously-skip-permissions\n\n  Or you can set the permission mode to auto-approve in settings. In Claude Code, run:\n\n  /permissions\n\n  and set it to allow all tools automatically.\n"
+          "heading": "Overview",
+          "body": "Designed the end-to-end experience for Brainly's live tutoring feature — from matching a student to a tutor through to the live session and post-session review. This was a zero-to-one product built alongside a cross-functional team of engineers, product managers, and data scientists."
+        },
+        {
+          "type": "text",
+          "heading": "Challenge",
+          "body": "Brainly's core model was asynchronous — post a question, wait for a community answer. Live tutoring was a fundamentally different product loop: real-time, high-stakes, and requiring trust signals that asynchronous interaction had never needed. The biggest design challenge was building confidence fast, for both the student and the tutor."
         },
         {
           "type": "metrics",
           "items": [
-            {
-              "value": "+99",
-              "label": " ⏺ Yes — you can run Claude Code with the --dangerously-skip-permissions flag, which auto-approves all tool calls:    claude --dangerously-skip-permissions    Or you can set the permission mode to auto-approve in settings. In Claude Code, run:    /permissions    and set it to allow all tools automatically."
-            }
+            { "value": "350M+", "label": "Monthly users on platform" },
+            { "value": "0→1", "label": "Product built from scratch" },
+            { "value": "Mobile", "label": "Primary delivery surface" }
           ]
+        },
+        {
+          "type": "text",
+          "heading": "Approach",
+          "body": "I ran discovery with students and tutors across four markets, synthesised findings into clear design principles, then moved quickly into prototyping. I worked closely with mobile engineers throughout — designing components to match the iOS and Android constraints, not fighting against them."
         }
       ]
     },
@@ -97,7 +105,18 @@
       ],
       "year": "2021",
       "featured": true,
-      "sections": []
+      "sections": [
+        {
+          "type": "text",
+          "heading": "Overview",
+          "body": "Led product design at Storebox — Europe's first fully digital self-storage solution. The brief was to replace every physical touchpoint in the storage journey with a seamless digital experience: find a unit, book it, pay, and access it via smart lock — all without human interaction."
+        },
+        {
+          "type": "text",
+          "heading": "Approach",
+          "body": "I owned the complete customer journey — from the marketing site through to the app used to open the storage unit. This meant designing across three surfaces (web, iOS, Android) with a consistent interaction model, and working closely with hardware engineers to design interfaces for the smart lock access flow."
+        }
+      ]
     },
     {
       "id": 4,
@@ -114,7 +133,18 @@
       ],
       "year": "2020",
       "featured": true,
-      "sections": []
+      "sections": [
+        {
+          "type": "text",
+          "heading": "Overview",
+          "body": "A focused, distraction-free Tabata interval timer designed for high-intensity interval training. The core design principle: once a session starts, the interface should disappear — leaving only the rhythm."
+        },
+        {
+          "type": "text",
+          "heading": "Design principles",
+          "body": "No menus during a session. Large, glanceable state indicators. Haptic feedback replacing visual noise. Every interaction was tested with people mid-workout — hands sweaty, breathing hard — to ensure the timer was genuinely usable under real conditions, not just demo conditions."
+        }
+      ]
     }
   ],
   "experience": [

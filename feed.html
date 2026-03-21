@@ -6,7 +6,6 @@
   <title>Feed — Pavel Panioukin</title>
   <meta name="description" content="An archive of visual work by Pavel Panioukin.">
   <link rel="stylesheet" href="main.css">
-  <style>@font-face{font-family:'Raveo';src:url('/assets/fonts/RaveoVF.woff2') format('woff2 supports variations'),url('/assets/fonts/RaveoVF.woff2') format('woff2-variations');font-weight:100 900;font-style:normal;font-display:swap}:root{--sans:'Raveo',-apple-system,BlinkMacSystemFont,sans-serif}</style>
 </head>
 <body>
 
@@ -58,7 +57,7 @@
       feed.forEach((a, i) => {
         const div = document.createElement('div');
         div.className = 'bento-item';
-        div.style.setProperty('--delay', i * 30 + 'ms');
+        div.style.setProperty('--delay', Math.min(i * 15, 600) + 'ms');
         div.onclick = () => openLightbox(a.url, a.alt || '');
         const img = document.createElement('img');
         img.src = a.url;

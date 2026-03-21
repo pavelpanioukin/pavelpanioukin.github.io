@@ -6,7 +6,6 @@
   <title>Pavel Panioukin — Design Leader</title>
   <meta name="description" content="Digital product designer and leader based in Krakow.">
   <link rel="stylesheet" href="main.css">
-  <style>@font-face{font-family:'Raveo';src:url('/assets/fonts/RaveoVF.woff2') format('woff2 supports variations'),url('/assets/fonts/RaveoVF.woff2') format('woff2-variations');font-weight:100 900;font-style:normal;font-display:swap}:root{--sans:'Raveo',-apple-system,BlinkMacSystemFont,sans-serif}</style>
 </head>
 <body class="page-new">
 
@@ -48,7 +47,7 @@
       const bgStyle = p.thumbnail ? '' : `background:${p.thumbnailGradient || '#111'}`;
       const imgHTML = p.thumbnail
         ? `<img src="${escHtml(p.thumbnail)}" alt="${escHtml(p.title)}">`
-        : '';
+        : `<span class="featured-label">${escHtml(p.thumbnailLabel || p.title)}</span>`;
 
       el.innerHTML = `
         <a href="/project.html?id=${p.id}">

@@ -184,9 +184,10 @@ app.post('/api/deploy', requireAuth, (req, res) => {
 // ── Root site files (mirrors what GitHub Pages serves statically) ─────────────
 
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
-app.get('/style.css', (req, res) => res.sendFile(path.join(__dirname, 'style.css')));
+app.get('/main.css', (req, res) => res.sendFile(path.join(__dirname, 'main.css')));
 app.get('/site.js', (req, res) => res.sendFile(path.join(__dirname, 'site.js')));
 app.get('/animations.js', (req, res) => res.sendFile(path.join(__dirname, 'animations.js')));
+app.use('/js', express.static(path.join(__dirname, 'js')));
 app.get('/work.html', (req, res) => res.sendFile(path.join(__dirname, 'work.html')));
 app.get('/feed.html', (req, res) => res.sendFile(path.join(__dirname, 'feed.html')));
 app.get('/about.html', (req, res) => res.sendFile(path.join(__dirname, 'about.html')));

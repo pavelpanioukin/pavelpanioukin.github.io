@@ -99,10 +99,10 @@
       }
       if (!isInternal) return;
       e.preventDefault();
-      // Quick fade out then navigate
-      document.body.style.transition = 'opacity 0.18s ease';
+      // Ease-in fade out — matches the CSS view-transition exit timing
+      document.body.style.transition = 'opacity 0.22s cubic-bezier(0.4, 0, 1, 1)';
       document.body.style.opacity = '0';
-      setTimeout(function () { location.href = href; }, 190);
+      setTimeout(function () { location.href = href; }, 230);
     });
   }
 

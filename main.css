@@ -1026,46 +1026,44 @@ body.page-new main { overflow-x: hidden; }
   navigation: auto;
 }
 
-/* Old page slides out to the left */
-::view-transition-old(root) {
-  animation: page-slide-out 0.38s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+/*
+ * Override Chrome's default mix-blend-mode: plus-lighter on view-transition
+ * pseudo-elements. With plus-lighter, two opaque snapshots stacked at 50%
+ * opacity add their pixel values together → saturates to white mid-crossfade.
+ * normal blend mode lets the new snapshot (z-index higher) simply draw over old.
+ */
+::view-transition-old(root),
+::view-transition-new(root) {
+  mix-blend-mode: normal;
 }
 
-/* New page slides in from the right */
+/*
+ * Old page: ease-in — accelerates away so the exit never hesitates.
+ * Short (0.24s) so it clears the screen before the new page settles.
+ */
+::view-transition-old(root) {
+  animation: page-slide-out 0.24s cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+/*
+ * New page: expo ease-out — arrives fast, decelerates precisely into place.
+ * Longer (0.44s) than exit so it feels deliberate, not rushed.
+ * No delay — it starts immediately alongside the exit so the screen
+ * is never empty. The new page is on top (z-index higher) so once it
+ * reaches full opacity it cleanly covers any remaining exit artefact.
+ */
 ::view-transition-new(root) {
-  animation: page-slide-in 0.38s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  animation: page-slide-in 0.44s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @keyframes page-slide-out {
   from { opacity: 1; transform: translateX(0); }
-  to   { opacity: 0; transform: translateX(-4vw); }
+  to   { opacity: 0; transform: translateX(-24px); }
 }
 
 @keyframes page-slide-in {
-  from { opacity: 0; transform: translateX(4vw); }
+  from { opacity: 0; transform: translateX(24px); }
   to   { opacity: 1; transform: translateX(0); }
-}
-
-/* Header and nav stay persistent — excluded from root transition */
-header.site-header {
-  view-transition-name: site-header;
-}
-
-.nav-row {
-  view-transition-name: site-nav;
-}
-
-::view-transition-group(site-header),
-::view-transition-group(site-nav) {
-  animation-duration: 0s;
-}
-
-/* Suppress old/new cross-fade on the persistent elements too */
-::view-transition-old(site-header),
-::view-transition-new(site-header),
-::view-transition-old(site-nav),
-::view-transition-new(site-nav) {
-  animation: none;
 }
 
 /* Respect reduced motion */

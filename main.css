@@ -1064,12 +1064,15 @@ header.site-header {
 }
 
 /*
- * Root (everything except header + nav): sweep left/right.
- * mix-blend-mode: normal — prevents Chrome's default plus-lighter from
- * saturating to white at midpoint when two opaque snapshots overlap.
+ * Root wipe — matches guglieri.com exactly.
+ * Source: framerusercontent.com/sites/5mf9whpbBCk0zfPCMzMLQH/script_main.mjs
+ *   global enter: { mask: { angle:0, type:'wipe', width:'100%' },
+ *                   duration: 0.4, ease: [0.27, 0, 0.51, 1] }
+ *   per-route h:  { opacity: 0, duration: 0.2, ease: [0.27, 0, 0.51, 1] }
  *
- * Old: ease-in so the exit accelerates away without hesitating (0.24s).
- * New: expo ease-out so the page decelerates into its final position (0.44s).
+ * Old page: fade to opacity 0 in 0.2 s (matches per-route exit config).
+ * New page: clip-path wipe revealing left→right in 0.4 s (global enter).
+ * mix-blend-mode: normal — avoids Chrome's plus-lighter white flash.
  */
 ::view-transition-old(root),
 ::view-transition-new(root) {
@@ -1077,21 +1080,21 @@ header.site-header {
 }
 
 ::view-transition-old(root) {
-  animation: page-slide-out 0.24s cubic-bezier(0.4, 0, 1, 1) both;
+  animation: page-fade-out 0.2s cubic-bezier(0.27, 0, 0.51, 1) both;
 }
 
 ::view-transition-new(root) {
-  animation: page-slide-in 0.44s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: page-wipe-in 0.4s cubic-bezier(0.27, 0, 0.51, 1) both;
 }
 
-@keyframes page-slide-out {
-  from { opacity: 1; transform: translateX(0); }
-  to   { opacity: 0; transform: translateX(-24px); }
+@keyframes page-fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
 }
 
-@keyframes page-slide-in {
-  from { opacity: 0; transform: translateX(24px); }
-  to   { opacity: 1; transform: translateX(0); }
+@keyframes page-wipe-in {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0% 0 0); }
 }
 
 /* Respect reduced motion */

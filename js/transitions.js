@@ -99,10 +99,10 @@
       }
       if (!isInternal) return;
       e.preventDefault();
-      // Ease-in fade out — matches the CSS view-transition exit timing
-      document.body.style.transition = 'opacity 0.22s cubic-bezier(0.4, 0, 1, 1)';
+      // Quick fade out — matches guglieri.com per-route exit (0.2s)
+      document.body.style.transition = 'opacity 0.2s cubic-bezier(0.27, 0, 0.51, 1)';
       document.body.style.opacity = '0';
-      setTimeout(function () { location.href = href; }, 230);
+      setTimeout(function () { location.href = href; }, 210);
     });
   }
 

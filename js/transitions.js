@@ -80,8 +80,7 @@
 
   // ── JS fallback for browsers without @view-transition support ────────────
   // (Safari < 18, Firefox without flag)
-  if (!CSS.supports('view-transition-name', 'none') &&
-      !document.startViewTransition) {
+  if (!('onpagereveal' in self)) {
     document.addEventListener('click', function (e) {
       var link = e.target.closest('a[href]');
       if (!link) return;

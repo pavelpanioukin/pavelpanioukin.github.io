@@ -317,17 +317,29 @@ button { font-family: inherit; cursor: pointer; }
 .about-hero {
   padding: 64px 0;
   border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-end;
+  gap: 60px;
+}
+
+.about-hero-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.about-hero-text .about-headline:last-child {
+  margin-bottom: 0;
 }
 
 .about-hero-img {
-  width: 100%;
-  max-width: 480px;
+  width: 280px;
+  height: 360px;
+  object-fit: cover;
+  object-position: center top;
+  flex-shrink: 0;
   display: block;
-  margin: 32px 0;
-}
-
-.about-hero .about-headline:last-of-type {
-  margin-bottom: 0;
+  margin: 0;
+  border-radius: 4px;
 }
 
 .about-headline {
@@ -395,13 +407,14 @@ button { font-family: inherit; cursor: pointer; }
 
 .timeline-company {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
   font-size: 1.125rem;
   font-weight: 700;
   letter-spacing: -0.01em;
   color: var(--text);
-  margin-bottom: 3px;
+  margin-bottom: 6px;
 }
 
 .timeline-role {
@@ -819,6 +832,8 @@ button { font-family: inherit; cursor: pointer; }
   .info-row { flex-direction: column; gap: 6px; }
   .header-bio { text-align: left; }
   .ps-image { margin-left: calc(-1 * var(--gutter)); margin-right: calc(-1 * var(--gutter)); }
+  .about-hero { flex-direction: column; align-items: flex-start; gap: 32px; }
+  .about-hero-img { width: 100%; height: 260px; border-radius: 4px; }
 }
 
 /* ── Dark theme — index.html only (body.page-new) ───────────────────────────── */

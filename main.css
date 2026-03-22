@@ -1387,3 +1387,89 @@ body::after {
 .exp-project-desc {
   text-wrap: pretty;
 }
+
+/* ── Custom Cursor ────────────────────────────────────────────── */
+
+/* Hide native cursor site-wide on non-touch devices */
+@media (hover: hover) {
+  *, *::before, *::after {
+    cursor: none !important;
+  }
+}
+
+#custom-cursor {
+  position: fixed;
+  top: -4px;          /* offset so center aligns to pointer */
+  left: -4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #111111;
+  border: none;
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform;
+  mix-blend-mode: difference;
+  transition:
+    width  0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    height 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    top    0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    left   0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-radius 0.35s ease,
+    background    0.2s  ease,
+    border        0.2s  ease,
+    opacity       0.2s  ease;
+}
+
+/* Hover state — ring */
+#custom-cursor.cursor-hover {
+  width: 36px;
+  height: 36px;
+  top: -18px;
+  left: -18px;
+  background: transparent;
+  border: 1.5px solid #111111;
+}
+
+/* View state — "View" label pill */
+#custom-cursor.cursor-view {
+  width: 72px;
+  height: 72px;
+  top: -36px;
+  left: -36px;
+  background: #111111;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#custom-cursor.cursor-view::after {
+  content: 'View →';
+  color: #ffffff;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Dark pages — invert dot color */
+body.page-new #custom-cursor {
+  background: #ffffff;
+  mix-blend-mode: difference;
+}
+
+body.page-new #custom-cursor.cursor-hover {
+  background: transparent;
+  border-color: #ffffff;
+}
+
+body.page-new #custom-cursor.cursor-view {
+  background: #ffffff;
+}
+
+body.page-new #custom-cursor.cursor-view::after {
+  color: #111111;
+}

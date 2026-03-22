@@ -33,8 +33,8 @@
     if (lb && lb.classList.contains('open')) return 'close';
     // External links = "external" state
     if (target.closest('a[target="_blank"]')) return 'external';
-    // Links, buttons, nav = "hover" state
-    if (target.closest('a, button, [role="button"], .nav-link, label')) {
+    // Links, buttons, nav, bento images = "hover" state
+    if (target.closest('a, button, [role="button"], .nav-link, label, .bento-item')) {
       return 'hover';
     }
     return 'default';

@@ -1421,10 +1421,9 @@ body::after {
     opacity       0.2s  ease;
 }
 
-/* States 2–4 shared: 40px circle, content centered inside */
+/* Hover + external: dark circle, white label */
 #custom-cursor.cursor-hover,
-#custom-cursor.cursor-external,
-#custom-cursor.cursor-close {
+#custom-cursor.cursor-external {
   mix-blend-mode: difference;
   width: 40px;
   height: 40px;
@@ -1440,10 +1439,26 @@ body::after {
   overflow: hidden;
 }
 
+/* Close: always white circle + dark × — lightbox bg is always dark */
+#custom-cursor.cursor-close {
+  mix-blend-mode: difference;
+  width: 40px;
+  height: 40px;
+  top: -20px;
+  left: -20px;
+  background: #ffffff;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111111;
+  overflow: hidden;
+}
+
 /* Text labels — centered inside the circle */
 #custom-cursor.cursor-hover::after,
-#custom-cursor.cursor-external::after,
-#custom-cursor.cursor-close::after {
+#custom-cursor.cursor-external::after {
   font-family: var(--sans);
   font-size: 14px;
   font-weight: 500;
@@ -1452,10 +1467,19 @@ body::after {
   line-height: 1;
 }
 
+#custom-cursor.cursor-close::after {
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 300;
+  color: #111111;
+  pointer-events: none;
+  line-height: 1;
+}
+
 /* Individual labels */
 #custom-cursor.cursor-hover::after    { content: '→'; }
 #custom-cursor.cursor-external::after { content: '↗'; }
-#custom-cursor.cursor-close::after    { content: '×'; font-size: 18px; font-weight: 300; }
+#custom-cursor.cursor-close::after    { content: '×'; }
 
 /* Dark pages — default dot inverts via difference blend */
 body.page-new #custom-cursor {
@@ -1463,16 +1487,15 @@ body.page-new #custom-cursor {
   mix-blend-mode: difference;
 }
 
-/* Dark pages — expanded states: white circle, dark icons */
+/* Dark pages — hover + external: flip to white circle, dark label */
 body.page-new #custom-cursor.cursor-hover,
-body.page-new #custom-cursor.cursor-external,
-body.page-new #custom-cursor.cursor-close {
+body.page-new #custom-cursor.cursor-external {
   mix-blend-mode: difference;
   background: #ffffff;
   color: #111111;
 }
 
-/* ::after text inherits color explicitly (can't rely on cascade) */
+/* ::after text on dark pages */
 body.page-new #custom-cursor.cursor-hover::after,
 body.page-new #custom-cursor.cursor-external::after,
 body.page-new #custom-cursor.cursor-close::after {

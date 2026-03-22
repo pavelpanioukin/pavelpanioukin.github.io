@@ -65,9 +65,10 @@ button { font-family: inherit; cursor: pointer; }
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 16px 24px;
+  padding: 16px;
   gap: 24px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  min-height: 140px;
 }
 
 .info-left {
@@ -78,25 +79,36 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .header-name {
-  font-size: 0.9375rem;
-  font-weight: 700;
+  font-size: 22px;
+  font-weight: 1000;
+  letter-spacing: -0.44px;
+  line-height: 26px;
   color: var(--text);
-  letter-spacing: -0.01em;
   display: block;
 }
 
 .header-time {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  white-space: nowrap;
+  font-size: 22px;
+  font-weight: 1000;
+  letter-spacing: -0.44px;
+  line-height: 26px;
+  color: rgb(207, 207, 207);
   display: block;
+}
+.header-time-value {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0;
 }
 
 .header-bio {
-  font-size: 0.8125rem;
-  color: var(--text-dim);
-  text-align: right;
-  max-width: 420px;
+  font-size: 22px;
+  font-weight: 1000;
+  letter-spacing: -0.44px;
+  line-height: 26px;
+  color: rgb(207, 207, 207);
+  text-align: left;
+  max-width: none;
 }
 
 .nav-row {
@@ -124,32 +136,28 @@ button { font-family: inherit; cursor: pointer; }
 
 .nav-row a,
 .nav-link {
-  font-size: 12px;
-  font-weight: 400;
-  color: rgba(0, 0, 0, 0.35);
+  font-size: 14px;
+  font-weight: 1000;
+  letter-spacing: -0.28px;
+  line-height: 22.4px;
+  color: rgb(207, 207, 207);
   text-decoration: none;
-  padding: 4px 8px;
+  padding: 8px;
   border-radius: 8px;
-  background: transparent;
-  transition: all 0.15s ease;
-  transform: scale(1);
-  will-change: transform;
+  background: none;
+  transition: color 0.15s ease;
   display: inline-block;
 }
 
 .nav-row a:hover,
 .nav-link:hover {
-  color: rgba(0, 0, 0, 0.75);
-  background: rgba(17, 17, 17, 0.05);
-  transform: scale(1.02);
+  color: rgb(17, 17, 17);
 }
 
 .nav-row a.active,
 .nav-link.active {
-  font-weight: 700;
-  color: #111;
-  background: rgba(17, 17, 17, 0.06);
-  transform: scale(1);
+  color: rgb(17, 17, 17);
+  background: none;
 }
 
 .nav-sep {
@@ -851,8 +859,7 @@ body.page-new .info-row {
 }
 
 body.page-new .header-name { color: #fff; }
-body.page-new .header-time { color: rgba(255, 255, 255, 0.35); }
-body.page-new .header-bio  { color: #e5e5e5; }
+body.page-new .header-bio  { color: rgb(207, 207, 207); }
 
 body.page-new .nav-row {
   background: #0a0a0a;
@@ -862,13 +869,13 @@ body.page-new .nav-row {
 
 body.page-new .nav-row a,
 body.page-new .nav-link {
-  color: rgba(255, 255, 255, 0.35);
+  color: rgb(207, 207, 207);
 }
 
 body.page-new .nav-row a:hover,
 body.page-new .nav-link:hover {
-  color: rgba(255, 255, 255, 0.75);
-  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  background: none;
 }
 
 body.page-new .nav-row a.active,
@@ -1023,85 +1030,28 @@ body.page-new main { overflow-x: hidden; }
   .featured-image { height: 45vh; min-height: 260px; }
 }
 
-/* ── View Transitions ─────────────────────────────────────────────────────────── */
+/* ── Page Transitions ─────────────────────────────────────────────────────────── */
 
-/* Enable MPA view transitions (Chrome 126+, Edge 126+) */
-@view-transition {
-  navigation: auto;
+@keyframes page-wipe-in {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0%   0 0); }
 }
 
-/*
- * Header and nav are given view-transition-names so the browser captures them
- * as separate groups — excluding them from the root snapshot. This means the
- * root snapshot (body bg + main content + footer) sweeps while the header and
- * nav appear completely still.
- *
- * Critical: we hide the OLD snapshot of each persistent element and show only
- * the NEW one (no animation on the named groups). With mix-blend-mode: normal
- * the new bitmap simply draws over — no plus-lighter white flash.
- */
-header.site-header {
-  view-transition-name: site-header;
+@keyframes page-wipe-out {
+  from { clip-path: inset(0 0%   0 0); }
+  to   { clip-path: inset(0 0% 0 100%); }
 }
 
-.nav-row {
-  view-transition-name: site-nav;
-}
-
-/* Named groups morph in 0s — their position and size snap instantly */
-::view-transition-group(site-header),
-::view-transition-group(site-nav) {
-  animation-duration: 0s;
-}
-
-/* Hide old snapshot — prevents the double-paint artefact from plus-lighter */
-::view-transition-old(site-header),
-::view-transition-old(site-nav) {
-  display: none;
-}
-
-/* New snapshot: no animation, shown immediately at full opacity */
-::view-transition-new(site-header),
-::view-transition-new(site-nav) {
+::view-transition-old(root) {
   animation: none;
   mix-blend-mode: normal;
 }
 
-/*
- * Root wipe — matches guglieri.com exactly.
- * Source: framerusercontent.com/sites/5mf9whpbBCk0zfPCMzMLQH/script_main.mjs
- *   global enter: { mask: { angle:0, type:'wipe', width:'100%' },
- *                   duration: 0.4, ease: [0.27, 0, 0.51, 1] }
- *   per-route h:  { opacity: 0, duration: 0.2, ease: [0.27, 0, 0.51, 1] }
- *
- * Old page: fade to opacity 0 in 0.2 s (matches per-route exit config).
- * New page: clip-path wipe revealing left→right in 0.4 s (global enter).
- * mix-blend-mode: normal — avoids Chrome's plus-lighter white flash.
- */
-::view-transition-old(root),
 ::view-transition-new(root) {
+  animation: page-wipe-in 400ms cubic-bezier(0.27, 0, 0.51, 1) both;
   mix-blend-mode: normal;
 }
 
-::view-transition-old(root) {
-  animation: page-fade-out 0.2s cubic-bezier(0.27, 0, 0.51, 1) both;
-}
-
-::view-transition-new(root) {
-  animation: page-wipe-in 0.4s cubic-bezier(0.27, 0, 0.51, 1) both;
-}
-
-@keyframes page-fade-out {
-  from { opacity: 1; }
-  to   { opacity: 0; }
-}
-
-@keyframes page-wipe-in {
-  from { clip-path: inset(0 100% 0 0); }
-  to   { clip-path: inset(0 0% 0 0); }
-}
-
-/* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-old(root),
   ::view-transition-new(root) {

@@ -26,18 +26,5 @@
   <script src="site.js"></script>
   <script src="animations.js"></script>
   <script src="js/transitions.js"></script>
-  <script>
-    async function init() {
-      const data = await fetch('data.json?v=' + Date.now()).then(r => r.json());
-      renderFooterData(data);
-      const grid = document.getElementById('work-grid');
-      grid.innerHTML = (data.projects || [])
-        .map(p => buildProjectCard(p))
-        .join('');
-      if (window.animatePageIn) window.animatePageIn();
-    }
-
-    init();
-  </script>
 </body>
 </html>

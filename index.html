@@ -28,57 +28,5 @@
 <script src="site.js"></script>
   <script src="animations.js"></script>
   <script src="js/transitions.js"></script>
-  <script>
-    async function init() {
-      const data = await fetch('data.json?v=' + Date.now()).then(r => r.json());
-      renderFooterData(data);
-
-      const projects = data.projects || [];
-      const featured = projects[0];
-      const rest     = projects.slice(1, 4);
-
-      if (featured) renderFeatured(featured);
-      if (rest.length) renderGrid(rest);
-      if (window.animatePageIn) window.animatePageIn();
-    }
-
-    function renderFeatured(p) {
-      const el = document.getElementById('featured-project');
-      const bgStyle = p.thumbnail ? '' : `background:${p.thumbnailGradient || '#111'}`;
-      const imgHTML = p.thumbnail
-        ? `<img src="${escHtml(p.thumbnail)}" alt="${escHtml(p.title)}">`
-        : `<span class="featured-label">${escHtml(p.thumbnailLabel || p.title)}</span>`;
-
-      el.innerHTML = `
-        <a href="/project.html?id=${p.id}">
-          <div class="featured-image" style="${bgStyle}">${imgHTML}</div>
-          <div class="featured-meta">
-            <h2 class="featured-title">${escHtml(p.title)}</h2>
-            <p class="featured-subtitle">${escHtml(p.subtitle)}</p>
-          </div>
-        </a>`;
-    }
-
-    function renderGrid(projects) {
-      const el = document.getElementById('projects-grid');
-      el.innerHTML = projects.map(p => {
-        const bgStyle = p.thumbnail ? '' : `background:${p.thumbnailGradient || '#111'}`;
-        const imgHTML = p.thumbnail
-          ? `<img src="${escHtml(p.thumbnail)}" alt="${escHtml(p.title)}">`
-          : '';
-
-        return `
-          <a class="project-card" href="/project.html?id=${p.id}">
-            <div class="card-image" style="${bgStyle}">${imgHTML}</div>
-            <div class="card-meta">
-              <h3>${escHtml(p.title)}</h3>
-              <p>${escHtml(p.subtitle)}</p>
-            </div>
-          </a>`;
-      }).join('');
-    }
-
-    init();
-  </script>
 </body>
 </html>

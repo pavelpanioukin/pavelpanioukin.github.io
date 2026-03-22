@@ -35,55 +35,5 @@
   <script src="site.js"></script>
   <script src="animations.js"></script>
   <script src="js/transitions.js"></script>
-  <script>
-    async function init() {
-      const data = await fetch('data.json?v=' + Date.now()).then(r => r.json());
-      renderFooterData(data);
-      renderBento(data.feed || []);
-      if (window.animatePageIn) window.animatePageIn();
-    }
-
-    function renderBento(feed) {
-      const grid = document.getElementById('bento-grid');
-      if (!feed.length) {
-        grid.innerHTML = '<p class="bento-empty">Nothing here yet.</p>';
-        return;
-      }
-      const cols = [
-        document.getElementById('bento-col-0'),
-        document.getElementById('bento-col-1'),
-        document.getElementById('bento-col-2')
-      ];
-      feed.forEach((a, i) => {
-        const div = document.createElement('div');
-        div.className = 'bento-item';
-        div.style.setProperty('--delay', Math.min(i * 15, 600) + 'ms');
-        div.onclick = () => openLightbox(a.url, a.alt || '');
-        const img = document.createElement('img');
-        img.src = a.url;
-        img.alt = a.alt || '';
-        div.appendChild(img);
-        cols[i % 3].appendChild(div);
-      });
-    }
-
-    function openLightbox(src, alt) {
-      const lb = document.getElementById('feed-lightbox');
-      const img = document.getElementById('feed-lightbox-img');
-      img.src = src;
-      img.alt = alt;
-      lb.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeLightbox() {
-      document.getElementById('feed-lightbox').classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
-
-    init();
-  </script>
 </body>
 </html>

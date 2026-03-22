@@ -1424,7 +1424,7 @@ body::after {
 /* Hover + external: dark circle, white label */
 #custom-cursor.cursor-hover,
 #custom-cursor.cursor-external {
-  mix-blend-mode: normal;
+  mix-blend-mode: difference;
   width: 40px;
   height: 40px;
   top: -20px;
@@ -1441,7 +1441,7 @@ body::after {
 
 /* Close: always white circle + dark × — lightbox bg is always dark */
 #custom-cursor.cursor-close {
-  mix-blend-mode: normal;
+  mix-blend-mode: difference;
   width: 40px;
   height: 40px;
   top: -20px;
@@ -1490,7 +1490,7 @@ body.page-new #custom-cursor {
 /* Dark pages — hover + external: flip to white circle, dark label */
 body.page-new #custom-cursor.cursor-hover,
 body.page-new #custom-cursor.cursor-external {
-  mix-blend-mode: normal;
+  mix-blend-mode: difference;
   background: #ffffff;
   color: #111111;
 }

@@ -89,7 +89,7 @@ button { font-family: inherit; cursor: pointer; }
 
 .header-time {
   font-size: 22px;
-  font-weight: 1000;
+  font-weight: 400;
   letter-spacing: -0.44px;
   line-height: 26px;
   color: rgb(207, 207, 207);
@@ -103,12 +103,12 @@ button { font-family: inherit; cursor: pointer; }
 
 .header-bio {
   font-size: 22px;
-  font-weight: 1000;
+  font-weight: 400;
   letter-spacing: -0.44px;
   line-height: 26px;
   color: rgb(207, 207, 207);
   text-align: left;
-  max-width: none;
+  max-width: 50%;
 }
 
 .nav-row {

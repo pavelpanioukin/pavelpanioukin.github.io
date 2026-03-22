@@ -1481,6 +1481,11 @@ body::after {
 #custom-cursor.cursor-external::after { content: '↗'; }
 #custom-cursor.cursor-close::after    { content: '×'; }
 
+/* Light pages — default dot color */
+body:not(.page-new) #custom-cursor {
+  background: #333333;
+}
+
 /* Dark pages — default dot inverts via difference blend */
 body.page-new #custom-cursor {
   background: #ffffff;

@@ -7,9 +7,26 @@
   dot.id = 'custom-cursor';
   document.body.appendChild(dot);
 
+  const SVG_VIEW = `<svg width="72" height="72" viewBox="-36 -36 72 72"
+    xmlns="http://www.w3.org/2000/svg" style="position:absolute;top:0;left:0;pointer-events:none;">
+    <path d="M-13,0 Q-7,-10 0,-10 Q7,-10 13,0 Q7,10 0,10 Q-7,10 -13,0 Z"
+      fill="none" stroke="white" stroke-width="1.6"
+      stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="0" cy="0" r="5"
+      fill="none" stroke="white" stroke-width="1.6"/>
+    <circle cx="0" cy="0" r="1.8" fill="white"/>
+  </svg>`;
+
+  const SVG_PLAY = `<svg width="72" height="72" viewBox="-36 -36 72 72"
+    xmlns="http://www.w3.org/2000/svg" style="position:absolute;top:0;left:0;pointer-events:none;">
+    <polygon points="-10,-12 -10,12 14,0"
+      fill="none" stroke="white" stroke-width="1.6"
+      stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>`;
+
   let mouseX = -100, mouseY = -100;
   let dotX = -100, dotY = -100;
-  let currentState = 'default'; // 'default' | 'hover' | 'view'
+  let currentState = 'default'; // 'default' | 'hover' | 'view' | 'play' | 'external' | 'close'
 
   // Track mouse position
   document.addEventListener('mousemove', e => {
@@ -28,10 +45,19 @@
   // Detect hover targets
   function getState(target) {
     if (!target) return 'default';
+    // Lightbox open = "close" state
+    const lb = document.getElementById('feed-lightbox');
+    if (lb && lb.classList.contains('open')) return 'close';
+    // Video / reel = "play" state
+    if (target.closest('[data-cursor="play"], video, .reel, .case-video, .video-thumb')) {
+      return 'play';
+    }
     // Project card / image = "view" state
     if (target.closest('.project-card, .featured-project, .bento-item, [data-cursor="view"]')) {
       return 'view';
     }
+    // External links = "external" state
+    if (target.closest('a[target="_blank"]')) return 'external';
     // Links, buttons, nav = "hover" state
     if (target.closest('a, button, [role="button"], .nav-link, label')) {
       return 'hover';
@@ -44,6 +70,13 @@
     if (state !== currentState) {
       currentState = state;
       dot.className = 'cursor-' + state;
+      if (state === 'view') {
+        dot.innerHTML = SVG_VIEW;
+      } else if (state === 'play') {
+        dot.innerHTML = SVG_PLAY;
+      } else {
+        dot.innerHTML = '';
+      }
     }
   });
 

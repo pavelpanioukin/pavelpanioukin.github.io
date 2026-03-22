@@ -1421,100 +1421,61 @@ body::after {
     opacity       0.2s  ease;
 }
 
-/* Hover state — ring */
-#custom-cursor.cursor-hover {
-  width: 36px;
-  height: 36px;
-  top: -18px;
-  left: -18px;
-  background: transparent;
-  border: 1.5px solid #111111;
-}
-
-/* View state — eye icon / Play state — triangle icon */
+/* States 2–6 shared: 16px filled dot, label floats to the right */
+#custom-cursor.cursor-hover,
 #custom-cursor.cursor-view,
-#custom-cursor.cursor-play {
-  width: 72px;
-  height: 72px;
-  top: -36px;
-  left: -36px;
+#custom-cursor.cursor-play,
+#custom-cursor.cursor-external,
+#custom-cursor.cursor-close {
+  width: 16px;
+  height: 16px;
+  top: -8px;
+  left: -8px;
   background: #111111;
   border: none;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  color: #111111;
   overflow: visible;
 }
 
-#custom-cursor.cursor-view::after,
-#custom-cursor.cursor-play::after {
-  content: '';
-  display: block;
-  width: 72px;
-  height: 72px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-}
-
-/* External link state — "↗" pill */
-#custom-cursor.cursor-external {
-  width: 56px;
-  height: 56px;
-  top: -28px;
-  left: -28px;
-  background: #111111;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#custom-cursor.cursor-external::after {
-  content: '↗';
-  color: #ffffff;
-  font-family: var(--sans);
-  font-size: 20px;
-  font-weight: 400;
-  pointer-events: none;
-}
-
-/* Close state — "×" pill (lightbox open) */
-#custom-cursor.cursor-close {
-  width: 56px;
-  height: 56px;
-  top: -28px;
-  left: -28px;
-  background: #ffffff;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
+/* Shared label style for text states */
+#custom-cursor.cursor-hover::after,
+#custom-cursor.cursor-external::after,
 #custom-cursor.cursor-close::after {
-  content: '×';
+  position: absolute;
+  left: 22px;
+  top: 50%;
+  transform: translateY(-50%);
   color: #111111;
   font-family: var(--sans);
-  font-size: 24px;
-  font-weight: 300;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
   pointer-events: none;
 }
 
-/* Dark pages — invert dot color */
+/* Individual labels */
+#custom-cursor.cursor-hover::after    { content: '→'; }
+#custom-cursor.cursor-external::after { content: '↗'; }
+#custom-cursor.cursor-close::after    { content: '×'; font-weight: 300; font-size: 16px; }
+
+/* Dark pages — invert dot + labels */
 body.page-new #custom-cursor {
   background: #ffffff;
   mix-blend-mode: difference;
 }
 
-body.page-new #custom-cursor.cursor-hover {
-  background: transparent;
-  border-color: #ffffff;
+body.page-new #custom-cursor.cursor-hover,
+body.page-new #custom-cursor.cursor-view,
+body.page-new #custom-cursor.cursor-play,
+body.page-new #custom-cursor.cursor-external,
+body.page-new #custom-cursor.cursor-close {
+  background: #ffffff;
+  color: #ffffff;
 }
 
-body.page-new #custom-cursor.cursor-view,
-body.page-new #custom-cursor.cursor-play {
-  background: #ffffff;
+body.page-new #custom-cursor.cursor-hover::after,
+body.page-new #custom-cursor.cursor-external::after,
+body.page-new #custom-cursor.cursor-close::after {
+  color: #ffffff;
 }

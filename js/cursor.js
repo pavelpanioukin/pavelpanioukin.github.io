@@ -7,20 +7,22 @@
   dot.id = 'custom-cursor';
   document.body.appendChild(dot);
 
-  const SVG_VIEW = `<svg width="72" height="72" viewBox="-36 -36 72 72"
-    xmlns="http://www.w3.org/2000/svg" style="position:absolute;top:0;left:0;pointer-events:none;">
+  const SVG_VIEW = `<svg width="18" height="14" viewBox="-13 -10 26 20"
+    xmlns="http://www.w3.org/2000/svg"
+    style="position:absolute;left:22px;top:50%;transform:translateY(-50%);pointer-events:none;overflow:visible;">
     <path d="M-13,0 Q-7,-10 0,-10 Q7,-10 13,0 Q7,10 0,10 Q-7,10 -13,0 Z"
-      fill="none" stroke="white" stroke-width="1.6"
+      fill="none" stroke="currentColor" stroke-width="1.6"
       stroke-linecap="round" stroke-linejoin="round"/>
     <circle cx="0" cy="0" r="5"
-      fill="none" stroke="white" stroke-width="1.6"/>
-    <circle cx="0" cy="0" r="1.8" fill="white"/>
+      fill="none" stroke="currentColor" stroke-width="1.6"/>
+    <circle cx="0" cy="0" r="1.8" fill="currentColor"/>
   </svg>`;
 
-  const SVG_PLAY = `<svg width="72" height="72" viewBox="-36 -36 72 72"
-    xmlns="http://www.w3.org/2000/svg" style="position:absolute;top:0;left:0;pointer-events:none;">
-    <polygon points="-10,-12 -10,12 14,0"
-      fill="none" stroke="white" stroke-width="1.6"
+  const SVG_PLAY = `<svg width="16" height="16" viewBox="-12 -12 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+    style="position:absolute;left:22px;top:50%;transform:translateY(-50%);pointer-events:none;overflow:visible;">
+    <polygon points="-7,-9 -7,9 10,0"
+      fill="none" stroke="currentColor" stroke-width="1.6"
       stroke-linecap="round" stroke-linejoin="round"/>
   </svg>`;
 

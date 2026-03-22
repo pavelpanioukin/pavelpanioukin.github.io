@@ -1421,61 +1421,63 @@ body::after {
     opacity       0.2s  ease;
 }
 
-/* States 2–6 shared: 16px filled dot, label floats to the right */
+/* States 2–6 shared: 40px circle, content centered inside */
 #custom-cursor.cursor-hover,
 #custom-cursor.cursor-view,
 #custom-cursor.cursor-play,
 #custom-cursor.cursor-external,
 #custom-cursor.cursor-close {
-  width: 16px;
-  height: 16px;
-  top: -8px;
-  left: -8px;
+  mix-blend-mode: normal;
+  width: 40px;
+  height: 40px;
+  top: -20px;
+  left: -20px;
   background: #111111;
   border: none;
   border-radius: 50%;
-  color: #111111;
-  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  overflow: hidden;
 }
 
-/* Shared label style for text states */
+/* Text labels — centered inside the circle */
 #custom-cursor.cursor-hover::after,
 #custom-cursor.cursor-external::after,
 #custom-cursor.cursor-close::after {
-  position: absolute;
-  left: 22px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #111111;
   font-family: var(--sans);
-  font-size: 13px;
-  font-weight: 700;
-  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
   pointer-events: none;
+  line-height: 1;
 }
 
 /* Individual labels */
 #custom-cursor.cursor-hover::after    { content: '→'; }
 #custom-cursor.cursor-external::after { content: '↗'; }
-#custom-cursor.cursor-close::after    { content: '×'; font-weight: 300; font-size: 16px; }
+#custom-cursor.cursor-close::after    { content: '×'; font-size: 18px; font-weight: 300; }
 
-/* Dark pages — invert dot + labels */
+/* Dark pages — default dot inverts via difference blend */
 body.page-new #custom-cursor {
   background: #ffffff;
   mix-blend-mode: difference;
 }
 
+/* Dark pages — expanded states: flip to white circle, dark icons */
 body.page-new #custom-cursor.cursor-hover,
 body.page-new #custom-cursor.cursor-view,
 body.page-new #custom-cursor.cursor-play,
 body.page-new #custom-cursor.cursor-external,
 body.page-new #custom-cursor.cursor-close {
+  mix-blend-mode: normal;
   background: #ffffff;
-  color: #ffffff;
+  color: #111111;
 }
 
 body.page-new #custom-cursor.cursor-hover::after,
 body.page-new #custom-cursor.cursor-external::after,
 body.page-new #custom-cursor.cursor-close::after {
-  color: #ffffff;
+  color: #111111;
 }

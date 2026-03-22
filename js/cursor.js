@@ -7,9 +7,9 @@
   dot.id = 'custom-cursor';
   document.body.appendChild(dot);
 
-  const SVG_VIEW = `<svg width="18" height="14" viewBox="-13 -10 26 20"
+  const SVG_VIEW = `<svg width="22" height="17" viewBox="-13 -10 26 20"
     xmlns="http://www.w3.org/2000/svg"
-    style="position:absolute;left:22px;top:50%;transform:translateY(-50%);pointer-events:none;overflow:visible;">
+    style="display:block;pointer-events:none;flex-shrink:0;">
     <path d="M-13,0 Q-7,-10 0,-10 Q7,-10 13,0 Q7,10 0,10 Q-7,10 -13,0 Z"
       fill="none" stroke="currentColor" stroke-width="1.6"
       stroke-linecap="round" stroke-linejoin="round"/>
@@ -18,9 +18,9 @@
     <circle cx="0" cy="0" r="1.8" fill="currentColor"/>
   </svg>`;
 
-  const SVG_PLAY = `<svg width="16" height="16" viewBox="-12 -12 24 24"
+  const SVG_PLAY = `<svg width="18" height="18" viewBox="-12 -12 24 24"
     xmlns="http://www.w3.org/2000/svg"
-    style="position:absolute;left:22px;top:50%;transform:translateY(-50%);pointer-events:none;overflow:visible;">
+    style="display:block;pointer-events:none;flex-shrink:0;">
     <polygon points="-7,-9 -7,9 10,0"
       fill="none" stroke="currentColor" stroke-width="1.6"
       stroke-linecap="round" stroke-linejoin="round"/>

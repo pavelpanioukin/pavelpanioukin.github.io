@@ -1427,7 +1427,7 @@ body::after {
 #custom-cursor.cursor-play,
 #custom-cursor.cursor-external,
 #custom-cursor.cursor-close {
-  mix-blend-mode: normal;
+  mix-blend-mode: difference;
   width: 40px;
   height: 40px;
   top: -20px;
@@ -1465,19 +1465,13 @@ body.page-new #custom-cursor {
   mix-blend-mode: difference;
 }
 
-/* Dark pages — expanded states: flip to white circle, dark icons */
+/* Dark pages — expanded states: white circle, dark icons */
 body.page-new #custom-cursor.cursor-hover,
 body.page-new #custom-cursor.cursor-view,
 body.page-new #custom-cursor.cursor-play,
 body.page-new #custom-cursor.cursor-external,
 body.page-new #custom-cursor.cursor-close {
-  mix-blend-mode: normal;
+  mix-blend-mode: difference;
   background: #ffffff;
-  color: #111111;
-}
-
-body.page-new #custom-cursor.cursor-hover::after,
-body.page-new #custom-cursor.cursor-external::after,
-body.page-new #custom-cursor.cursor-close::after {
   color: #111111;
 }

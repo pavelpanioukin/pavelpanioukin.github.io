@@ -50,7 +50,7 @@
   });
 
   // RAF loop — lerp toward mouse
-  const LERP = 0.12;
+  const LERP = 0.15;
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     // Snap directly — no lerp, no transitions

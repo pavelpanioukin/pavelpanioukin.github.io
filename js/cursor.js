@@ -11,15 +11,79 @@
   let dotX = -100, dotY = -100;
   let currentState = 'default'; // 'default' | 'hover' | 'external' | 'close'
 
-  // Track mouse position
+  // ── Magnetic attraction ──────────────────────────────────────
+  // Elements that attract the cursor. Excludes form fields and dense UI.
+  const MAGNETIC_SELECTORS = '.nav-link, .project-card, .bento-item, .btn-submit, .cta-primary, .footer-name, .footer-social-link, .project-nav-link';
+  const MAGNETIC_RADIUS   = 80;  // px from element center to start attracting
+  const CURSOR_PULL       = 0.20; // how far cursor offsets toward element (0–1)
+  const ELEMENT_NUDGE     = 0.12; // how far element moves toward cursor (0–1)
+  const ELEMENT_SCALE     = 0.03; // max extra scale (1 + this)
+
+  let magnetOffsetX = 0, magnetOffsetY = 0;
+  let magnetEl = null;
+
+  function updateMagnet(x, y) {
+    const candidates = document.querySelectorAll(MAGNETIC_SELECTORS);
+    let best = null, bestStrength = 0;
+
+    candidates.forEach(el => {
+      const r  = el.getBoundingClientRect();
+      const cx = r.left + r.width  / 2;
+      const cy = r.top  + r.height / 2;
+      const dist     = Math.hypot(x - cx, y - cy);
+      const strength = Math.max(0, 1 - dist / MAGNETIC_RADIUS);
+      if (strength > bestStrength) { best = el; bestStrength = strength; }
+    });
+
+    // Release previous element
+    if (magnetEl && magnetEl !== best) {
+      magnetEl.style.transform = '';
+      magnetEl.style.transition = 'transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+      magnetEl = null;
+    }
+
+    if (best && bestStrength > 0) {
+      magnetEl = best;
+      const r  = best.getBoundingClientRect();
+      const cx = r.left + r.width  / 2;
+      const cy = r.top  + r.height / 2;
+      const dx = x - cx;
+      const dy = y - cy;
+
+      // Cursor pulled toward element center
+      magnetOffsetX = -dx * bestStrength * CURSOR_PULL;
+      magnetOffsetY = -dy * bestStrength * CURSOR_PULL;
+
+      // Element nudged toward cursor
+      const ex    = dx * bestStrength * ELEMENT_NUDGE;
+      const ey    = dy * bestStrength * ELEMENT_NUDGE;
+      const scale = 1 + ELEMENT_SCALE * bestStrength;
+
+      best.style.transition = 'transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+      best.style.transform  = `translate(${ex}px, ${ey}px) scale(${scale})`;
+    } else {
+      magnetOffsetX = 0;
+      magnetOffsetY = 0;
+    }
+  }
+
+  // Track mouse position + run magnet
   document.addEventListener('mousemove', e => {
     mouseX = e.clientX;
     mouseY = e.clientY;
+    updateMagnet(e.clientX, e.clientY);
   });
 
-  // Hide when leaving window
+  // Release magnet when leaving window
   document.addEventListener('mouseleave', () => {
     dot.style.opacity = '0';
+    if (magnetEl) {
+      magnetEl.style.transform = '';
+      magnetEl.style.transition = 'transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+      magnetEl = null;
+    }
+    magnetOffsetX = 0;
+    magnetOffsetY = 0;
   });
   document.addEventListener('mouseenter', () => {
     dot.style.opacity = '1';
@@ -49,11 +113,10 @@
     }
   });
 
-  // RAF loop — lerp toward mouse
+  // RAF loop — lerp toward mouse + magnetic offset
   const LERP = 0.15;
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    // Snap directly — no lerp, no transitions
     dot.style.transition = 'none';
     document.addEventListener('mousemove', e => {
       dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
@@ -62,8 +125,8 @@
   }
 
   function tick() {
-    dotX += (mouseX - dotX) * LERP;
-    dotY += (mouseY - dotY) * LERP;
+    dotX += (mouseX + magnetOffsetX - dotX) * LERP;
+    dotY += (mouseY + magnetOffsetY - dotY) * LERP;
     dot.style.transform = `translate(${dotX}px, ${dotY}px)`;
     requestAnimationFrame(tick);
   }

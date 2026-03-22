@@ -1421,10 +1421,8 @@ body::after {
     opacity       0.2s  ease;
 }
 
-/* States 2–6 shared: 40px circle, content centered inside */
+/* States 2–4 shared: 40px circle, content centered inside */
 #custom-cursor.cursor-hover,
-#custom-cursor.cursor-view,
-#custom-cursor.cursor-play,
 #custom-cursor.cursor-external,
 #custom-cursor.cursor-close {
   mix-blend-mode: difference;
@@ -1467,8 +1465,6 @@ body.page-new #custom-cursor {
 
 /* Dark pages — expanded states: white circle, dark icons */
 body.page-new #custom-cursor.cursor-hover,
-body.page-new #custom-cursor.cursor-view,
-body.page-new #custom-cursor.cursor-play,
 body.page-new #custom-cursor.cursor-external,
 body.page-new #custom-cursor.cursor-close {
   mix-blend-mode: difference;

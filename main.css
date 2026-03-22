@@ -137,7 +137,7 @@ button { font-family: inherit; cursor: pointer; }
 .nav-row a,
 .nav-link {
   font-size: 14px;
-  font-weight: 1000;
+  font-weight: 400;
   letter-spacing: -0.28px;
   line-height: 22.4px;
   color: rgb(207, 207, 207);

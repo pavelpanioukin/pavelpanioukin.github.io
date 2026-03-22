@@ -1475,3 +1475,10 @@ body.page-new #custom-cursor.cursor-close {
   background: #ffffff;
   color: #111111;
 }
+
+/* ::after text inherits color explicitly (can't rely on cascade) */
+body.page-new #custom-cursor.cursor-hover::after,
+body.page-new #custom-cursor.cursor-external::after,
+body.page-new #custom-cursor.cursor-close::after {
+  color: #111111;
+}

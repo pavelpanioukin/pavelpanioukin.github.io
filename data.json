@@ -11,7 +11,7 @@
     {
       "id": 1,
       "title": "DailyFX",
-      "subtitle": "Trading Analysis Platform Redesign",
+      "subtitle": "Trading platform redesign · IG Group · 2014–2020",
       "description": "A complete redesign of the DailyFX trading analysis platform, improving UX for both novice and expert traders through better data visualization, streamlined information architecture, and a cohesive design system built for scale.",
       "thumbnail": "",
       "thumbnailGradient": "linear-gradient(135deg, #0f0c29 0%, #1a1a4e 50%, #24243e 100%)",
@@ -52,7 +52,7 @@
     {
       "id": 2,
       "title": "Brainly Tutoring",
-      "subtitle": "Live On-Demand Tutoring Sessions",
+      "subtitle": "Live EdTech · Mobile-first · 0 to 1",
       "description": "Designed the end-to-end experience for Brainly's live tutoring feature, enabling millions of students to connect with expert tutors in real-time. Led research, prototyping, and cross-functional delivery from 0 to 1.",
       "thumbnail": "",
       "thumbnailGradient": "linear-gradient(135deg, #2d1b69 0%, #1a6b5c 100%)",
@@ -93,7 +93,7 @@
     {
       "id": 3,
       "title": "Storebox",
-      "subtitle": "First Fully Digital Self-Storage in Europe",
+      "subtitle": "First digital self-storage in Europe · Consumer app",
       "description": "Led product design at Storebox — Europe's first fully digital self-storage solution. Designed the complete customer journey from discovery to booking to smart-lock access management, replacing all physical touchpoints.",
       "thumbnail": "",
       "thumbnailGradient": "linear-gradient(135deg, #b45309 0%, #d97706 60%, #fbbf24 100%)",
@@ -115,34 +115,6 @@
           "type": "text",
           "heading": "Approach",
           "body": "I owned the complete customer journey — from the marketing site through to the app used to open the storage unit. This meant designing across three surfaces (web, iOS, Android) with a consistent interaction model, and working closely with hardware engineers to design interfaces for the smart lock access flow."
-        }
-      ]
-    },
-    {
-      "id": 4,
-      "title": "Tabata Timer",
-      "subtitle": "HIIT Training App",
-      "description": "A focused, distraction-free Tabata interval timer designed for high-intensity interval training. Built with a minimal UI that keeps athletes in flow-state, with customisable intervals and a clear visual rhythm.",
-      "thumbnail": "",
-      "thumbnailGradient": "linear-gradient(135deg, #7f1d1d 0%, #dc2626 60%, #ef4444 100%)",
-      "thumbnailLabel": "Tabata",
-      "tags": [
-        "Mobile Design",
-        "Health & Fitness",
-        "iOS"
-      ],
-      "year": "2020",
-      "featured": true,
-      "sections": [
-        {
-          "type": "text",
-          "heading": "Overview",
-          "body": "A focused, distraction-free Tabata interval timer designed for high-intensity interval training. The core design principle: once a session starts, the interface should disappear — leaving only the rhythm."
-        },
-        {
-          "type": "text",
-          "heading": "Design principles",
-          "body": "No menus during a session. Large, glanceable state indicators. Haptic feedback replacing visual noise. Every interaction was tested with people mid-workout — hands sweaty, breathing hard — to ensure the timer was genuinely usable under real conditions, not just demo conditions."
         }
       ]
     }

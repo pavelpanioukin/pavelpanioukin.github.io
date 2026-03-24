@@ -40,7 +40,7 @@
           '<a href="/" class="header-name">Pavel Panioukin</a>' +
           '<span class="header-time" id="local-time"></span>' +
         '</div>' +
-        '<div class="header-bio">Digital product designer &amp; leader with 12 years across fintech, edtech, and SaaS.</div>' +
+        '<div class="header-bio">Senior product designer, nearly two decades. I design complex products clearly — financial tools, professional software, and systems where the UX has real consequences.</div>' +
       '</div>';
 
     var navEl = document.createElement('div');

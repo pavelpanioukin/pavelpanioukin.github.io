@@ -877,7 +877,7 @@ body.page-new .nav-row {
 
 body.page-new .nav-row a,
 body.page-new .nav-link {
-  color: rgb(207, 207, 207);
+  color: rgb(207, 207, 207) !important;
 }
 
 body.page-new .nav-row a:hover,

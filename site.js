@@ -5,7 +5,6 @@
 (function () {
 
   var NAV = [
-    { label: 'NEW',     href: '/',             key: 'new'     },
     { label: 'Feed',    href: '/feed.html',    key: 'feed'    },
     { label: 'About',   href: '/about.html',   key: 'about'   },
     { label: 'Work',    href: '/work.html',    key: 'work'    },

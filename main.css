@@ -1350,37 +1350,6 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
   .philosophy-principle { font-size: 1.125rem; }
 }
 
-/* ── About hero — split typography ──────────────────────────────────────────── */
-
-.about-hero-muted {
-  color: #BBBBBB;
-  font-weight: 400;
-}
-
-.about-hero-emphasis {
-  color: #000000;
-  font-weight: 700;
-}
-
-/* ── Selected projects (about experience entries) ────────────────────────────── */
-
-.selected-projects {
-  list-style: none;
-  padding: 0;
-  margin-top: 12px;
-}
-
-.selected-projects li {
-  font-size: 14px;
-  color: #333333;
-  margin-bottom: 6px;
-}
-
-.selected-projects .project-type {
-  color: #AAAAAA;
-  font-weight: 400;
-}
-
 /* ── Redesign Upgrades ───────────────────────────────────────────────────────── */
 
 /* Focus states — accessible keyboard navigation */

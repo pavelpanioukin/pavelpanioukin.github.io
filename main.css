@@ -1530,16 +1530,19 @@ body.page-new #custom-cursor.cursor-close::after {
 
 .homepage-subline { font-size: 0.9375rem; color: var(--text-muted); }
 
-.homepage-stance { padding-bottom: 40px; }
+.homepage-stance { padding-top: 64px; padding-bottom: 48px; }
 
 .homepage-body {
-  font-size: 1.0625rem;
-  color: var(--text-dim);
-  line-height: 1.65;
-  max-width: 640px;
+  font-size: clamp(1.75rem, 3.5vw, 3rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--text);
+  max-width: 800px;
+  text-wrap: balance;
 }
 
-.homepage-body + .homepage-body { margin-top: 1em; }
+.homepage-body + .homepage-body { margin-top: 0.5em; }
 
 .homepage-signals {
   display: flex;
@@ -1608,7 +1611,7 @@ a.homepage-project-title:hover { opacity: 0.55; }
 /* Dark theme overrides (body.page-new = index.html only) */
 body.page-new .homepage-name { color: #fff; }
 body.page-new .homepage-subline { color: rgba(255,255,255,0.35); }
-body.page-new .homepage-body { color: rgba(255,255,255,0.6); }
+body.page-new .homepage-body { color: #fff; }
 body.page-new .homepage-status { color: rgba(255,255,255,0.4); }
 body.page-new #contact-link { color: rgba(255,255,255,0.65); opacity: 1 !important; }
 body.page-new #contact-link:hover { color: #fff; }

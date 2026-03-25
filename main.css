@@ -79,7 +79,7 @@ button { font-family: inherit; cursor: pointer; }
 
 .header-name {
   font-size: 22px;
-  font-weight: 1000;
+  font-weight: 600;
   letter-spacing: -0.44px;
   line-height: 26px;
   color: var(--text);

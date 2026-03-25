@@ -42,6 +42,13 @@
         '<div class="header-bio">Designing digital products since 2007</div>' +
       '</div>';
 
+    var infoRowEl = headerEl.querySelector('.info-row');
+    if (infoRowEl) {
+      infoRowEl.addEventListener('click', function (e) {
+        if (!e.target.closest('a')) window.location.href = '/';
+      });
+    }
+
     var navEl = document.createElement('div');
     navEl.className = 'nav-row';
     navEl.innerHTML = '<nav class="header-nav">' + buildNavHTML() + '</nav>';

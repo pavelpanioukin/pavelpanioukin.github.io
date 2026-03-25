@@ -23,6 +23,10 @@
       ],
       "year": "2023",
       "featured": true,
+      "homepage": true,
+      "homepageOrder": 1,
+      "tension": "How do you build for scale when a wrong component costs someone real money?",
+      "available": true,
       "sections": [
         {
           "type": "text",
@@ -117,6 +121,44 @@
           "body": "I owned the complete customer journey — from the marketing site through to the app used to open the storage unit. This meant designing across three surfaces (web, iOS, Android) with a consistent interaction model, and working closely with hardware engineers to design interfaces for the smart lock access flow."
         }
       ]
+    },
+    {
+      "id": 10,
+      "title": "Deel",
+      "subtitle": "AI-Assisted Workflows · B2B SaaS · 2023–present",
+      "description": "Designing AI-assisted workforce tools shipped to 40,000+ companies. The central design challenge: the moment a user must decide whether to trust what the AI just told them.",
+      "thumbnail": "",
+      "thumbnailGradient": "linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%)",
+      "thumbnailLabel": "Deel",
+      "tags": [
+        "AI Product Design",
+        "B2B SaaS",
+        "Fintech"
+      ],
+      "year": "2025",
+      "featured": false,
+      "homepage": true,
+      "homepageOrder": 2,
+      "tension": "Designing the moment a user decides whether to trust what the AI just told them.",
+      "available": false,
+      "sections": []
+    },
+    {
+      "id": 11,
+      "title": "Coming soon",
+      "subtitle": "—",
+      "description": "",
+      "thumbnail": "",
+      "thumbnailGradient": "linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)",
+      "thumbnailLabel": "",
+      "tags": [],
+      "year": "",
+      "featured": false,
+      "homepage": true,
+      "homepageOrder": 3,
+      "tension": "Third case study in progress.",
+      "available": false,
+      "sections": []
     }
   ],
   "experience": [
@@ -213,7 +255,7 @@
     "twitter": "https://twitter.com/pavelpanioukin"
   },
   "meta": {
-    "siteTitle": "Pavel Panioukin — Design Leader",
+    "siteTitle": "Pavel Panioukin — Product Designer",
     "copyright": "© 2026 Pavel Panioukin. All rights reserved."
   },
   "feed": [

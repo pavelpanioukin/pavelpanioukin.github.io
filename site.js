@@ -165,6 +165,38 @@ function renderGrid(projects) {
   }).join('');
 }
 
+// ── Homepage project list ─────────────────────────────────────────────────────
+// Renders projects flagged homepage:true, sorted by homepageOrder.
+// Titles link only when available:true AND sections exist.
+// "Available on request" badge shown when available:false and subtitle isn't "—".
+
+function renderHomepageProjects(projects) {
+  var el = document.getElementById('homepage-projects');
+  if (!el) return;
+  var list = projects
+    .filter(function (p) { return p.homepage === true; })
+    .sort(function (a, b) { return (a.homepageOrder || 99) - (b.homepageOrder || 99); });
+  if (!list.length) { el.innerHTML = ''; return; }
+  el.innerHTML = list.map(function (p) {
+    var hasSections = p.sections && p.sections.length > 0;
+    var isLinked    = p.available === true && hasSections;
+    var muted       = p.title === 'Coming soon' ? ' homepage-project--muted' : '';
+    var titleInner  = escHtml(p.title);
+    var titleEl = isLinked
+      ? '<a class="homepage-project-title" href="/project.html?id=' + p.id + '">' + titleInner + '</a>'
+      : '<div class="homepage-project-title">' + titleInner + '</div>';
+    var metaContent = escHtml(p.subtitle || '');
+    if (p.available === false && p.subtitle && p.subtitle !== '—') {
+      metaContent += (metaContent ? ' &middot; ' : '') + '<span class="project-nda">Available on request</span>';
+    }
+    return '<article class="homepage-project' + muted + '">' +
+      titleEl +
+      '<div class="homepage-project-tension">' + escHtml(p.tension || '') + '</div>' +
+      '<div class="homepage-project-meta">' + metaContent + '</div>' +
+      '</article>';
+  }).join('');
+}
+
 // ── Feed / bento renderer ─────────────────────────────────────────────────────
 
 function renderBento(feed) {
@@ -348,9 +380,7 @@ window.initPage = async function () {
   var p = window.location.pathname;
 
   if (p === '/' || p.endsWith('/index.html')) {
-    var projects = data.projects || [];
-    if (projects[0])              renderFeatured(projects[0]);
-    if (projects.slice(1,4).length) renderGrid(projects.slice(1, 4));
+    renderHomepageProjects(data.projects || []);
 
   } else if (p.includes('work')) {
     var grid = document.getElementById('work-grid');

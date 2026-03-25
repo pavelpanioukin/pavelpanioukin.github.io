@@ -39,7 +39,7 @@
           '<a href="/" class="header-name">Pavel Panioukin</a>' +
           '<span class="header-time" id="local-time"></span>' +
         '</div>' +
-        '<div class="header-bio">Designing digital products since 2007.</div>' +
+        '<div class="header-bio">Designing digital products since 2007</div>' +
       '</div>';
 
     var navEl = document.createElement('div');

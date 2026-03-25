@@ -5,9 +5,9 @@
 (function () {
 
   var NAV = [
-    { label: 'Feed',    href: '/feed.html',    key: 'feed'    },
     { label: 'About',   href: '/about.html',   key: 'about'   },
     { label: 'Work',    href: '/work.html',    key: 'work'    },
+    { label: 'Feed',    href: '/feed.html',    key: 'feed'    },
     { label: 'Contact', href: '/contact.html', key: 'contact' },
   ];
 

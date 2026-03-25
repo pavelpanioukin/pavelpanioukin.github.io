@@ -39,7 +39,7 @@
           '<a href="/" class="header-name">Pavel Panioukin</a>' +
           '<span class="header-time" id="local-time"></span>' +
         '</div>' +
-        '<div class="header-bio">Senior product designer, nearly two decades. I design complex products clearly — financial tools, professional software, and systems where the UX has real consequences.</div>' +
+        '<div class="header-bio">Designing digital products since 2007.</div>' +
       '</div>';
 
     var navEl = document.createElement('div');

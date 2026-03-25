@@ -68,7 +68,10 @@ button { font-family: inherit; cursor: pointer; }
   padding: 12px 16px;
   gap: 24px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  transition: background 0.2s;
 }
+
+.info-row:hover .header-bio { color: var(--text); }
 
 .info-left {
   display: flex;
@@ -105,9 +108,11 @@ button { font-family: inherit; cursor: pointer; }
   font-weight: 400;
   letter-spacing: -0.44px;
   line-height: 26px;
-  color: rgb(207, 207, 207);
+  color: var(--text-dim);
   text-align: left;
   max-width: 50%;
+  align-self: flex-start;
+  transition: color 0.2s;
 }
 
 .nav-row {
@@ -858,7 +863,8 @@ body.page-new .info-row {
 }
 
 body.page-new .header-name { color: #fff; }
-body.page-new .header-bio  { color: rgb(207, 207, 207); }
+body.page-new .header-bio  { color: rgba(255,255,255,0.45); }
+body.page-new .info-row:hover .header-bio { color: #fff; }
 
 body.page-new .nav-row {
   background: #0a0a0a;

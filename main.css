@@ -91,7 +91,7 @@ button { font-family: inherit; cursor: pointer; }
   font-weight: 400;
   letter-spacing: -0.44px;
   line-height: 26px;
-  color: var(--text-muted);
+  color: var(--text-dim);
   display: block;
 }
 .header-time-value {

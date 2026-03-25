@@ -865,7 +865,8 @@ body.page-new .info-row {
 }
 
 body.page-new .header-name { color: #fff; }
-body.page-new .header-bio  { color: rgba(255,255,255,0.45); }
+body.page-new .header-time { color: rgb(207, 207, 207); }
+body.page-new .header-bio  { color: rgb(207, 207, 207); }
 body.page-new .info-row:hover .header-bio { color: #fff; }
 
 body.page-new .nav-row {

@@ -334,7 +334,7 @@ button { font-family: inherit; cursor: pointer; }
   padding: 64px 0;
   border-bottom: 1px solid var(--border);
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   gap: 60px;
 }
 
@@ -359,12 +359,12 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .about-headline {
-  font-size: clamp(1.75rem, 3vw, 3rem);
+  font-size: clamp(1.75rem, 3.5vw, 3rem);
   font-weight: 900;
   letter-spacing: -0.02em;
-  line-height: 1.1;
+  line-height: 1.05;
   color: var(--text);
-  margin-bottom: 12px;
+  margin-bottom: 8px;
   text-wrap: balance;
 }
 

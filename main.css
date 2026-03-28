@@ -1062,7 +1062,7 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: 2rem;
+  column-gap: 4px; /* matches .bento-grid gap */
   max-width: var(--max-w);
   margin: 0 auto;
   padding: 4rem var(--gutter) 6rem;
@@ -1498,5 +1498,27 @@ body.page-new .homepage-project-title { color: #fff; }
 body.page-new .homepage-project-tension { color: rgba(255,255,255,0.6); }
 body.page-new .homepage-project-meta { color: rgba(255,255,255,0.3); }
 body.page-new .project-nda { color: rgba(255,255,255,0.3); }
+
+/* ── About page: photo row (about-specific) ──────────────────────────────────── */
+
+.about-img-cell .about-photo,
+.about-photo-placeholder {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  border-radius: 8px; /* matches .bento-item border-radius */
+  display: block;
+}
+
+.about-photo-placeholder {
+  background: var(--bg-off); /* muted surface, ready to swap for a real image */
+}
+
+@media (max-width: 768px) {
+  .about-img-cell .about-photo,
+  .about-photo-placeholder {
+    height: 300px;
+  }
+}
 
 /* ─────────────────────────────────────────────────────────────────────────── */

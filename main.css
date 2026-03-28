@@ -1092,8 +1092,8 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
 .about-grid .philosophy-section,
 .about-grid .timeline-section {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 32px;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px; /* matches about-grid column-gap */
   padding: 0;
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -1101,9 +1101,14 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
 }
 
 
-/* Section label sits in col 1 — remove its default bottom margin */
+/* Section headings in col 1: styled as H2 */
 .about-grid .philosophy-section > .section-label,
 .about-grid .timeline-section > .section-label {
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  color: var(--text);
   margin-bottom: 0;
 }
 
@@ -1242,7 +1247,6 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
   grid-template-columns: 56px 1fr;
   gap: 40px;
   padding: 40px 0;
-  border-top: 1px solid var(--border);
   align-items: start;
 }
 

@@ -1090,17 +1090,40 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
   max-width: 52ch;
 }
 
-/* Experience section inside grid */
+/* How I work + Experience: label left, content right */
+.about-grid .philosophy-section,
 .about-grid .timeline-section {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 32px;
   padding: 0;
-  border-bottom: none;
   border-top: 1px solid var(--border);
   padding-top: 3rem;
+  padding-bottom: 3rem;
+  align-items: start;
 }
 
-/* Experience entries — wider content column */
+.about-grid .timeline-section {
+  border-bottom: none;
+}
+
+/* Section label sits in col 1 — remove its default bottom margin */
+.about-grid .philosophy-section > .section-label,
+.about-grid .timeline-section > .section-label {
+  margin-bottom: 0;
+}
+
+/* Experience entries — period left, details right */
 .about-grid .timeline-section .timeline-item {
   grid-template-columns: 1fr 2fr;
+}
+
+@media (max-width: 768px) {
+  .about-grid .philosophy-section,
+  .about-grid .timeline-section {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
 }
 
 /* Sub-role separator */
@@ -1500,6 +1523,10 @@ body.page-new .homepage-project-meta { color: rgba(255,255,255,0.3); }
 body.page-new .project-nda { color: rgba(255,255,255,0.3); }
 
 /* ── About page: photo row (about-specific) ──────────────────────────────────── */
+
+.about-img-cell {
+  margin-bottom: 3rem;
+}
 
 .about-img-cell .about-photo,
 .about-photo-placeholder {

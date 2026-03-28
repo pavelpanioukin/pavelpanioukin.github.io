@@ -1079,7 +1079,6 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
 /* Bio — left column */
 .about-info {
   grid-column: 1;
-  padding-right: 2rem;
   padding-top: 0.25rem;
   align-self: start;
 }
@@ -1093,7 +1092,7 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
 .about-grid .timeline-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4px; /* matches about-grid column-gap */
+  column-gap: 40px;
   padding: 0;
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -1165,12 +1164,6 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
   .about-full,
   .about-info {
     grid-column: 1 !important;
-  }
-  .about-info {
-    padding-right: 0;
-  }
-  .about-grid .timeline-section .timeline-item {
-    grid-template-columns: 1fr;
   }
 }
 

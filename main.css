@@ -1227,13 +1227,18 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
 /* ── "Now" dot — replaces pill badge on timeline ─────────────────────────────── */
 
 .timeline-now-dot {
-  display: inline-block;
+  display: block;
   width: 7px;
   height: 7px;
   border-radius: 50%;
   background: #22c55e;
-  vertical-align: 0.5ex;
-  margin-left: 4px;
+  flex-shrink: 0;
+}
+
+.timeline-item-top .timeline-period {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 /* ── Philosophy section — visually distinct from experience ──────────────────── */

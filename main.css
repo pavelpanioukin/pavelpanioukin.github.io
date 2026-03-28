@@ -1227,12 +1227,13 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
 /* ── "Now" dot — replaces pill badge on timeline ─────────────────────────────── */
 
 .timeline-now-dot {
-  display: block;
+  display: inline-block;
   width: 7px;
   height: 7px;
   border-radius: 50%;
   background: #22c55e;
-  margin-top: 8px;
+  vertical-align: middle;
+  margin-left: 4px;
 }
 
 /* ── Philosophy section — visually distinct from experience ──────────────────── */
@@ -1243,11 +1244,8 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
 }
 
 .philosophy-item {
-  display: grid;
-  grid-template-columns: 56px 1fr;
-  gap: 40px;
+  display: block;
   padding: 40px 0;
-  align-items: start;
 }
 
 .philosophy-num {

@@ -408,7 +408,6 @@ button { font-family: inherit; cursor: pointer; }
   grid-template-columns: 200px 1fr;
   gap: 32px;
   padding: 32px 0;
-  border-top: 1px solid var(--border);
 }
 
 .timeline-item:last-child { padding-bottom: 0; }
@@ -457,7 +456,6 @@ button { font-family: inherit; cursor: pointer; }
 
 .cta-section {
   padding: 100px var(--gutter);
-  border-top: 1px solid var(--border);
 }
 
 .cta-label {
@@ -1097,15 +1095,11 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
   grid-template-columns: 1fr 2fr;
   gap: 32px;
   padding: 0;
-  border-top: 1px solid var(--border);
   padding-top: 3rem;
   padding-bottom: 3rem;
   align-items: start;
 }
 
-.about-grid .timeline-section {
-  border-bottom: none;
-}
 
 /* Section label sits in col 1 — remove its default bottom margin */
 .about-grid .philosophy-section > .section-label,
@@ -1113,9 +1107,33 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
   margin-bottom: 0;
 }
 
-/* Experience entries — period left, details right */
+/* Experience entries: flex column, logo+date top row */
 .about-grid .timeline-section .timeline-item {
-  grid-template-columns: 1fr 2fr;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 28px 0;
+}
+
+.timeline-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.timeline-logo {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  object-fit: contain;
+  flex-shrink: 0;
+  display: block;
+}
+
+.about-grid .timeline-section .timeline-company {
+  display: block;
+  margin-bottom: 0;
 }
 
 @media (max-width: 768px) {

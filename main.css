@@ -1100,7 +1100,7 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
 }
 
 
-/* Section headings in col 1: styled as H2 */
+/* Section headings in col 1: styled as H2, sticky while content scrolls */
 .about-grid .philosophy-section > .section-label,
 .about-grid .timeline-section > .section-label {
   font-size: clamp(1.25rem, 2vw, 1.75rem);
@@ -1109,6 +1109,9 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
   text-transform: none;
   color: var(--text);
   margin-bottom: 0;
+  position: sticky;
+  top: 52px; /* 44px nav + 8px breathing room */
+  align-self: start;
 }
 
 /* Experience entries: flex column, logo+date top row */
@@ -1164,6 +1167,10 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
   .about-full,
   .about-info {
     grid-column: 1 !important;
+  }
+  .about-grid .philosophy-section > .section-label,
+  .about-grid .timeline-section > .section-label {
+    position: static;
   }
 }
 
@@ -1225,7 +1232,7 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
   height: 7px;
   border-radius: 50%;
   background: #22c55e;
-  vertical-align: middle;
+  vertical-align: 0.5ex;
   margin-left: 4px;
 }
 

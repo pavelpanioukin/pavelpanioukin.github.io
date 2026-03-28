@@ -359,12 +359,12 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .about-headline {
-  font-size: clamp(1.75rem, 3.5vw, 3rem);
+  font-size: clamp(2.25rem, 5vw, 4.5rem);
   font-weight: 900;
-  letter-spacing: -0.02em;
-  line-height: 1.05;
+  letter-spacing: -0.03em;
+  line-height: 1.0;
   color: var(--text);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   text-wrap: balance;
 }
 
@@ -380,7 +380,7 @@ button { font-family: inherit; cursor: pointer; }
   max-width: 640px;
 }
 
-.about-bio-text + .about-bio-text { margin-top: 1em; }
+.about-bio-text + .about-bio-text { margin-top: 1.35em; }
 
 /* ── Experience Timeline (about page) ────────────────────────────────────────── */
 
@@ -435,7 +435,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .timeline-role {
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   color: var(--text-dim);
   margin-bottom: 10px;
 }
@@ -580,6 +580,12 @@ button { font-family: inherit; cursor: pointer; }
 
 .btn-submit:hover { opacity: 0.75; }
 .btn-submit:active { transform: scale(0.98); opacity: 0.9; }
+
+#form-note {
+  margin-top: 12px;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
 
 /* ── Footer ──────────────────────────────────────────────────────────────────── */
 
@@ -874,6 +880,17 @@ body.page-new {
   color: #fff;
 }
 
+/* Subtle noise grain on dark homepage */
+body.page-new::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.035;
+  pointer-events: none;
+  z-index: 9000;
+}
+
 body.page-new .site-header { background: #0a0a0a; color: #fff; }
 
 body.page-new .info-row {
@@ -1087,6 +1104,13 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
   max-width: 52ch;
 }
 
+.about-info .about-bio-text:first-child {
+  font-size: 1.1875rem;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.65;
+}
+
 /* How I work + Experience: label left, content right */
 .about-grid .philosophy-section,
 .about-grid .timeline-section {
@@ -1103,15 +1127,26 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
 /* Section headings in col 1: styled as H2, sticky while content scrolls */
 .about-grid .philosophy-section > .section-label,
 .about-grid .timeline-section > .section-label {
-  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
   text-transform: none;
   color: var(--text);
   margin-bottom: 0;
   position: sticky;
   top: 52px; /* 44px nav + 8px breathing room */
   align-self: start;
+}
+
+/* Align "How I work" with first principle (philosophy-item has 40px top padding) */
+.about-grid .philosophy-section > .section-label {
+  padding-top: 40px;
+}
+
+/* Align "Experience" with first job entry (timeline-item has 28px top padding) */
+.about-grid .timeline-section > .section-label {
+  padding-top: 28px;
 }
 
 /* Experience entries: flex column, logo+date top row */
@@ -1126,7 +1161,17 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+}
+
+/* Reset global role margin in about timeline — gap handles spacing */
+.about-grid .timeline-section .timeline-role {
+  margin-bottom: 0;
+}
+
+/* Visually separate description from identity block above */
+.about-grid .timeline-section .timeline-desc {
+  margin-top: 10px;
 }
 
 .timeline-logo {
@@ -1141,6 +1186,12 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
 .about-grid .timeline-section .timeline-company {
   display: block;
   margin-bottom: 0;
+}
+
+.about-grid .timeline-section .timeline-company a {
+  opacity: 1;
+  font-weight: 700;
+  color: var(--text);
 }
 
 @media (max-width: 768px) {
@@ -1251,6 +1302,7 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
 .philosophy-item {
   display: block;
   padding: 40px 0;
+  border-top: 1px solid var(--border);
 }
 
 .philosophy-num {
@@ -1265,14 +1317,14 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
 .philosophy-body {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .philosophy-principle {
   font-size: 1.375rem;
   font-weight: 800;
   letter-spacing: -0.02em;
-  line-height: 1.15;
+  line-height: 1.25;
   color: var(--text);
   text-wrap: balance;
 }
@@ -1287,8 +1339,6 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
 
 @media (max-width: 680px) {
   .philosophy-item {
-    grid-template-columns: 40px 1fr;
-    gap: 20px;
     padding: 32px 0;
   }
   .philosophy-principle { font-size: 1.125rem; }
@@ -1465,7 +1515,7 @@ body.page-new #custom-cursor.cursor-close::after {
   text-wrap: balance;
 }
 
-.homepage-body + .homepage-body { margin-top: 0.5em; }
+.homepage-body + .homepage-body { margin-top: 0.9em; }
 
 .homepage-signals {
   display: flex;

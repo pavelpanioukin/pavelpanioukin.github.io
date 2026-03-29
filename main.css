@@ -1309,6 +1309,12 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
 .philosophy-item {
   display: block;
   padding: 40px 0;
+  transition: opacity 0.4s var(--ease);
+  opacity: 0.3;
+}
+
+.philosophy-item.active {
+  opacity: 1;
 }
 
 .philosophy-num {

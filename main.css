@@ -1207,15 +1207,7 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
   opacity: 1 !important;
   font-weight: 700;
   color: var(--text);
-  background-image: linear-gradient(currentColor, currentColor);
-  background-position: 0% 100%;
-  background-repeat: no-repeat;
-  background-size: 0% 1px;
-  transition: background-size 0.25s var(--ease), opacity 0s;
-}
-
-.about-grid .timeline-section .timeline-company a:hover {
-  background-size: 100% 1px;
+  text-decoration: none;
 }
 
 @media (max-width: 768px) {

@@ -427,7 +427,7 @@ button { font-family: inherit; cursor: pointer; }
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.01em;
   color: var(--text);
@@ -435,7 +435,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .timeline-role {
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   color: var(--text-dim);
   margin-bottom: 10px;
 }
@@ -1145,24 +1145,24 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
   padding-top: 40px;
 }
 
-/* Align "Experience" with first job entry (timeline-item has 28px top padding) */
+/* Align "Experience" with first job entry (timeline-item has 36px top padding) */
 .about-grid .timeline-section > .section-label {
-  padding-top: 28px;
+  padding-top: 36px;
 }
 
 /* Experience entries: flex column, logo+date top row */
 .about-grid .timeline-section .timeline-item {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 28px 0;
+  gap: 8px;
+  padding: 36px 0;
 }
 
 .timeline-item-top {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 14px;
+  margin-bottom: 22px;
 }
 
 /* Reset global role margin in about timeline — gap handles spacing */
@@ -1178,7 +1178,7 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
 .timeline-logo {
   width: 56px;
   height: 56px;
-  border-radius: 8px;
+  border-radius: 14px;
   object-fit: contain;
   flex-shrink: 0;
   display: block;

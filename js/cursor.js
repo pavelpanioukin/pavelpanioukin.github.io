@@ -1,134 +1,134 @@
-// ── Custom Cursor ─────────────────────────────────────────────
-(function() {
-  // Only run on non-touch devices
+// ── Pill-morph cursor ─────────────────────────────────────────
+(function () {
   if (window.matchMedia('(hover: none)').matches) return;
 
-  const dot = document.createElement('div');
-  dot.id = 'custom-cursor';
-  document.body.appendChild(dot);
+  var cursor = document.createElement('div');
+  cursor.className = 'cursor';
+  document.body.appendChild(cursor);
 
-  let mouseX = -100, mouseY = -100;
-  let dotX = -100, dotY = -100;
-  let currentState = 'default'; // 'default' | 'hover' | 'external' | 'close'
+  // Padding around hovered element when in pill mode
+  var PAD = 6;
+  // Elements larger than these are treated as non-interactive for pill purposes
+  var SIZE_CAP_W = 500;
+  var SIZE_CAP_H = 72;
 
-  // ── Magnetic attraction ──────────────────────────────────────
-  // Elements that attract the cursor. Excludes form fields and dense UI.
-  const MAGNETIC_SELECTORS = '.nav-link, .project-card, .bento-item, .btn-submit, .cta-primary, .footer-name, .footer-social-link, .project-nav-link';
-  const MAGNETIC_RADIUS   = 80;  // px from element center to start attracting
-  const CURSOR_PULL       = 0.20; // how far cursor offsets toward element (0–1)
-  const ELEMENT_NUDGE     = 0.12; // how far element moves toward cursor (0–1)
-  const ELEMENT_SCALE     = 0.03; // max extra scale (1 + this)
+  var mouseX = window.innerWidth / 2;
+  var mouseY = window.innerHeight / 2;
+  var posX   = mouseX;
+  var posY   = mouseY;
+  var mode   = 'dot'; // 'dot' | 'pill'
+  var pillEl = null;
+  var lastW  = 8;
+  var lastH  = 8;
 
-  let magnetOffsetX = 0, magnetOffsetY = 0;
-  let magnetEl = null;
+  // ── Theme ─────────────────────────────────────────────────────
+  function updateTheme() {
+    var dark = document.body.classList.contains('page-new');
+    cursor.style.borderColor = dark ? '#f0ede8' : '#111111';
+  }
+  window.updateCursorTheme = updateTheme;
+  updateTheme();
 
-  function updateMagnet(x, y) {
-    const candidates = document.querySelectorAll(MAGNETIC_SELECTORS);
-    let best = null, bestStrength = 0;
+  // ── Hover detection ───────────────────────────────────────────
+  var HOVER_SEL = 'a, button, [role="button"], label, .bento-item, .nav-link, .project-nav-link';
 
-    candidates.forEach(el => {
-      const r  = el.getBoundingClientRect();
-      const cx = r.left + r.width  / 2;
-      const cy = r.top  + r.height / 2;
-      const dist     = Math.hypot(x - cx, y - cy);
-      const strength = Math.max(0, 1 - dist / MAGNETIC_RADIUS);
-      if (strength > bestStrength) { best = el; bestStrength = strength; }
-    });
-
-    // Release previous element
-    if (magnetEl && magnetEl !== best) {
-      magnetEl.style.transform = '';
-      magnetEl.style.transition = 'transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-      magnetEl = null;
-    }
-
-    if (best && bestStrength > 0) {
-      magnetEl = best;
-      const r  = best.getBoundingClientRect();
-      const cx = r.left + r.width  / 2;
-      const cy = r.top  + r.height / 2;
-      const dx = x - cx;
-      const dy = y - cy;
-
-      // Cursor pulled toward element center
-      magnetOffsetX = -dx * bestStrength * CURSOR_PULL;
-      magnetOffsetY = -dy * bestStrength * CURSOR_PULL;
-
-      // Element nudged toward cursor
-      const ex    = dx * bestStrength * ELEMENT_NUDGE;
-      const ey    = dy * bestStrength * ELEMENT_NUDGE;
-      const scale = 1 + ELEMENT_SCALE * bestStrength;
-
-      best.style.transition = 'transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-      best.style.transform  = `translate(${ex}px, ${ey}px) scale(${scale})`;
+  document.addEventListener('mouseover', function (e) {
+    var target = e.target && e.target.closest ? e.target.closest(HOVER_SEL) : null;
+    if (target) {
+      if (target === pillEl) return; // already tracking this element
+      var r = target.getBoundingClientRect();
+      if (r.width > SIZE_CAP_W || r.height > SIZE_CAP_H) {
+        toDot();
+        return;
+      }
+      toPill(target);
     } else {
-      magnetOffsetX = 0;
-      magnetOffsetY = 0;
+      toDot();
     }
+  });
+
+  function toDot() {
+    if (mode === 'dot') return;
+    mode   = 'dot';
+    pillEl = null;
+    cursor.style.width        = '8px';
+    cursor.style.height       = '8px';
+    cursor.style.borderRadius = '50%';
+    lastW = 8;
+    lastH = 8;
   }
 
-  // Track mouse position + run magnet
-  document.addEventListener('mousemove', e => {
+  function toPill(el) {
+    mode   = 'pill';
+    pillEl = el;
+    var r  = el.getBoundingClientRect();
+    var w  = Math.round(r.width  + PAD * 2);
+    var h  = Math.round(r.height + PAD * 2);
+    cursor.style.width        = w + 'px';
+    cursor.style.height       = h + 'px';
+    cursor.style.borderRadius = '100px';
+    lastW = w;
+    lastH = h;
+  }
+
+  // ── Mouse tracking ────────────────────────────────────────────
+  document.addEventListener('mousemove', function (e) {
     mouseX = e.clientX;
     mouseY = e.clientY;
-    updateMagnet(e.clientX, e.clientY);
   });
 
-  // Release magnet when leaving window
-  document.addEventListener('mouseleave', () => {
-    dot.style.opacity = '0';
-    if (magnetEl) {
-      magnetEl.style.transform = '';
-      magnetEl.style.transition = 'transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-      magnetEl = null;
-    }
-    magnetOffsetX = 0;
-    magnetOffsetY = 0;
-  });
-  document.addEventListener('mouseenter', () => {
-    dot.style.opacity = '1';
+  document.addEventListener('mouseleave', function () {
+    cursor.style.opacity = '0';
   });
 
-  // Detect hover targets
-  function getState(target) {
-    if (!target) return 'default';
-    // Lightbox open = "close" state
-    const lb = document.getElementById('feed-lightbox');
-    if (lb && lb.classList.contains('open')) return 'close';
-    // External links = "external" state
-    if (target.closest('a[target="_blank"]')) return 'external';
-    // Links, buttons, nav, bento images = "hover" state
-    if (target.closest('a, button, [role="button"], .nav-link, label, .bento-item')) {
-      return 'hover';
-    }
-    return 'default';
-  }
-
-  document.addEventListener('mouseover', e => {
-    const state = getState(e.target);
-    if (state !== currentState) {
-      currentState = state;
-      dot.className = 'cursor-' + state;
-      dot.innerHTML = '';
-    }
+  document.addEventListener('mouseenter', function () {
+    cursor.style.opacity = '1';
+    updateTheme();
   });
 
-  // RAF loop — lerp toward mouse + magnetic offset
-  const LERP = 0.15;
-
+  // ── Reduced motion: snap instead of lerp ─────────────────────
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    dot.style.transition = 'none';
-    document.addEventListener('mousemove', e => {
-      dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    document.addEventListener('mousemove', function (e) {
+      cursor.style.transform = 'translate(' + (e.clientX - 4) + 'px,' + (e.clientY - 4) + 'px)';
     });
     return;
   }
 
+  // ── RAF loop ──────────────────────────────────────────────────
+  var LERP_DOT  = 0.15;
+  var LERP_PILL = 0.20;
+
   function tick() {
-    dotX += (mouseX + magnetOffsetX - dotX) * LERP;
-    dotY += (mouseY + magnetOffsetY - dotY) * LERP;
-    dot.style.transform = `translate(${dotX}px, ${dotY}px)`;
+    var tx, ty;
+
+    if (mode === 'pill' && pillEl) {
+      var r = pillEl.getBoundingClientRect();
+      if (r.width > SIZE_CAP_W || r.height > SIZE_CAP_H) {
+        toDot();
+      } else {
+        // Track element size (handles window resize / reflow)
+        var w = Math.round(r.width  + PAD * 2);
+        var h = Math.round(r.height + PAD * 2);
+        if (w !== lastW) { cursor.style.width  = w + 'px'; lastW = w; }
+        if (h !== lastH) { cursor.style.height = h + 'px'; lastH = h; }
+        tx = r.left - PAD;
+        ty = r.top  - PAD;
+      }
+    }
+
+    if (mode === 'dot') {
+      tx = mouseX - 4; // center 8px dot on pointer
+      ty = mouseY - 4;
+    }
+
+    var lerp = mode === 'pill' ? LERP_PILL : LERP_DOT;
+    posX += (tx - posX) * lerp;
+    posY += (ty - posY) * lerp;
+
+    cursor.style.transform = 'translate(' + posX + 'px,' + posY + 'px)';
+
     requestAnimationFrame(tick);
   }
+
   requestAnimationFrame(tick);
 })();

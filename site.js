@@ -403,4 +403,5 @@ window.initPage = async function () {
 
   if (window.animatePageIn) window.animatePageIn();
   if (window.initPhilosophySpotlight) window.initPhilosophySpotlight();
+  if (window.updateCursorTheme) window.updateCursorTheme();
 };

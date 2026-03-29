@@ -1163,7 +1163,7 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
 .about-grid .timeline-section .timeline-item {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 3px;
   padding: 36px 0;
 }
 

@@ -918,7 +918,7 @@ body.page-new .nav-link {
 
 body.page-new .nav-row a:hover,
 body.page-new .nav-link:hover {
-  color: #fff;
+  color: #fff !important;
   background: none;
 }
 

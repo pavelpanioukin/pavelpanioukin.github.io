@@ -144,6 +144,98 @@
       "sections": []
     },
     {
+      "id": 4,
+      "title": "The invisible layer",
+      "subtitle": "PandaDoc — CPQ Rules Engine & HubSpot Integration",
+      "description": "The rules engine had to carry the accumulated expertise of sales ops, finance, and legal — silently, so the rep never had to think about it.",
+      "thumbnail": "",
+      "thumbnailGradient": "linear-gradient(135deg, #1e3251 0%, #2d5986 60%, #1a4470 100%)",
+      "thumbnailLabel": "PandaDoc CPQ",
+      "tags": ["CPQ", "Rules Engine", "HubSpot Integration", "B2B SaaS", "Sales Tooling"],
+      "year": "2022–2024",
+      "featured": true,
+      "homepage": true,
+      "homepageOrder": 3,
+      "tension": "A sales rep needs to generate an accurate quote in minutes, sometimes mid-call. But the pricing logic behind that quote — volume discounts, approval thresholds, automatic add-ons — is the accumulated expertise of sales ops, finance, and legal. The rep who gets it wrong sends a number the company can't honour. The rep who has to stop and ask someone gets it right but loses the deal. The rules engine had to carry that expertise silently, so the rep never had to think about it.",
+      "available": true,
+      "sections": [
+        {
+          "type": "text",
+          "heading": "The tension",
+          "body": "A sales rep needs to generate an accurate quote fast — sometimes mid-call. But the pricing logic behind that quote is complex: volume discounts, approval thresholds, automatic add-ons, bundle rules. It's the accumulated expertise of sales ops, finance, and legal, built up over years. A rep who gets it wrong sends the customer a number the company can't honour. A rep who has to stop and ask someone gets it right but kills the deal. The standard response to this problem is restriction — lock the fields, block the errors. But that mistakes the problem. The rep isn't trying to do something wrong. They just don't have the pricing expertise of a senior sales manager, and they're being asked to make pricing decisions in real time. The rep doesn't need to be prevented. They need to be guided."
+        },
+        {
+          "type": "text",
+          "heading": "Role and scope",
+          "body": "I was the sole designer on this project. I owned the rules engine admin UI, the guided selling playbook flow, and the two-way data sync between PandaDoc and HubSpot. There was no other designer on this work. I worked with a PM and an engineering team, and collaborated directly with HubSpot's partner team on the integration's UX requirements.\n\nWhat this did not include: the core PandaDoc document editor, the pricing table UI, and the eSignature flow. Those were existing surfaces the CPQ integration connected to, not rebuilt."
+        },
+        {
+          "type": "text",
+          "heading": "The hard problem",
+          "body": "A rules engine has two audiences who never see each other's experience. The admin — a sales ops manager — is setting up the system once. They know the pricing logic in depth. They need expressive power: the ability to combine conditions, set actions, define what triggers approval. If the interface is too simplified, they can't represent the business logic accurately and the whole system breaks down.\n\nThe sales rep is working inside the system every day. They have no visibility into what rules exist. The rules should be invisible to them — not hidden, but unnecessary to think about. Their job is to sell, not to navigate a configuration interface.\n\nThe tension: a rules engine expressive enough for the admin is, by definition, complex. And complexity that leaks into the rep's experience defeats the entire purpose of having the engine in the first place."
+        },
+        {
+          "type": "quote",
+          "text": "The admin isn't configuring restrictions. They're encoding the team's collective pricing judgment so it can operate without them in the room."
+        },
+        {
+          "type": "text",
+          "heading": "Natural language framing over technical syntax",
+          "body": "Early explorations used a conditional logic builder in the style of a developer tool: dropdowns for field names, operators, values. Technically complete. Practically alienating for a sales ops user who thinks in business terms, not data terms. I argued for framing every rule as a sentence the admin could read aloud and recognise as their own business logic. \"When a rep selects [product], automatically apply [discount].\" \"When manual discount is above [threshold], require approval from [approver].\"\n\nThe fields were still structured — they had to be, for the engine to process them — but the interface presented them as a plain-language statement being assembled, not a query being written. The trade-off: this constrained expressiveness to what could be represented in readable sentence form. Some edge cases couldn't be expressed this way. I made the call to cover 90% of real use cases with a readable interface rather than build a maximally expressive tool most admins would find intimidating."
+        },
+        {
+          "type": "image",
+          "url": "",
+          "caption": "Rule builder: structured fields presented as a readable sentence rather than a query. The same underlying logic, legible to a sales ops manager without technical training."
+        },
+        {
+          "type": "text",
+          "heading": "Rules as a library, not a list",
+          "body": "The first version of the rules management interface was a flat list: rule name, conditions, action, toggle. It worked for three rules. For fifteen it became unnavigable. Admins couldn't easily answer: what will happen if a rep applies a 25% discount to our enterprise tier?\n\nI moved toward organising rules by the event that triggers them rather than creation order. Rules grouped by trigger type — \"on product selection,\" \"on discount entry,\" \"on quantity change\" — made it possible to scan the system's behaviour without reading every rule. This also surfaced something the flat list hid: conflicting rules. Two rules triggered by the same event with different actions produce unpredictable behaviour. Grouping by trigger made conflicts visually apparent."
+        },
+        {
+          "type": "image",
+          "url": "",
+          "caption": "Rules library grouped by trigger type. Conflicts between rules in the same trigger group become visible without requiring the admin to hold the full rule set in their head."
+        },
+        {
+          "type": "text",
+          "heading": "The two-way sync as a trust problem",
+          "body": "The design challenge of the HubSpot sync was not the data flow — that was an engineering problem. It was how to make the sync legible and trustworthy to the rep. A rep who doesn't understand what data flows where will either distrust the system and duplicate work manually, or trust it blindly and miss sync errors.\n\nI made the sync explicit at the moment it matters rather than invisible by default. When a rep opens a deal in HubSpot and initiates a quote, the interface surfaces a brief readable confirmation of which fields will be pulled. When the quote is completed and sent, a brief confirmation shows what was written back. Not a full data audit — just enough for the rep to know the system did its job.\n\nLegibility and trust are not the same thing. Complete transparency can undermine trust as much as opacity can. The signal I was designing for was trust, not transparency."
+        },
+        {
+          "type": "image",
+          "url": "",
+          "caption": "Sync confirmation states: what comes in from HubSpot when a quote opens, and what writes back after send. The restraint is deliberate — enough to confirm the sync worked, not enough to require the rep to understand it."
+        },
+        {
+          "type": "text",
+          "heading": "Making rules invisible to reps",
+          "body": "The playbook is the rep-facing side of the rules engine. The admin builds the rules; the playbook is how those rules manifest as a guided experience when the rep generates a quote. The design principle: it should feel like a checklist, not a configuration interface. The rep follows steps — select product, configure quantities, review pricing — and the rules engine operates silently. Discounts apply automatically. Approvals are triggered. Add-ons appear.\n\nThe key design decision was what to surface when the rules produce an output the rep might not expect. A rep who sees a discount appear without understanding why will question the number or try to remove it. A rep told \"this quote needs approval\" without warning feels the system is working against them. I argued against hiding rule outcomes completely. The direction was to surface them at the moment they occur, in plain language, as confirmations rather than interruptions. \"Volume discount applied based on quantity.\" \"This quote will go to your manager for review before sending.\" Brief, informative, non-blocking. The rep stays in motion."
+        },
+        {
+          "type": "image",
+          "url": "",
+          "caption": "Inline rule outcome notification in the playbook flow — the moment an approval is triggered. Non-blocking, plain language, in context. The rep knows what happened and why without leaving the flow."
+        },
+        {
+          "type": "text",
+          "heading": "Outcomes",
+          "body": "PandaDoc CPQ for HubSpot launched September 18, 2024, and was presented at INBOUND24 — HubSpot's flagship annual conference. It launched as the first and only fully embedded, native CPQ integration for HubSpot Sales Hub.\n\nQuote error rate decreased. Deal cycle time shortened. Sales rep adoption was faster than previous tooling. PandaDoc was named a HubSpot Essential App for Sales 2024 — the first CPQ integration to receive that recognition. The integration became the foundation for PandaDoc's strategic partnership with HubSpot, a corporate investor in PandaDoc."
+        },
+        {
+          "type": "quote",
+          "text": "With PandaDoc CPQ for HubSpot, we've streamlined our quoting process significantly, allowing us to close deals faster and with greater accuracy, all within the familiar HubSpot environment.",
+          "attribution": "Taylor Jeffery, Sales Manager, Consensus"
+        },
+        {
+          "type": "text",
+          "heading": "What I learned",
+          "body": "The most useful reframe on this project: rules are not restrictions. They're automation. The instinct in complex systems design is to think about rules as constraints — things that prevent users from doing the wrong thing. That framing produces defensive design. The rules engine in PandaDoc CPQ was about automating the expertise of senior people so that less experienced people could operate at the same quality level without needing to know everything. Not \"you can't do that\" but \"we've already handled that for you.\" That difference — conceptually small, practically total — shaped every decision in the admin UI.\n\nThe second thing: legibility and trust are not the same. A system can be fully transparent and still feel untrustworthy, because the volume of information overwhelms the signal. Trust comes from the right information at the right moment, not from complete information at all times."
+        }
+      ]
+    },
+    {
       "id": 11,
       "title": "Coming soon",
       "subtitle": "—",
@@ -155,7 +247,7 @@
       "year": "",
       "featured": false,
       "homepage": true,
-      "homepageOrder": 3,
+      "homepageOrder": 4,
       "tension": "Third case study in progress.",
       "available": false,
       "sections": []

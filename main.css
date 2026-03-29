@@ -1088,6 +1088,14 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
   grid-column: 1 / -1;
 }
 
+/* Full-width section dividers inside the about grid */
+.about-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0;
+  align-self: end;
+}
+
 /* Hero inside grid — remove standalone border/padding */
 .about-grid .about-hero {
   border-bottom: none;
@@ -1098,6 +1106,7 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
 .about-info {
   grid-column: 1;
   padding-top: 0.25rem;
+  padding-bottom: 3rem;
   align-self: start;
 }
 
@@ -1125,13 +1134,13 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
 }
 
 
-/* Section headings in col 1: styled as H2, sticky while content scrolls */
+/* Section headings in col 1: same style as company names, sticky while content scrolls */
 .about-grid .philosophy-section > .section-label,
 .about-grid .timeline-section > .section-label {
-  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
-  font-weight: 800;
-  letter-spacing: -0.025em;
-  line-height: 1.1;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
   text-transform: none;
   color: var(--text);
   margin-bottom: 0;
@@ -1340,10 +1349,10 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
 }
 
 .philosophy-principle {
-  font-size: 1.375rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.25;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
   color: var(--text);
   text-wrap: balance;
 }

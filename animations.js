@@ -20,23 +20,50 @@
     });
   }
 
+  // ── Philosophy spotlight ──────────────────────────────────────────────────────
+  // Reads the sticky H2's live bounding rect on each scroll tick and activates
+  // whichever item(s) vertically overlap it. Children carry the opacity so the
+  // parent entrance animation (.appear → style.opacity) doesn't interfere.
+
+  var _philosophyScrollFn = null;
+
   function initPhilosophySpotlight() {
+    // Remove any handler from a previous page visit
+    if (_philosophyScrollFn) {
+      window.removeEventListener('scroll', _philosophyScrollFn);
+      _philosophyScrollFn = null;
+    }
+
     var items = document.querySelectorAll('.philosophy-item');
     if (!items.length) return;
 
-    // rootMargin: top offset covers the sticky nav (44px) + H2 padding-top (40px);
-    // bottom is pulled up so only the item alongside the H2 activates.
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        entry.target.classList.toggle('active', entry.isIntersecting);
-      });
-    }, {
-      rootMargin: '-84px 0px -40% 0px',
-      threshold: 0
-    });
+    function update() {
+      // On mobile the layout is single-column — H2 is above items, not beside them.
+      if (window.innerWidth <= 768) {
+        items.forEach(function (item) { item.classList.add('active'); });
+        return;
+      }
 
-    items.forEach(function (item) { observer.observe(item); });
+      var h2 = document.querySelector('.about-grid .philosophy-section > .section-label');
+      if (!h2) return;
+
+      var h2Rect = h2.getBoundingClientRect();
+
+      items.forEach(function (item) {
+        var r = item.getBoundingClientRect();
+        // Item is active when it vertically overlaps the sticky H2 rectangle
+        var overlaps = r.top < h2Rect.bottom && r.bottom > h2Rect.top;
+        item.classList.toggle('active', overlaps);
+      });
+    }
+
+    _philosophyScrollFn = update;
+    window.addEventListener('scroll', update, { passive: true });
+    // Run immediately so the correct item is active without needing a scroll
+    update();
   }
+
+  window.initPhilosophySpotlight = initPhilosophySpotlight;
 
   document.addEventListener('DOMContentLoaded', markActiveNavLink);
   document.addEventListener('DOMContentLoaded', initPhilosophySpotlight);

@@ -1309,11 +1309,18 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
 .philosophy-item {
   display: block;
   padding: 40px 0;
-  transition: opacity 0.4s var(--ease);
-  opacity: 0.3;
 }
 
-.philosophy-item.active {
+/* Children carry the muted/active state — parent opacity is owned by the
+   entrance animation (.appear), so we target children to avoid conflict. */
+.philosophy-item .philosophy-principle,
+.philosophy-item .philosophy-desc {
+  opacity: 0.25;
+  transition: opacity 0.4s var(--ease);
+}
+
+.philosophy-item.active .philosophy-principle,
+.philosophy-item.active .philosophy-desc {
   opacity: 1;
 }
 

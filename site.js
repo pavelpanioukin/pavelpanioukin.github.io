@@ -402,4 +402,5 @@ window.initPage = async function () {
   // about.html and contact.html: static <main> — no dynamic rendering needed
 
   if (window.animatePageIn) window.animatePageIn();
+  if (window.initPhilosophySpotlight) window.initPhilosophySpotlight();
 };

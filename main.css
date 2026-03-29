@@ -242,7 +242,7 @@ button { font-family: inherit; cursor: pointer; }
   font-size: clamp(1.75rem, 3.5vw, 3rem);
   font-weight: 900;
   letter-spacing: -0.02em;
-  line-height: 1.05;
+  line-height: 1.15;
   color: var(--text);
   max-width: 800px;
   text-wrap: balance;
@@ -504,7 +504,7 @@ button { font-family: inherit; cursor: pointer; }
   font-size: clamp(2rem, 3.5vw, 3.5rem);
   font-weight: 900;
   letter-spacing: -0.02em;
-  line-height: 1.05;
+  line-height: 1.15;
   color: var(--text);
   margin-bottom: 24px;
 }
@@ -714,13 +714,14 @@ button { font-family: inherit; cursor: pointer; }
   font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 900;
   letter-spacing: -0.02em;
-  line-height: 1.05;
+  line-height: 1.15;
   color: var(--text);
   margin-bottom: 16px;
 }
 
 .project-page-subtitle {
   font-size: 1.125rem;
+  font-weight: 500;
   color: var(--text-dim);
   line-height: 1.6;
   max-width: 640px;
@@ -1509,7 +1510,7 @@ body.page-new #custom-cursor.cursor-close::after {
   font-size: clamp(1.75rem, 3.5vw, 3rem);
   font-weight: 900;
   letter-spacing: -0.02em;
-  line-height: 1.05;
+  line-height: 1.15;
   color: var(--text);
   max-width: 800px;
   text-wrap: balance;

@@ -436,7 +436,7 @@ button { font-family: inherit; cursor: pointer; }
 
 .timeline-role {
   font-size: 0.875rem;
-  color: var(--text-dim);
+  color: var(--text);
   margin-bottom: 10px;
 }
 
@@ -1165,6 +1165,11 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
   flex-direction: column;
   gap: 3px;
   padding: 36px 0;
+  border-top: 1px solid var(--border);
+}
+
+.about-grid .timeline-section .timeline-item:first-child {
+  border-top: none;
 }
 
 .timeline-item-top {

@@ -1176,7 +1176,7 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
 .timeline-item-top {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   margin-bottom: 22px;
 }
 

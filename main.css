@@ -1210,9 +1210,9 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
   color: var(--text);
   text-decoration: none;
   display: inline-block;
-  padding: 4px 8px;
-  border-radius: 8px;
-  margin: -4px -8px;
+  padding: 2px 4px;
+  border-radius: 6px;
+  margin: -2px -4px;
 }
 
 @media (max-width: 768px) {

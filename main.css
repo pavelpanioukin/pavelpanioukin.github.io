@@ -1291,6 +1291,12 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  background: var(--bg-off);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 100px;
 }
 
 /* ── Philosophy section — visually distinct from experience ──────────────────── */
@@ -1303,7 +1309,6 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hove
 .philosophy-item {
   display: block;
   padding: 40px 0;
-  border-top: 1px solid var(--border);
 }
 
 .philosophy-num {

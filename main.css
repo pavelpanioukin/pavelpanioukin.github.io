@@ -243,7 +243,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .page-title {
-  font-size: clamp(1.75rem, 3.5vw, 3rem);
+  font-size: clamp(3.5rem, 7vw, 6rem);
   font-weight: 900;
   letter-spacing: -0.02em;
   line-height: 1.15;
@@ -363,7 +363,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .about-headline {
-  font-size: clamp(2.25rem, 5vw, 4.5rem);
+  font-size: clamp(4.5rem, 10vw, 9rem);
   font-weight: 900;
   letter-spacing: -0.03em;
   line-height: 1.0;
@@ -715,7 +715,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .project-page-title {
-  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-size: clamp(4rem, 8vw, 7rem);
   font-weight: 900;
   letter-spacing: -0.02em;
   line-height: 1.15;
@@ -1464,7 +1464,7 @@ body::after {
 .homepage-stance { padding-top: 64px; padding-bottom: 48px; }
 
 .homepage-body {
-  font-size: clamp(1.75rem, 3.5vw, 3rem);
+  font-size: clamp(3.5rem, 7vw, 6rem);
   font-weight: 900;
   letter-spacing: -0.02em;
   line-height: 1.15;

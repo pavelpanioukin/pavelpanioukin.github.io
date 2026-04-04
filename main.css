@@ -1533,7 +1533,8 @@ a.homepage-project-title:hover { opacity: 0.55; }
 .homepage-project--muted { opacity: 0.35; }
 
 /* Dark theme overrides (body.page-new = index.html only) */
-body.page-new .homepage-body { color: #fff; }
+body.page-new .homepage-body { color: rgba(255,255,255,0.38); }
+body.page-new .homepage-hi   { color: #fff; }
 body.page-new .homepage-status { color: rgba(255,255,255,0.4); }
 body.page-new #contact-link { color: rgba(255,255,255,0.65); opacity: 1 !important; }
 body.page-new #contact-link:hover { color: #fff; }

@@ -82,10 +82,10 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .header-name {
-  font-size: 22px;
+  font-size: 44px;
   font-weight: 600;
-  letter-spacing: -0.44px;
-  line-height: 26px;
+  letter-spacing: -0.88px;
+  line-height: 52px;
   color: var(--text);
   display: inline-block;
   width: fit-content;
@@ -95,10 +95,10 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .header-time {
-  font-size: 22px;
+  font-size: 44px;
   font-weight: 400;
-  letter-spacing: -0.44px;
-  line-height: 26px;
+  letter-spacing: -0.88px;
+  line-height: 52px;
   color: rgb(207, 207, 207);
   display: block;
 }
@@ -109,10 +109,10 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .header-bio {
-  font-size: 22px;
+  font-size: 44px;
   font-weight: 400;
-  letter-spacing: -0.44px;
-  line-height: 26px;
+  letter-spacing: -0.88px;
+  line-height: 52px;
   color: rgb(207, 207, 207);
   text-align: left;
   max-width: 50%;
@@ -860,9 +860,9 @@ button { font-family: inherit; cursor: pointer; }
   .bento-grid { grid-template-columns: 1fr; }
   .info-row { flex-direction: column; gap: 6px; }
   /* header-bio: remove 50% max-width constraint when info-row stacks */
-  .header-bio { text-align: left; max-width: none; font-size: 16px; }
-  .header-name { font-size: 16px; }
-  .header-time { font-size: 16px; }
+  .header-bio { text-align: left; max-width: none; font-size: 32px; line-height: 40px; }
+  .header-name { font-size: 32px; line-height: 40px; }
+  .header-time { font-size: 32px; line-height: 40px; }
   /* page-header: reduce top padding on small screens */
   .page-header { padding-top: 40px; padding-bottom: 32px; }
   /* homepage stance: reduce top padding on small screens */

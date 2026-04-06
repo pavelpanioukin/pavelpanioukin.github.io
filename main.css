@@ -1247,8 +1247,7 @@ body.page-new .homepage-stance {
 .homepage-body + .homepage-body { margin-top: 0.9em; }
 
 /* Dark theme overrides (body.page-new = index.html only) */
-body.page-new .homepage-body { color: rgba(255,255,255,0.38); max-width: none; }
-body.page-new .homepage-hi   { color: #fff; }
+body.page-new .homepage-body { color: #fff; max-width: none; }
 
 /* ── About page: photo row (about-specific) ──────────────────────────────────── */
 

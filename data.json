@@ -251,6 +251,88 @@
       "tension": "Third case study in progress.",
       "available": false,
       "sections": []
+    },
+    {
+      "id": 5,
+      "slug": "brainly-tutor-live-session",
+      "title": "Brainly Tutor: Live Session Design and India Launch",
+      "subtitle": "IxD Product Designer — student session experience and India launch",
+      "company": "Brainly",
+      "description": "A tutor with a desktop, a keyboard, and a whiteboard is not in the same session as a student following along on a five-inch mobile screen — and the gap between those two experiences is exactly where trust breaks down.",
+      "thumbnail": "",
+      "thumbnailGradient": "linear-gradient(135deg, #1a2e5c 0%, #1a6b3c 100%)",
+      "thumbnailLabel": "Brainly Tutor",
+      "tags": ["saas", "b2c", "mobile", "0-to-1"],
+      "year": 2021,
+      "featured": false,
+      "sections": [
+        {
+          "type": "text",
+          "body": "A tutor with a desktop, a keyboard, and a whiteboard is not in the same session as a student following along on a five-inch mobile screen — and the gap between those two experiences is exactly where trust breaks down."
+        },
+        {
+          "type": "text",
+          "heading": "Context",
+          "body": "Brainly Tutor was a live subscription tutoring product built on top of Brainly's existing 350-million-user homework help platform. Students paid $96/year to access on-demand sessions with expert tutors for math and physics. Before this work the session experience was a basic chat interface. The project moved Brainly Tutor from text chat to a full live session — voice and video call, shared whiteboard, LaTeX equation rendering, and screenshare."
+        },
+        {
+          "type": "text",
+          "heading": "Role",
+          "body": "IxD Product Designer — sole designer on the student-facing live session experience. Owned the full session surface: voice/video call, whiteboard interaction on mobile, LaTeX rendering, screenshare. Also owned the India launch: pricing UI, payment flows including the parent payment link feature, onboarding messaging repositioned from homework help to exam preparation, and performance optimisation for low-end Android devices."
+        },
+        {
+          "type": "image",
+          "url": "/assets/images/brainly-tutor-01-placeholder.jpg",
+          "caption": "Live session interface — voice/video call, shared whiteboard, and LaTeX rendering on student mobile."
+        },
+        {
+          "type": "text",
+          "heading": "Decision 1 — Chat to call",
+          "body": "Moving from a chat-only session to a call-first experience with whiteboard, LaTeX, and screenshare. The choice was between layering tools onto the existing chat interface vs. replacing it with a call-first session. Call-first was chosen — the product needed to feel categorically different from the free chat-based homework help already on Brainly. Cost accepted: higher friction for students uncomfortable on a live call."
+        },
+        {
+          "type": "text",
+          "heading": "Decision 2 — Whiteboard on mobile",
+          "body": "Whether the student could draw on the shared canvas or only receive. Collaborative drawing on a five-inch screen risks distracting from comprehension. Chose receive-focused with limited annotation — enough to highlight or point, not enough to redraw. Cost accepted: students couldn't show their working fluidly."
+        },
+        {
+          "type": "image",
+          "url": "/assets/images/brainly-tutor-02-placeholder.jpg",
+          "caption": "Whiteboard on mobile: receive-focused with limited annotation. Enough to follow the tutor's working, not enough to distract."
+        },
+        {
+          "type": "text",
+          "heading": "Decision 3 — India: UI fix or problem redefinition",
+          "body": "After the first India launch showed poor conversion, the choice was between iterating on the payment UI or stopping to research. Research revealed Indian students have no bank cards — the existing payment model was structurally unusable. Designed a parent payment link flow so students could request payment from a parent. Cost accepted: a second launch took longer."
+        },
+        {
+          "type": "image",
+          "url": "/assets/images/brainly-tutor-03-placeholder.jpg",
+          "caption": "Parent payment link flow — student requests payment from a parent, bypassing the card requirement entirely."
+        },
+        {
+          "type": "text",
+          "heading": "Outcome",
+          "body": "Full live session experience shipped — voice/video call, shared whiteboard, LaTeX rendering, screenshare on student mobile. India v1 launched, then researched v2 with parent payment link, localised payment methods, exam preparation positioning, and low-end Android optimisation. Brainly Tutor reached 500,000 sessions within six months of product launch and 2 million by September 2022."
+        },
+        {
+          "type": "metrics",
+          "items": [
+            { "value": "500K", "label": "Sessions in first 6 months" },
+            { "value": "2M", "label": "Sessions by September 2022" },
+            { "value": "Mobile", "label": "Primary delivery surface" }
+          ]
+        },
+        {
+          "type": "image",
+          "url": "/assets/images/brainly-tutor-04-placeholder.jpg",
+          "caption": "India onboarding — repositioned from homework help to exam preparation, optimised for low-end Android."
+        },
+        {
+          "type": "quote",
+          "text": "The whiteboard and the call weren't features — they were the product's claim that this session was worth paying for."
+        }
+      ]
     }
   ],
   "experience": [

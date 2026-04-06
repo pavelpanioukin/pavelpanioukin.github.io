@@ -92,7 +92,6 @@
         '<div class="footer-col footer-col--right">' +
           '<a class="footer-col-link" href="https://www.linkedin.com/in/pavelpanioukin/" target="_blank" rel="noopener">LinkedIn</a>' +
           '<a class="footer-col-link" href="https://dribbble.com/pavelpanioukin" target="_blank" rel="noopener">Dribbble</a>' +
-          '<a class="footer-col-link" href="https://twitter.com/pavelpanioukin" target="_blank" rel="noopener">X</a>' +
         '</div>' +
       '</div>' +
       '<a class="footer-next-row" id="footer-next-link" href="/about.html">Next \u2192 About</a>';

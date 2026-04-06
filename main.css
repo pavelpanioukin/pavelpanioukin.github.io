@@ -1309,7 +1309,7 @@ body.page-new .homepage-body { color: #fff; max-width: none; }
 .char {
   display: inline-block;
   transition: font-weight 0.15s ease;
-  font-weight: 200;
+  font-weight: 900;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────── */

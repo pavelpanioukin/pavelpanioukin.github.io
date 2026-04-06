@@ -105,8 +105,8 @@
     const chars = document.querySelectorAll('.char');
     if (!chars.length) return;
 
-    const minWeight = 200;
-    const maxWeight = 800;
+    const minWeight = 100;
+    const maxWeight = 900;
     const radius = 180;
 
     document.addEventListener('mousemove', (e) => {
@@ -119,7 +119,7 @@
           Math.pow(e.clientY - charY, 2)
         );
         const proximity = Math.max(0, 1 - dist / radius);
-        const weight = Math.round(minWeight + proximity * (maxWeight - minWeight));
+        const weight = Math.round(maxWeight - proximity * (maxWeight - minWeight));
         char.style.fontWeight = weight;
       });
     });

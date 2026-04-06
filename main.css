@@ -1292,4 +1292,24 @@ body.page-new .homepage-body { color: #fff; max-width: none; }
   }
 }
 
+/* ── Grain canvas — index.html only ──────────────────────────────────────────── */
+
+.grain-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.045;
+}
+
+/* ── Per-character variable weight — homepage hero ───────────────────────────── */
+
+.char {
+  display: inline-block;
+  transition: font-weight 0.15s ease;
+  font-weight: 200;
+}
+
 /* ─────────────────────────────────────────────────────────────────────────── */

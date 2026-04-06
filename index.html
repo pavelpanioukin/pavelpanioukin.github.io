@@ -11,6 +11,8 @@
 </head>
 <body class="page-new">
 
+  <canvas class="grain-canvas" aria-hidden="true"></canvas>
+
   <div class="parallax-bg" aria-hidden="true"></div>
 
   <header id="site-header"></header>
@@ -19,7 +21,7 @@
 
     <!-- Stance -->
     <div class="homepage-stance container appear">
-      <p class="homepage-body"><span style="display:block">I design for <span class="homepage-hi">the moment</span></span><span style="display:block">a person decides whether to <span class="homepage-hi">trust</span></span><span style="display:block">what's in front of them</span></p>
+      <p class="homepage-body"><span style="display:block"><span class="char">I</span><span class="char" aria-hidden="true"> </span><span class="char">d</span><span class="char">e</span><span class="char">s</span><span class="char">i</span><span class="char">g</span><span class="char">n</span><span class="char" aria-hidden="true"> </span><span class="char">f</span><span class="char">o</span><span class="char">r</span><span class="char" aria-hidden="true"> </span><span class="homepage-hi"><span class="char">t</span><span class="char">h</span><span class="char">e</span><span class="char" aria-hidden="true"> </span><span class="char">m</span><span class="char">o</span><span class="char">m</span><span class="char">e</span><span class="char">n</span><span class="char">t</span></span></span><span style="display:block"><span class="char">a</span><span class="char" aria-hidden="true"> </span><span class="char">p</span><span class="char">e</span><span class="char">r</span><span class="char">s</span><span class="char">o</span><span class="char">n</span><span class="char" aria-hidden="true"> </span><span class="char">d</span><span class="char">e</span><span class="char">c</span><span class="char">i</span><span class="char">d</span><span class="char">e</span><span class="char">s</span><span class="char" aria-hidden="true"> </span><span class="char">w</span><span class="char">h</span><span class="char">e</span><span class="char">t</span><span class="char">h</span><span class="char">e</span><span class="char">r</span><span class="char" aria-hidden="true"> </span><span class="char">t</span><span class="char">o</span><span class="char" aria-hidden="true"> </span><span class="homepage-hi"><span class="char">t</span><span class="char">r</span><span class="char">u</span><span class="char">s</span><span class="char">t</span></span></span><span style="display:block"><span class="char">w</span><span class="char">h</span><span class="char">a</span><span class="char">t</span><span class="char">'</span><span class="char">s</span><span class="char" aria-hidden="true"> </span><span class="char">i</span><span class="char">n</span><span class="char" aria-hidden="true"> </span><span class="char">f</span><span class="char">r</span><span class="char">o</span><span class="char">n</span><span class="char">t</span><span class="char" aria-hidden="true"> </span><span class="char">o</span><span class="char">f</span><span class="char" aria-hidden="true"> </span><span class="char">t</span><span class="char">h</span><span class="char">e</span><span class="char">m</span></span></p>
     </div>
 
   </main>
@@ -47,6 +49,80 @@
       requestAnimationFrame(animate);
     }
     animate();
+  })();
+
+  (function () {
+    const canvas = document.querySelector('.grain-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    let width, height, imageData, data;
+    let offsetX = 0;
+    let offsetY = 0;
+    let targetOffsetX = 0;
+    let targetOffsetY = 0;
+    const driftStrength = 12;
+    const lerpGrain = 0.04;
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      imageData = ctx.createImageData(width, height);
+      data = imageData.data;
+    }
+
+    function generateGrain() {
+      for (let i = 0; i < data.length; i += 4) {
+        const value = Math.random() * 255;
+        data[i] = value;
+        data[i + 1] = value;
+        data[i + 2] = value;
+        data[i + 3] = 255;
+      }
+      ctx.putImageData(imageData, offsetX, offsetY);
+    }
+
+    document.addEventListener('mousemove', (e) => {
+      const mouseX = e.clientX / window.innerWidth;
+      const mouseY = e.clientY / window.innerHeight;
+      targetOffsetX = (mouseX - 0.5) * driftStrength;
+      targetOffsetY = (mouseY - 0.5) * driftStrength;
+    });
+
+    function animateGrain() {
+      offsetX += (targetOffsetX - offsetX) * lerpGrain;
+      offsetY += (targetOffsetY - offsetY) * lerpGrain;
+      generateGrain();
+      requestAnimationFrame(animateGrain);
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+    animateGrain();
+  })();
+
+  (function () {
+    const chars = document.querySelectorAll('.char');
+    if (!chars.length) return;
+
+    const minWeight = 200;
+    const maxWeight = 800;
+    const radius = 180;
+
+    document.addEventListener('mousemove', (e) => {
+      chars.forEach((char) => {
+        const rect = char.getBoundingClientRect();
+        const charX = rect.left + rect.width / 2;
+        const charY = rect.top + rect.height / 2;
+        const dist = Math.sqrt(
+          Math.pow(e.clientX - charX, 2) +
+          Math.pow(e.clientY - charY, 2)
+        );
+        const proximity = Math.max(0, 1 - dist / radius);
+        const weight = Math.round(minWeight + proximity * (maxWeight - minWeight));
+        char.style.fontWeight = weight;
+      });
+    });
   })();
   </script>
 </body>

@@ -492,47 +492,6 @@ button { font-family: inherit; cursor: pointer; }
 
 .cta-link:hover { opacity: 0.5; }
 
-/* ── Contact Page ────────────────────────────────────────────────────────────── */
-
-.contact-section {
-  padding: 64px var(--gutter) 100px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: start;
-}
-
-.contact-left {}
-
-.contact-headline {
-  font-size: clamp(2rem, 3.5vw, 3.5rem);
-  font-weight: 900;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  color: var(--text);
-  margin-bottom: 24px;
-}
-
-.contact-subtext {
-  font-size: 1.0625rem;
-  color: var(--text-dim);
-  line-height: 1.6;
-  margin-bottom: 36px;
-}
-
-.contact-email {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--text);
-  border-bottom: 2px solid var(--text);
-  padding-bottom: 3px;
-  display: inline-block;
-  transition: opacity 0.15s;
-}
-
-.contact-email:hover { opacity: 0.5; }
-
-.contact-form {}
 
 .form-group { margin-bottom: 20px; }
 
@@ -848,7 +807,6 @@ button { font-family: inherit; cursor: pointer; }
   :root { --gutter: 28px; }
   .project-grid { grid-template-columns: repeat(2, 1fr); }
   .bento-grid { grid-template-columns: repeat(3, 1fr); }
-  .contact-section { grid-template-columns: 1fr; gap: 40px; }
   .timeline-item { grid-template-columns: 1fr; gap: 8px; }
   /* About page: timeline inside about-grid needs higher specificity override */
   .about-grid .timeline-section .timeline-item { grid-template-columns: 1fr; gap: 8px; }
@@ -867,8 +825,6 @@ button { font-family: inherit; cursor: pointer; }
   .page-header { padding-top: 40px; padding-bottom: 32px; }
   /* homepage stance: reduce top padding on small screens */
   .homepage-stance { padding-top: 40px; }
-  /* contact-section: reduce padding on small screens */
-  .contact-section { padding: 40px var(--gutter) 64px; }
   /* cta-section: reduce padding on small screens */
   .cta-section { padding: 60px var(--gutter); }
   /* project-page-nav: reduce padding on small screens */
@@ -1551,8 +1507,6 @@ a.homepage-project-title:hover { opacity: 0.55; }
 body.page-new .homepage-body { color: rgba(255,255,255,0.38); max-width: none; }
 body.page-new .homepage-hi   { color: #fff; }
 body.page-new .homepage-status { color: rgba(255,255,255,0.4); }
-body.page-new #contact-link { color: rgba(255,255,255,0.65); opacity: 1 !important; }
-body.page-new #contact-link:hover { color: #fff; }
 body.page-new .homepage-feed-link { color: rgba(255,255,255,0.35); opacity: 1 !important; }
 body.page-new .homepage-feed-link:hover { color: rgba(255,255,255,0.8); opacity: 1 !important; }
 body.page-new .homepage-archive { border-top-color: rgba(255,255,255,0.08); }

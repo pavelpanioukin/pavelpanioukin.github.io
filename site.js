@@ -8,7 +8,6 @@
     { label: 'About',   href: '/about.html',   key: 'about'   },
     { label: 'Work',    href: '/work.html',    key: 'work'    },
     { label: 'Feed',    href: '/feed.html',    key: 'feed'    },
-    { label: 'Contact', href: '/contact.html', key: 'contact' },
   ];
 
   function getActiveKey(pathname) {
@@ -16,7 +15,6 @@
     return p.includes('feed')    ? 'feed'    :
            p.includes('about')   ? 'about'   :
            p.includes('work')    ? 'work'    :
-           p.includes('contact') ? 'contact' :
            p.includes('project') ? 'work'    : 'new';
   }
 
@@ -355,7 +353,6 @@ function updateNavActive() {
   var pageKey = p.includes('feed')    ? 'feed'    :
                 p.includes('about')   ? 'about'   :
                 p.includes('work')    ? 'work'    :
-                p.includes('contact') ? 'contact' :
                 p.includes('project') ? 'work'    : 'new';
 
   document.querySelectorAll('.nav-link').forEach(function (a) {
@@ -365,7 +362,7 @@ function updateNavActive() {
       var key  = href.includes('feed')    ? 'feed'    :
                  href.includes('about')   ? 'about'   :
                  href.includes('work')    ? 'work'    :
-                 href.includes('contact') ? 'contact' : 'new';
+                 'new';
       if (key === pageKey) a.classList.add('active');
     } catch (_) {}
   });
@@ -399,7 +396,7 @@ window.initPage = async function () {
   } else if (p.includes('project')) {
     renderProjectPage(data);
   }
-  // about.html and contact.html: static <main> — no dynamic rendering needed
+  // about.html: static <main> — no dynamic rendering needed
 
   if (window.animatePageIn) window.animatePageIn();
   if (window.initPhilosophySpotlight) window.initPhilosophySpotlight();

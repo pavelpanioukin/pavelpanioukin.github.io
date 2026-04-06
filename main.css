@@ -583,14 +583,14 @@ button { font-family: inherit; cursor: pointer; }
   font-weight: 900;
   letter-spacing: -0.02em;
   line-height: 1.15;
-  color: var(--text);
+  color: rgb(207, 207, 207);
   max-width: 640px;
   text-decoration: none;
-  transition: opacity 0.15s;
+  transition: color 0.15s;
   display: block;
 }
 
-.footer-reach:hover { opacity: 0.5; }
+.footer-reach:hover { color: rgb(17, 17, 17); }
 
 
 .footer-col-link {
@@ -598,11 +598,12 @@ button { font-family: inherit; cursor: pointer; }
   font-weight: 900;
   letter-spacing: -0.02em;
   line-height: 1.15;
-  color: var(--text);
-  transition: opacity 0.15s;
+  color: rgb(207, 207, 207);
+  transition: color 0.15s;
+  text-decoration: none;
 }
 
-.footer-col-link:hover { opacity: 0.5; }
+.footer-col-link:hover { color: rgb(17, 17, 17); }
 
 .footer-next-row {
   flex: 1;
@@ -615,13 +616,13 @@ button { font-family: inherit; cursor: pointer; }
   font-weight: 900;
   letter-spacing: -0.02em;
   line-height: 1.15;
-  color: var(--text);
-  transition: opacity 0.15s;
+  color: rgb(207, 207, 207);
+  transition: color 0.15s;
   text-decoration: none;
   display: flex;
 }
 
-.footer-next-row:hover { opacity: 0.5; }
+.footer-next-row:hover { color: rgb(17, 17, 17); }
 
 .footer-inner {
   display: flex;

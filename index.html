@@ -13,8 +13,6 @@
 
   <canvas class="grain-canvas" aria-hidden="true"></canvas>
 
-  <div class="parallax-bg" aria-hidden="true"></div>
-
   <header id="site-header"></header>
 
   <main class="page-content">
@@ -33,24 +31,6 @@
   <script src="js/transitions.js"></script>
   <script src="/js/cursor.js"></script>
   <script>
-  (function () {
-    var bg = document.querySelector('.parallax-bg');
-    if (!bg) return;
-    var targetX = 50, targetY = 50, currentX = 50, currentY = 50;
-    var lerp = 0.06;
-    document.addEventListener('mousemove', function (e) {
-      targetX = (e.clientX / window.innerWidth) * 100;
-      targetY = (e.clientY / window.innerHeight) * 100;
-    });
-    function animate() {
-      currentX += (targetX - currentX) * lerp;
-      currentY += (targetY - currentY) * lerp;
-      bg.style.background = 'radial-gradient(circle at ' + currentX + '% ' + currentY + '%, rgba(255, 255, 255, 0.03) 0%, transparent 60%)';
-      requestAnimationFrame(animate);
-    }
-    animate();
-  })();
-
   (function () {
     const canvas = document.querySelector('.grain-canvas');
     if (!canvas) return;

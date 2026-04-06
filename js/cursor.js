@@ -30,7 +30,7 @@
   updateTheme();
 
   // ── Hover detection ───────────────────────────────────────────
-  var HOVER_SEL = 'a, button, [role="button"], label, .bento-item, .nav-link, .project-nav-link';
+  var HOVER_SEL = 'a, button, [role="button"], label, .bento-item, .nav-link';
 
   document.addEventListener('mouseover', function (e) {
     var target = e.target && e.target.closest ? e.target.closest(HOVER_SEL) : null;

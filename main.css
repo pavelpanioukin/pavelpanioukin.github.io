@@ -810,28 +810,6 @@ button { font-family: inherit; cursor: pointer; }
   font-style: normal;
 }
 
-/* Project page nav */
-.project-page-nav {
-  border-top: 1px solid var(--border);
-  padding: 52px 0 80px;
-}
-
-.project-page-nav-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.project-nav-link {
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: var(--text);
-  border-bottom: 1px solid var(--text);
-  padding-bottom: 2px;
-  transition: opacity 0.15s;
-}
-
-.project-nav-link:hover { opacity: 0.5; }
 
 /* ── Responsive ──────────────────────────────────────────────────────────────── */
 
@@ -857,9 +835,7 @@ button { font-family: inherit; cursor: pointer; }
   .page-header { padding-top: 40px; padding-bottom: 32px; }
   /* homepage stance: reduce top padding on small screens */
   .homepage-stance { padding-top: 40px; }
-  /* project-page-nav: reduce padding on small screens */
-  .project-page-nav { padding: 36px 0 52px; }
-  .ps-image { margin-left: calc(-1 * var(--gutter)); margin-right: calc(-1 * var(--gutter)); }
+.ps-image { margin-left: calc(-1 * var(--gutter)); margin-right: calc(-1 * var(--gutter)); }
   .about-hero { flex-direction: column; align-items: flex-start; gap: 32px; }
   .about-hero-img { width: 100%; height: 260px; border-radius: 4px; }
 }
@@ -1392,7 +1368,6 @@ main a:not(.project-card):not(.feed-image):not(.nav-link):hover {
 }
 
 /* Active press feedback */
-.project-nav-link:active { opacity: 0.35; }
 
 /* Subtle noise overlay — breaks flat digital sterility */
 body::after {

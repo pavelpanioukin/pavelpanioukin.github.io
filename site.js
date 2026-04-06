@@ -339,17 +339,6 @@ function renderProjectPage(data) {
       : '<p class="ps-body" style="padding-top:8px;">' + escHtml(project.description) + '</p>';
   }
 
-  var idx   = projects.findIndex(function (p) { return p.id === id; });
-  var prev  = projects[idx - 1];
-  var next  = projects[idx + 1];
-  var navEl = document.getElementById('project-nav');
-  if (navEl) {
-    navEl.innerHTML =
-      '<div class="project-page-nav-inner">' +
-        (prev ? '<a href="project.html?id=' + prev.id + '" class="project-nav-link">← ' + escHtml(prev.title) + '</a>' : '<span></span>') +
-        (next ? '<a href="project.html?id=' + next.id + '" class="project-nav-link">'   + escHtml(next.title) + ' →</a>' : '<span></span>') +
-      '</div>';
-  }
 }
 
 // ── Contact form ──────────────────────────────────────────────────────────────

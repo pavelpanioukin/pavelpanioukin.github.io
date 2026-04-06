@@ -87,7 +87,7 @@
     footerEl.innerHTML =
       '<div class="footer-contact-row">' +
         '<div class="footer-col">' +
-          '<a class="footer-reach" href="mailto:' + em + '">Reach out to connect or collaborate</a>' +
+          '<a class="footer-reach" href="mailto:' + em + '">Drop me an email</a>' +
         '</div>' +
         '<div class="footer-col footer-col--right">' +
           '<a class="footer-col-link" href="https://www.linkedin.com/in/pavelpanioukin/" target="_blank" rel="noopener">LinkedIn</a>' +

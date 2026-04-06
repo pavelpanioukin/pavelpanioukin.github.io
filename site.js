@@ -65,16 +65,24 @@
   updateTime();
   setInterval(updateTime, 60000);
 
-  // ── Render footer shell ─────────────────────────────────────────────────────
+  // ── Render footer ───────────────────────────────────────────────────────────
   var footerEl = document.getElementById('site-footer');
   if (footerEl) {
     footerEl.className = 'site-footer';
+    var em = 'pavel.panioukin' + '\x40' + 'gmail' + '\x2e' + 'com';
     footerEl.innerHTML =
-      '<div class="footer-inner">' +
-        '<a href="/" class="footer-name">Pavel Panioukin</a>' +
-        '<div class="footer-social" id="footer-social"></div>' +
-        '<span class="footer-copy" id="footer-copy"></span>' +
-      '</div>';
+      '<div class="footer-contact-row">' +
+        '<div class="footer-col">' +
+          '<p class="footer-reach">Reach out to connect or collaborate</p>' +
+          '<a class="footer-email" href="mailto:' + em + '">' + em + '</a>' +
+        '</div>' +
+        '<div class="footer-col">' +
+          '<a class="footer-col-link" href="https://www.linkedin.com/in/pavelpanioukin/" target="_blank" rel="noopener">LinkedIn</a>' +
+          '<a class="footer-col-link" href="https://dribbble.com/pavelpanioukin" target="_blank" rel="noopener">Dribbble</a>' +
+          '<a class="footer-col-link" href="https://twitter.com/pavelpanioukin" target="_blank" rel="noopener">X</a>' +
+        '</div>' +
+      '</div>' +
+      '<a class="footer-next-row" id="footer-next-link" href="/about.html">Next \u2192 About</a>';
   }
 
   // ── Escape key closes lightbox on any page ──────────────────────────────────
@@ -346,6 +354,21 @@ function handleSubmit(e) {
   if (note) note.textContent = 'Opening your email client…';
 }
 
+// ── Footer next-page link (updated after each SPA navigation) ────────────────
+
+function updateFooterNext() {
+  var p = window.location.pathname;
+  var dest = p.includes('about') ? { href: '/work.html',  label: 'Work'  } :
+             p.includes('work')  ? { href: '/feed.html',  label: 'Feed'  } :
+             p.includes('feed')  ? { href: '/about.html', label: 'About' } :
+                                   { href: '/about.html', label: 'About' };
+  var el = document.getElementById('footer-next-link');
+  if (el) {
+    el.href        = dest.href;
+    el.textContent = 'Next \u2192 ' + dest.label;
+  }
+}
+
 // ── Nav active state (called after each SPA navigation) ──────────────────────
 
 function updateNavActive() {
@@ -379,7 +402,7 @@ window.initPage = async function () {
   updateNavActive();
 
   var data = await fetch('/data.json?v=' + Date.now()).then(function (r) { return r.json(); });
-  renderFooterData(data);
+  updateFooterNext();
 
   var p = window.location.pathname;
 

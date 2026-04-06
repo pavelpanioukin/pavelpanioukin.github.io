@@ -68,6 +68,7 @@
       el.style.transition = '';
     });
 
+    window.scrollTo(0, 0);
     if (typeof window.initPage === 'function') await window.initPage();
   }
 

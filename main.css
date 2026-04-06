@@ -891,7 +891,8 @@ body.page-new {
 body.page-new .page-content {
   flex: 1;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* Subtle noise grain on dark homepage */
@@ -1547,7 +1548,7 @@ a.homepage-project-title:hover { opacity: 0.55; }
 .homepage-project--muted { opacity: 0.35; }
 
 /* Dark theme overrides (body.page-new = index.html only) */
-body.page-new .homepage-body { color: rgba(255,255,255,0.38); }
+body.page-new .homepage-body { color: rgba(255,255,255,0.38); max-width: none; }
 body.page-new .homepage-hi   { color: #fff; }
 body.page-new .homepage-status { color: rgba(255,255,255,0.4); }
 body.page-new #contact-link { color: rgba(255,255,255,0.65); opacity: 1 !important; }

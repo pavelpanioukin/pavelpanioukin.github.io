@@ -574,23 +574,24 @@ button { font-family: inherit; cursor: pointer; }
   justify-content: center;
 }
 
+.footer-col--right {
+  align-items: flex-end;
+}
+
 .footer-reach {
   font-size: clamp(2rem, 4vw, 4.5rem);
   font-weight: 900;
   letter-spacing: -0.02em;
   line-height: 1.15;
   color: var(--text);
-  margin-bottom: 20px;
   max-width: 640px;
+  text-decoration: none;
+  transition: opacity 0.15s;
+  display: block;
 }
 
-.footer-email {
-  font-size: 1.0625rem;
-  color: var(--text-dim);
-  transition: color 0.15s;
-}
+.footer-reach:hover { opacity: 0.5; }
 
-.footer-email:hover { color: var(--text); }
 
 .footer-col-link {
   font-size: clamp(2rem, 4vw, 4.5rem);
@@ -971,8 +972,7 @@ body.page-new .footer-next-row {
 }
 
 body.page-new .footer-reach  { color: rgba(255, 255, 255, 0.38); }
-body.page-new .footer-email  { color: rgba(255, 255, 255, 0.38); }
-body.page-new .footer-email:hover { color: #fff; }
+body.page-new .footer-reach:hover { color: #fff; opacity: 1; }
 body.page-new .footer-col-link { color: rgba(255, 255, 255, 0.38); }
 body.page-new .footer-col-link:hover { color: #fff; opacity: 1; }
 body.page-new .footer-next-row { color: rgba(255, 255, 255, 0.38); }

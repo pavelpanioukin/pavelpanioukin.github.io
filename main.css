@@ -456,41 +456,6 @@ button { font-family: inherit; cursor: pointer; }
   padding: 80px var(--gutter) 100px;
 }
 
-/* ── CTA Section ─────────────────────────────────────────────────────────────── */
-
-.cta-section {
-  padding: 100px var(--gutter);
-}
-
-.cta-label {
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 24px;
-}
-
-.cta-headline {
-  font-size: clamp(2rem, 4vw, 4.5rem);
-  font-weight: 900;
-  letter-spacing: -0.02em;
-  line-height: 1.0;
-  color: var(--text);
-  margin-bottom: 40px;
-  max-width: 640px;
-}
-
-.cta-link {
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: var(--text);
-  border-bottom: 2px solid var(--text);
-  padding-bottom: 2px;
-  transition: opacity 0.15s;
-}
-
-.cta-link:hover { opacity: 0.5; }
 
 
 .form-group { margin-bottom: 20px; }
@@ -892,8 +857,6 @@ button { font-family: inherit; cursor: pointer; }
   .page-header { padding-top: 40px; padding-bottom: 32px; }
   /* homepage stance: reduce top padding on small screens */
   .homepage-stance { padding-top: 40px; }
-  /* cta-section: reduce padding on small screens */
-  .cta-section { padding: 60px var(--gutter); }
   /* project-page-nav: reduce padding on small screens */
   .project-page-nav { padding: 36px 0 52px; }
   .ps-image { margin-left: calc(-1 * var(--gutter)); margin-right: calc(-1 * var(--gutter)); }
@@ -1059,21 +1022,14 @@ body.page-new main { overflow-x: hidden; }
 }
 
 /* 4. Body text link hover — opacity fade */
-main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary) {
+main a:not(.project-card):not(.feed-image):not(.nav-link) {
   opacity: 0.7;
   transition: opacity 0.15s ease;
 }
 
-main a:not(.project-card):not(.feed-image):not(.nav-link):not(.cta-primary):hover {
+main a:not(.project-card):not(.feed-image):not(.nav-link):hover {
   opacity: 1;
 }
-
-.cta-primary {
-  opacity: 1;
-  transition: opacity 0.15s ease;
-}
-
-.cta-primary:hover { opacity: 0.5; }
 
 /* ── Exp Projects (about page) ────────────────────────────────────────────── */
 

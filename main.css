@@ -890,6 +890,8 @@ body.page-new {
 
 body.page-new .page-content {
   flex: 1;
+  display: flex;
+  align-items: center;
 }
 
 /* Subtle noise grain on dark homepage */
@@ -1470,7 +1472,6 @@ body::after {
   line-height: 1.15;
   color: var(--text);
   max-width: 800px;
-  text-wrap: balance;
 }
 
 .homepage-body + .homepage-body { margin-top: 0.9em; }

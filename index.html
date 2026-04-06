@@ -11,13 +11,15 @@
 </head>
 <body class="page-new">
 
+  <div class="parallax-bg" aria-hidden="true"></div>
+
   <header id="site-header"></header>
 
   <main class="page-content">
 
     <!-- Stance -->
     <div class="homepage-stance container appear">
-      <p class="homepage-body"><span style="display:block">I design for <span class="homepage-hi">the moment</span></span><span style="display:block">a person decides whether to <span class="homepage-hi">trust</span></span><span style="display:block">what's in front of them.</span></p>
+      <p class="homepage-body"><span style="display:block">I design for <span class="homepage-hi">the moment</span></span><span style="display:block">a person decides whether to <span class="homepage-hi">trust</span></span><span style="display:block">what's in front of them</span></p>
     </div>
 
   </main>
@@ -28,5 +30,24 @@
   <script src="animations.js"></script>
   <script src="js/transitions.js"></script>
   <script src="/js/cursor.js"></script>
+  <script>
+  (function () {
+    var bg = document.querySelector('.parallax-bg');
+    if (!bg) return;
+    var targetX = 50, targetY = 50, currentX = 50, currentY = 50;
+    var lerp = 0.06;
+    document.addEventListener('mousemove', function (e) {
+      targetX = (e.clientX / window.innerWidth) * 100;
+      targetY = (e.clientY / window.innerHeight) * 100;
+    });
+    function animate() {
+      currentX += (targetX - currentX) * lerp;
+      currentY += (targetY - currentY) * lerp;
+      bg.style.background = 'radial-gradient(circle at ' + currentX + '% ' + currentY + '%, rgba(255, 255, 255, 0.03) 0%, transparent 60%)';
+      requestAnimationFrame(animate);
+    }
+    animate();
+  })();
+  </script>
 </body>
 </html>

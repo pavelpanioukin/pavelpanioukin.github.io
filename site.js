@@ -53,6 +53,20 @@
     headerEl.insertAdjacentElement('afterend', navEl);
   }
 
+  // ── Header height CSS var (for homepage below-fold footer) ─────────────────
+  function syncHeaderHeight() {
+    if (!document.body.classList.contains('page-new')) return;
+    var h = 0;
+    var hdr = document.getElementById('site-header');
+    var nav = document.querySelector('.nav-row');
+    if (hdr) h += hdr.offsetHeight;
+    if (nav) h += nav.offsetHeight;
+    document.documentElement.style.setProperty('--header-h', h + 'px');
+  }
+  // Run after layout settles, and on resize
+  setTimeout(syncHeaderHeight, 0);
+  window.addEventListener('resize', syncHeaderHeight);
+
   // ── Local time ──────────────────────────────────────────────────────────────
   function updateTime() {
     var el = document.getElementById('local-time');

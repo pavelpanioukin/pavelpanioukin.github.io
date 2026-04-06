@@ -912,7 +912,7 @@ body.page-new {
 
 body.page-new .page-content {
   flex: 1;
-  min-height: 100dvh;
+  min-height: calc(100dvh - var(--header-h, 120px));
   display: flex;
   flex-direction: column;
   justify-content: center;

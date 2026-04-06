@@ -1465,6 +1465,12 @@ body::after {
 
 .homepage-stance { padding-top: 64px; padding-bottom: 48px; }
 
+body.page-new .homepage-stance {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: none;
+}
+
 .homepage-body {
   font-size: clamp(2.275rem, 4.55vw, 3.9rem);
   font-weight: 900;

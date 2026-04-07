@@ -11,8 +11,6 @@
 </head>
 <body class="page-new">
 
-  <canvas class="grain-canvas" aria-hidden="true"></canvas>
-
   <header id="site-header"></header>
 
   <main class="page-content">
@@ -31,56 +29,6 @@
   <script src="js/transitions.js"></script>
   <script src="/js/cursor.js"></script>
   <script>
-  (function () {
-    const canvas = document.querySelector('.grain-canvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-
-    let width, height, imageData, data;
-    let offsetX = 0;
-    let offsetY = 0;
-    let targetOffsetX = 0;
-    let targetOffsetY = 0;
-    const driftStrength = 12;
-    const lerpGrain = 0.04;
-
-    function resize() {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-      imageData = ctx.createImageData(width, height);
-      data = imageData.data;
-    }
-
-    function generateGrain() {
-      for (let i = 0; i < data.length; i += 4) {
-        const value = Math.random() * 255;
-        data[i] = value;
-        data[i + 1] = value;
-        data[i + 2] = value;
-        data[i + 3] = 255;
-      }
-      ctx.putImageData(imageData, offsetX, offsetY);
-    }
-
-    document.addEventListener('mousemove', (e) => {
-      const mouseX = e.clientX / window.innerWidth;
-      const mouseY = e.clientY / window.innerHeight;
-      targetOffsetX = (mouseX - 0.5) * driftStrength;
-      targetOffsetY = (mouseY - 0.5) * driftStrength;
-    });
-
-    function animateGrain() {
-      offsetX += (targetOffsetX - offsetX) * lerpGrain;
-      offsetY += (targetOffsetY - offsetY) * lerpGrain;
-      generateGrain();
-      requestAnimationFrame(animateGrain);
-    }
-
-    window.addEventListener('resize', resize);
-    resize();
-    animateGrain();
-  })();
-
   (function () {
     const chars = document.querySelectorAll('.char');
     if (!chars.length) return;

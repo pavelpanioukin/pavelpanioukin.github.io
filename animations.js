@@ -44,15 +44,11 @@
         return;
       }
 
-      var h2 = document.querySelector('.about-grid .philosophy-section > .section-label');
-      if (!h2) return;
-
-      var h2Rect = h2.getBoundingClientRect();
+      var mid = window.innerHeight / 2;
 
       items.forEach(function (item) {
         var r = item.getBoundingClientRect();
-        // Item is active when it vertically overlaps the sticky H2 rectangle
-        var overlaps = r.top < h2Rect.bottom && r.bottom > h2Rect.top;
+        var overlaps = r.top < mid && r.bottom > mid;
         item.classList.toggle('active', overlaps);
       });
     }

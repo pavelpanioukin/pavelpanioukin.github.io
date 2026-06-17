@@ -363,10 +363,10 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .about-headline {
-  font-size: clamp(2.275rem, 4.55vw, 3.9rem);
+  font-size: clamp(2.925rem, 6.5vw, 5.85rem);
   font-weight: 900;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
   color: var(--text);
   margin-bottom: 6px;
   text-wrap: balance;

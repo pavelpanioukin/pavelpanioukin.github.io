@@ -362,20 +362,6 @@ button { font-family: inherit; cursor: pointer; }
   border-radius: 4px;
 }
 
-.about-headline {
-  font-size: clamp(2.275rem, 4.55vw, 3.9rem);
-  font-weight: 900;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  color: var(--text);
-  max-width: 800px;
-  text-wrap: balance;
-}
-
-.about-headline em {
-  font-style: normal;
-  color: var(--text-muted);
-}
 
 .about-bio-text {
   font-size: 1.0625rem;

@@ -577,24 +577,6 @@ button { font-family: inherit; cursor: pointer; }
 
 .toast.show { transform: translateY(0); opacity: 1; }
 
-/* ── Project tags (used in project.html) ─────────────────────────────────────── */
-
-.modal-tags {
-  display: flex; gap: 8px; flex-wrap: wrap;
-  margin-bottom: 16px;
-}
-
-.modal-tag {
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-  mix-blend-mode: multiply;
-  border: 1px solid var(--border);
-  padding: 4px 10px;
-}
-
 /* ── Project Page ────────────────────────────────────────────────────────────── */
 
 .project-page-hero {
@@ -644,21 +626,6 @@ button { font-family: inherit; cursor: pointer; }
   .project-page-header-content {
     grid-column: 1;
   }
-}
-
-.project-page-tags {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 20px;
-}
-
-.project-page-year {
-  font-size: 0.75rem;
-  color: var(--ink-3);
-  mix-blend-mode: multiply;
-  margin-left: 4px;
 }
 
 .project-page-title {

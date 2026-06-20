@@ -351,12 +351,10 @@ function renderProjectPage(data) {
     }
   }
 
-  var tags      = (project.tags || []).map(function (t) { return '<span class="modal-tag">' + escHtml(t) + '</span>'; }).join('');
   var headerEl  = document.getElementById('project-header');
   if (headerEl) {
     headerEl.innerHTML =
       '<div class="project-page-header-content">' +
-        '<div class="project-page-tags">' + tags + '<span class="project-page-year">' + escHtml(project.year || '') + '</span></div>' +
         '<h1 class="project-page-title">'    + escHtml(project.title)    + '</h1>' +
         '<p class="project-page-subtitle">'  + escHtml(project.subtitle) + '</p>' +
       '</div>';

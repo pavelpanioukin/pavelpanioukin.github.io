@@ -184,9 +184,9 @@
           "body": "Early explorations used a conditional logic builder in the style of a developer tool: dropdowns for field names, operators, values. Technically complete. Practically alienating for a sales ops user who thinks in business terms, not data terms. I argued for framing every rule as a sentence the admin could read aloud and recognise as their own business logic. \"When a rep selects [product], automatically apply [discount].\" \"When manual discount is above [threshold], require approval from [approver].\"\n\nThe fields were still structured — they had to be, for the engine to process them — but the interface presented them as a plain-language statement being assembled, not a query being written. The trade-off: this constrained expressiveness to what could be represented in readable sentence form. Some edge cases couldn't be expressed this way. I made the call to cover 90% of real use cases with a readable interface rather than build a maximally expressive tool most admins would find intimidating."
         },
         {
-          "type": "image",
-          "url": "",
-          "caption": "Rule builder: structured fields presented as a readable sentence rather than a query. The same underlying logic, legible to a sales ops manager without technical training."
+          "type": "video",
+          "youtubeId": "mw1Vp2Yymsc",
+          "caption": "Rule builder in action: structured fields presented as a readable sentence rather than a query. The same underlying logic, legible to a sales ops manager without technical training."
         },
         {
           "type": "text",
@@ -222,6 +222,11 @@
           "type": "text",
           "heading": "Outcomes",
           "body": "PandaDoc CPQ for HubSpot launched September 18, 2024, and was presented at INBOUND24 — HubSpot's flagship annual conference. It launched as the first and only fully embedded, native CPQ integration for HubSpot Sales Hub.\n\nQuote error rate decreased. Deal cycle time shortened. Sales rep adoption was faster than previous tooling. PandaDoc was named a HubSpot Essential App for Sales 2024 — the first CPQ integration to receive that recognition. The integration became the foundation for PandaDoc's strategic partnership with HubSpot, a corporate investor in PandaDoc."
+        },
+        {
+          "type": "video",
+          "youtubeId": "7pj_5I6Plpk",
+          "caption": "Our product manager walks through how the PandaDoc CPQ and HubSpot integration works end to end."
         },
         {
           "type": "quote",

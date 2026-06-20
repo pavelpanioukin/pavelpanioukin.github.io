@@ -710,6 +710,66 @@ button { font-family: inherit; cursor: pointer; }
   padding: 0 var(--gutter);
 }
 
+/* Section: Video */
+.ps-video {
+  margin-bottom: 52px;
+  margin-left: calc(-1 * var(--gutter));
+  margin-right: calc(-1 * var(--gutter));
+}
+.ps-video:last-child { margin-bottom: 0; }
+
+.ps-video-thumb,
+.ps-video iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: block;
+  border-radius: 4px;
+}
+
+.ps-video-thumb {
+  position: relative;
+  padding: 0;
+  border: none;
+  background: var(--bg-off);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.ps-video-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ps-video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.7);
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.ps-video-play::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 53%;
+  transform: translate(-50%, -50%);
+  border-style: solid;
+  border-width: 10px 0 10px 16px;
+  border-color: transparent transparent transparent #fff;
+}
+
+.ps-video-thumb:hover .ps-video-play {
+  background: rgba(0, 0, 0, 0.85);
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
 /* Section: Metrics */
 .ps-metrics {
   display: grid;

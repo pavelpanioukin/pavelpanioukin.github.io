@@ -580,8 +580,10 @@ button { font-family: inherit; cursor: pointer; }
 /* ── Project Page ────────────────────────────────────────────────────────────── */
 
 .project-page-hero {
-  width: 100%;
+  width: calc(100% - 2 * var(--gutter));
+  margin: 0 var(--gutter);
   aspect-ratio: 21 / 9;
+  border-radius: 16px;
   overflow: hidden;
   background: #ebebeb;
   display: flex;
@@ -692,13 +694,14 @@ button { font-family: inherit; cursor: pointer; }
   padding: 0 var(--gutter);
 }
 
-/* Section: Video — #fafafa band bleeds edge-to-edge with standard vertical
-   spacing; only the video itself (not the band) gets curved corners, and
+/* Section: Video — #fafafa band inset by the standard gutter (like the
+   project hero), with the same 16px corner radius; the video itself
    stays centered at half the viewport width inside the band */
 .ps-video {
   margin-bottom: 52px;
-  width: 100vw;
-  margin-left: calc(-1 * var(--gutter));
+  width: calc(100vw - 2 * var(--gutter));
+  border-radius: 16px;
+  overflow: hidden;
   background: #fafafa;
   padding: 64px 0;
 }

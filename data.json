@@ -194,9 +194,9 @@
           "body": "The design challenge of the HubSpot sync was not the data flow — that was an engineering problem. It was how to make the sync legible and trustworthy to the rep. A rep who doesn't understand what data flows where will either distrust the system and duplicate work manually, or trust it blindly and miss sync errors.\n\nI made the sync explicit at the moment it matters rather than invisible by default. When a rep opens a deal in HubSpot and initiates a quote, the interface surfaces a brief readable confirmation of which fields will be pulled. When the quote is completed and sent, a brief confirmation shows what was written back. Not a full data audit — just enough for the rep to know the system did its job.\n\nLegibility and trust are not the same thing. Complete transparency can undermine trust as much as opacity can. The signal I was designing for was trust, not transparency."
         },
         {
-          "type": "image",
-          "url": "",
-          "caption": "Sync confirmation states: what comes in from HubSpot when a quote opens, and what writes back after send. The restraint is deliberate — enough to confirm the sync worked, not enough to require the rep to understand it."
+          "type": "video",
+          "youtubeId": "WKNgCohqzSA",
+          "caption": "Guided selling and the HubSpot two-way sync in action: what comes in from HubSpot when a quote opens, and what writes back after send. The restraint is deliberate — enough to confirm the sync worked, not enough to require the rep to understand it."
         },
         {
           "type": "text",

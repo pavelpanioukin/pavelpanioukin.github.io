@@ -692,11 +692,13 @@ button { font-family: inherit; cursor: pointer; }
   padding: 0 var(--gutter);
 }
 
-/* Section: Video — half the viewport width, rounded to match the rest of
-   the site's curved corners, gutter-aligned (not full-bleed) */
+/* Section: Video — half the viewport width, centered so it bleeds evenly
+   past the text column on both sides, rounded to match the rest of the
+   site's curved corners */
 .ps-video {
   margin-bottom: 52px;
   width: 50vw;
+  margin-left: calc(25vw - var(--gutter));
   background: #fafafa;
   border-radius: 16px;
   overflow: hidden;

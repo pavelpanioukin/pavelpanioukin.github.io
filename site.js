@@ -49,7 +49,7 @@
 
     var navEl = document.createElement('div');
     navEl.className = 'nav-row';
-    navEl.innerHTML = '<nav class="header-nav">' + buildNavHTML() + '</nav>';
+    navEl.innerHTML = '<div class="nav-row-inner"><nav class="header-nav">' + buildNavHTML() + '</nav></div>';
     headerEl.insertAdjacentElement('afterend', navEl);
   }
 
@@ -142,15 +142,19 @@ function renderFooterData(data) {
 // ── Project card (work page grid) ─────────────────────────────────────────────
 
 function buildProjectCard(p) {
-  var thumbStyle   = p.thumbnail ? '' : 'background:' + (p.thumbnailGradient || '#ebebeb');
+  var thumbStyle   = p.thumbnail ? '' : 'background:#fafafa';
   var thumbContent = p.thumbnail
     ? '<img src="' + escHtml(p.thumbnail) + '" alt="' + escHtml(p.title) + '" loading="lazy">'
     : '<span class="project-card-label">' + escHtml(p.thumbnailLabel || p.title) + '</span>';
+  var badge = p.available === false
+    ? '<span class="project-card-badge">Coming soon</span>'
+    : '';
+  var tagLine = (p.tags || []).join(', ');
   return '<a class="project-card" href="/project.html?id=' + p.id + '">' +
-    '<div class="project-card-thumb" style="' + thumbStyle + '">' + thumbContent + '</div>' +
+    '<div class="project-card-thumb" style="' + thumbStyle + '">' + badge + thumbContent + '</div>' +
     '<div class="project-card-info">' +
       '<div class="project-card-title">' + escHtml(p.title) + '</div>' +
-      '<div class="project-card-sub">'   + escHtml(p.subtitle) + '</div>' +
+      '<div class="project-card-sub">'   + escHtml(tagLine) + '</div>' +
     '</div></a>';
 }
 
@@ -393,7 +397,7 @@ function updateNavActive() {
 
   // Toggle dark home-page theme
   var isHome = (p === '/' || p.endsWith('/index.html'));
-  document.body.className = isHome ? 'page-new' : '';
+  document.body.classList.toggle('page-new', isHome);
 }
 
 // ── Central page initialiser ──────────────────────────────────────────────────

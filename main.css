@@ -28,8 +28,7 @@
   --ink-3:      rgba(0, 0, 0, 0.40); /* labels, captions — was var(--text-muted) */
   --ink-4:      rgba(0, 0, 0, 0.19); /* idle nav/footer links — was rgb(207,207,207) */
   --sans:       'Raveo', -apple-system, BlinkMacSystemFont, sans-serif;
-  --max-w:      1440px;
-  --gutter:     40px;
+  --gutter:     16px;
   --ease:       cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -56,8 +55,6 @@ button { font-family: inherit; cursor: pointer; }
 /* ── Container ───────────────────────────────────────────────────────────────── */
 
 .container {
-  max-width: var(--max-w);
-  margin: 0 auto;
   padding: 0 var(--gutter);
 }
 
@@ -102,10 +99,10 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .header-time {
-  font-size: 22px;
+  font-size: 14px;
   font-weight: 400;
-  letter-spacing: -0.44px;
-  line-height: 26px;
+  letter-spacing: -0.28px;
+  line-height: 22.4px;
   color: var(--ink-4);
   mix-blend-mode: multiply;
   display: block;
@@ -117,10 +114,10 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .header-bio {
-  font-size: 22px;
+  font-size: 14px;
   font-weight: 400;
-  letter-spacing: -0.44px;
-  line-height: 26px;
+  letter-spacing: -0.28px;
+  line-height: 22.4px;
   color: var(--ink-4);
   mix-blend-mode: multiply;
   text-align: left;
@@ -132,7 +129,6 @@ button { font-family: inherit; cursor: pointer; }
 .nav-row {
   display: flex;
   align-items: center;
-  padding: 0 var(--gutter);
   height: 44px;
   position: sticky;
   top: 0;
@@ -142,6 +138,13 @@ button { font-family: inherit; cursor: pointer; }
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
+}
+
+.nav-row-inner {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 var(--gutter);
 }
 
 .nav-row::-webkit-scrollbar { display: none; }
@@ -200,13 +203,12 @@ button { font-family: inherit; cursor: pointer; }
 .project-card {
   display: block;
   cursor: pointer;
-  background: var(--bg-off);
-  border-radius: 8px;
-  overflow: hidden;
 }
 
 .project-card-thumb {
   aspect-ratio: 4 / 3;
+  background: var(--bg-off);
+  border-radius: 16px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -222,11 +224,29 @@ button { font-family: inherit; cursor: pointer; }
 
 .project-card-label {
   font-family: var(--sans);
-  font-size: 1.75rem;
-  font-weight: 900;
-  color: rgba(0,0,0,0.1);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--ink-3);
+  mix-blend-mode: multiply;
   letter-spacing: -0.02em;
+  text-align: center;
+  max-width: 60%;
+  padding: 0 12%;
   user-select: none;
+}
+
+.project-card-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #444;
+  background: var(--bg);
+  padding: 4px 10px;
+  border-radius: 100px;
 }
 
 .project-card-info {
@@ -492,7 +512,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .footer-reach {
-  font-size: clamp(2rem, 4vw, 4.5rem);
+  font-size: clamp(2.275rem, 4.55vw, 3.9rem);
   font-weight: 900;
   letter-spacing: -0.02em;
   line-height: 1.15;
@@ -508,7 +528,7 @@ button { font-family: inherit; cursor: pointer; }
 
 
 .footer-col-link {
-  font-size: clamp(2rem, 4vw, 4.5rem);
+  font-size: clamp(2.275rem, 4.55vw, 3.9rem);
   font-weight: 900;
   letter-spacing: -0.02em;
   line-height: 1.15;
@@ -525,7 +545,7 @@ button { font-family: inherit; cursor: pointer; }
   align-items: center;
   padding: var(--gutter);
   border-top: 1px solid var(--border);
-  font-size: clamp(2rem, 4vw, 4.5rem);
+  font-size: clamp(2.275rem, 4.55vw, 3.9rem);
   font-weight: 900;
   letter-spacing: -0.02em;
   line-height: 1.15;
@@ -747,7 +767,6 @@ button { font-family: inherit; cursor: pointer; }
 /* ── Responsive ──────────────────────────────────────────────────────────────── */
 
 @media (max-width: 1024px) {
-  :root { --gutter: 28px; }
   .project-grid { grid-template-columns: repeat(2, 1fr); }
   .bento-grid { grid-template-columns: repeat(3, 1fr); }
   .timeline-item { grid-template-columns: 1fr; gap: 8px; }
@@ -756,7 +775,6 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 @media (max-width: 680px) {
-  :root { --gutter: 20px; }
   .project-grid { grid-template-columns: 1fr; }
   .bento-grid { grid-template-columns: 1fr; }
   .info-row { flex-direction: column; gap: 6px; }
@@ -892,24 +910,14 @@ body.page-new main { overflow-x: hidden; }
   }
 }
 
-/* 2. Project card hover — restrained scale */
-.project-card {
-  overflow: hidden;
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: transform;
-}
-
-.project-card:hover {
-  transform: scale(1.015);
-}
-
+/* 2. Project card hover — image zooms within its clipped frame, card itself stays put */
 .project-card img {
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }
 
 .project-card:hover img {
-  transform: scale(1.04);
+  transform: scale(1.06);
 }
 
 /* 3. Body text link hover — opacity fade */
@@ -928,8 +936,6 @@ main a:not(.project-card):not(.nav-link):hover {
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 4px; /* matches .bento-grid gap */
-  max-width: var(--max-w);
-  margin: 0 auto;
   padding: 4rem var(--gutter) 6rem;
 }
 

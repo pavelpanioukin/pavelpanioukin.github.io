@@ -190,16 +190,6 @@
         },
         {
           "type": "text",
-          "heading": "Rules as a library, not a list",
-          "body": "The first version of the rules management interface was a flat list: rule name, conditions, action, toggle. It worked for three rules. For fifteen it became unnavigable. Admins couldn't easily answer: what will happen if a rep applies a 25% discount to our enterprise tier?\n\nI moved toward organising rules by the event that triggers them rather than creation order. Rules grouped by trigger type — \"on product selection,\" \"on discount entry,\" \"on quantity change\" — made it possible to scan the system's behaviour without reading every rule. This also surfaced something the flat list hid: conflicting rules. Two rules triggered by the same event with different actions produce unpredictable behaviour. Grouping by trigger made conflicts visually apparent."
-        },
-        {
-          "type": "image",
-          "url": "",
-          "caption": "Rules library grouped by trigger type. Conflicts between rules in the same trigger group become visible without requiring the admin to hold the full rule set in their head."
-        },
-        {
-          "type": "text",
           "heading": "The two-way sync as a trust problem",
           "body": "The design challenge of the HubSpot sync was not the data flow — that was an engineering problem. It was how to make the sync legible and trustworthy to the rep. A rep who doesn't understand what data flows where will either distrust the system and duplicate work manually, or trust it blindly and miss sync errors.\n\nI made the sync explicit at the moment it matters rather than invisible by default. When a rep opens a deal in HubSpot and initiates a quote, the interface surfaces a brief readable confirmation of which fields will be pulled. When the quote is completed and sent, a brief confirmation shows what was written back. Not a full data audit — just enough for the rep to know the system did its job.\n\nLegibility and trust are not the same thing. Complete transparency can undermine trust as much as opacity can. The signal I was designing for was trust, not transparency."
         },

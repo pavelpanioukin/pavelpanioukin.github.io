@@ -611,7 +611,6 @@ button { font-family: inherit; cursor: pointer; }
   column-gap: 40px;
   padding-top: 64px;
   padding-bottom: 48px;
-  border-bottom: 1px solid var(--border);
 }
 
 .project-page-header-content {

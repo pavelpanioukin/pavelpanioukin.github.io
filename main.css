@@ -692,18 +692,22 @@ button { font-family: inherit; cursor: pointer; }
   padding: 0 var(--gutter);
 }
 
-/* Section: Video — half the viewport width, centered so it bleeds evenly
-   past the text column on both sides, rounded to match the rest of the
-   site's curved corners */
+/* Section: Video — #fafafa band bleeds edge-to-edge with standard vertical
+   spacing; only the video itself (not the band) gets curved corners, and
+   stays centered at half the viewport width inside the band */
 .ps-video {
   margin-bottom: 52px;
-  width: 50vw;
-  margin-left: calc(25vw - var(--gutter));
+  width: 100vw;
+  margin-left: calc(-1 * var(--gutter));
   background: #fafafa;
-  border-radius: 16px;
-  overflow: hidden;
+  padding: 64px 0;
 }
 .ps-video:last-child { margin-bottom: 0; }
+
+.ps-video-inner {
+  width: 50vw;
+  margin: 0 auto;
+}
 
 .ps-video .ps-caption { padding: 12px 16px 20px; margin-top: 0; }
 
@@ -712,6 +716,8 @@ button { font-family: inherit; cursor: pointer; }
   width: 100%;
   aspect-ratio: 16 / 9;
   display: block;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 .ps-video-thumb {

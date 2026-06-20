@@ -301,13 +301,13 @@ function renderSection(s) {
   }
   if (s.type === 'video') {
     var vid = escHtml(s.youtubeId || '');
-    return '<div class="ps-video">' +
+    return '<div class="ps-video"><div class="ps-video-inner">' +
       '<button type="button" class="ps-video-thumb" data-youtube-id="' + vid + '" aria-label="Play video">' +
         '<img src="https://i.ytimg.com/vi/' + vid + '/maxresdefault.jpg" alt="' + escHtml(s.caption || '') + '" loading="lazy">' +
         '<span class="ps-video-play"></span>' +
       '</button>' +
       (s.caption ? '<p class="ps-caption">' + escHtml(s.caption) + '</p>' : '') +
-      '</div>';
+      '</div></div>';
   }
   return '';
 }

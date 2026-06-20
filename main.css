@@ -693,13 +693,18 @@ button { font-family: inherit; cursor: pointer; }
   padding: 0 var(--gutter);
 }
 
-/* Section: Video — full-bleed, matches .ps-image */
+/* Section: Video — half the viewport width, rounded to match the rest of
+   the site's curved corners, gutter-aligned (not full-bleed) */
 .ps-video {
   margin-bottom: 52px;
-  width: 100vw;
-  margin-left: calc(-1 * var(--gutter));
+  width: 50vw;
+  background: #fafafa;
+  border-radius: 16px;
+  overflow: hidden;
 }
 .ps-video:last-child { margin-bottom: 0; }
+
+.ps-video .ps-caption { padding: 12px 16px 20px; margin-top: 0; }
 
 .ps-video-thumb,
 .ps-video iframe {

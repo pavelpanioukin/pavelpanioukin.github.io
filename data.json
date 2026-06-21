@@ -43,13 +43,13 @@
           "items": [
             { "value": "10+", "label": "Languages supported" },
             { "value": "4yrs", "label": "Platform ownership" },
-            { "value": "4", "label": "Designers led" }
+            { "value": "4", "label": "Designers led at IG" }
           ]
         },
         {
           "type": "text",
           "heading": "Approach",
-          "body": "I led end-to-end redesign: from IA restructure and component audit through to building a shared design system used across IG's global product suite. I ran design sprints with editorial, engineering, and data teams to align on priorities, then shipped in iterative phases to avoid disruption to the existing audience."
+          "body": "I was leading IG's digital design team at the time, but on DailyFX specifically I stayed hands-on: IA restructure, component audit, and most of the shared design system work were mine end to end. I pulled in designers from my team for specific pieces when the scope needed it, rather than running it as a fully team-staffed project. I ran design sprints with editorial, engineering, and data teams to align on priorities, then shipped in iterative phases to avoid disruption to the existing audience."
         },
         {
           "type": "text",

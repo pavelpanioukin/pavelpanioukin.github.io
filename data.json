@@ -10,8 +10,8 @@
   "projects": [
     {
       "id": 4,
-      "title": "PandaDoc CPQ Rules Engine for HubSpot",
-      "pageTitle": "PandaDoc\nCPQ Rules Engine\nfor HubSpot",
+      "title": "PandaDoc: CPQ Rules Engine for HubSpot Integration",
+      "pageTitle": "PandaDoc:\nCPQ Rules Engine\nfor HubSpot Integration",
       "subtitle": "Guided selling for reps, full expressiveness for sales ops",
       "description": "The rules engine had to carry the accumulated expertise of sales ops, finance, and legal — silently, so the rep never had to think about it.",
       "thumbnail": "/assets/images/pandadoc-cpq-cover.webp",

@@ -13,7 +13,8 @@
       "title": "DailyFX",
       "subtitle": "Post-acquisition platform redesign · IG Group",
       "description": "A complete redesign of the DailyFX trading analysis platform, improving UX for both novice and expert traders through better data visualization, streamlined information architecture, and a cohesive design system built for scale.",
-      "thumbnail": "",
+      "thumbnail": "/assets/images/dailyfx-cover.webp",
+      "hero": "/assets/images/dailyfx-feature.webp",
       "thumbnailGradient": "linear-gradient(135deg, #0f0c29 0%, #1a1a4e 50%, #24243e 100%)",
       "thumbnailLabel": "DailyFX",
       "tags": [
@@ -34,9 +35,19 @@
           "body": "DailyFX launched in 2002 and grew into one of the world's most-visited forex news and analysis portals. IG Group acquired it from FXCM in September 2016 — the deal brought over its domains, source code, content archive, and a 34-person team — and I joined right after the acquisition to lead its redesign and integration into IG's product ecosystem. The goal was to make dense, data-heavy content accessible to both first-time retail traders and seasoned professionals, without stripping the depth that experts rely on."
         },
         {
+          "type": "image",
+          "url": "/assets/images/dailyfx-realtime-news.webp",
+          "caption": "Real-time News — live market headlines alongside breaking news and analyst notes, restructured so editorial and live data stop competing for the same space."
+        },
+        {
           "type": "text",
           "heading": "Challenge",
           "body": "DailyFX had accumulated years of feature additions without a coherent information architecture, and now had to be absorbed into IG's design language and infrastructure without alienating an existing global audience. Content was buried under layers of navigation, charts and editorial competed for the same visual space, and the design system was fragmented across markets and locales. Two of the platform's signature features — the Economic Calendar, a filterable release schedule for G-10 economic events ranked by market impact, and the Economic Countdown, a live clock to the next market-moving announcement — had grown organically over a decade as one-off pages rather than consistent, reusable components. The redesign had to work across 10+ languages and serve a global audience with radically different trading contexts."
+        },
+        {
+          "type": "image",
+          "url": "/assets/images/dailyfx-economic-calendar.webp",
+          "caption": "The Economic Calendar rebuilt as a filterable, reusable component — by date range, timezone, country, and importance — instead of a one-off page."
         },
         {
           "type": "metrics",
@@ -50,6 +61,26 @@
           "type": "text",
           "heading": "Approach",
           "body": "I was leading IG's digital design team at the time, but on DailyFX specifically I stayed hands-on: IA restructure, component audit, and most of the shared design system work were mine end to end. I pulled in designers from my team for specific pieces when the scope needed it, rather than running it as a fully team-staffed project. I ran design sprints with editorial, engineering, and data teams to align on priorities, then shipped in iterative phases to avoid disruption to the existing audience.\n\nWe also had a real advantage most redesigns don't: a large, ready audience of traders and finance professionals already on the platform. I used that to run constant user testing throughout the redesign, validating that each proposed solution actually met the needs and expectations of real traders rather than relying on internal assumptions."
+        },
+        {
+          "type": "image",
+          "url": "/assets/images/dailyfx-market-quotes.webp",
+          "caption": "Live market quotes with inline support/resistance levels and related news — dense data made scannable without losing depth for experienced traders."
+        },
+        {
+          "type": "image",
+          "url": "/assets/images/dailyfx-forecasts-guides.webp",
+          "caption": "Forecasts & Guides — the platform's long-form research content, restructured into a single browsable, downloadable library by topic."
+        },
+        {
+          "type": "image",
+          "url": "/assets/images/dailyfx-live-webinars.webp",
+          "caption": "Live Webinars — recurring and one-time trading sessions, filterable by timezone, event type, and host."
+        },
+        {
+          "type": "image",
+          "url": "/assets/images/dailyfx-technical-outlook.webp",
+          "caption": "Editorial analysis pages carried the same component system, so a technical outlook reads consistently with the rest of the platform."
         },
         {
           "type": "text",

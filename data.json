@@ -163,7 +163,7 @@
       "id": 1,
       "title": "DailyFX",
       "subtitle": "Post-acquisition platform redesign · IG Group",
-      "description": "A complete redesign of the DailyFX trading analysis platform, improving UX for both novice and expert traders through better data visualization, streamlined information architecture, and a cohesive design system built for scale.",
+      "description": "A complete redesign of the DailyFX trading analysis platform, improving UX for both novice and expert traders through better data visualisation, streamlined information architecture, and a cohesive design system built for scale.",
       "thumbnail": "/assets/images/dailyfx-cover.webp",
       "hero": "/assets/images/dailyfx-feature.webp",
       "thumbnailGradient": "linear-gradient(135deg, #0f0c29 0%, #1a1a4e 50%, #24243e 100%)",
@@ -173,7 +173,7 @@
         "Design Systems",
         "Fintech"
       ],
-      "year": "2023",
+      "year": "2016–2020",
       "featured": true,
       "homepage": true,
       "homepageOrder": 1,
@@ -220,7 +220,7 @@
         {
           "type": "text",
           "heading": "Approach",
-          "body": "I was leading IG's digital design team at the time, but on DailyFX specifically I stayed hands-on: IA restructure, component audit, and most of the shared design system work were mine end to end. I pulled in designers from my team for specific pieces when the scope needed it, rather than running it as a fully team-staffed project. I ran design sprints with editorial, engineering, and data teams to align on priorities, then shipped in iterative phases to avoid disruption to the existing audience.\n\nWe also had a real advantage most redesigns don't: a large, ready audience of traders and finance professionals already on the platform. I used that to run constant user testing throughout the redesign, validating that each proposed solution actually met the needs and expectations of real traders rather than relying on internal assumptions."
+          "body": "I was leading IG's digital design team at the time, but on DailyFX specifically I stayed hands-on: IA restructure, component audit, and most of the shared design system work was mine end to end. I pulled in designers from my team for specific pieces when the scope needed it, rather than running it as a fully team-staffed project. I ran design sprints with editorial, engineering, and data teams to align on priorities, then shipped in iterative phases to avoid disruption to the existing audience.\n\nWe also had a real advantage most redesigns don't: a large, ready audience of traders and finance professionals already on the platform. I used that to run constant user testing throughout the redesign, validating that each proposed solution actually met the needs and expectations of real traders rather than relying on internal assumptions."
         },
         {
           "type": "image",
@@ -279,7 +279,7 @@
         {
           "type": "text",
           "heading": "Approach",
-          "body": "I owned the complete customer journey — from the marketing site through to the app used to open the storage unit. This meant designing across three surfaces (web, iOS, Android) with a consistent interaction model, and working closely with hardware engineers to design interfaces for the smart lock access flow.\n\nI started by mapping the full conversion funnel to find where the platform was losing customers, then worked backward from there. The pandemic made this more urgent: minimizing customer churn meant shifting to a fully contactless model while keeping the service simple to use under uncertain conditions. Most of the work was refining the digital interface and tightening the clarity of in-product communication — code delivery, booking confirmations, contract terms — so customers could manage their storage independently without calling support."
+          "body": "I owned the complete customer journey — from the marketing site through to the app used to open the storage unit. This meant designing across three surfaces (web, iOS, Android) with a consistent interaction model, and working closely with hardware engineers to design interfaces for the smart lock access flow.\n\nI started by mapping the full conversion funnel to find where the platform was losing customers, then worked backward from there. The pandemic made this more urgent: minimising customer churn meant shifting to a fully contactless model while keeping the service simple to use under uncertain conditions. Most of the work was refining the digital interface and tightening the clarity of in-product communication — code delivery, booking confirmations, contract terms — so customers could manage their storage independently without calling support."
         },
         {
           "type": "image",
@@ -304,7 +304,7 @@
         {
           "type": "text",
           "heading": "Results",
-          "body": "The redesign started narrow: fully digitizing the B2C cancellation flow. That alone was enough to prove the case for a digital-first approach — better customer satisfaction, less operational overhead — so I expanded the scope to the entire conversion funnel, aiming to raise conversion and lower churn across the board.\n\nPartway through the B2C redesign, it became clear B2B customers needed a different approach entirely. I led the development of a dedicated B2B sub-brand with its own redesign, tailored to that segment's needs rather than retrofitting the consumer flow."
+          "body": "The redesign started narrow: fully digitising the B2C cancellation flow. That alone was enough to prove the case for a digital-first approach — better customer satisfaction, less operational overhead — so I expanded the scope to the entire conversion funnel, aiming to raise conversion and lower churn across the board.\n\nPartway through the B2C redesign, it became clear B2B customers needed a different approach entirely. I led the development of a dedicated B2B sub-brand with its own redesign, tailored to that segment's needs rather than retrofitting the consumer flow."
         },
         {
           "type": "image",
@@ -333,7 +333,7 @@
         {
           "type": "text",
           "heading": "Overview",
-          "body": "Designed for both beginners and advanced fitness enthusiasts, this interval timer app for HIIT and Tabata training offers customizable timers for weightlifting, CrossFit, martial arts, and yoga. Customizable workout/rest intervals, a one-button start, individual interval configuration, and a strict no-ads policy make it a go-to tool for tailoring fitness sessions to personal goals, at home or in the gym."
+          "body": "Designed for both beginners and advanced fitness enthusiasts, this interval timer app for HIIT and Tabata training offers customisable timers for weightlifting, CrossFit, martial arts, and yoga. Customizable workout/rest intervals, a one-button start, individual interval configuration, and a strict no-ads policy make it a go-to tool for tailoring fitness sessions to personal goals, at home or in the gym."
         },
         {
           "type": "image",

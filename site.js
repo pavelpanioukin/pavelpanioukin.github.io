@@ -299,6 +299,14 @@ function renderSection(s) {
       (s.attribution ? '<cite class="ps-quote-cite">— ' + escHtml(s.attribution) + '</cite>' : '') +
       '</blockquote>';
   }
+  if (s.type === 'cta') {
+    return '<div class="ps-cta">' +
+      '<a class="ps-cta-link" href="' + escHtml(s.url) + '" target="_blank" rel="noopener">' +
+        escHtml(s.label || 'View live') +
+        '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+      '</a>' +
+      '</div>';
+  }
   if (s.type === 'video') {
     var vid = escHtml(s.youtubeId || '');
     return '<div class="ps-video"><div class="ps-video-inner">' +

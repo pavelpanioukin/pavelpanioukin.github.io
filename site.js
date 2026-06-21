@@ -209,7 +209,7 @@ function renderHomepageProjects(projects) {
   var el = document.getElementById('homepage-projects');
   if (!el) return;
   var list = projects
-    .filter(function (p) { return p.homepage === true; })
+    .filter(function (p) { return p.homepage === true && !p.hidden; })
     .sort(function (a, b) { return (a.homepageOrder || 99) - (b.homepageOrder || 99); });
   if (!list.length) { el.innerHTML = ''; return; }
   el.innerHTML = list.map(function (p) {
@@ -458,7 +458,7 @@ window.initPage = async function () {
 
   } else if (p.includes('work')) {
     var grid = document.getElementById('work-grid');
-    if (grid) grid.innerHTML = (data.projects || []).map(buildProjectCard).join('');
+    if (grid) grid.innerHTML = (data.projects || []).filter(function (p) { return !p.hidden; }).map(buildProjectCard).join('');
 
   } else if (p.includes('feed')) {
     renderBento(data.feed || []);

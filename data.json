@@ -440,6 +440,20 @@
       "sections": []
     },
     {
+      "id": 13,
+      "title": "Goals",
+      "subtitle": "—",
+      "description": "",
+      "thumbnail": "/assets/images/goals-cover.webp",
+      "thumbnailGradient": "linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)",
+      "thumbnailLabel": "",
+      "tags": [],
+      "year": "",
+      "featured": false,
+      "available": false,
+      "sections": []
+    },
+    {
       "id": 5,
       "slug": "brainly-tutor-live-session",
       "title": "Brainly Tutor: Live Session Design and India Launch",

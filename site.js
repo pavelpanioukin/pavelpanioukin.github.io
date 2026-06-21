@@ -142,20 +142,26 @@ function renderFooterData(data) {
 // ── Project card (work page grid) ─────────────────────────────────────────────
 
 function buildProjectCard(p) {
+  var isDisabled   = p.available === false;
   var thumbStyle   = p.thumbnail ? '' : 'background:#fafafa';
   var thumbContent = p.thumbnail
     ? '<img src="' + escHtml(p.thumbnail) + '" alt="' + escHtml(p.title) + '" loading="lazy">'
     : '<span class="project-card-label">' + escHtml(p.thumbnailLabel || p.title) + '</span>';
-  var badge = p.available === false
-    ? '<span class="project-card-badge">Coming soon</span>'
+  var badge = isDisabled
+    ? '<span class="project-card-badge project-card-badge--hover">Coming soon</span>'
     : '';
   var tagLine = (p.tags || []).join(', ');
-  return '<a class="project-card" href="/project.html?id=' + p.id + '">' +
+  var tag      = isDisabled ? 'div' : 'a';
+  var attrs    = isDisabled
+    ? ' aria-disabled="true"'
+    : ' href="/project.html?id=' + p.id + '"';
+  var cls      = 'project-card' + (isDisabled ? ' project-card--disabled' : '');
+  return '<' + tag + ' class="' + cls + '"' + attrs + '>' +
     '<div class="project-card-thumb" style="' + thumbStyle + '">' + badge + thumbContent + '</div>' +
     '<div class="project-card-info">' +
       '<div class="project-card-title">' + escHtml(p.title) + '</div>' +
       '<div class="project-card-sub">'   + escHtml(tagLine) + '</div>' +
-    '</div></a>';
+    '</div></' + tag + '>';
 }
 
 // ── Home page renderers ───────────────────────────────────────────────────────

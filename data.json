@@ -203,7 +203,9 @@
       "title": "Storebox",
       "subtitle": "First digital self-storage in Europe · Consumer app",
       "description": "Led product design at Storebox — Europe's first fully digital self-storage solution. Designed the complete customer journey from discovery to booking to smart-lock access management, replacing all physical touchpoints.",
-      "thumbnail": "",
+      "thumbnail": "/assets/images/storebox-cover.webp",
+      "hero": "/assets/images/storebox-cover.webp",
+      "heroFit": "contain",
       "thumbnailGradient": "linear-gradient(135deg, #b45309 0%, #d97706 60%, #fbbf24 100%)",
       "thumbnailLabel": "Storebox",
       "tags": [
@@ -217,12 +219,47 @@
         {
           "type": "text",
           "heading": "Overview",
-          "body": "Led product design at Storebox — Europe's first fully digital self-storage solution. The brief was to replace every physical touchpoint in the storage journey with a seamless digital experience: find a unit, book it, pay, and access it via smart lock — all without human interaction."
+          "body": "Led product design at Storebox — Europe's first fully digital self-storage solution. The brief was to replace every physical touchpoint in the storage journey with a seamless digital experience: find a unit, book it, pay, and access it via smart lock — all without human interaction. Units are equipped with smart sensors monitoring temperature and humidity, customers choose insurance coverage from €2,000 to €10,000, and access to the facility and individual units is via a unique code sent by email or SMS — no keys, no front desk."
+        },
+        {
+          "type": "image",
+          "url": "/assets/images/storebox-locations-map.webp",
+          "caption": ""
         },
         {
           "type": "text",
           "heading": "Approach",
-          "body": "I owned the complete customer journey — from the marketing site through to the app used to open the storage unit. This meant designing across three surfaces (web, iOS, Android) with a consistent interaction model, and working closely with hardware engineers to design interfaces for the smart lock access flow."
+          "body": "I owned the complete customer journey — from the marketing site through to the app used to open the storage unit. This meant designing across three surfaces (web, iOS, Android) with a consistent interaction model, and working closely with hardware engineers to design interfaces for the smart lock access flow.\n\nI started by mapping the full conversion funnel to find where the platform was losing customers, then worked backward from there. The pandemic made this more urgent: minimizing customer churn meant shifting to a fully contactless model while keeping the service simple to use under uncertain conditions. Most of the work was refining the digital interface and tightening the clarity of in-product communication — code delivery, booking confirmations, contract terms — so customers could manage their storage independently without calling support."
+        },
+        {
+          "type": "image",
+          "url": "/assets/images/storebox-userflow-b2c.webp",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "url": "/assets/images/storebox-location-detail.webp",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "url": "/assets/images/storebox-cabin-size-picker.webp",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "url": "/assets/images/storebox-secure-payment.webp",
+          "caption": ""
+        },
+        {
+          "type": "text",
+          "heading": "Results",
+          "body": "The redesign started narrow: fully digitizing the B2C cancellation flow. That alone was enough to prove the case for a digital-first approach — better customer satisfaction, less operational overhead — so I expanded the scope to the entire conversion funnel, aiming to raise conversion and lower churn across the board.\n\nPartway through the B2C redesign, it became clear B2B customers needed a different approach entirely. I led the development of a dedicated B2B sub-brand with its own redesign, tailored to that segment's needs rather than retrofitting the consumer flow."
+        },
+        {
+          "type": "image",
+          "url": "/assets/images/storebox-userflow-b2b.webp",
+          "caption": ""
         }
       ]
     },

@@ -1348,7 +1348,7 @@ body.page-new .homepage-body { color: #fff; mix-blend-mode: normal; max-width: n
 .about-img-cell .about-photo,
 .about-photo-placeholder {
   width: 100%;
-  height: 480px;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 8px; /* matches .bento-item border-radius */
   display: block;
@@ -1356,13 +1356,6 @@ body.page-new .homepage-body { color: #fff; mix-blend-mode: normal; max-width: n
 
 .about-photo-placeholder {
   background: var(--bg-off); /* muted surface, ready to swap for a real image */
-}
-
-@media (max-width: 768px) {
-  .about-img-cell .about-photo,
-  .about-photo-placeholder {
-    height: 300px;
-  }
 }
 
 /* ── Per-character variable weight — homepage hero ───────────────────────────── */

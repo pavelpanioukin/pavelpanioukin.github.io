@@ -615,6 +615,7 @@ button { font-family: inherit; cursor: pointer; }
 .project-page-header-content {
   max-width: 760px;
   margin: 0 auto;
+  text-align: center;
 }
 
 .project-page-title {
@@ -635,6 +636,7 @@ button { font-family: inherit; cursor: pointer; }
   mix-blend-mode: multiply;
   line-height: 1.6;
   max-width: 640px;
+  margin: 0 auto;
 }
 
 .project-page-sections {

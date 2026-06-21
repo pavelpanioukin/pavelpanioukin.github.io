@@ -1426,6 +1426,10 @@ body.page-new .homepage-body { color: #fff; mix-blend-mode: normal; max-width: n
 
 /* ── Per-character variable weight — homepage hero ───────────────────────────── */
 
+.word {
+  display: inline-block;
+}
+
 .char {
   display: inline-block;
   transition: font-weight 0.15s ease;

@@ -99,6 +99,55 @@
       ]
     },
     {
+      "id": 12,
+      "title": "Tabata Timer",
+      "subtitle": "Interval timer for HIIT & Tabata training · Solo app, 0 to 1",
+      "description": "The ultimate interval timer for HIIT & Tabata training — an essential workout companion designed to seamlessly integrate into a fitness journey, from the first tap to the last cooldown.",
+      "thumbnail": "/assets/images/tabata-cover.webp",
+      "hero": "/assets/images/tabata-cover.webp",
+      "thumbnailGradient": "linear-gradient(135deg, #16a34a 0%, #4ade80 60%, #facc15 100%)",
+      "thumbnailLabel": "Tabata Timer",
+      "tags": [
+        "Mobile App",
+        "Fitness",
+        "0 to 1"
+      ],
+      "year": "2024",
+      "featured": false,
+      "sections": [
+        {
+          "type": "text",
+          "heading": "Overview",
+          "body": "Designed for both beginners and advanced fitness enthusiasts, this interval timer app for HIIT and Tabata training offers customizable timers for weightlifting, CrossFit, martial arts, and yoga. Customizable workout/rest intervals, a one-button start, individual interval configuration, and a strict no-ads policy make it a go-to tool for tailoring fitness sessions to personal goals, at home or in the gym."
+        },
+        {
+          "type": "image",
+          "url": "/assets/images/tabata-interval-screens.webp",
+          "caption": ""
+        },
+        {
+          "type": "text",
+          "heading": "Approach",
+          "body": "The idea came from my own struggle with timing HIIT sessions accurately while working out with friends. I designed an app that would solve that timing problem and hold up in the environment it would actually be used in — including custom sounds tuned to stay audible over gym background noise. I tested and validated it in real workout settings rather than relying on assumptions about how it would be used."
+        },
+        {
+          "type": "image",
+          "url": "/assets/images/tabata-play-store-listing.webp",
+          "caption": ""
+        },
+        {
+          "type": "text",
+          "heading": "Results",
+          "body": "Since launching in February 2024, the app has earned a 4.4-star rating on the Google Play Store. I've continued refining it based on feedback from the fitness community."
+        },
+        {
+          "type": "image",
+          "url": "/assets/images/tabata-rating-breakdown.webp",
+          "caption": ""
+        }
+      ]
+    },
+    {
       "id": 2,
       "title": "Brainly Tutoring",
       "subtitle": "Live EdTech · Mobile-first · 0 to 1",

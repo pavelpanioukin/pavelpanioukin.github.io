@@ -679,6 +679,7 @@ button { font-family: inherit; cursor: pointer; }
 /* Section: Image — same gutter-inset + 16px radius treatment as the hero and video band */
 .ps-image {
   margin-bottom: 52px;
+  width: calc(100vw - 2 * var(--gutter));
   border-radius: 16px;
   overflow: hidden;
 }

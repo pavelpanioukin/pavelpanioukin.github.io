@@ -37,7 +37,7 @@
         {
           "type": "image",
           "url": "/assets/images/dailyfx-realtime-news.webp",
-          "caption": "Real-time News — live market headlines alongside breaking news and analyst notes, restructured so editorial and live data stop competing for the same space."
+          "caption": ""
         },
         {
           "type": "text",
@@ -47,14 +47,23 @@
         {
           "type": "image",
           "url": "/assets/images/dailyfx-economic-calendar.webp",
-          "caption": "The Economic Calendar rebuilt as a filterable, reusable component — by date range, timezone, country, and importance — instead of a one-off page."
+          "caption": ""
         },
         {
           "type": "metrics",
           "items": [
-            { "value": "10+", "label": "Languages supported" },
-            { "value": "4yrs", "label": "Platform ownership" },
-            { "value": "4", "label": "Designers led at IG" }
+            {
+              "value": "10+",
+              "label": "Languages supported"
+            },
+            {
+              "value": "4yrs",
+              "label": "Platform ownership"
+            },
+            {
+              "value": "4",
+              "label": "Designers led at IG"
+            }
           ]
         },
         {
@@ -65,22 +74,22 @@
         {
           "type": "image",
           "url": "/assets/images/dailyfx-market-quotes.webp",
-          "caption": "Live market quotes with inline support/resistance levels and related news — dense data made scannable without losing depth for experienced traders."
+          "caption": ""
         },
         {
           "type": "image",
           "url": "/assets/images/dailyfx-forecasts-guides.webp",
-          "caption": "Forecasts & Guides — the platform's long-form research content, restructured into a single browsable, downloadable library by topic."
+          "caption": ""
         },
         {
           "type": "image",
           "url": "/assets/images/dailyfx-live-webinars.webp",
-          "caption": "Live Webinars — recurring and one-time trading sessions, filterable by timezone, event type, and host."
+          "caption": ""
         },
         {
           "type": "image",
           "url": "/assets/images/dailyfx-technical-outlook.webp",
-          "caption": "Editorial analysis pages carried the same component system, so a technical outlook reads consistently with the rest of the platform."
+          "caption": ""
         },
         {
           "type": "text",
@@ -118,9 +127,18 @@
         {
           "type": "metrics",
           "items": [
-            { "value": "350M+", "label": "Monthly users on platform" },
-            { "value": "0→1", "label": "Product built from scratch" },
-            { "value": "Mobile", "label": "Primary delivery surface" }
+            {
+              "value": "350M+",
+              "label": "Monthly users on platform"
+            },
+            {
+              "value": "0→1",
+              "label": "Product built from scratch"
+            },
+            {
+              "value": "Mobile",
+              "label": "Primary delivery surface"
+            }
           ]
         },
         {
@@ -189,7 +207,13 @@
       "hero": "/assets/images/pandadoc-cpq-rule-builder-formula.webp",
       "thumbnailGradient": "linear-gradient(135deg, #1e3251 0%, #2d5986 60%, #1a4470 100%)",
       "thumbnailLabel": "PandaDoc CPQ",
-      "tags": ["CPQ", "Rules Engine", "HubSpot Integration", "B2B SaaS", "Sales Tooling"],
+      "tags": [
+        "CPQ",
+        "Rules Engine",
+        "HubSpot Integration",
+        "B2B SaaS",
+        "Sales Tooling"
+      ],
       "year": "2022–2024",
       "featured": true,
       "homepage": true,
@@ -315,7 +339,12 @@
       "thumbnail": "",
       "thumbnailGradient": "linear-gradient(135deg, #1a2e5c 0%, #1a6b3c 100%)",
       "thumbnailLabel": "Brainly Tutor",
-      "tags": ["saas", "b2c", "mobile", "0-to-1"],
+      "tags": [
+        "saas",
+        "b2c",
+        "mobile",
+        "0-to-1"
+      ],
       "year": 2021,
       "featured": false,
       "sections": [
@@ -336,7 +365,7 @@
         {
           "type": "image",
           "url": "/assets/images/brainly-tutor-01-placeholder.jpg",
-          "caption": "Live session interface — voice/video call, shared whiteboard, and LaTeX rendering on student mobile."
+          "caption": ""
         },
         {
           "type": "text",
@@ -351,7 +380,7 @@
         {
           "type": "image",
           "url": "/assets/images/brainly-tutor-02-placeholder.jpg",
-          "caption": "Whiteboard on mobile: receive-focused with limited annotation. Enough to follow the tutor's working, not enough to distract."
+          "caption": ""
         },
         {
           "type": "text",
@@ -361,7 +390,7 @@
         {
           "type": "image",
           "url": "/assets/images/brainly-tutor-03-placeholder.jpg",
-          "caption": "Parent payment link flow — student requests payment from a parent, bypassing the card requirement entirely."
+          "caption": ""
         },
         {
           "type": "text",
@@ -371,15 +400,24 @@
         {
           "type": "metrics",
           "items": [
-            { "value": "500K", "label": "Sessions in first 6 months" },
-            { "value": "2M", "label": "Sessions by September 2022" },
-            { "value": "Mobile", "label": "Primary delivery surface" }
+            {
+              "value": "500K",
+              "label": "Sessions in first 6 months"
+            },
+            {
+              "value": "2M",
+              "label": "Sessions by September 2022"
+            },
+            {
+              "value": "Mobile",
+              "label": "Primary delivery surface"
+            }
           ]
         },
         {
           "type": "image",
           "url": "/assets/images/brainly-tutor-04-placeholder.jpg",
-          "caption": "India onboarding — repositioned from homework help to exam preparation, optimised for low-end Android."
+          "caption": ""
         },
         {
           "type": "quote",

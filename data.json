@@ -167,7 +167,7 @@
         {
           "type": "text",
           "heading": "Role and scope",
-          "body": "I was the sole designer on this project. I owned the rules engine admin UI, the guided selling playbook flow, and the two-way data sync between PandaDoc and HubSpot. There was no other designer on this work. I worked with a PM and an engineering team, and collaborated directly with HubSpot's partner team on the integration's UX requirements.\n\nWhat this did not include: the core PandaDoc document editor, the pricing table UI, and the eSignature flow. Those were existing surfaces the CPQ integration connected to, not rebuilt."
+          "body": "I was the sole designer on this project. I owned the rules engine admin UI, the guided selling playbook flow, and the two-way data sync between PandaDoc and HubSpot. There was no other designer on this work. I worked with a PM and an engineering team, and collaborated directly with HubSpot's partner team on the integration's UX requirements.\n\nWhat this did not include: the core PandaDoc document editor, the quote builder, the pricing table UI, and the eSignature flow. Those were existing surfaces the CPQ integration connected to, not rebuilt."
         },
         {
           "type": "text",

@@ -906,6 +906,8 @@ button { font-family: inherit; cursor: pointer; }
   .header-name { font-size: 16px; }
   .header-time { font-size: 16px; }
   .ps-video-inner { width: 100%; }
+  /* metrics grid: avoid an empty trailing cell when item count is odd at 2-column width */
+  .ps-metrics { grid-template-columns: 1fr; }
   /* page-header: reduce top padding on small screens */
   .page-header { padding-top: 40px; padding-bottom: 32px; }
   /* project page: reduce padding on small screens */

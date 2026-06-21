@@ -608,25 +608,13 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .project-page-header {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 40px;
   padding-top: 64px;
   padding-bottom: 48px;
 }
 
 .project-page-header-content {
-  grid-column: 2;
   max-width: 760px;
-}
-
-@media (max-width: 768px) {
-  .project-page-header {
-    grid-template-columns: 1fr;
-  }
-  .project-page-header-content {
-    grid-column: 1;
-  }
+  margin: 0 auto;
 }
 
 .project-page-title {
@@ -653,6 +641,7 @@ button { font-family: inherit; cursor: pointer; }
   padding-top: 64px;
   padding-bottom: 100px;
   max-width: 760px;
+  margin: 0 auto;
 }
 
 /* Section: Text */
@@ -680,6 +669,7 @@ button { font-family: inherit; cursor: pointer; }
 .ps-image {
   margin-bottom: 52px;
   width: calc(100vw - 2 * var(--gutter));
+  margin-left: calc(50% - 50vw + var(--gutter));
   border-radius: 16px;
   overflow: hidden;
 }
@@ -701,6 +691,7 @@ button { font-family: inherit; cursor: pointer; }
 .ps-video {
   margin-bottom: 52px;
   width: calc(100vw - 2 * var(--gutter));
+  margin-left: calc(50% - 50vw + var(--gutter));
   border-radius: 16px;
   overflow: hidden;
   background: #fafafa;

@@ -312,7 +312,7 @@ button { font-family: inherit; cursor: pointer; }
   line-height: 1.15;
   color: var(--ink-1);
   mix-blend-mode: multiply;
-  max-width: 800px;
+  max-width: 1100px;
   text-wrap: balance;
 }
 

@@ -386,21 +386,21 @@
     {
       "id": 5,
       "slug": "brainly-tutor-live-session",
-      "title": "Brainly Tutor: Live Session Design and India Launch",
+      "title": "Brainly Tutor",
       "subtitle": "IxD Product Designer — student session experience and India launch",
       "company": "Brainly",
       "description": "A tutor with a desktop, a keyboard, and a whiteboard is not in the same session as a student following along on a five-inch mobile screen — and the gap between those two experiences is exactly where trust breaks down.",
-      "thumbnail": "",
+      "thumbnail": "/assets/images/brainly-tutor-cover.webp",
       "thumbnailGradient": "linear-gradient(135deg, #1a2e5c 0%, #1a6b3c 100%)",
       "thumbnailLabel": "Brainly Tutor",
       "tags": [
         "saas",
         "b2c",
-        "mobile",
-        "0-to-1"
+        "mobile"
       ],
       "year": 2021,
       "featured": false,
+      "available": false,
       "sections": [
         {
           "type": "text",

@@ -828,6 +828,7 @@ button { font-family: inherit; cursor: pointer; }
 /* Section: CTA — a single emphasized link button within case study copy */
 .ps-cta {
   margin-bottom: 52px;
+  text-align: center;
 }
 .ps-cta:last-child { margin-bottom: 0; }
 

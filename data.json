@@ -216,12 +216,12 @@
         {
           "type": "video",
           "youtubeId": "U0nfjF86iI4",
-          "caption": "Selling the same product across currencies using a lookup table keyed by SKU and currency — price, currency, and description all pulled from one rule."
+          "caption": "Selling one product across currencies — price, currency, and description pulled from a single lookup-driven rule."
         },
         {
           "type": "video",
           "youtubeId": "bK9b5rvMKRE",
-          "caption": "A more complex case: price varying by region and fiscal quarter — 36 variations collapsed into a single lookup-driven rule, with the table itself uploaded as a CSV."
+          "caption": "A tougher case: price by region and quarter — 36 variations, one rule, table uploaded as a CSV."
         },
         {
           "type": "text",

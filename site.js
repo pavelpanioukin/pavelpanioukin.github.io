@@ -355,6 +355,14 @@ function renderProjectPage(data) {
 
   document.title = project.title + ' — Pavel Panioukin';
 
+  if (typeof gtag === 'function') {
+    var slug = project.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    gtag('config', 'G-8Z852BN6WQ', {
+      page_title: document.title,
+      page_path: '/project/' + project.id + '-' + slug
+    });
+  }
+
   var heroEl = document.getElementById('project-hero');
   if (heroEl) {
     var heroImg = project.hero || project.thumbnail;

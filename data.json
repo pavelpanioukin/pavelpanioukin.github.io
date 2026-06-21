@@ -160,6 +160,11 @@
       "available": true,
       "sections": [
         {
+          "type": "image",
+          "url": "/assets/images/pandadoc-cpq-rule-builder-formula.webp",
+          "caption": ""
+        },
+        {
           "type": "text",
           "heading": "The tension",
           "body": "A sales rep needs to generate an accurate quote fast — sometimes mid-call. But the pricing logic behind that quote is complex: volume discounts, approval thresholds, automatic add-ons, bundle rules. It's the accumulated expertise of sales ops, finance, and legal, built up over years. A rep who gets it wrong sends the customer a number the company can't honour. A rep who has to stop and ask someone gets it right but kills the deal. The standard response to this problem is restriction — lock the fields, block the errors. But that mistakes the problem. The rep isn't trying to do something wrong. They just don't have the pricing expertise of a senior sales manager, and they're being asked to make pricing decisions in real time. The rep doesn't need to be prevented. They need to be guided."
@@ -232,6 +237,21 @@
           "type": "text",
           "heading": "What I learned",
           "body": "The most useful reframe on this project: rules are not restrictions. They're automation. The instinct in complex systems design is to think about rules as constraints — things that prevent users from doing the wrong thing. That framing produces defensive design. The rules engine in PandaDoc CPQ was about automating the expertise of senior people so that less experienced people could operate at the same quality level without needing to know everything. Not \"you can't do that\" but \"we've already handled that for you.\" That difference — conceptually small, practically total — shaped every decision in the admin UI.\n\nThe second thing: legibility and trust are not the same. A system can be fully transparent and still feel untrustworthy, because the volume of information overwhelms the signal. Trust comes from the right information at the right moment, not from complete information at all times."
+        },
+        {
+          "type": "image",
+          "url": "/assets/images/pandadoc-cpq-rules-list.webp",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "url": "/assets/images/pandadoc-cpq-frequency-discount-rule.webp",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "url": "/assets/images/pandadoc-cpq-quantity-condition-rule.webp",
+          "caption": ""
         }
       ]
     },

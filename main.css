@@ -676,11 +676,11 @@ button { font-family: inherit; cursor: pointer; }
   line-height: 1.8;
 }
 
-/* Section: Image — full-bleed, breaks out of the 760px text column to the viewport edge */
+/* Section: Image — same gutter-inset + 16px radius treatment as the hero and video band */
 .ps-image {
   margin-bottom: 52px;
-  width: 100vw;
-  margin-left: calc(-1 * var(--gutter));
+  border-radius: 16px;
+  overflow: hidden;
 }
 .ps-image:last-child { margin-bottom: 0; }
 
@@ -691,7 +691,6 @@ button { font-family: inherit; cursor: pointer; }
   color: var(--ink-3);
   mix-blend-mode: multiply;
   margin-top: 10px;
-  padding: 0 var(--gutter);
 }
 
 /* Section: Video — #fafafa band inset by the standard gutter (like the

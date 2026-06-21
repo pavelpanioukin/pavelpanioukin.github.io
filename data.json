@@ -149,6 +149,7 @@
       "subtitle": "Guided selling for reps, full expressiveness for sales ops",
       "description": "The rules engine had to carry the accumulated expertise of sales ops, finance, and legal — silently, so the rep never had to think about it.",
       "thumbnail": "/assets/images/pandadoc-cpq-cover.png",
+      "hero": "/assets/images/pandadoc-cpq-rule-builder-formula.webp",
       "thumbnailGradient": "linear-gradient(135deg, #1e3251 0%, #2d5986 60%, #1a4470 100%)",
       "thumbnailLabel": "PandaDoc CPQ",
       "tags": ["CPQ", "Rules Engine", "HubSpot Integration", "B2B SaaS", "Sales Tooling"],
@@ -159,11 +160,6 @@
       "tension": "A sales rep needs to generate an accurate quote in minutes, sometimes mid-call. But the pricing logic behind that quote — volume discounts, approval thresholds, automatic add-ons — is the accumulated expertise of sales ops, finance, and legal. The rep who gets it wrong sends a number the company can't honour. The rep who has to stop and ask someone gets it right but loses the deal. The rules engine had to carry that expertise silently, so the rep never had to think about it.",
       "available": true,
       "sections": [
-        {
-          "type": "image",
-          "url": "/assets/images/pandadoc-cpq-rule-builder-formula.webp",
-          "caption": ""
-        },
         {
           "type": "text",
           "heading": "The tension",

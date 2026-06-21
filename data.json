@@ -209,8 +209,7 @@
       "subtitle": "First digital self-storage in Europe · Consumer app",
       "description": "Led product design at Storebox — Europe's first fully digital self-storage solution. Designed the complete customer journey from discovery to booking to smart-lock access management, replacing all physical touchpoints.",
       "thumbnail": "/assets/images/storebox-cover.webp",
-      "hero": "/assets/images/storebox-cover.webp",
-      "heroFit": "contain",
+      "hero": "/assets/images/storebox-feature.webp",
       "thumbnailGradient": "linear-gradient(135deg, #b45309 0%, #d97706 60%, #fbbf24 100%)",
       "thumbnailLabel": "Storebox",
       "tags": [

@@ -11,7 +11,7 @@
     {
       "id": 1,
       "title": "DailyFX",
-      "subtitle": "Trading platform redesign · IG Group · 2014–2020",
+      "subtitle": "Trading platform redesign · IG Group · 2016–2020",
       "description": "A complete redesign of the DailyFX trading analysis platform, improving UX for both novice and expert traders through better data visualization, streamlined information architecture, and a cohesive design system built for scale.",
       "thumbnail": "",
       "thumbnailGradient": "linear-gradient(135deg, #0f0c29 0%, #1a1a4e 50%, #24243e 100%)",
@@ -31,18 +31,18 @@
         {
           "type": "text",
           "heading": "Overview",
-          "body": "A complete redesign of the DailyFX trading analysis platform — the world's most-visited forex news and analysis portal. The goal was to make dense, data-heavy content accessible to both first-time retail traders and seasoned professionals, without stripping the depth that experts rely on."
+          "body": "DailyFX launched in 2002 and grew into one of the world's most-visited forex news and analysis portals. IG Group acquired it from FXCM in September 2016 — the deal brought over its domains, source code, content archive, and a 34-person team — and I joined right after the acquisition to lead its redesign and integration into IG's product ecosystem. The goal was to make dense, data-heavy content accessible to both first-time retail traders and seasoned professionals, without stripping the depth that experts rely on."
         },
         {
           "type": "text",
           "heading": "Challenge",
-          "body": "DailyFX had accumulated years of feature additions without a coherent information architecture. Key problems: content was buried under layers of navigation, charts and editorial competed for the same visual space, and the design system was fragmented across markets and locales. The redesign had to work across 10+ languages and serve a global audience with radically different trading contexts."
+          "body": "DailyFX had accumulated years of feature additions without a coherent information architecture, and now had to be absorbed into IG's design language and infrastructure without alienating an existing global audience. Content was buried under layers of navigation, charts and editorial competed for the same visual space, and the design system was fragmented across markets and locales. Two of the platform's signature features — the Economic Calendar, a filterable release schedule for G-10 economic events ranked by market impact, and the Economic Countdown, a live clock to the next market-moving announcement — had grown organically over a decade as one-off pages rather than consistent, reusable components. The redesign had to work across 10+ languages and serve a global audience with radically different trading contexts."
         },
         {
           "type": "metrics",
           "items": [
             { "value": "10+", "label": "Languages supported" },
-            { "value": "5yrs", "label": "Platform ownership" },
+            { "value": "4yrs", "label": "Platform ownership" },
             { "value": "4", "label": "Designers led" }
           ]
         },
@@ -50,6 +50,11 @@
           "type": "text",
           "heading": "Approach",
           "body": "I led end-to-end redesign: from IA restructure and component audit through to building a shared design system used across IG's global product suite. I ran design sprints with editorial, engineering, and data teams to align on priorities, then shipped in iterative phases to avoid disruption to the existing audience."
+        },
+        {
+          "type": "text",
+          "heading": "What happened after",
+          "body": "DailyFX continued as IG's standalone forex research brand for most of a decade after the acquisition. In 2024, IG folded the site into its main platform — DailyFX's content now lives inside IG Academy and IG's market news sections, and the standalone domain redirects to ig.com."
         }
       ]
     },

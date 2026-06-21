@@ -132,7 +132,9 @@
       "thumbnailGradient": "linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)",
       "thumbnailLabel": "",
       "tags": [
-        "Turn strategy into trackable goals at every level of the org"
+        "HR Tech",
+        "Performance Mgmt",
+        "B2B SaaS"
       ],
       "year": "",
       "featured": false,
@@ -148,7 +150,9 @@
       "thumbnailGradient": "linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)",
       "thumbnailLabel": "",
       "tags": [
-        "Confidential whistleblowing built into the HR platform"
+        "HR Tech",
+        "Compliance",
+        "B2B SaaS"
       ],
       "year": "",
       "featured": false,
@@ -394,9 +398,9 @@
       "thumbnailGradient": "linear-gradient(135deg, #1a2e5c 0%, #1a6b3c 100%)",
       "thumbnailLabel": "Brainly Tutor",
       "tags": [
-        "saas",
-        "b2c",
-        "mobile"
+        "SaaS",
+        "B2C",
+        "Mobile"
       ],
       "year": 2021,
       "featured": false,

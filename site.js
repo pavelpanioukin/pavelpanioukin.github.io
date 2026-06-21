@@ -356,7 +356,7 @@ function renderProjectPage(data) {
   if (headerEl) {
     headerEl.innerHTML =
       '<div class="project-page-header-content">' +
-        '<h1 class="project-page-title">'    + escHtml(project.title)    + '</h1>' +
+        '<h1 class="project-page-title">'    + escHtml(project.pageTitle || project.title).replace(/\n/g, '<br>') + '</h1>' +
         '<p class="project-page-subtitle">'  + escHtml(project.subtitle) + '</p>' +
       '</div>';
   }

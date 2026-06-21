@@ -345,7 +345,8 @@ function renderProjectPage(data) {
   if (heroEl) {
     var heroImg = project.hero || project.thumbnail;
     if (heroImg) {
-      heroEl.innerHTML = '<img src="' + escHtml(heroImg) + '" alt="' + escHtml(project.title) + '">';
+      var heroFit = project.heroFit ? ' style="object-fit:' + escHtml(project.heroFit) + '"' : '';
+      heroEl.innerHTML = '<img src="' + escHtml(heroImg) + '" alt="' + escHtml(project.title) + '"' + heroFit + '>';
     } else {
       heroEl.style.background = project.thumbnailGradient || '#ebebeb';
       heroEl.innerHTML = '<span class="project-hero-label">' + escHtml(project.thumbnailLabel || project.title) + '</span>';

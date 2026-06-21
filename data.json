@@ -210,8 +210,23 @@
         },
         {
           "type": "text",
+          "heading": "Lookup tables for price lists at scale",
+          "body": "Pricing rarely stays single-factor for long. A product's price can hinge on currency, sales region, fiscal quarter — any combination of catalog attributes — and encoding each combination as its own conditional rule doesn't scale: three products across three regions and four quarters alone produces 36 price variations. I designed lookup tables as the alternative: a flat, spreadsheet-style reference table — uploaded as a CSV, no engineering required — that the rules engine could query directly by matching on any combination of fields. A single rule could then say \"match this product against these factors, then pull price, currency, and description from the table,\" collapsing what would have been dozens of brittle, near-duplicate rules into one lookup-driven rule. It also moved the maintenance burden to where it belonged: an admin updating prices for a new region or quarter edits a spreadsheet and re-uploads it, not rule logic."
+        },
+        {
+          "type": "video",
+          "youtubeId": "U0nfjF86iI4",
+          "caption": "Selling the same product across currencies using a lookup table keyed by SKU and currency — price, currency, and description all pulled from one rule."
+        },
+        {
+          "type": "video",
+          "youtubeId": "bK9b5rvMKRE",
+          "caption": "A more complex case: price varying by region and fiscal quarter — 36 variations collapsed into a single lookup-driven rule, with the table itself uploaded as a CSV."
+        },
+        {
+          "type": "text",
           "heading": "Outcomes",
-          "body": "PandaDoc CPQ for HubSpot launched September 18, 2024, and was presented at INBOUND24 — HubSpot's flagship annual conference. It launched as the first and only fully embedded, native CPQ integration for HubSpot Sales Hub.\n\nQuote error rate decreased. Deal cycle time shortened. Sales rep adoption was faster than previous tooling. PandaDoc was named a HubSpot Essential App for Sales 2024 — the first CPQ integration to receive that recognition. The integration became the foundation for PandaDoc's strategic partnership with HubSpot, a corporate investor in PandaDoc."
+          "body": "PandaDoc CPQ for HubSpot launched in September 2024 and was presented at INBOUND24 — HubSpot's flagship annual conference. It launched as the first and only fully embedded, native CPQ integration for HubSpot Sales Hub.\n\nQuote error rate decreased. Deal cycle time shortened. Sales rep adoption was faster than previous tooling. PandaDoc was named a HubSpot Essential App for Sales 2024 — the first CPQ integration to receive that recognition. The integration became the foundation for PandaDoc's strategic partnership with HubSpot, a corporate investor in PandaDoc."
         },
         {
           "type": "video",

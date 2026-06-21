@@ -900,11 +900,12 @@ button { font-family: inherit; cursor: pointer; }
 @media (max-width: 680px) {
   .project-grid { grid-template-columns: 1fr; }
   .bento-grid { grid-template-columns: 1fr; }
-  .info-row { flex-direction: column; gap: 6px; }
+  .info-row { flex-direction: column; align-items: flex-start; gap: 6px; }
   /* header-bio: remove 50% max-width constraint when info-row stacks */
   .header-bio { text-align: left; max-width: none; font-size: 16px; }
   .header-name { font-size: 16px; }
   .header-time { font-size: 16px; }
+  .ps-video-inner { width: 100%; }
   /* page-header: reduce top padding on small screens */
   .page-header { padding-top: 40px; padding-bottom: 32px; }
   /* project page: reduce padding on small screens */

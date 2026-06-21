@@ -683,6 +683,7 @@ button { font-family: inherit; cursor: pointer; }
   overflow: hidden;
 }
 .ps-image:last-child { margin-bottom: 0; }
+.ps-image + .ps-image { margin-top: calc(var(--gutter) - 52px); }
 
 .ps-image img { width: 100%; display: block; }
 
@@ -705,6 +706,7 @@ button { font-family: inherit; cursor: pointer; }
   padding-top: 64px;
 }
 .ps-video:last-child { margin-bottom: 0; }
+.ps-video + .ps-video { margin-top: calc(var(--gutter) - 52px); }
 
 .ps-video-inner {
   width: 50vw;

@@ -31,13 +31,17 @@
 
   // ── Hover detection ───────────────────────────────────────────
   var HOVER_SEL = 'a, button, [role="button"], label, .bento-item, .nav-link';
+  // Large display-type links that are still single clickable links, not containers —
+  // exempt from the size cap so they get the pill highlight like every other link.
+  var NO_CAP_SEL = '.footer-reach, .footer-col-link, .footer-next-row';
 
   document.addEventListener('mouseover', function (e) {
     var target = e.target && e.target.closest ? e.target.closest(HOVER_SEL) : null;
     if (target) {
       if (target === pillEl) return; // already tracking this element
       var r = target.getBoundingClientRect();
-      if (r.width > SIZE_CAP_W || r.height > SIZE_CAP_H) {
+      var exempt = target.closest(NO_CAP_SEL);
+      if (!exempt && (r.width > SIZE_CAP_W || r.height > SIZE_CAP_H)) {
         toDot();
         return;
       }

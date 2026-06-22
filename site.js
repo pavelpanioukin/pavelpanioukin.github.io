@@ -411,12 +411,26 @@ function handleSubmit(e) {
 
 // ── Footer next-page link (updated after each SPA navigation) ────────────────
 
-function updateFooterNext() {
+function updateFooterNext(data) {
   var p = window.location.pathname;
-  var dest = p.includes('about') ? { href: '/work.html',  label: 'Work'  } :
-             p.includes('work')  ? { href: '/feed.html',  label: 'Feed'  } :
-             p.includes('feed')  ? { href: '/about.html', label: 'About' } :
-                                   { href: '/about.html', label: 'About' };
+  var dest;
+
+  if (p.includes('project')) {
+    var projects = ((data || {}).projects || []).filter(function (pr) {
+      return !pr.hidden && pr.available !== false;
+    });
+    var id    = parseInt(new URLSearchParams(window.location.search).get('id'), 10);
+    var index = projects.findIndex(function (pr) { return pr.id === id; });
+    var next  = index !== -1 ? projects[index + 1] : null;
+    dest = next ? { href: '/project.html?id=' + next.id, label: next.title } :
+                  { href: '/feed.html', label: 'Feed' };
+  } else {
+    dest = p.includes('about') ? { href: '/work.html',  label: 'Work'  } :
+           p.includes('work')  ? { href: '/feed.html',  label: 'Feed'  } :
+           p.includes('feed')  ? { href: '/about.html', label: 'About' } :
+                                 { href: '/about.html', label: 'About' };
+  }
+
   var el = document.getElementById('footer-next-link');
   if (el) {
     el.href        = dest.href;
@@ -457,7 +471,7 @@ window.initPage = async function () {
   updateNavActive();
 
   var data = await fetch('/data.json?v=' + Date.now()).then(function (r) { return r.json(); });
-  updateFooterNext();
+  updateFooterNext(data);
 
   var p = window.location.pathname;
 

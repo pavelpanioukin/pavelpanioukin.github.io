@@ -35,6 +35,17 @@
   // exempt from the size cap so they get the pill highlight like every other link.
   var NO_CAP_SEL = '.footer-reach, .footer-col-link, .footer-next-row';
 
+  // For NO_CAP_SEL elements, the clickable box (block width / full row) is much
+  // bigger than the visible text, so size the pill to the text glyphs, not the box.
+  function pillRect(el) {
+    if (el.closest(NO_CAP_SEL)) {
+      var range = document.createRange();
+      range.selectNodeContents(el);
+      return range.getBoundingClientRect();
+    }
+    return el.getBoundingClientRect();
+  }
+
   document.addEventListener('mouseover', function (e) {
     var target = e.target && e.target.closest ? e.target.closest(HOVER_SEL) : null;
     if (target) {
@@ -65,7 +76,7 @@
   function toPill(el) {
     mode   = 'pill';
     pillEl = el;
-    var r  = el.getBoundingClientRect();
+    var r  = pillRect(el);
     var w  = Math.round(r.width  + PAD * 2);
     var h  = Math.round(r.height + PAD * 2);
     cursor.style.width        = w + 'px';
@@ -106,11 +117,12 @@
     var tx, ty;
 
     if (mode === 'pill' && pillEl) {
-      var r = pillEl.getBoundingClientRect();
-      if (!pillEl.closest(NO_CAP_SEL) && (r.width > SIZE_CAP_W || r.height > SIZE_CAP_H)) {
+      var fullRect = pillEl.getBoundingClientRect();
+      if (!pillEl.closest(NO_CAP_SEL) && (fullRect.width > SIZE_CAP_W || fullRect.height > SIZE_CAP_H)) {
         toDot();
       } else {
         // Track element size (handles window resize / reflow)
+        var r = pillRect(pillEl);
         var w = Math.round(r.width  + PAD * 2);
         var h = Math.round(r.height + PAD * 2);
         if (w !== lastW) { cursor.style.width  = w + 'px'; lastW = w; }

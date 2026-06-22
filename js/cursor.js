@@ -107,7 +107,7 @@
 
     if (mode === 'pill' && pillEl) {
       var r = pillEl.getBoundingClientRect();
-      if (r.width > SIZE_CAP_W || r.height > SIZE_CAP_H) {
+      if (!pillEl.closest(NO_CAP_SEL) && (r.width > SIZE_CAP_W || r.height > SIZE_CAP_H)) {
         toDot();
       } else {
         // Track element size (handles window resize / reflow)
